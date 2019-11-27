@@ -3,9 +3,14 @@ var moment = require('moment');
 import toyService from '../services/EditService.js'
 export default {
     state: {
-        widgets: ['NavBar'],
+        widgets: ['NavBar',
+            'Container',
+            'Txt'],
     },
     mutations: {
+        addWidget(state, { config }) {
+            state.widgets.push(config.type)
+        },
         setToys(state, { toys }) {
             state.toys = toys
         },
