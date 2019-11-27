@@ -5,8 +5,8 @@
   </div>
 </template>
 <script>
-import ToolBar from "../components/ToolBar.vue";
-import WidgetPreview from "../components/WidgetPreview.vue";
+import ToolBar from "../components/wixer_cmps/ToolBar.vue";
+import WidgetPreview from "../components/wixer_cmps/WidgetPreview.vue";
 export default {
   computed: {
     widgets() {

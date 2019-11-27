@@ -10,17 +10,14 @@
 
 <script>
 export default {
-  props:{
-edit:Boolean
-  },
-  data() {
-    return {
-      content: "",
-      isEditMode: true
-    };
+  props: {
+    edit: Boolean
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.text {
+  border-style: dotted;
+}
 </style>
