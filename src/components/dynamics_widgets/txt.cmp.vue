@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <p class="text" :contenteditable="edit">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Earum maiores praesentium, neque deleniti ex recusandae. Cum alias molestiae sint natus quisquam, corporis magnam voluptatibus,
-      voluptas perspiciatis nam temporibus. Eligendi, animi!
+  <div class="flex full">
+    <p class="text" :contenteditable="true">
+      {{content}}
     </p>
   </div>
 </template>
@@ -11,7 +9,8 @@
 <script>
 export default {
   props: {
-    edit: Boolean
+    edit: Boolean,
+    content: String
   }
 };
 </script>

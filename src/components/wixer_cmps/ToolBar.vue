@@ -5,7 +5,7 @@
       <option value="txt">text</option>
       <option value="NavBar">nav bar</option>
       <option value="Container1">Container1</option>
-      <option value="Container2">Container2</option>
+      <option value="Container3">Container3</option>
       <option value="Header">Header</option>
       <option>B</option>
       <option>C</option>
