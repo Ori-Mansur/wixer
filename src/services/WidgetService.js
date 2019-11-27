@@ -12,7 +12,66 @@ export default {
 const BASE_URL = (process.env.NODE_ENV !== 'development')
     ? '/api/toy'
     : '//localhost:3150/api/toy';
-async function query() {
+
+const widgets = [{
+    id: "s1001",
+    type: "Header",
+    data: {
+        title: "this is the title",
+        subtitle: "this is the subtitle",
+        logo: "img/logo.jpg"
+    }
+},
+{
+    id: "s1002",
+    type: "NavBar",
+    data: {
+        title: "this is the title",
+        subtitle: "this is the subtitle",
+        logo: "img/logo.jpg"
+    }
+},
+{
+    id: "s1003",
+    type: "Container1",
+    data: {
+        title: "this is the title",
+        subtitle: "this is the subtitle",
+        logo: "img/logo.jpg"
+    }
+},
+{
+    id: "s1004",
+    type: "Container3",
+    data: {
+        title: "this is the title",
+        subtitle: "this is the subtitle",
+        logo: "img/logo.jpg"
+    }
+},
+{
+    id: "s1005",
+    type: "Txt",
+    data: {
+        title: "this is the title",
+        subtitle: "this is the subtitle",
+        logo: "img/logo.jpg"
+    }
+},
+{
+    id: "s1006",
+    type: "VideoAndTxt",
+    data: {
+        title: "this is the title",
+        subtitle: "this is the subtitle",
+        logo: "img/logo.jpg"
+    }
+},
+]
+function query(){
+    return widgets
+}
+async function query1() {
     const res = await httpService.get(BASE_URL)
     return await res.data
 }

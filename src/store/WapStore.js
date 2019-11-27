@@ -10,16 +10,19 @@ export default {
         setWaps(state, { waps }) {
             state.waps = waps
         },
-        addToy(state, { toy }) {
-            state.toys.unshift(toy)
+        addWap(state, { wap }) {
+            state.waps.unshift(wap)
         },
-        updateToy(state, { toy }) {
-            const idx = state.toys.findIndex(currToy => currToy._id === toy._id)
-            state.toys.splice(idx, 1, toy)
+        updateWap(state, { wap }) {
+            const idx = state.waps.findIndex(currWap => currWap._id === wap._id)
+            state.waps.splice(idx, 1, wap)
         },
-        removeToy(state, { toyId }) {
-            const idx = state.toys.findIndex(currToy => currToy._id === toyId)
-            state.toys.splice(idx, 1)
+        removeWap(state, { wapId }) {
+            const idx = state.waps.findIndex(currWap => currWap._id === wapId)
+            state.waps.splice(idx, 1)
+        },
+        addWidget(state, { config }) {
+            state.currWap.widgets.push(config.type);
         },
         setFilter(state, filterBy) {
             state.filterBy = filterBy
@@ -31,29 +34,25 @@ export default {
             context.commit({ type: 'setWaps', waps })
             return waps;
         },
-        toyById(context, { id }) {
-            return toyService.getById(id)
-                .then(toy => toy)
+        async wapById(context, { id }) {
+            const wap = await WapService.getById(id)
+            context.commit({ type: 'setWap', wap })
+            return wap
         },
-        addToy(context, { toy }) {
-            return toyService.add(toy)
-                .then(toy => {
-                    context.commit({ type: 'addToy', toy })
-                    return toy
-                })
+        async addWap(context, { wap }) {
+            const addedWap = await WapService.add(wap)
+            context.commit({ type: 'addWap', addedWap })
+            return addedWap
         },
-        updateToy(context, { toy }) {
-            return toyService.update(toy)
-                .then(toy => {
-                    context.commit({ type: 'updateToy', toy })
-                    return toy
-                })
+        async updateWap(context, { wap }) {
+            const updateWap = await WapService.update(wap)
+            context.commit({ type: 'updateWap', updateWap })
+            return updateWap
         },
-        removeToy(context, { toyId }) {
-            return toyService.remove(toyId)
-                .then(() => {
-                    context.commit({ type: 'removeToy', toyId })
-                })
+        async removeWap(context, { wapId }) {
+            await WapService.remove(wapId)
+            context.commit({ type: 'removeWap', wapId })
+            return wapId
         }
     },
     getters: {
@@ -61,16 +60,19 @@ export default {
             var waps = state.waps
             if (!state.filterBy) return waps
             if (state.filterBy.stock) {
-                waps = waps.filter(toy => toy.inStock === true)
+                waps = waps.filter(wap => wap.inStock === true)
             }
             if (state.filterBy.type !== 'All') {
-                waps = waps.filter(toy => toy.type === state.filterBy.type)
+                waps = waps.filter(wap => wap.type === state.filterBy.type)
             }
             if (state.filterBy.name) {
                 var regex = new RegExp(`${state.filterBy.name}`, 'i');
-                waps = waps.filter(toy => regex.test(toy.name))
+                waps = waps.filter(wap => regex.test(wap.name))
             }
             return waps
+        },
+        currWap(state) {
+            return state.currWap
         }
 
     }
