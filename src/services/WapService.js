@@ -1,5 +1,5 @@
 'use strict'
-import httpService from './http-service.js'
+import HttpService from './HttpService.js'
 import cloudinaryService from './cloudinary.service.js'
 
 export default {
@@ -9,13 +9,13 @@ export default {
     update,
     remove
 }
-const BASE_URL = (process.env.NODE_ENV !== 'development')
-    ? '/api/wap'
-    : '//localhost:3150/api/wap';
+// const BASE_URL = (process.env.NODE_ENV !== 'development')
+//     ? '/api/wap'
+//     : '//localhost:3150/api/wap';
+
 
 async function query() {
-    const res = await httpService.get(BASE_URL)
-    return await res.data
+    return await HttpService.get('/wap')
 }
 async function getById(id) {
     const res = await httpService.get(`${BASE_URL}/${id}`)

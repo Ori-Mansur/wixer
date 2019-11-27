@@ -1,16 +1,15 @@
 <template>
   <li>
-      <button @click="edit(templae._id)">E</button>
-      <button>P</button>
+    <pre>{{wap}}f</pre>
+    <button @click="edit(wap._id)">E</button>
+    <button>P</button>
   </li>
 </template>
 <script>
 export default {
   props: {
-    templates: Array
+    wap: Object
   },
-  methods: {
-      
-  },
+  methods: {}
 };
 </script>

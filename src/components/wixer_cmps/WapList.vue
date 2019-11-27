@@ -1,13 +1,16 @@
 <template>
-    <ul class="card-grid">
-<WapPreview/>
-    </ul>
+  <ul class="card-grid">
+    <WapPreview v-for="wap in waps" :key="wap._id" :wap="wap" />
+  </ul>
 </template>
 <script>
-import WapPreview from './WapPreview.vue'
+import WapPreview from "./WapPreview.vue";
 export default {
-    components:{
-        WapPreview
-    }
-}
+  props: {
+    waps: Array
+  },
+  components: {
+    WapPreview
+  }
+};
 </script>

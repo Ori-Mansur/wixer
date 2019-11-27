@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import toyStore from './WidgetStore.js'
+import WidgetStore from './WidgetStore.js'
+import WapStore from './WapStore.js'
 import userStore from './user.store.js'
 Vue.use(Vuex)
 
@@ -13,7 +14,8 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    toyStore,
-    userStore
+    WidgetStore,
+    userStore,
+    WapStore
   }
 })

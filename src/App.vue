@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <NavBar/>
-       
     <router-view class="container"/>
   </div>
 </template>
@@ -13,6 +12,9 @@ export default {
   name: 'APP',
   components: {
     NavBar
+  },
+  created(){
+    this.$store.dispatch({type:'loadWaps'})
   }
 }
 </script>

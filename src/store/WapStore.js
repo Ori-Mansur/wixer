@@ -3,13 +3,12 @@ var moment = require('moment');
 import WapService from '../services/WapService.js'
 export default {
     state: {
-        wap: {
-
-        }
+        waps: [],
+        currWap: {}
     },
     mutations: {
-        setToys(state, { toys }) {
-            state.toys = toys
+        setWaps(state, { waps }) {
+            state.waps = waps
         },
         addToy(state, { toy }) {
             state.toys.unshift(toy)
@@ -27,12 +26,10 @@ export default {
         }
     },
     actions: {
-        loadToys(context) {
-            return toyService.query()
-                .then(toys => {
-                    context.commit({ type: 'setToys', toys })
-                    return toys;
-                })
+        async loadWaps(context) {
+            const waps = await WapService.query()
+            context.commit({ type: 'setWaps', waps })
+            return waps;
         },
         toyById(context, { id }) {
             return toyService.getById(id)
@@ -60,43 +57,21 @@ export default {
         }
     },
     getters: {
-        toyToShow(state) {
-            var toys = state.toys
-            if (!state.filterBy) return toys
+        wapsToShow(state) {
+            var waps = state.waps
+            if (!state.filterBy) return waps
             if (state.filterBy.stock) {
-                toys = toys.filter(toy => toy.inStock === true)
+                waps = waps.filter(toy => toy.inStock === true)
             }
             if (state.filterBy.type !== 'All') {
-                toys = toys.filter(toy => toy.type === state.filterBy.type)
+                waps = waps.filter(toy => toy.type === state.filterBy.type)
             }
             if (state.filterBy.name) {
                 var regex = new RegExp(`${state.filterBy.name}`, 'i');
-                toys = toys.filter(toy => regex.test(toy.name))
+                waps = waps.filter(toy => regex.test(toy.name))
             }
-            return toys
-        },
-        toyPerYear(state) {
-            var toyYearMap = {}
-            state.toys.forEach(toy => {
-                var year = moment(toy.createdAt).format('YYYY')
-                var count = toyYearMap[year]
-                toyYearMap[year] = (count) ? count + 1 : 1
-            });
-            return toyYearMap
-        },
-        toysType(state) {
-            var types = state.toys.map(toy => toy.type);
-            types.unshift("All");
-            return types
-        },
-        toysTypeAvgPrice(state) {
-            var typeAvg = {}
-            state.toys.forEach(toy => {
-                const price = typeAvg[toy.type]
-                typeAvg[toy.type] = (price) ? price + +toy.price : +toy.price
-            });
-            return typeAvg
-        },
+            return waps
+        }
 
     }
 }

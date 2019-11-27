@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import About from '../views/About.vue';
-import Templates from '../views/TemplatesPage.vue';
+import WapsPage from '../views/WapsPage.vue';
 import UserDetails from '../views/UserDetails.vue';
 import WapEditor from '../views/WapEditor.vue';
 
@@ -20,9 +20,9 @@ const routes = [
     component: About
   },
   {
-    path: '/Template',
-    name: 'Template',
-    component: Templates
+    path: '/wap',
+    name: 'Wap',
+    component: WapsPage
   },
   {
     path: '/User/:id',
