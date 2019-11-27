@@ -9,6 +9,9 @@ export default {
   props: {
     waps: Array
   },
+  created(){
+    console.log(this.waps)
+  },
   components: {
     WapPreview
   }

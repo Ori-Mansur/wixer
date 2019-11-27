@@ -1,14 +1,14 @@
 <template>
   <section class="header-container">
-    <img :src="logo" />
-    <h1>{{data.title}}</h1>
-    <h3>{{data.subtitle}}</h3>
+    <h1>{{widget.data.title}}</h1>
+    <h3>{{widget.data.subtitle}}</h3>
   </section>
 </template>
 <script>
 export default {
   props: {
-    edit: Boolean
+    edit: Boolean,
+    widget: Object
   },
   data() {
     return {
