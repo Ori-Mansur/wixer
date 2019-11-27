@@ -1,6 +1,6 @@
 'use strict'
 var moment = require('moment');
-import toyService from '../services/EditService.js'
+import toyService from '../services/WapService.js'
 export default {
     state: {
         widgets: ['NavBar',
