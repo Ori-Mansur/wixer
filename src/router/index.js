@@ -1,12 +1,12 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import Templates from '../views/TemplatesPage.vue'
-import UserDetails from '../views/UserDetails.vue'
-import WapEditor from '../views/WapEditor.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import About from '../views/About.vue';
+import Templates from '../views/TemplatesPage.vue';
+import UserDetails from '../views/UserDetails.vue';
+import WapEditor from '../views/WapEditor.vue';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
@@ -34,12 +34,12 @@ const routes = [
     name: 'WapEditor',
     component: WapEditor
   }
-]
+];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
 
-export default router
+export default router;

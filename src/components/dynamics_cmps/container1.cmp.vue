@@ -1,5 +1,5 @@
 <template>
-  <section class="container-twoCol">
+  <section class="container-twoCol" :contenteditable="edit">
     <h1 class="text-header">Hello main title</h1>
     <div class="row">
       <div class="column" :style="{}">
@@ -24,3 +24,32 @@
   </section>
 </template>
 
+<script>
+export default {
+  props: {
+    edit: Boolean
+  }
+};
+</script>
+<style scoped>
+.container-twoCol {
+  border-style: dotted;
+}
+.text-header,
+.text-center {
+  display: flex;
+  justify-content: center;
+}
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
