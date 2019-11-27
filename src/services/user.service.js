@@ -5,11 +5,16 @@ export default {
     login,
     logout,
     register,
-    getUser
+    getUser,
+    remove,
+    signup,
+    getUsers
+
+
 }
-const BASE_URL = (process.env.NODE_ENV !== 'development')
-    ? '/api/form'
-    : '//localhost:3150/api/form';
+// const BASE_URL = (process.env.NODE_ENV !== 'development')
+//     ? '/api/form'
+//     : '//localhost:3150/api/form';
 
 
 async function register(userCred) {

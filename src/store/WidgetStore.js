@@ -1,10 +1,9 @@
 'use strict'
 var moment = require('moment');
-import toyService from '../services/toy.service.js'
+import toyService from '../services/EditService.js'
 export default {
     state: {
-        toys: [],
-        filterBy: '',
+        widgets: ['NavBar'],
     },
     mutations: {
         setToys(state, { toys }) {
@@ -59,20 +58,8 @@ export default {
         }
     },
     getters: {
-        toyToShow(state) {
-            var toys = state.toys
-            if (!state.filterBy) return toys
-            if (state.filterBy.stock) {
-                toys = toys.filter(toy => toy.inStock === true)
-            }
-            if (state.filterBy.type !== 'All') {
-                toys = toys.filter(toy => toy.type === state.filterBy.type)
-            }
-            if (state.filterBy.name) {
-                var regex = new RegExp(`${state.filterBy.name}`, 'i');
-                toys = toys.filter(toy => regex.test(toy.name))
-            }
-            return toys
+        widgets(state) {
+            return state.widgets
         },
         toyPerYear(state) {
             var toyYearMap = {}

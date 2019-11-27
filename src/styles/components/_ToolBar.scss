@@ -1,0 +1,11 @@
+.tool-bar{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:100px;
+    left: 30px;
+    button{
+        display: block;
+        margin-bottom: 20px;
+    }
+}

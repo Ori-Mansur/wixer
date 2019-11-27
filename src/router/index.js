@@ -3,9 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Templates from '../views/TemplatesPage.vue'
-import TemplatePreviewPage from '../views/TemplatePreviewPage.vue'
 import UserDetails from '../views/UserDetails.vue'
-import WebsiteEditor from '../views/WebsiteEditor.vue'
+import WapEditor from '../views/WapEditor.vue'
 
 Vue.use(VueRouter)
 
@@ -26,19 +25,14 @@ const routes = [
     component: Templates
   },
   {
-    path: '/Template/:id',
-    name: 'TemplatePreview',
-    component: TemplatePreviewPage
-  },
-  {
     path: '/User/:id',
     name: 'UserDetails',
     component: UserDetails
   },
   {
     path: '/editor',
-    name: 'WebsiteEditor',
-    component: WebsiteEditor
+    name: 'WapEditor',
+    component: WapEditor
   }
 ]
 
