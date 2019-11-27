@@ -1,5 +1,5 @@
 'use strict'
-
+import SocketService from '../services/socket.service.js'
 export default {
     state: {
         
@@ -11,11 +11,11 @@ export default {
 
     },
     actions: {
-        sendMsg(context, {msg}) {
-            socket.emit('sendMsg', msg)
-        },
-        getChatHistory(context, {chatId}) {
-            socket.emit('getHistory', chatId)
-        }
+        // sendMsg(context, {msg}) {
+        //     socket.emit('sendMsg', msg)
+        // },
+        // getChatHistory(context, {chatId}) {
+        //     socket.emit('getHistory', chatId)
+        // }
     }
 }

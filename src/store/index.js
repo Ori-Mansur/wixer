@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import toyStore from './toy.store.js'
+import toyStore from './WidgetStore.js'
 import userStore from './user.store.js'
 Vue.use(Vuex)
 
