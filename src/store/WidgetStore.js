@@ -1,9 +1,16 @@
 'use strict';
 var moment = require('moment');
-import toyService from '../services/WapService.js'
+import toyService from '../services/WapService.js';
 export default {
   state: {
-    widgets: ['NavBar','Header', 'Container1','Container2', 'Txt']
+    widgets: [
+      'NavBar',
+      'Header',
+      'Container1',
+      'Container3',
+      'Txt',
+      'VideoAndTxt'
+    ]
   },
   mutations: {
     addWidget(state, { config }) {
