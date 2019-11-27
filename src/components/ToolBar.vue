@@ -3,6 +3,7 @@
     <button @click="add({type:'txt'})">ADD SECTION</button>
     <button>ADD CMP</button>
     <button>ADD ELEMENT</button>
+    <button @click="add({type:'header'})">Add Header</button>
   </div>
 </template>
 <script>
