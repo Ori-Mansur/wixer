@@ -10,8 +10,9 @@ export default {
     remove
 }
 const BASE_URL = (process.env.NODE_ENV !== 'development')
-    ? '/api/toy'
-    : '//localhost:3150/api/toy';
+    ? '/api/wap'
+    : '//localhost:3150/api/wap';
+
 async function query() {
     const res = await httpService.get(BASE_URL)
     return await res.data
@@ -20,26 +21,26 @@ async function getById(id) {
     const res = await httpService.get(`${BASE_URL}/${id}`)
     return await res.data
 }
-function add(toy) {
-    if (typeof toy.imgUrl !== 'string') return cloudinaryService.uploadImg(toy.imgUrl)
+function add(wap) {
+    if (typeof wap.imgUrl !== 'string') return cloudinaryService.uploadImg(wap.imgUrl)
         .then(res => res.url)
         .then(url => {
-            toy.imgUrl = url
-            return httpService.post(BASE_URL, toy)
+            wap.imgUrl = url
+            return httpService.post(BASE_URL, wap)
                 .then(res => res.data)
         })
-    else return httpService.post(BASE_URL, toy)
+    else return httpService.post(BASE_URL, wap)
         .then(res => res.data)
 }
-function update(toy) {
-    if (typeof toy.imgUrl !== 'string') return cloudinaryService.uploadImg(toy.imgUrl)
+function update(wap) {
+    if (typeof wap.imgUrl !== 'string') return cloudinaryService.uploadImg(wap.imgUrl)
         .then(res => res.url)
         .then(url => {
-            toy.imgUrl = url
-            return httpService.put(`${BASE_URL}/${toy._id}`, toy)
+            wap.imgUrl = url
+            return httpService.put(`${BASE_URL}/${wap._id}`, wap)
                 .then(res => res.data)
         })
-    else return httpService.put(`${BASE_URL}/${toy._id}`, toy)
+    else return httpService.put(`${BASE_URL}/${wap._id}`, wap)
         .then(res => res.data)
 }
 async function remove(id) {

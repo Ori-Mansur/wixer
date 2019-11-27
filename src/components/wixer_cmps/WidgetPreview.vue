@@ -5,18 +5,19 @@
       v-for="(widget,idx) in widgets"
       :key="idx"
       :is="widget"
-      @click="updateNote"
+      @click.native="update"
     ></component>
   </div>
 </template>
 <script>
-import NavBar from "./dynamics_cmps/NavBarEdit.vue";
-import Container1 from "./dynamics_cmps/container1.cmp";
-import Empty from "./dynamics_cmps/empty.cmp";
-import Header from "./dynamics_cmps/header.cmp";
-import Img from "./dynamics_cmps/img.cmp";
-import Txt from "./dynamics_cmps/txt.cmp";
-import Video from "./dynamics_cmps/video.cmp";
+import NavBar from "../dynamics_widgets/NavBarEdit";
+import Container1 from "../dynamics_widgets/container1.cmp";
+import Container2 from "../dynamics_widgets/container2.cmp";
+import Empty from "../dynamics_widgets/empty.cmp";
+import Header from "../dynamics_widgets/header.cmp";
+import Img from "../dynamics_widgets/img.cmp";
+import Txt from "../dynamics_widgets/txt.cmp";
+import Video from "../dynamics_widgets/video.cmp";
 export default {
   props: {
     widgets: Array
@@ -27,7 +28,7 @@ export default {
     };
   },
   methods: {
-    updateNote() {
+    update() {
       console.log("hi");
     }
   },
@@ -39,6 +40,7 @@ export default {
   components: {
     NavBar,
     Container1,
+    Container2,
     Empty,
     Header,
     Img,
