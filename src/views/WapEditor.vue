@@ -1,6 +1,8 @@
 <template>
   <div class="wap-editor">
-    <div class="placeholder-widget" v-if="!wap.widgets[0]">ADD WIDGET</div>
+    <div class="placeholder-widget" v-if="!wap.widgets[0]" title="Add Widget">
+      <unicon name="plus" fill="gray" class="icon" />
+      </div>
     <ToolBar @add="add" :widgets="widgets" />
     <WidgetPreview :widgets="wap.widgets" />
   </div>
@@ -8,7 +10,7 @@
 <script>
 import ToolBar from "../components/wixer_cmps/ToolBar.vue";
 import WidgetPreview from "../components/wixer_cmps/WidgetPreview.vue";
-import { log } from 'util';
+// import { log } from 'util';
 export default {
   data() {
     return {
@@ -33,8 +35,11 @@ export default {
   methods: {
     add(widget) {
       this.wap.widgets.push(widget);
-      // this.$store.commit({ type: "addWidget", wap: this.wap });
       this.save();
+      console.log(this.wap.widgets)
+    },
+    updateWidget(widget){
+      console.log(widget);
     },
     async save() {
       if (!this.wap.id)

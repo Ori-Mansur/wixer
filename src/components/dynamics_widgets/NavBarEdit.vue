@@ -1,5 +1,5 @@
 <template>
-  <div style="display:flex;justify-content: space-between;">
+  <div class="nav-bar-daynamic" >
     <div class="logo" style="padding: 30px;">LOGO</div>
     <nav class="nav-bar" style="padding: 30px;">
       <router-link to="#" style="margin-left: 10px" :contenteditable="edit">{{links.first}}</router-link>
