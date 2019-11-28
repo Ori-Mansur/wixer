@@ -1,31 +1,20 @@
 <template>
   <section class="container-twoCol" :contenteditable="edit">
-    <h1 class="text-header">Vid and Text</h1>
-    <div class="row">
-      <div class="column" :style="{}">
-        <h2 class="text-center">Column 1</h2>
-        <div class="article">
-          <p >
-            <!-- {{widget.text}} -->
-          </p>
-        </div>
-      </div>
-      <div class="column" :style="{}">
-        <h2 class="text-center">Column 2</h2>
-        <div class="vid">
-          <Video></Video>
-        </div>
-      </div>
+    <div class="flex row full space-between">
+      <component v-for="(widget,idx) in data" :key="idx" :is="widget.type" :data="widget.data" :contenteditable="true"></component>
     </div>
   </section>
 </template>
 
 <script>
 import Video from "../video.cmp";
+import Txt from "../txt.cmp";
+
 
 export default {
   components: {
-    Video
+    Video,
+    Txt
   },
   props: {
     edit: Boolean,
