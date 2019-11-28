@@ -15,7 +15,7 @@ const BASE_URL = (process.env.NODE_ENV !== 'development')
 
 const widgets = [{
     id: "s1001",
-    type: "Header",
+    type: "header",
     data: {
         title: "this is the title",
         subtitle: "this is the subtitle",
@@ -66,6 +66,10 @@ const widgets = [{
         subtitle: "this is the subtitle",
         logo: "img/logo.jpg"
     }
+},{
+    id: "s1007",
+    type: "Form",
+    data: {}
 },
 ]
 function query(){

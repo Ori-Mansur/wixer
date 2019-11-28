@@ -1,5 +1,4 @@
 <template>
-    
 <section class="form-container">
     <h3>Contact Us:</h3>
 
@@ -17,6 +16,11 @@
 
 <script>
 export default {
+    data(){
+      return{
+        form:{}
+      }
+    },
     methods:{
         send(){
             console.log('sending...')
@@ -24,3 +28,22 @@ export default {
     }
 }
 </script>
+<style lang="scss">
+  h4{
+    margin: 0;
+  }
+
+  input{
+    width: 230px;
+    padding: 3px;
+    margin-bottom: 20px;
+  }
+
+  textarea{
+    width: 500px;
+    height: 100px;
+    margin-bottom: 20px;
+
+  }
+</style>>
+
