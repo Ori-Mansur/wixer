@@ -1,21 +1,12 @@
 'use strict';
 var moment = require('moment');
-import toyService from '../services/WapService.js';
+import WidgetService from '../services/WidgetService.js';
 export default {
   state: {
-    widgets: [
-      'NavBar',
-      'Header',
-      'Container1',
-      'Container3',
-      'Txt',
-      'VideoAndTxt'
-    ]
+    widgets: WidgetService.query()
   },
   mutations: {
-    addWidget(state, { config }) {
-      state.widgets.push(config.type);
-    },
+    
     setToys(state, { toys }) {
       state.toys = toys;
     },

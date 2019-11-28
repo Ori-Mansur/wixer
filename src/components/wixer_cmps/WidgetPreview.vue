@@ -4,8 +4,9 @@
       :edit="isEdit"
       v-for="(widget,idx) in widgets"
       :key="idx"
-      :is="widget"
-      @click.native="update"
+      :is="widget.type"
+      :value="widget"
+      @input="update"
     ></component>
   </div>
 </template>
@@ -29,8 +30,8 @@ export default {
     };
   },
   methods: {
-    update() {
-      console.log("hi");
+    update(value) {
+      console.log("value");
     }
   },
   created() {

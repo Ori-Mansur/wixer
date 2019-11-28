@@ -5,8 +5,8 @@
       <div class="column" :style="{}">
         <h2 class="text-center">Column 1</h2>
         <div class="article">
-          <p>
-            {{widget.text}}
+          <p >
+            <!-- {{widget.text}} -->
           </p>
         </div>
       </div>
@@ -33,6 +33,11 @@ export default {
   },
   data(){
     return{
+    }
+  },
+  methods:{
+    updateValue(value){
+      this.$emit('input', value)
     }
   }
 };

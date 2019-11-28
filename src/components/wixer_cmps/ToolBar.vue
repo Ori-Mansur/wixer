@@ -2,12 +2,8 @@
   <div class="tool-bar">
     <button @click="section=!section">ADD SECTION</button>
     <select @change="add" v-model="select" v-if="section">
-      <option value="txt">text</option>
-      <option value="NavBar">nav bar</option>
-      <option value="Container1">Container1</option>
-      <option value="Container3">Container3</option>
-      <option value="VideoAndTxt">Video And Text</option>
-      <option value="Header">Header</option>
+      <option :value="widget.type" v-for="widget in widgets" :key="widget.id">{{widget.type}}</option>
+      
     </select>
     <button>ADD CMP</button>
     <button>ADD ELEMENT</button>
@@ -15,9 +11,12 @@
 </template>
 <script>
 export default {
+  props:{
+    widgets:Array
+  },
   data() {
     return {
-      select: "txt",
+      select: "",
       section: false
     };
   },
