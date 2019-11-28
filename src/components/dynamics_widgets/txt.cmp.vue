@@ -1,5 +1,5 @@
 <template>
-  <div class="flex column align-center">
+  <div class="flex column align-center space-between">
     <h3 v-if="data.title">{{data.title}}</h3>
     <p class="text" :contenteditable="true">
       {{data.Txt}}
