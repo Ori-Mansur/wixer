@@ -2,16 +2,14 @@
   <li class="wap-preview">
     <button @click="edit(wap.id)">EDIT</button>
     <button @click="preview(wap.id)">P</button>
-    <pre>{{wap}}</pre>
+    <h3>{{wap.name}}</h3>
+    <!-- <pre>{{wap.name}}</pre> -->
   </li>
 </template>
 <script>
 export default {
   props: {
     wap: Object
-  },
-  created() {
-    console.log(this.wap);
   },
   methods: {
     edit(wapId) {

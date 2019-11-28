@@ -1,19 +1,25 @@
 .nav-bar-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 1px 5px 0 rgba(41,85,115,.21);
   .logo{
-    padding: 30px;
+    margin-left: 30px;
+    height: 60px;
+    width: 60px;
 
   }
   .nav-bar {
     padding: 30px;
 
     a {
+      margin-left: 30px;
       font-weight: bold;
-      color: #2c3e50;
+      color: #868686;
 
       &.router-link-exact-active {
-        color: #42b983;
+        color: #5ACAFA;
       }
     }
   }

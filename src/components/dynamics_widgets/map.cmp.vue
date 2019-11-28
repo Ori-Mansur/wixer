@@ -18,9 +18,9 @@
       />
     </GmapMap>
     <div class="btns">
-      <v-btn color="orange" dark @click="goTo(markers[1].position)">Hadera</v-btn>
-      <v-btn color="orange" dark @click="goTo(markers[0].position)">Tel-Aviv</v-btn>
-      <v-btn color="orange" dark @click="goTo(markers[2].position)">Jerusalem</v-btn>
+      <button color="orange" dark @click="goTo(markers[1].position)">Hadera</button>
+      <button color="orange" dark @click="goTo(markers[0].position)">Tel-Aviv</button>
+      <button color="orange" dark @click="goTo(markers[2].position)">Jerusalem</button>
     </div>
   </div>
 </template>

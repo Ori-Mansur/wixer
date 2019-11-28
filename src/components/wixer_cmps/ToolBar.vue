@@ -1,28 +1,39 @@
 <template>
   <div class="tool-bar">
-    <button @click="section=!section">ADD SECTION</button>
-    <select @change="add" v-model="select" v-if="section">
-      <option :value="widget" v-for="widget in widgets" :key="widget.id">{{widget.type}}</option>
-      
-    </select>
-    <button>ADD CMP</button>
-    <button>ADD ELEMENT</button>
+    <ul>
+      <li @click="section=!section" class="section-add">
+        +
+        <span class="text">ADD SECTION</span>
+      </li>
+      <select @change="add" v-model="select" v-if="section">
+        <option :value="widget" v-for="widget in widgets" :key="widget.id">{{widget.type}}</option>
+      </select>
+      <li class="cmp-add">
+        +
+        <span class="text">ADD CMP</span>
+      </li>
+
+      <li class="element-add">
+        +
+        <span class="text">ADD ELEMENT</span>
+      </li>
+    </ul>
   </div>
 </template>
 <script>
 export default {
-  props:{
-    widgets:Array
+  props: {
+    widgets: Array
   },
   data() {
     return {
       select: "",
-      section: false
-    };
+      section: false,
+    }
   },
   methods: {
     add() {
-      this.$emit("add", this.select );
+      this.$emit("add", this.select);
     }
   }
 };
