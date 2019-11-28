@@ -1,8 +1,8 @@
 <template>
-  <li>
-    <pre>{{wap}}</pre>
+  <li class="wap-preview">
     <button @click="edit(wap.id)">EDIT</button>
     <button @click="preview(wap.id)">P</button>
+    <pre>{{wap}}</pre>
   </li>
 </template>
 <script>

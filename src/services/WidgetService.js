@@ -41,6 +41,12 @@ const widgets = [{
     }
 },
 {
+    id: "s1008",
+    type: "Container2",
+    data: {
+    }
+},
+{
     id: "s1004",
     type: "Container3",
     data: {
@@ -75,10 +81,10 @@ const widgets = [{
 function query(){
     return widgets
 }
-async function query1() {
-    const res = await httpService.get(BASE_URL)
-    return await res.data
-}
+// async function query1() {
+//     const res = await httpService.get(BASE_URL)
+//     return await res.data
+// }
 async function getById(id) {
     const res = await httpService.get(`${BASE_URL}/${id}`)
     return await res.data
