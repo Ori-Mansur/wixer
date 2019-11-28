@@ -1,7 +1,7 @@
 <template>
   <section class="container-twoCol flex row justify-content align-center" :contenteditable="edit">
     <component
-      v-for="(widget,idx) in data"
+      v-for="(widget,idx) in value.data"
       :key="idx"
       :is="widget.type"
       :data="widget.data"
@@ -17,7 +17,7 @@ import Map from "../dynamics_widgets/map.cmp";
 export default {
   props: {
     edit: Boolean,
-    data: Object
+    value: null
   },
 
   // data() {
