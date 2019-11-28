@@ -16,9 +16,14 @@ export default {
     };
   },
   created() {
-    const param = this.$route.path;
-    if (param.includes("editor")) this.isEditer = true;
+    if (this.$route.path.includes("editor")) this.isEditer = true;
     else this.isEditer = false;
+  },
+  watch: {
+    $route(next, prev) {
+      if (next.path.includes("editor")) this.isEditer = true;
+      else this.isEditer = false;
+    }
   }
 };
 </script>
