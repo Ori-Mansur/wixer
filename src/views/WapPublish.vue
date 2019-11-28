@@ -1,0 +1,36 @@
+<template>
+  <div>
+    <component v-for="(widget, idx) in wap.widgets" :key="idx" :is="widget.type" :data="widget.data" :contenteditable="false"></component>
+  </div>
+</template>
+<script>
+import NavBar from "../dynamics_widgets/NavBarEdit";
+// import Container1 from "../dynamics_widgets/container1.cmp";
+import Container3 from "../dynamics_widgets/container3.cmp";
+import Empty from "../dynamics_widgets/empty.cmp";
+import Header from "../dynamics_widgets/header.cmp";
+import Img from "../dynamics_widgets/img.cmp";
+import Txt from "../dynamics_widgets/txt.cmp";
+import Video from "../dynamics_widgets/video.cmp";
+
+
+export default {
+  props: {
+    wap: Object
+  },
+  created(){
+    console.log(this.wap)
+  },
+  methods: {},
+  components: {
+    NavBar,
+    // Container1,
+    Container3,
+    Empty,
+    Header,
+    Img,
+    Txt,
+    Video
+  },
+};
+</script>

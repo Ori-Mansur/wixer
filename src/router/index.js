@@ -25,6 +25,11 @@ const routes = [
     component: WapsPage
   },
   {
+    path: '/wap/:id',
+    name: 'Wap',
+    component: WapsPage
+  },
+  {
     path: '/User/:id',
     name: 'UserDetails',
     component: UserDetails

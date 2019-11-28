@@ -10,8 +10,8 @@ export default {
     remove
 }
 const BASE_URL = (process.env.NODE_ENV !== 'development')
-    ? '/api/toy'
-    : '//localhost:3150/api/toy';
+    ? '/api/widget'
+    : '//localhost:3150/api/widget';
 
 const widgets = [{
     id: "s1001",
@@ -79,26 +79,26 @@ async function getById(id) {
     const res = await httpService.get(`${BASE_URL}/${id}`)
     return await res.data
 }
-function add(toy) {
-    if (typeof toy.imgUrl !== 'string') return cloudinaryService.uploadImg(toy.imgUrl)
+function add(widget) {
+    if (typeof widget.imgUrl !== 'string') return cloudinaryService.uploadImg(widget.imgUrl)
         .then(res => res.url)
         .then(url => {
-            toy.imgUrl = url
-            return httpService.post(BASE_URL, toy)
+            widget.imgUrl = url
+            return httpService.post(BASE_URL, widget)
                 .then(res => res.data)
         })
-    else return httpService.post(BASE_URL, toy)
+    else return httpService.post(BASE_URL, widget)
         .then(res => res.data)
 }
-function update(toy) {
-    if (typeof toy.imgUrl !== 'string') return cloudinaryService.uploadImg(toy.imgUrl)
+function update(widget) {
+    if (typeof widget.imgUrl !== 'string') return cloudinaryService.uploadImg(widget.imgUrl)
         .then(res => res.url)
         .then(url => {
-            toy.imgUrl = url
-            return httpService.put(`${BASE_URL}/${toy._id}`, toy)
+            widget.imgUrl = url
+            return httpService.put(`${BASE_URL}/${widget._id}`, widget)
                 .then(res => res.data)
         })
-    else return httpService.put(`${BASE_URL}/${toy._id}`, toy)
+    else return httpService.put(`${BASE_URL}/${widget._id}`, widget)
         .then(res => res.data)
 }
 async function remove(id) {
