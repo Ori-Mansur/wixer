@@ -2,7 +2,10 @@
   <li class="wap-preview">
     <button @click="edit(wap.id)">EDIT</button>
     <button @click="preview(wap.id)">P</button>
-    <h3>{{wap.name}}</h3>
+    <!-- <h3>{{wap.name}}</h3> -->
+    <div>
+      <img src="@/assets/card2.png" />
+    </div>
     <!-- <pre>{{wap.name}}</pre> -->
   </li>
 </template>
