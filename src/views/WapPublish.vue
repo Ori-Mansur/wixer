@@ -1,5 +1,5 @@
 <template>
-  <div v-if="wap">
+  <div v-if="wap" :style="{backgroundColor: wap.style.bcgColor, fontColor: wap.style.txtColor}">
     <component
       v-for="(widget, idx) in wap.widgets"
       :key="idx"
