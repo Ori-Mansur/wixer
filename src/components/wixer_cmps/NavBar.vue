@@ -16,13 +16,21 @@ export default {
     };
   },
   created() {
-    if (this.$route.path.includes("editor")) this.isEditer = true;
-    else this.isEditer = false;
+    if (
+      this.$route.path.includes("editor") ||
+      this.$route.path.includes("publish")
+    ) {
+      this.isEditer = true;
+    } else this.isEditer = false;
   },
   watch: {
     $route(next, prev) {
-      if (next.path.includes("editor")) this.isEditer = true;
-      else this.isEditer = false;
+      if (
+        this.$route.path.includes("editor") ||
+        this.$route.path.includes("publish")
+      ) {
+        this.isEditer = true;
+      } else this.isEditer = false;
     }
   }
 };

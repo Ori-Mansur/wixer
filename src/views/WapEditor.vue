@@ -50,12 +50,8 @@ export default {
     },
     async setWap() {
       const id = this.$route.params.id;
-      console.log(id);
-      
       if (id) {
         const wap = await this.$store.dispatch({ type: "wapById", id });
-        console.log(wap);
-        
         this.wap = wap;
       }
     }
