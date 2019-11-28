@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <pre>{{wap}}f</pre> -->
-    <component v-for="(widget, idx) in wap.widgets" :key="idx" :is="widget.type" :content="widget.data.content" :contenteditable="false"></component>
+    <component v-for="(widget, idx) in wap.widgets" :key="idx" :is="widget.type" :data="widget.data" :contenteditable="false"></component>
 
     <button @click="edit(wap._id)">E</button>
     <button>P</button>

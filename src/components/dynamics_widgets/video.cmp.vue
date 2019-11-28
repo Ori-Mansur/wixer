@@ -1,10 +1,15 @@
 <template>
-  <iframe width="320" height="245" src="https://www.youtube.com/embed/tgbNymZ7vqY" class="video"></iframe>
+  <iframe width="320" height="245" :src="data.url" class="video"></iframe>
 </template>
 
 
 <script>
-export default {};
+export default {
+  props:{data: Object},
+  created(){
+    // console.log(this.widget)
+  }
+};
 </script>
 
 

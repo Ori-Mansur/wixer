@@ -19,7 +19,6 @@ export default {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEditer = true;
     else this.isEditer = false;
-    console.log(param);
   }
 };
 </script>

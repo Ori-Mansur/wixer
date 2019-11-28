@@ -1,7 +1,9 @@
 <template>
-  <ul class="card-grid">
+  <!-- <ul class="card-grid"> -->
+    <div>
     <WapPreview v-for="wap in waps" :key="wap._id" :wap="wap" />
-  </ul>
+    </div>
+  <!-- </ul> -->
 </template>
 <script>
 import WapPreview from "./WapPreview.vue";
@@ -10,7 +12,6 @@ export default {
     waps: Array
   },
   created(){
-    console.log(this.waps)
   },
   components: {
     WapPreview

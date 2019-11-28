@@ -1,7 +1,7 @@
 <template>
   <div class="flex full">
     <p class="text" :contenteditable="true">
-      {{content}}
+      {{data.Txt}}
     </p>
   </div>
 </template>
@@ -10,7 +10,7 @@
 export default {
   props: {
     edit: Boolean,
-    content: String
+    data: Object
   }
 };
 </script>
