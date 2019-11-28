@@ -15,6 +15,7 @@ import NavBar from "../dynamics_widgets/NavBarEdit";
 import Container1 from "../dynamics_widgets/container1.cmp";
 import Container3 from "../dynamics_widgets/container3.cmp";
 import VideoAndTxt from "../dynamics_widgets/premade_container/vidAndTxt.cmp";
+import MapAndTxt from "../dynamics_widgets/premade_container/mapAndTxt.cmp";
 import Empty from "../dynamics_widgets/empty.cmp";
 import Header from "../dynamics_widgets/header.cmp";
 import Img from "../dynamics_widgets/img.cmp";
@@ -30,9 +31,9 @@ export default {
     };
   },
   methods: {
-    update(value) {
-      console.log("value");
-    }
+    // update(value) {
+    //   console.log("value");
+    // }
   },
   created() {
     const param = this.$route.path;
@@ -44,6 +45,7 @@ export default {
     Container1,
     Container3,
     VideoAndTxt,
+    MapAndTxt,
     Empty,
     Header,
     Img,

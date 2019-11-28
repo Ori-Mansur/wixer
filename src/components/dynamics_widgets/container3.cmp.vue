@@ -2,7 +2,13 @@
   <section class="container-threeCol" :contenteditable="edit">
     <h1 class="text-header">Hello main title</h1>
     <div class="flex row full space-between">
-    <component v-for="(widget,idx) in data" :key="idx" :is="widget.type" :data="widget.data" :contenteditable="true"></component>
+      <component
+        v-for="(widget,idx) in data"
+        :key="idx"
+        :is="widget.type"
+        :data="widget.data"
+        :contenteditable="true"
+      ></component>
     </div>
   </section>
 </template>
@@ -16,15 +22,14 @@ import Header from "../dynamics_widgets/header.cmp";
 import Img from "../dynamics_widgets/img.cmp";
 import Txt from "../dynamics_widgets/txt.cmp";
 import Video from "../dynamics_widgets/video.cmp";
-
+import Map from "../dynamics_widgets/map.cmp";
 
 export default {
   props: {
     edit: Boolean,
-    data:Array
+    data: Array
   },
-  created(){
-  },
+  created() {},
   components: {
     NavBar,
     Container1,
@@ -33,8 +38,9 @@ export default {
     Header,
     Img,
     Txt,
-    Video
-  },
+    Video,
+    Map
+  }
 };
 </script>
 <style scoped>

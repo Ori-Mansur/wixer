@@ -13,7 +13,7 @@
       <div class="column" :style="{}">
         <h2 class="text-center">Column 2</h2>
         <div class="vid">
-          <GoogleMap></GoogleMap>
+          <Map></Map>
         </div>
       </div>
     </div>
@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import GoogleMap from "../components/GoogleMap.vue";
+import Map from "../map.cmp.vue";
 
 export default {
   components: {
-    GoogleMap
+    Map
   },
   props: {
     edit: Boolean,
