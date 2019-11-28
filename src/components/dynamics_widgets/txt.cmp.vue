@@ -1,5 +1,6 @@
 <template>
-  <div class="flex full">
+  <div class="flex column align-center space-between">
+    <h3 v-if="data.title">{{data.title}}</h3>
     <p class="text" :contenteditable="true">
       {{data.Txt}}
     </p>
@@ -10,8 +11,13 @@
 export default {
   props: {
     edit: Boolean,
-    data: Object
-  }
+    // data: Object
+  },
+  data(){
+    return{
+      data: {"title": "Imagine", "Txt": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!"}
+    }
+  },
 };
 </script>
 

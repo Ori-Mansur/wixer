@@ -1,9 +1,8 @@
 <template>
-  <section class="header-container flex row">
-    <img :src="data.logo" alt="">
+  <section class="header-container">
     <div class="flex column">
-      <h1>{{data.title}}</h1>
-      <h3>{{data.subtitle}}</h3>
+      <h1 v-if="data.title">{{data.title}}</h1>
+      <h3 v-if="data.subtitle">{{data.subtitle}}</h3>
     </div>
   </section>
 </template>

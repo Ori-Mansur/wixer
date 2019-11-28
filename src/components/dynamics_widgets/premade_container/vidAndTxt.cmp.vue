@@ -1,8 +1,6 @@
 <template>
-  <section class="container-twoCol" :contenteditable="edit">
-    <div class="flex row full space-between">
+  <section class="container-twoCol flex row justify-center align-center" :contenteditable="edit">
       <component v-for="(widget,idx) in data" :key="idx" :is="widget.type" :data="widget.data" :contenteditable="true"></component>
-    </div>
   </section>
 </template>
 
@@ -18,10 +16,12 @@ export default {
   },
   props: {
     edit: Boolean,
-    widget: Object
+    // widget: Object
   },
   data(){
     return{
+      data:[
+                        {"type": "Video", "data":{"url": "https://www.youtube.com/embed/tgbNymZ7vqY"}},{"type": "Txt", "data": {"title": "Imagine", "Txt": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!"}}]
     }
   },
   methods:{
