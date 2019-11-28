@@ -1,8 +1,8 @@
 <template>
-  <section class="header-container">
-    <div class="flex column">
-      <h1 v-if="data.title">{{data.title}}</h1>
-      <h3 v-if="data.subtitle">{{data.subtitle}}</h3>
+  <section class="header-container" :style="{backgroundImage:`url(${data.img})`}">
+    <div class="flex column align-center">
+      <h1 v-if="data.title" :style="{color: data.style.txtTitleColor}">{{data.title}}</h1>
+      <h3 v-if="data.subtitle" :style="{color: data.style.txtSubtitleColor}">{{data.subtitle}}</h3>
     </div>
   </section>
 </template>
