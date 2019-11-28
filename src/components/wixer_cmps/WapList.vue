@@ -1,9 +1,9 @@
 <template>
-  <!-- <ul class="card-grid"> -->
-    <div>
+  <ul class="card-grid">
+   
     <WapPreview v-for="wap in waps" :key="wap._id" :wap="wap" />
-    </div>
-  <!-- </ul> -->
+   
+  </ul>
 </template>
 <script>
 import WapPreview from "./WapPreview.vue";
