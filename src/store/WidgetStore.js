@@ -7,49 +7,49 @@ export default {
   },
   mutations: {
     
-    setToys(state, { toys }) {
-      state.toys = toys;
+    setWidgets(state, { widgets }) {
+      state.widgets = widgets;
     },
-    addToy(state, { toy }) {
-      state.toys.unshift(toy);
+    addWidget(state, { widget }) {
+      state.widgets.unshift(widget);
     },
-    updateToy(state, { toy }) {
-      const idx = state.toys.findIndex(currToy => currToy._id === toy._id);
-      state.toys.splice(idx, 1, toy);
+    updateWidget(state, { widget }) {
+      const idx = state.widgets.findIndex(currWidget => currWidget._id === widget._id);
+      state.widgets.splice(idx, 1, widget);
     },
-    removeToy(state, { toyId }) {
-      const idx = state.toys.findIndex(currToy => currToy._id === toyId);
-      state.toys.splice(idx, 1);
+    removeWidget(state, { widgetId }) {
+      const idx = state.widgets.findIndex(currWidget => currWidget._id === widgetId);
+      state.widgets.splice(idx, 1);
     },
     setFilter(state, filterBy) {
       state.filterBy = filterBy;
     }
   },
   actions: {
-    loadToys(context) {
-      return toyService.query().then(toys => {
-        context.commit({ type: 'setToys', toys });
-        return toys;
+    loadWidgets(context) {
+      return WidgetService.query().then(widgets => {
+        context.commit({ type: 'setWidgets', widgets });
+        return widgets;
       });
     },
-    toyById(context, { id }) {
-      return toyService.getById(id).then(toy => toy);
+    widgetById(context, { id }) {
+      return WidgetService.getById(id).then(widget => widget);
     },
-    addToy(context, { toy }) {
-      return toyService.add(toy).then(toy => {
-        context.commit({ type: 'addToy', toy });
-        return toy;
+    addWidget(context, { widget }) {
+      return WidgetService.add(widget).then(widget => {
+        context.commit({ type: 'addWidget', widget });
+        return widget;
       });
     },
-    updateToy(context, { toy }) {
-      return toyService.update(toy).then(toy => {
-        context.commit({ type: 'updateToy', toy });
-        return toy;
+    updateWidget(context, { widget }) {
+      return WidgetService.update(widget).then(widget => {
+        context.commit({ type: 'updateWidget', widget });
+        return widget;
       });
     },
-    removeToy(context, { toyId }) {
-      return toyService.remove(toyId).then(() => {
-        context.commit({ type: 'removeToy', toyId });
+    removeWidget(context, { widgetId }) {
+      return WidgetService.remove(widgetId).then(() => {
+        context.commit({ type: 'removeWidget', widgetId });
       });
     }
   },
@@ -57,25 +57,25 @@ export default {
     widgets(state) {
       return state.widgets;
     },
-    toyPerYear(state) {
-      var toyYearMap = {};
-      state.toys.forEach(toy => {
-        var year = moment(toy.createdAt).format('YYYY');
-        var count = toyYearMap[year];
-        toyYearMap[year] = count ? count + 1 : 1;
+    widgetPerYear(state) {
+      var widgetYearMap = {};
+      state.widgets.forEach(widget => {
+        var year = moment(widget.createdAt).format('YYYY');
+        var count = widgetYearMap[year];
+        widgetYearMap[year] = count ? count + 1 : 1;
       });
-      return toyYearMap;
+      return widgetYearMap;
     },
-    toysType(state) {
-      var types = state.toys.map(toy => toy.type);
+    widgetsType(state) {
+      var types = state.widgets.map(widget => widget.type);
       types.unshift('All');
       return types;
     },
-    toysTypeAvgPrice(state) {
+    widgetsTypeAvgPrice(state) {
       var typeAvg = {};
-      state.toys.forEach(toy => {
-        const price = typeAvg[toy.type];
-        typeAvg[toy.type] = price ? price + +toy.price : +toy.price;
+      state.widgets.forEach(widget => {
+        const price = typeAvg[widget.type];
+        typeAvg[widget.type] = price ? price + +widget.price : +widget.price;
       });
       return typeAvg;
     }
