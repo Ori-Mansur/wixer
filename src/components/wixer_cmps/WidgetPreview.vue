@@ -34,6 +34,7 @@ export default {
   methods: {
     // update(value) {
     //   console.log("value");
+    // }
   },
 
   created() {
