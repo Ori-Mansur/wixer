@@ -20,6 +20,7 @@ import Img from "../components/dynamics_widgets/img.cmp";
 import Txt from "../components/dynamics_widgets/txt.cmp";
 import Video from "../components/dynamics_widgets/video.cmp";
 
+
 export default {
   data() {
     return {
