@@ -33,8 +33,8 @@ export default {
   methods: {
     // update(value) {
     //   console.log("value");
-    // }
   },
+
   created() {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;

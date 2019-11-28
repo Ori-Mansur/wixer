@@ -21,7 +21,7 @@ const routes = [
   },
   {
     path: '/wap',
-    name: 'Wap',
+    name: 'Waps',
     component: WapsPage
   },
   {
@@ -35,7 +35,7 @@ const routes = [
     component: UserDetails
   },
   {
-    path: '/editor',
+    path: '/editor/:id?',
     name: 'WapEditor',
     component: WapEditor
   }

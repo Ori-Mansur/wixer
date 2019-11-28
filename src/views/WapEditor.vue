@@ -8,6 +8,7 @@
 <script>
 import ToolBar from "../components/wixer_cmps/ToolBar.vue";
 import WidgetPreview from "../components/wixer_cmps/WidgetPreview.vue";
+import { log } from 'util';
 export default {
   data() {
     return {
@@ -30,10 +31,37 @@ export default {
     }
   },
   methods: {
-    add(config) {
-      this.wap.widgets.push(config)
-      // this.$store.commit({ type: "addWidget", config });
+    add(widget) {
+      this.wap.widgets.push(widget);
+      // this.$store.commit({ type: "addWidget", wap: this.wap });
+      this.save();
+    },
+    async save() {
+      if (!this.wap.id)
+        this.wap = await this.$store.dispatch({
+          type: "addWap",
+          wap: this.wap
+        });
+      else
+        this.wap = await this.$store.dispatch({
+          type: "updateWap",
+          wap: this.wap
+        });
+    },
+    async setWap() {
+      const id = this.$route.params.id;
+      console.log(id);
+      
+      if (id) {
+        const wap = await this.$store.dispatch({ type: "wapById", id });
+        console.log(wap);
+        
+        this.wap = wap;
+      }
     }
+  },
+  created() {
+    this.setWap()
   },
   components: {
     ToolBar,

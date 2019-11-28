@@ -14,15 +14,15 @@ export default {
             state.waps.unshift(wap)
         },
         updateWap(state, { wap }) {
-            const idx = state.waps.findIndex(currWap => currWap._id === wap._id)
+            const idx = state.waps.findIndex(currWap => currWap.id === wap.id)
             state.waps.splice(idx, 1, wap)
         },
         removeWap(state, { wapId }) {
             const idx = state.waps.findIndex(currWap => currWap._id === wapId)
             state.waps.splice(idx, 1)
         },
-        addWidget(state, { config }) {
-            state.currWap.widgets.push(config.type);
+        addWidget(state, { wap }) {
+            state.currWap = wap;
         },
         setFilter(state, filterBy) {
             state.filterBy = filterBy
@@ -35,18 +35,22 @@ export default {
             return waps;
         },
         async wapById(context, { id }) {
+            
             const wap = await WapService.getById(id)
-            context.commit({ type: 'setWap', wap })
+            console.log('store',wap);
+            // context.commit({ type: 'setWap', wap })
             return wap
         },
         async addWap(context, { wap }) {
             const addedWap = await WapService.add(wap)
             context.commit({ type: 'addWap', addedWap })
+            console.log('addedWap',addedWap);
+            
             return addedWap
         },
         async updateWap(context, { wap }) {
             const updateWap = await WapService.update(wap)
-            context.commit({ type: 'updateWap', updateWap })
+            // context.commit({ type: 'updateWap', updateWap })
             return updateWap
         },
         async removeWap(context, { wapId }) {
