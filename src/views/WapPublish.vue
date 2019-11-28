@@ -38,12 +38,11 @@ export default {
   },
   async created() {
     const id = this.$route.params.id;
-      if (id) {
-        const wap = await this.$store.dispatch({ type: "wapById", id });
-        this.wap = wap;
-      }
+    if (id) {
+      const wap = await this.$store.dispatch({ type: "wapById", id });
+      this.wap = wap;
+    }
   },
-  methods: {},
   components: {
     NavBar,
     Container1,
