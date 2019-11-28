@@ -12,6 +12,7 @@
 <script>
 import NavBar from "../components/dynamics_widgets/NavBarEdit";
 import Container1 from "../components/dynamics_widgets/container1.cmp";
+import Container2 from "../components/dynamics_widgets/container2.cmp";
 import Container3 from "../components/dynamics_widgets/container3.cmp";
 import Empty from "../components/dynamics_widgets/empty.cmp";
 import Header from "../components/dynamics_widgets/header.cmp";
@@ -45,6 +46,7 @@ export default {
   components: {
     NavBar,
     Container1,
+    Container2,
     Container3,
     Empty,
     Header,
