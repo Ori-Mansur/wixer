@@ -6,7 +6,6 @@
       :key="idx"
       :is="widget.type"
       :value="widget"
-      @input="update"
     ></component>
   </div>
 </template>
@@ -20,6 +19,8 @@ import Header from "../dynamics_widgets/header.cmp";
 import Img from "../dynamics_widgets/img.cmp";
 import Txt from "../dynamics_widgets/txt.cmp";
 import Video from "../dynamics_widgets/video.cmp";
+import Form from "../dynamics_widgets/form.cmp";
+
 export default {
   props: {
     widgets: Array
@@ -30,10 +31,10 @@ export default {
     };
   },
   methods: {
-    update(value) {
-      console.log("value");
-    }
+    // update(value) {
+    //   console.log("value");
   },
+
   created() {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
@@ -48,7 +49,8 @@ export default {
     Header,
     Img,
     Txt,
-    Video
+    Video,
+    Form
   }
 };
 </script>

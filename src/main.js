@@ -11,6 +11,14 @@ library.add(faUserSecret);
 import './styles/global.scss';
 Vue.config.productionTip = false;
 
+import * as VueGoogleMaps from 'vue2-google-maps';
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyB9BGllveeQJbhJytk2MdjCkMAvadMc8n8',
+    libraries: 'places'
+  }
+});
 import VueDraggable from 'vue-draggable';
 
 Vue.use(VueDraggable);
