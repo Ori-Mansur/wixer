@@ -1,6 +1,7 @@
 'use strict'
-var moment = require('moment');
+// var moment = require('moment');
 import WapService from '../services/WapService.js'
+
 export default {
     state: {
         waps: [],
@@ -44,12 +45,14 @@ export default {
         async addWap(context, { wap }) {
             const addedWap = await WapService.add(wap)
             context.commit({ type: 'addWap', addedWap })
+            context.commit({ type: 'open1',msg:'New wap added'})
             console.log('addedWap',addedWap);
             
             return addedWap
         },
         async updateWap(context, { wap }) {
             const updateWap = await WapService.update(wap)
+            context.commit({ type: 'open2',msg:'Wap saved'})
             // context.commit({ type: 'updateWap', updateWap })
             return updateWap
         },

@@ -1,13 +1,18 @@
 <template>
   <div class="tool-bar">
-    <ul>
+    <ul class="tool-bar-list">
       <li @click="section=!section" class="section-add">
-        +
-        <span class="text">ADD SECTION</span>
+        <unicon name="book-medical" :fill="color" />
+        <h3 :style="{color:color}"> ADD </h3>
       </li>
-      <select @change="add" v-model="select" v-if="section">
+      <div v-if="section" class="list-option">
+
+        <EditOption v-for="widget in widgets" :key="widget.id" :option="widget" @select="add"  />
+      </div>
+      
+      <!-- <select @change="add" v-model="select" v-if="section">
         <option :value="widget" v-for="widget in widgets" :key="widget.id">{{widget.type}}</option>
-      </select>
+      </select> -->
       <li class="cmp-add">
         +
         <span class="text">ADD CMP</span>
@@ -18,9 +23,11 @@
         <span class="text">ADD ELEMENT</span>
       </li>
     </ul>
+
   </div>
 </template>
 <script>
+import EditOption from './EditOption.vue'
 export default {
   props: {
     widgets: Array
@@ -29,12 +36,22 @@ export default {
     return {
       select: "",
       section: false,
+      gray:'red'
     }
   },
   methods: {
-    add() {
-      this.$emit("add", this.select);
+    add(widget) {
+      this.$emit("add", widget);
     }
+  },
+  computed:{
+color(){
+  if(this.section)return 'gold'
+  else return 'gray'
+}
+  },
+  components:{
+    EditOption
   }
 };
 </script>
