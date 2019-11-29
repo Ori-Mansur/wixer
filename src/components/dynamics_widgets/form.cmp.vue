@@ -1,6 +1,6 @@
 <template>
 <section class="form-container">
-    <h3>Contact Us:</h3>
+    <h3>{{data.title}}</h3>
 
     <form @submit.prevent="send" class="flex column">
       <h4>Name:</h4>
@@ -16,10 +16,14 @@
 
 <script>
 export default {
+  props:{data: Object},
     data(){
       return{
         form:{}
       }
+    },
+    created(){
+      console.log('form data', this.data)
     },
     methods:{
         send(){
@@ -29,8 +33,13 @@ export default {
 }
 </script>
 <style lang="scss">
+  .form-container{
+    padding: 10px;
+  }
+
   h4{
     margin: 0;
+    margin-bottom: 5px;
   }
 
   input{

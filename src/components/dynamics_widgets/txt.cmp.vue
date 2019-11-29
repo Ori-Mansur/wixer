@@ -1,13 +1,10 @@
 <template>
-<div>
-
-  <div class="flex column align-center space-between" :style="{borderStyle: isEdit}" @click="isFocus=!isFocus" @mouseover="isFocus=true" @mouseout="isFocus=false">
+  <div class="txt-container flex column align-center" :style="{borderStyle: isEdit}" @click="isFocus=!isFocus" @mouseover="isFocus=true" @mouseout="isFocus=false">
     <h3 v-if="data.title" @click="isFocus=!isFocus" :contenteditable="true">{{data.title}}</h3>
     <p class="text" :contenteditable="true" @click="isFocus=!isFocus">
       {{data.txt}}
     </p>
   </div>
-</div>
 </template>
 
 <script>
@@ -38,6 +35,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h3{
+  margin: 5px;
+}
+p{
+  margin: 0;
+}
 .text {
   padding: 10px;
 }

@@ -1,5 +1,5 @@
 <template>
-  <section class="container-twoCol flex row justify-center align-center" :contenteditable="edit">
+  <section class="vidAndTxt-container flex row justify-center align-center" :contenteditable="edit">
     <component
       v-for="(widget,idx) in data"
       :key="idx"
@@ -20,27 +20,27 @@ export default {
     Txt
   },
   props: {
-    edit: Boolean
-    // widget: Object
+    edit: Boolean,
+    data: Array
   },
-  data() {
-    return {
-      data: [
-        {
-          type: "Video",
-          data: { url: "https://www.youtube.com/embed/tgbNymZ7vqY" }
-        },
-        {
-          type: "Txt",
-          data: {
-            title: "Imagine",
-            Txt:
-              "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!"
-          }
-        }
-      ]
-    };
-  },
+  // data() {
+  //   return {
+  //     data: [
+  //       {
+  //         type: "Video",
+  //         data: { url: "https://www.youtube.com/embed/tgbNymZ7vqY" }
+  //       },
+  //       {
+  //         type: "Txt",
+  //         data: {
+  //           title: "Imagine",
+  //           Txt:
+  //             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!"
+  //         }
+  //       }
+  //     ]
+  //   };
+  // },
   methods: {
     updateValue(value) {
       this.$emit("input", value);
@@ -51,8 +51,9 @@ export default {
 
 
 <style scoped>
-.container-twoCol {
-  border-style: dotted;
+.vidAndTxt-container {
+  /* border-style: dotted; */
+  margin-bottom: 10px;
 }
 .text-header,
 .text-center {

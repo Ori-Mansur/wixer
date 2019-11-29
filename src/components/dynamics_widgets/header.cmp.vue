@@ -1,8 +1,18 @@
 <template>
-  <section class="header-container flex align-center justify-center" :style="{backgroundImage:`url(${data.img})`, height: data.style.height+'px'}">
+  <section
+    class="header-container flex align-center justify-center"
+    :style="{
+      backgroundImage: `url(${data.img})`,
+      height: data.style.height + 'px'
+    }"
+  >
     <div class="flex column">
-      <h1 v-if="data.title" :style="{color: data.style.txtTitleColor}">{{data.title}}</h1>
-      <h3 v-if="data.subtitle" :style="{color: data.style.txtSubtitleColor}">{{data.subtitle}}</h3>
+      <h1 v-if="data.title" :style="{ color: data.style.txtTitleColor }">
+        {{ data.title }}
+      </h1>
+      <h3 v-if="data.subtitle" :style="{ color: data.style.txtSubtitleColor }">
+        {{ data.subtitle }}
+      </h3>
     </div>
   </section>
 </template>
@@ -20,8 +30,12 @@ export default {
 };
 </script>
 <style lang="scss">
-  .header-container img{
-    width:100px;
+.header-container {
+  margin-bottom: 10px;
+
+  img {
+    width: 100px;
     height: auto;
   }
+}
 </style>

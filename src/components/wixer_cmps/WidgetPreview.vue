@@ -5,7 +5,7 @@
       v-for="(widget,idx) in widgets"
       :key="idx"
       :is="widget.type"
-      :value="widget"
+      :value="widget" class="widget-container"
     ></component>
   </div>
 </template>
