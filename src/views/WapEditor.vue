@@ -42,6 +42,8 @@ export default {
   methods: {
     handleDrop(data, event) {
       this.wap.widgets.push(data.widget);
+      this.save();
+
       // window.console.log('SSSSSS', data);
       // alert(`You dropped with data: ${JSON.stringify(data)}`);
     },
