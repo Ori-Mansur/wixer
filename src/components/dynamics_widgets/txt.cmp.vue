@@ -1,19 +1,23 @@
 <template>
-  <div class="txt-container flex column align-center" :style="{borderStyle: isEdit}" @click="isFocus=!isFocus" @mouseover="isFocus=true" @mouseout="isFocus=false">
-    <h3 v-if="data.title" @click="isFocus=!isFocus" :contenteditable="true">{{data.title}}</h3>
+  <section class="txt-container flex column align-center" :style="{borderStyle: isEdit}" @click="isFocus=!isFocus" @mouseover="isFocus=true" @mouseout="isFocus=false">
+    <h3 v-if="value.data.title" @click="isFocus=!isFocus" :contenteditable="true">{{value.data.title}}</h3>
     <p class="text" :contenteditable="true" @click="isFocus=!isFocus">
-      {{data.txt}}
+      {{value.data.txt}}
     </p>
-  </div>
+    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
+  </section>
 </template>
 
 <script>
+import WidgetEditor from '../wixer_cmps/WidgetEditor'
+
 export default {
   props: {
     edit: Boolean,
-    data: Object
+    value: Object
   },
   created(){
+    console.log(this.value)
   },
   data(){
     return{
@@ -21,8 +25,8 @@ export default {
     }
   },
   methods:{
-    tellMe(){
-      console.log('told ya')
+    removeWidget(id){
+      this.$emit("remove", id);
     }
   },
   computed:{
@@ -31,10 +35,16 @@ export default {
       else return 'none'
     }
   },
+  components:{
+    WidgetEditor
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+.txt-container{
+  position: relative;
+}
 h3{
   margin: 5px;
 }

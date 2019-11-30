@@ -2,7 +2,7 @@
   <div class="wap-editor">
     <div class="placeholder-widget" v-if="!wap.widgets[0]">ADD WIDGET</div>
     <ToolBar @add="add" :widgets="widgets" />
-    <WidgetPreview :widgets="wap.widgets" />
+    <WidgetPreview :widgets="wap.widgets" @remove="remove"/>
   </div>
 </template>
 <script>
@@ -47,6 +47,15 @@ export default {
           type: "updateWap",
           wap: this.wap
         });
+    },
+    remove(id){
+      console.log('widget to remove', id)
+      // var idx = this.wap.widgets.findIndex(widget=>widget.id=id)
+      // this.wap.widgets.splice(idx, 1)
+      // this.wap = await this.$store.dispatch({
+      //     type: "removeWidget",
+      //     widgetId: id
+      //   });
     },
     async setWap() {
       const id = this.$route.params.id;

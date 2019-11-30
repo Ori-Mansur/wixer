@@ -21,7 +21,7 @@ async function getById(id) {
     return await HttpService.get(`${BASE_URL}/${id}`)
 }
 async function add(wap) {
-    console.log('add', wap);
+    // console.log('add', wap);
 
     // if (typeof wap === 'string') return cloudinaryService.uploadImg(wap.imgUrl)
     //     .then(res => res.url)
