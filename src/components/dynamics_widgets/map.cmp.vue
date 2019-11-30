@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <section class="map-container">
+    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
+
     <GmapMap
       ref="mapRef"
       :center="pos"
@@ -13,7 +15,7 @@
         :position="m.position"
         :clickable="true"
         :draggable="true"
-        title="Mister Toy"
+        title=""
         @click="center=m.position"
       />
     </GmapMap>
@@ -22,10 +24,13 @@
       <button color="orange" dark @click="goTo(markers[0].position)">Tel-Aviv</button>
       <button color="orange" dark @click="goTo(markers[2].position)">Jerusalem</button>
     </div>
-  </div>
+  </section>
 </template>
 <script>
+import WidgetEditor from '../wixer_cmps/WidgetEditor'
+
 export default {
+  props:{value: Object},
   data() {
     return {
       pos: { lat: 34, lng: 32.4349958 },
@@ -41,6 +46,9 @@ export default {
       this.$refs.mapRef.$mapPromise.then(map => {
         map.panTo(pos);
       });
+    },
+    removeWidget(){
+      this.$emit("remove", this.value.id);
     }
   },
   mounted() {
@@ -60,10 +68,17 @@ export default {
         });
       }
     });
+  },
+  components:{
+    WidgetEditor
   }
 };
 </script>
 <style scoped>
+.map-container{
+  position: relative;
+}
+
 .btns {
   display: flex;
   justify-content: space-around;
