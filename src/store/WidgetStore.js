@@ -3,7 +3,7 @@ var moment = require('moment');
 import WidgetService from '../services/WidgetService.js';
 export default {
   state: {
-    widgets: WidgetService.query()
+    widgets: []
   },
   mutations: {
     
@@ -28,6 +28,8 @@ export default {
   actions: {
     loadWidgets(context) {
       return WidgetService.query().then(widgets => {
+        // console.log(widgets);
+        
         context.commit({ type: 'setWidgets', widgets });
         return widgets;
       });

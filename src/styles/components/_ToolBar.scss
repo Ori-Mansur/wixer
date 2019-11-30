@@ -2,13 +2,13 @@
   user-select: none;
   display: flex;
   flex-direction: column;
-  width: 200px;
+  // width: 200px;
   // background: red;
-  overflow: scroll;
-  height: 100vh;
-  // position: fixed;
-  // top: 100px;
-  // left: 30px;
+  // overflow: scroll;
+  // height: 100vh;
+  position: fixed;
+  top: 100px;
+  left: 30px;
   .tool-bar-list {
     > li {
       display: flex;

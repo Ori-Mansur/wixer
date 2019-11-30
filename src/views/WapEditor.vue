@@ -3,7 +3,7 @@
     <ToolBar @add="add" :widgets="widgets" />
     <drop class="drop" @drop="handleDrop" :class="classNames">
       <unicon v-if="!wap.widgets[0]" name="plus" fill="gray" class="icon" />
-      <WidgetPreview v-else :widgets="wap.widgets" />
+      <WidgetPreview  :widgets="wap.widgets" />
     </drop>
   </div>
 </template>
@@ -40,7 +40,7 @@ export default {
     }
   },
   methods: {
-    handleDrop(data, event) {
+    handleDrop(data) {
       this.wap.widgets.push(data.widget);
       this.save();
 
@@ -50,13 +50,12 @@ export default {
     add(widget) {
       this.wap.widgets.push(widget);
       this.save();
-      console.log(this.wap.widgets);
     },
     updateWidget(widget) {
       console.log(widget);
     },
     async save() {
-      if (!this.wap.id)
+      if (!this.wap._id)
         this.wap = await this.$store.dispatch({
           type: "addWap",
           wap: this.wap

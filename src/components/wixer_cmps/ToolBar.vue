@@ -1,23 +1,19 @@
 <template>
   <div class="tool-bar">
     <ul class="tool-bar-list">
-      <!-- <li @click="section=!section" class="section-add">
+      <li @click="section=!section" class="section-add">
         <unicon name="book-medical" :fill="color" />
         <h3 :style="{color:color}"> ADD </h3>
-      </li> -->
-      <!-- <div v-if="section" class="list-option"> -->
+      </li>
+      <div v-if="section" class="list-option">
 
 
-        <li v-for="widget in widgets" :key="widget.id">
-          <drag class="drag" :transfer-data="{ widget }">
-           <EditOption  :option="widget" @select="add"  />
-          </drag>
-        </li>
-      <!-- </div> -->
+        <!-- <li v-for="widget in widgets" :key="widget.id"> -->
+         
+          <EditOption v-for="widget in widgets" :key="widget.id" :widget="widget" @select="add"  />
+        <!-- </li> -->
+      </div>
       
-      <!-- <select @change="add" v-model="select" v-if="section">
-        <option :value="widget" v-for="widget in widgets" :key="widget.id">{{widget.type}}</option>
-      </select> -->
       <li class="cmp-add">
         +
         <span class="text">ADD CMP</span>
@@ -32,7 +28,7 @@
   </div>
 </template>
 <script>
-import { Drag } from 'vue-drag-drop';
+// import { Drag } from 'vue-drag-drop';
 import EditOption from './EditOption.vue'
 export default {
   props: {
@@ -47,6 +43,8 @@ export default {
   },
   methods: {
     add(widget) {
+      console.log('emit',widget);
+      
       this.$emit("add", widget);
     }
   },
@@ -58,7 +56,7 @@ color(){
   },
   components:{
     EditOption,
-    Drag
+    
   }
 };
 </script>

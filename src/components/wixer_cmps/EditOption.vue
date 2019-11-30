@@ -1,13 +1,18 @@
 <template>
 <ul class="edit-options">
-  <li class="edit-option"  @click="add(option)"><h4>{{option.type}}</h4></li>
+  <li class="edit-option"  >
+   <drag class="drag" :transfer-data="{ widget }">
+          
+  <h4>{{widget.type}}</h4>
+          </drag>
+</li>
 </ul>
 </template>
 
 <script>
 export default {
   props: {
-    option: Object
+    widget: Object
   },
   methods: {
     add(widget) {
