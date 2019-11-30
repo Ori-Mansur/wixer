@@ -1,14 +1,19 @@
 <template>
   <div class="tool-bar">
     <ul class="tool-bar-list">
-      <li @click="section=!section" class="section-add">
+      <!-- <li @click="section=!section" class="section-add">
         <unicon name="book-medical" :fill="color" />
         <h3 :style="{color:color}"> ADD </h3>
-      </li>
-      <div v-if="section" class="list-option">
+      </li> -->
+      <!-- <div v-if="section" class="list-option"> -->
 
-        <EditOption v-for="widget in widgets" :key="widget.id" :option="widget" @select="add"  />
-      </div>
+
+        <li v-for="widget in widgets" :key="widget.id">
+          <drag class="drag" :transfer-data="{ widget }">
+           <EditOption  :option="widget" @select="add"  />
+          </drag>
+        </li>
+      <!-- </div> -->
       
       <!-- <select @change="add" v-model="select" v-if="section">
         <option :value="widget" v-for="widget in widgets" :key="widget.id">{{widget.type}}</option>
@@ -27,6 +32,7 @@
   </div>
 </template>
 <script>
+import { Drag } from 'vue-drag-drop';
 import EditOption from './EditOption.vue'
 export default {
   props: {
@@ -51,7 +57,8 @@ color(){
 }
   },
   components:{
-    EditOption
+    EditOption,
+    Drag
   }
 };
 </script>
