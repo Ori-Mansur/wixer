@@ -2,9 +2,13 @@
   user-select: none;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 100px;
-  left: 30px;
+  width: 200px;
+  // background: red;
+  overflow: scroll;
+  height: 100vh;
+  // position: fixed;
+  // top: 100px;
+  // left: 30px;
   .tool-bar-list {
     > li {
       display: flex;
@@ -12,7 +16,11 @@
       align-items: center;
       margin-bottom: 20px;
       font-size: 16px;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.96) 0%, rgba(238, 238, 238, 0.96) 100%);
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.96) 0%,
+        rgba(238, 238, 238, 0.96) 100%
+      );
       box-shadow: 0 2px 5px 0 rgba(22, 45, 61, 0.58);
       border-radius: 24px;
       line-height: 48px;
@@ -36,15 +44,14 @@
       left: 122px;
       top: 100px;
       height: fit-content;
-      background-color:rgba(238, 238, 238, 0.90);
+      background-color: rgba(238, 238, 238, 0.9);
       box-shadow: 0 2px 5px 0 rgba(22, 45, 61, 0.58);
       border-radius: 12px;
       width: 150px;
       padding: 10px;
       text-transform: capitalize;
-      
     }
-    .edit-options{
+    .edit-options {
       // background-color:  rgba(238, 238, 238, 0.96);
       // box-shadow: 0 2px 5px 0 rgba(22, 45, 61, 0.58);
 
