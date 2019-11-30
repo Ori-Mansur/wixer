@@ -1,6 +1,7 @@
 <template>
 <section class="form-container">
-    <h3>Contact Us:</h3>
+    <widget-editor :widget="value" class="flex justify-end" @remove="removeWidget"></widget-editor>
+    <!-- <h3>{{data.title}}</h3> -->
 
     <form @submit.prevent="send" class="flex column">
       <h4>Name:</h4>
@@ -15,22 +16,40 @@
 </template>
 
 <script>
+import WidgetEditor from '../wixer_cmps/WidgetEditor'
+
 export default {
+  props:{value: Object},
     data(){
       return{
         form:{}
       }
     },
+    created(){
+      console.log('form data', this.value)
+    },
     methods:{
         send(){
             console.log('sending...')
+        },
+        removeWidget(id){
+          this.$emit("remove", id);
         }
+    },
+    components:{
+      WidgetEditor
     }
 }
 </script>
 <style lang="scss">
+  .form-container{
+    padding: 10px;
+    position: relative;
+  }
+
   h4{
     margin: 0;
+    margin-bottom: 5px;
   }
 
   input{

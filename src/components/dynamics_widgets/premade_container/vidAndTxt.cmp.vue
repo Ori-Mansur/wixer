@@ -1,49 +1,41 @@
 <template>
-  <section class="container-twoCol flex row justify-center align-center" :contenteditable="edit">
+  <section class="vidAndTxt-container flex row justify-center align-center" :contenteditable="edit">
     <component
-      v-for="(widget,idx) in data"
+      v-for="(widget,idx) in value.data"
       :key="idx"
       :is="widget.type"
-      :data="widget.data"
+      :value="widget"
       :contenteditable="true"
+      @remove="removeWidget"
     ></component>
+  <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
   </section>
 </template>
 
 <script>
 import Video from "../video.cmp";
 import Txt from "../txt.cmp";
+import WidgetEditor from '../../wixer_cmps/WidgetEditor'
 
 export default {
   components: {
     Video,
-    Txt
+    Txt,
+    WidgetEditor
   },
   props: {
-    edit: Boolean
-    // widget: Object
+    edit: Boolean,
+    value: Object
   },
-  data() {
-    return {
-      data: [
-        {
-          type: "Video",
-          data: { url: "https://www.youtube.com/embed/tgbNymZ7vqY" }
-        },
-        {
-          type: "Txt",
-          data: {
-            title: "Imagine",
-            Txt:
-              "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!"
-          }
-        }
-      ]
-    };
+  created(){
   },
   methods: {
     updateValue(value) {
       this.$emit("input", value);
+    },
+    removeWidget(id){
+      console.log(id)
+          this.$emit("remove", id);
     }
   }
 };
@@ -51,8 +43,10 @@ export default {
 
 
 <style scoped>
-.container-twoCol {
-  border-style: dotted;
+.vidAndTxt-container {
+  /* border-style: dotted; */
+  margin-bottom: 10px;
+  position: relative
 }
 .text-header,
 .text-center {

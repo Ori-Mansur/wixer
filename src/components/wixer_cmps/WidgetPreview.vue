@@ -5,7 +5,8 @@
       v-for="(widget,idx) in widgets"
       :key="idx"
       :is="widget.type"
-      :value="widget"
+      :value="widget" class="widget-container"
+      @remove="removeWidget"
     ></component>
   </div>
 </template>
@@ -34,7 +35,11 @@ export default {
   methods: {
     // update(value) {
     //   console.log("value");
-    // }
+    // },
+    removeWidget(id){
+      this.$emit("remove", id);
+
+    }
   },
 
   created() {
