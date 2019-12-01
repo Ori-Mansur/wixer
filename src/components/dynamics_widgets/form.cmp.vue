@@ -46,7 +46,6 @@ export default {
 <style lang="scss">
   .form-container{
     padding: 10px;
-    position: relative;
   }
 
   h4{

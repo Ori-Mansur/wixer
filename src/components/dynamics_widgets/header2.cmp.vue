@@ -16,14 +16,10 @@
     <text-editor :widget="value"></text-editor>
 
     <div class="flex column" :contenteditable="true">
-      <h1
+      <p
         v-if="value.data.title"
-        :style="{fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
-      >{{ value.data.title }}</h1>
-      <h3
-        v-if="value.data.subtitle"
-        :style="{ color: value.data.style.txtSubtitleColor }"
-      >{{ value.data.subtitle }}</h3>
+        :style="{ color: value.data.style.color , fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
+      >{{ value.data.title }}</p>
     </div>
   </section>
 </template>
@@ -40,7 +36,7 @@ export default {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEditer = true;
     else this.isEditer = false;
-    console.log(this.value);
+    console.log(this.value.data.style, "data style");
   },
   methods: {
     removeWidget(id) {
@@ -59,6 +55,7 @@ export default {
 <style lang="scss">
 .header-container {
   margin-bottom: 10px;
+  position: relative;
 }
 
 img {

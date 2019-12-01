@@ -29,14 +29,21 @@ export default {
         "#D7AEFB",
         "#CBF0F8",
         "#CCFF90",
-        "#FDCFE8"
+        "#FDCFE8",
+        "#EA4335",
+        "#4285F4",
+        "#35495E",
+        "#000000",
+        "#FFFFFF",
+        "#41B883",
+        "#F0F4F7"
       ]
     };
   },
   methods: {
     setColor(color) {
-        console.log(color)
-        this.$emit("changeColor", color);
+      console.log(color);
+      this.$emit("changeColor", color);
     }
   }
 };

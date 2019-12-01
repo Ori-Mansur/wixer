@@ -89,10 +89,10 @@ export default {
       console.log("widget to remove", id);
       // var idx = this.wap.widgets.findIndex(widget=>widget.id=id)
       // this.wap.widgets.splice(idx, 1)
-      // this.wap = await this.$store.dispatch({
-      //     type: "removeWidget",
-      //     widgetId: id
-      //   });
+      // this.wap = this.$store.dispatch({
+      //   type: "removeWidget",
+      //   widgetId: _id
+      // });
     },
     edit(widget) {
       var idx = this.wap.widgets.findIndex(

@@ -8,6 +8,7 @@
       :contenteditable="true"
       @remove="removeWidget"
     ></component>
+
     <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
   </section>
 </template>
@@ -15,34 +16,36 @@
 <script>
 import Txt from "../dynamics_widgets/txt.cmp";
 import Map from "../dynamics_widgets/map.cmp";
-import WidgetEditor from '../wixer_cmps/WidgetEditor'
-
+import WidgetEditor from "../wixer_cmps/WidgetEditor";
 
 export default {
   props: {
     edit: Boolean,
     value: Object
   },
-  created() {
-  },
+  created() {},
   components: {
     Txt,
     Map,
     WidgetEditor
   },
-  methods:{
-    removeWidget(id){
+  methods: {
+    removeWidget(id) {
       this.$emit("remove", id);
     }
+    // handleDrop(data) {
+    //   console.log(event);
+    //   console.log(event.toElement);
+    //   // console.log(dragElement)
+    // }
   }
 };
 </script>
 <style scoped>
 .twoCol-container {
   border-style: dotted;
-  position:relative;
+  position: relative;
 }
-.text-header,
 .text-center {
   display: flex;
   justify-content: center;

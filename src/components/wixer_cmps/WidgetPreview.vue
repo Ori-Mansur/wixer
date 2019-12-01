@@ -5,13 +5,15 @@
       v-for="(widget,idx) in widgets"
       :key="idx"
       :is="widget.type"
-      :value="widget" class="widget-container"
+      :value="widget"
+      class="widget-container"
       @remove="removeWidget"
       @edit="editWidget"
     ></component>
   </div>
 </template>
 <script>
+
 import NavBar from "../dynamics_widgets/NavBarEdit";
 import Container1 from "../dynamics_widgets/container1.cmp";
 import Container2 from "../dynamics_widgets/container2.cmp";
@@ -19,6 +21,7 @@ import Container3 from "../dynamics_widgets/container3.cmp";
 import VideoAndTxt from "../dynamics_widgets/premade_container/vidAndTxt.cmp";
 import Empty from "../dynamics_widgets/empty.cmp";
 import Header from "../dynamics_widgets/header.cmp";
+import Header2 from "../dynamics_widgets/header2.cmp";
 import Img from "../dynamics_widgets/img.cmp";
 import Txt from "../dynamics_widgets/txt.cmp";
 import Video from "../dynamics_widgets/video.cmp";
@@ -38,11 +41,11 @@ export default {
     // update(value) {
     //   console.log("value");
     // },
-    removeWidget(id){
+    removeWidget(id) {
       this.$emit("remove", id);
     },
-    editWidget(widget){
-      console.log(widget)
+    editWidget(widget) {
+      console.log(widget);
       this.$emit("edit", widget);
     }
   },
@@ -60,6 +63,7 @@ export default {
     VideoAndTxt,
     Empty,
     Header,
+    Header2,
     Img,
     Txt,
     Video,
