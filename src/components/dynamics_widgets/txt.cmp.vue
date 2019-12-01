@@ -30,8 +30,11 @@ export default {
       this.$emit("remove", id);
     },
     saveText(ev){
+      console.log('saved text', ev.target.innerText)
+
       this.value.data.txt = ev.target.innerText;
       console.log('saved text', this.value.data.txt)
+
     }
   },
   computed:{

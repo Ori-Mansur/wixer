@@ -2,6 +2,8 @@
     <section class="widget-editor-container">
         <img src="../../assets/icons/palette.svg" class="inactive" @click="chooseColor=!chooseColor">
         <img src="../../assets/icons/bin.svg" @click="removeWidget" title="remove this widget">
+        <button>UP</button>
+        <button>DOWN</button>
         <label for="file-upload" class="custom-file-upload"><input id="file-upload" type="file"><img src="../../assets/icons/imgup.svg"></label>
         <color-picker @changeColor="updateBackground" v-if="chooseColor"></color-picker>
     </section>
