@@ -1,14 +1,15 @@
 <template>
-  <section class="vidAndTxt-container flex row justify-center align-center" :contenteditable="edit">
+  <section class="vidAndTxt-container flex row justify-center align-center" :contenteditable="edit" :style="{
+      backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor}">
     <component
-      v-for="(widget,idx) in value.data"
+      v-for="(widget,idx) in value.data.widgets"
       :key="idx"
       :is="widget.type"
       :value="widget"
       :contenteditable="true"
       @remove="removeWidget"
     ></component>
-  <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
+  <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget" @edit="editWidget"></widget-editor>
   </section>
 </template>
 
@@ -28,6 +29,7 @@ export default {
     value: Object
   },
   created(){
+    console.log(this.value.style.bcgColor)
   },
   methods: {
     updateValue(value) {
@@ -36,7 +38,10 @@ export default {
     removeWidget(id){
       console.log(id)
           this.$emit("remove", id);
-    }
+    },
+    editWidget(widget){
+      this.$emit("edit", widget);
+    },
   }
 };
 </script>
@@ -58,6 +63,7 @@ export default {
   width: 50%;
   padding: 10px;
   min-height: 300px;
+  font-style: 
 }
 
 .row:after {

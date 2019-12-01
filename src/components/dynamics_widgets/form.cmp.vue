@@ -1,5 +1,7 @@
 <template>
-<section class="form-container">
+<section class="form-container" :style="{
+      backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor
+    }">
     <widget-editor :widget="value" class="flex justify-end" @remove="removeWidget"></widget-editor>
     <!-- <h3>{{data.title}}</h3> -->
 

@@ -7,7 +7,8 @@ export default {
   getById,
   add,
   update,
-  remove
+  remove,
+  queryElements
 };
 // const BASE_URL =
 //   process.env.NODE_ENV !== 'development'
@@ -18,6 +19,10 @@ const BASE_URL = 'widget'
 // function query() {
 //   return widgets;
 // }
+const elements = []
+async function queryElements(){
+  return await elements
+}
 async function query() {
   return await HttpService.get(BASE_URL)
 }
