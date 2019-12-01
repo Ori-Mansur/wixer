@@ -1,5 +1,5 @@
 <template>
-  <section class="text-editor-container">
+  <section class="text-editor-container" :contenteditable="false">
     <button>Font Family</button>
     <button>FontUp</button>
     <button>FontDown</button>

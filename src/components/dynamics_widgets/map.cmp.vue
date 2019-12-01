@@ -15,7 +15,7 @@
         :position="m.position"
         :clickable="true"
         :draggable="true"
-        title=""
+        title
         @click="center=m.position"
       />
     </GmapMap>
@@ -27,10 +27,10 @@
   </section>
 </template>
 <script>
-import WidgetEditor from '../wixer_cmps/WidgetEditor'
+import WidgetEditor from "../wixer_cmps/WidgetEditor";
 
 export default {
-  props:{value: Object},
+  props: { value: Object },
   data() {
     return {
       pos: { lat: 34, lng: 32.4349958 },
@@ -47,7 +47,7 @@ export default {
         map.panTo(pos);
       });
     },
-    removeWidget(){
+    removeWidget() {
       this.$emit("remove", this.value.id);
     }
   },
@@ -69,13 +69,13 @@ export default {
       }
     });
   },
-  components:{
+  components: {
     WidgetEditor
   }
 };
 </script>
 <style scoped>
-.map-container{
+.map-container {
   position: relative;
 }
 
