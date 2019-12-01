@@ -1,6 +1,6 @@
 'use strict'
 import HttpService from './HttpService.js'
-import cloudinaryService from './cloudinary.service.js'
+// import cloudinaryService from './cloudinary.service.js'
 
 export default {
     query,
@@ -13,9 +13,9 @@ export default {
 //     ? '/api/wap'
 //     : '//localhost:3150/api/wap';
 
-const BASE_URL = '/wap'
+const BASE_URL = 'wap'
 async function query() {
-    return await HttpService.get('/wap')
+    return await HttpService.get(BASE_URL)
 }
 async function getById(id) {
     return await HttpService.get(`${BASE_URL}/${id}`)
@@ -31,7 +31,7 @@ async function add(wap) {
     //             .then(res => res.data)
     //     })
     const res = await HttpService.post(BASE_URL, wap)
-    console.log('resadd', res);
+    // console.log('resadd', res);
 
     return res
 }
@@ -52,6 +52,6 @@ async function update(wap) {
     return res
 }
 async function remove(id) {
-    const res = await httpService.delete(`${BASE_URL}/${id}`)
+    const res = await HttpService.delete(`${BASE_URL}/${id}`)
     return await res.data
 }
