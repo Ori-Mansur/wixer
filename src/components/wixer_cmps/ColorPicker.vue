@@ -29,7 +29,13 @@ export default {
         "#D7AEFB",
         "#CBF0F8",
         "#CCFF90",
-        "#FDCFE8"
+        "#FDCFE8",
+        "#EA4335",
+        "#4285F4",
+        "#35495E",
+        "#000000",
+        "#FFFFFF",
+        "#41B883"
       ]
     };
   },

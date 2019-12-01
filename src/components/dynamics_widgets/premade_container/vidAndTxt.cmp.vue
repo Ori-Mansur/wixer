@@ -4,6 +4,7 @@
     :contenteditable="edit"
     :style="{
       backgroundImage: `url(${value.style.bcgImg})`, backgroundColor: value.style.bcgColor}"
+    @click="toggleActive"
   >
     <component
       v-for="(widget,idx) in value.data"
@@ -14,6 +15,7 @@
       @remove="removeWidget"
     ></component>
     <widget-editor
+      :isEdit="isEdit"
       :widget="value"
       class="widget-editor-container"
       @remove="removeWidget"
@@ -34,8 +36,13 @@ export default {
     WidgetEditor
   },
   props: {
-    edit: Boolean,
+    isEdit: false,
     value: Object
+  },
+  data() {
+    return {
+      edit: false
+    };
   },
   created() {
     console.log(this.value);
@@ -50,6 +57,9 @@ export default {
     },
     editWidget(widget) {
       this.$emit("edit", widget);
+    },
+    toggleActive() {
+      this.isEdit = !this.isEdit;
     }
   }
 };
@@ -58,9 +68,7 @@ export default {
 
 <style scoped>
 .vidAndTxt-container {
-  /* border-style: dotted; */
   margin-bottom: 10px;
-  position: relative;
 }
 
 .text-center {

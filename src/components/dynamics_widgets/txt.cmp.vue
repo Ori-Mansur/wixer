@@ -11,10 +11,9 @@
       :contenteditable="true"
       @click="isFocus = !isFocus"
       v-html="content"
-      :style="{fontSize: 16 + 'px',fontWeight: value.data.style.fontWeight}"
+      :style="{fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
     ></p>
     <text-editor :widget="value"></text-editor>
-    <!-- <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor> -->
   </section>
 </template>
 
@@ -54,8 +53,6 @@ export default {
       this.$emit("remove", id);
     },
     saveText(ev) {
-      console.log("saved text", ev.target.innerText);
-
       this.value.data.txt = ev.target.innerText;
       console.log("saved text", this.value.data.txt);
     }
