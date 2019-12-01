@@ -1,6 +1,6 @@
 <template>
     <section class="widget-editor-container" v-if="isEdit">
-        <img src="../../assets/icons/palette.svg" class="inactive" @click="chooseColor=!chooseColor">
+        <img src="../../assets/icons/palette.svg" @click.native="chooseColor=!chooseColor">
         <img src="../../assets/icons/bin.svg" @click="removeWidget" title="remove this widget">
         <button @click="savePos(-1)">UP</button>
         <button @click="savePos(+1)">DOWN</button>
@@ -50,10 +50,11 @@ export default {
 };
 </script>
 <style lang="scss">
+.palette-container{
+  border: 1px solid black;
+}
   .widget-editor-container{
-      position:absolute;
-      right: 25px;
-      top: 40px;
+      position:relative;
       z-index: 100;
       background-color: #fff;
       padding: 5px;

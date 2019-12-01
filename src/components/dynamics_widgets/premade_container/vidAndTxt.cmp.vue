@@ -1,6 +1,6 @@
 <template>
   <section class="vidAndTxt-container flex row justify-center align-center" :contenteditable="edit" :style="{
-      backgroundImage: `url(${value.style.bcgImg})`, backgroundColor: value.style.bcgColor}" @click="toggleActive">
+      backgroundImage: `url(${value.style.bcgImg})`, backgroundColor: value.style.bcgColor}">
     <component
       v-for="(widget,idx) in value.data"
       :key="idx"
@@ -48,6 +48,7 @@ export default {
       this.$emit("edit", widget);
     },
     toggleActive(){
+      console.log('trying..')
       this.isEdit = !this.isEdit
     }
   }
@@ -56,6 +57,10 @@ export default {
 
 
 <style scoped>
+.widget-editor-container{
+  border: 1px solid black;
+  position:relative;
+}
 .vidAndTxt-container {
   margin-bottom: 10px;
 }

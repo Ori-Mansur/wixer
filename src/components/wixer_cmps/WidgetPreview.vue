@@ -12,6 +12,7 @@
   </div>
 </template>
 <script>
+
 import NavBar from "../dynamics_widgets/NavBarEdit";
 import Container1 from "../dynamics_widgets/container1.cmp";
 import Container2 from "../dynamics_widgets/container2.cmp";
@@ -62,7 +63,7 @@ export default {
     Img,
     Txt,
     Video,
-    Form
+    Form,
   }
 };
 </script>

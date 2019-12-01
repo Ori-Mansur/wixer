@@ -41,6 +41,7 @@ export default {
         this.widget.data.style.fontSize+=diff
     },
     changeFont(){
+      console.log(this.widget.data.txt)
         this.widget.data.style.fontFamily = this.font
     },
     changeFontColor(color){
