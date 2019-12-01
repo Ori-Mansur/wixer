@@ -1,6 +1,11 @@
 <template>
-  <section class="vidAndTxt-container flex row justify-center align-center" :contenteditable="edit" :style="{
-      backgroundImage: `url(${value.style.bcgImg})`, backgroundColor: value.style.bcgColor}">
+  <section
+    class="vidAndTxt-container flex row justify-center align-center"
+    :contenteditable="edit"
+    :style="{
+      backgroundImage: `url(${value.style.bcgImg})`, backgroundColor: value.style.bcgColor}"
+    @click="toggleActive"
+  >
     <component
       v-for="(widget,idx) in value.data"
       :key="idx"
@@ -9,14 +14,20 @@
       :contenteditable="true"
       @remove="removeWidget"
     ></component>
-  <widget-editor :isEdit="isEdit" :widget="value" class="widget-editor-container" @remove="removeWidget" @edit="editWidget"></widget-editor>
+    <widget-editor
+      :isEdit="isEdit"
+      :widget="value"
+      class="widget-editor-container"
+      @remove="removeWidget"
+      @edit="editWidget"
+    ></widget-editor>
   </section>
 </template>
 
 <script>
 import Video from "../video.cmp";
 import Txt from "../txt.cmp";
-import WidgetEditor from '../../wixer_cmps/WidgetEditor'
+import WidgetEditor from "../../wixer_cmps/WidgetEditor";
 
 export default {
   components: {
@@ -28,23 +39,23 @@ export default {
     isEdit: false,
     value: Object
   },
-  data(){
-    return{
+  data() {
+    return {
       edit: false
-    }
+    };
   },
-  created(){
-    console.log(this.value)
+  created() {
+    console.log(this.value);
   },
   methods: {
     updateValue(value) {
       this.$emit("input", value);
     },
-    removeWidget(id){
-      console.log(id)
-          this.$emit("remove", id);
+    removeWidget(id) {
+      console.log(id);
+      this.$emit("remove", id);
     },
-    editWidget(widget){
+    editWidget(widget) {
       this.$emit("edit", widget);
     },
     toggleActive(){

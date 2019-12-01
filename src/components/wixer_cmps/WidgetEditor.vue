@@ -1,64 +1,67 @@
 <template>
-    <section class="widget-editor-container" v-if="isEdit">
-        <img src="../../assets/icons/palette.svg" @click.native="chooseColor=!chooseColor">
-        <img src="../../assets/icons/bin.svg" @click="removeWidget" title="remove this widget">
-        <button @click="savePos(-1)">UP</button>
-        <button @click="savePos(+1)">DOWN</button>
-        <label for="file-upload" class="custom-file-upload"><input id="file-upload" type="file"><img src="../../assets/icons/imgup.svg"></label>
-        <color-picker @changeColor="updateBackground" v-if="chooseColor"></color-picker>
-    </section>
+  <section class="widget-editor-container">
+    <img src="../../assets/icons/palette.svg" class="inactive" @click="chooseColor=!chooseColor" />
+    <img src="../../assets/icons/bin.svg" @click="removeWidget" title="remove this widget" />
+    <button @click="savePos(-1)">UP</button>
+    <button @click="savePos(+1)">DOWN</button>
+    <label for="file-upload" class="custom-file-upload">
+      <input id="file-upload" type="file" />
+      <img src="../../assets/icons/imgup.svg" />
+    </label>
+    <color-picker @changeColor="updateBackground" v-if="chooseColor"></color-picker>
+  </section>
 </template>
 
 <script>
-import ColorPicker from '../wixer_cmps/ColorPicker'
+import ColorPicker from "../wixer_cmps/ColorPicker";
 
 export default {
   props: {
     widget: Object,
     isEdit: Boolean
   },
-  created(){
-    
+  created() {
+    console.log(this.widget);
   },
-  data(){
-    return{
-      chooseColor:false,
+  data() {
+    return {
+      chooseColor: false,
       imageChange: false
-    }
+    };
   },
   methods: {
     editWidget() {
       this.$emit("edit", this.widget);
     },
     removeWidget() {
-      this.$emit("remove", this.widget.id);
+      this.$emit("remove", this.widget._id);
+      console.log(this.widget._id, "remove");
     },
-    updateBackground(color){
-      this.widget.style.bcgColor = color
+    updateBackground(color) {
+      this.widget.data.style.bcgColor = color;
       // console.log(this.widget.data.style)
     },
-    open(){
-      console.log('hi')
+    open() {
+      console.log("hi");
     },
-    savePos(val){
-      console.log(val)
+    savePos(val) {
+      console.log(val);
     }
   },
-  components:{
+  components: {
     ColorPicker
   }
 };
 </script>
 <style lang="scss">
-.palette-container{
-  border: 1px solid black;
-}
-  .widget-editor-container{
-      position:relative;
-      z-index: 100;
-      background-color: #fff;
-      padding: 5px;
-    img{
+.widget-editor-container {
+  // position: absolute;
+  right: 25px;
+  top: 160px;
+  z-index: 100;
+  background-color: #fff;
+  padding: 5px;
+  img {
     width: 30px;
     height: 30px;
     padding: 3px;
@@ -67,9 +70,9 @@ export default {
     border-radius: 7px;
     margin-top: 5px;
     margin-right: 5px;
-    }
+  }
 }
 input[type="file"] {
-    display: none;
+  display: none;
 }
 </style>

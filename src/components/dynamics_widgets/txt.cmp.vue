@@ -3,16 +3,25 @@
     class="txt-container flex column align-center"
     @mouseover="isFocus = true"
     @mouseout="isFocus = false"
-    @mouseleave.prevent="saveText"
+    @blur="saveText"
+    :style="{
+      backgroundImage: `url(${value.data.style.bcgImg})`, backgroundColor: value.data.style.bcgColor}"
   >
-    <p class="text" :contenteditable="true" v-html="value.data.txt" :style="{fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }">
-    </p>
+    <p
+      class="text"
+      :contenteditable="true"
+      @click="isFocus = !isFocus"
+      v-html="content"
+      :style="{fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
+    ></p>
     <text-editor :widget="value"></text-editor>
+    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
   </section>
 </template>
 
 <script>
 import TextEditor from "../wixer_cmps/TextEditor";
+import WidgetEditor from "../wixer_cmps/WidgetEditor";
 
 export default {
   props: {
@@ -24,7 +33,7 @@ export default {
   },
   data() {
     return {
-      isFocus: false,
+      // isFocus: false,
       // value: {
       //   id: "1111",
       //   type: "text",
@@ -33,12 +42,12 @@ export default {
       //       fontFamily: "Arial",
       //       fontSize: 16,
       //       fontStyle: "normal",
-      //       fontWeight: 'normal',
+      //       fontWeight: "normal",
       //       color: "black"
       //     },
       //     txt: "This is the first text element"
       //   }
-      // },
+      // }
       // content: { text: this.text }
     };
   },
@@ -57,12 +66,13 @@ export default {
       if (this.isFocus) return "dotted";
       else return "none";
     },
-    content(){
-      return this.value.data.txt
-    },
+    content() {
+      return this.value.data.txt;
+    }
   },
   components: {
-    TextEditor
+    TextEditor,
+    WidgetEditor
   }
 };
 </script>
@@ -76,7 +86,6 @@ h3 {
 }
 p {
   margin: 0;
-
 }
 .text {
   padding: 10px;

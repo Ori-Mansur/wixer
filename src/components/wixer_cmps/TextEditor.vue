@@ -1,33 +1,33 @@
 <template>
   <section class="text-editor-container">
     <select @change="changeFont" v-model="font">
-        <option>Montserrat</option>
-        <option>Roboto</option>
-        <option>Arial</option>
+      <option>Montserrat</option>
+      <option>Roboto</option>
+      <option>Arial</option>
     </select>
     <button @click="italicize">I</button>
-    <button @click="changeSize(+2)">FontUp</button>
-    <button @click="changeSize(-2)">FontDown</button>
+    <button @click="changeSize(+2)">+</button>
+    <button @click="changeSize(-2)">-</button>
     <button @click="makeBold">B</button>
-    <img src="../../assets/icons/palette.svg" class="inactive" @click="chooseColor=!chooseColor">
+    <img src="../../assets/icons/palette.svg" class="inactive" @click="chooseColor=!chooseColor" />
     <color-picker @changeColor="changeFontColor" v-if="chooseColor"></color-picker>
   </section>
 </template>
 
 <script>
-import ColorPicker from '../wixer_cmps/ColorPicker'
+import ColorPicker from "../wixer_cmps/ColorPicker";
 
 export default {
   props: {
     widget: Object
   },
   created() {
-      console.log(this.widget)
+    console.log(this.widget);
   },
   data() {
     return {
       chooseColor: false,
-      font: 'Arial'
+      font: "Arial"
     };
   },
   methods: {
@@ -35,36 +35,38 @@ export default {
       this.$emit("edit", this.widget);
     },
     makeBold() {
-      this.widget.data.style.fontWeight =(this.widget.data.style.fontWeight=== 'normal')? 'bold':'normal'
+      this.widget.data.style.fontWeight =
+        this.widget.data.style.fontWeight === "normal" ? "bold" : "normal";
     },
-    changeSize(diff){
-        this.widget.data.style.fontSize+=diff
+    changeSize(diff) {
+      this.widget.data.style.fontSize += diff;
+      console.log(this.widget.data.style.fontSize, "size");
     },
-    changeFont(){
-      console.log(this.widget.data.txt)
-        this.widget.data.style.fontFamily = this.font
+    changeFont() {
+      this.widget.data.style.fontFamily = this.font;
     },
-    changeFontColor(color){
-        this.widget.data.style.color = color
+    changeFontColor(color) {
+      this.widget.data.style.color = color;
     },
-    italicize(){
-        this.widget.data.style.fontStyle = (this.widget.data.style.fontStyle==='normal')? 'italic':'normal'
+    italicize() {
+      this.widget.data.style.fontStyle =
+        this.widget.data.style.fontStyle === "normal" ? "italic" : "normal";
     }
   },
   components: {
-      ColorPicker
+    ColorPicker
   }
 };
 </script>
 <style lang="scss">
-  .text-editor-container{
-      position:absolute;
-      right: 25px;
-      top: 40px;
-      z-index: 100;
-      background-color: #fff;
-      padding: 5px;
-    img{
+.text-editor-container {
+  position: absolute;
+  right: 25px;
+  top: 100px;
+  z-index: 100;
+  background-color: #fff;
+  padding: 5px;
+  img {
     width: 30px;
     height: 30px;
     padding: 3px;
@@ -73,6 +75,6 @@ export default {
     border-radius: 7px;
     margin-top: 5px;
     margin-right: 5px;
-    }
+  }
 }
 </style>
