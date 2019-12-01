@@ -3,7 +3,7 @@
     class="vidAndTxt-container flex row justify-center align-center"
     :contenteditable="edit"
     :style="{
-      backgroundImage: `url(${value.style.bcgImg})`,backgroundColor: value.style.bcgColor}"
+      backgroundImage: `url(${value.style.bcgImg})`, backgroundColor: value.style.bcgColor}"
   >
     <component
       v-for="(widget,idx) in value.data"
@@ -38,7 +38,7 @@ export default {
     value: Object
   },
   created() {
-    console.log(this.value.style.bcgColor);
+    console.log(this.value);
   },
   methods: {
     updateValue(value) {
@@ -62,17 +62,18 @@ export default {
   margin-bottom: 10px;
   position: relative;
 }
-.text-header,
+
 .text-center {
   display: flex;
   justify-content: center;
 }
-.column {
+/* .column {
   float: left;
   width: 50%;
   padding: 10px;
   min-height: 300px;
-}
+  font-style: 
+} */
 
 .row:after {
   content: "";

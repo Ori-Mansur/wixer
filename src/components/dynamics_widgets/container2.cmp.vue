@@ -1,14 +1,16 @@
 <template>
   <section class="twoCol-container flex row justify-content align-center" :contenteditable="edit">
-    <component
-      v-for="(widget,idx) in value.data"
-      :key="idx"
-      :is="widget.type"
-      :value="widget"
-      :contenteditable="true"
-      @remove="removeWidget"
-    ></component>
-    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
+    <drop class="drop" @drop="handleDrop">
+      <component
+        v-for="(widget,idx) in value.data"
+        :key="idx"
+        :is="widget.type"
+        :value="widget"
+        :contenteditable="true"
+        @remove="removeWidget"
+      ></component>
+      <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
+    </drop>
   </section>
 </template>
 
@@ -26,11 +28,17 @@ export default {
   components: {
     Txt,
     Map,
-    WidgetEditor
+    WidgetEditor,
+    Drop
   },
   methods: {
     removeWidget(id) {
       this.$emit("remove", id);
+    },
+    handleDrop(data) {
+      console.log(event);
+      console.log(event.toElement);
+      // console.log(dragElement)
     }
   }
 };
@@ -40,7 +48,6 @@ export default {
   border-style: dotted;
   position: relative;
 }
-.text-header,
 .text-center {
   display: flex;
   justify-content: center;
