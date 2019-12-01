@@ -15,23 +15,21 @@
 <script>
 import Txt from "../dynamics_widgets/txt.cmp";
 import Map from "../dynamics_widgets/map.cmp";
-import WidgetEditor from '../wixer_cmps/WidgetEditor'
-
+import WidgetEditor from "../wixer_cmps/WidgetEditor";
 
 export default {
   props: {
     edit: Boolean,
     value: Object
   },
-  created() {
-  },
+  created() {},
   components: {
     Txt,
     Map,
     WidgetEditor
   },
-  methods:{
-    removeWidget(id){
+  methods: {
+    removeWidget(id) {
       this.$emit("remove", id);
     }
   }
@@ -40,7 +38,7 @@ export default {
 <style scoped>
 .twoCol-container {
   border-style: dotted;
-  position:relative;
+  position: relative;
 }
 .text-header,
 .text-center {

@@ -1,22 +1,31 @@
 <template>
-  <section class="vidAndTxt-container flex row justify-center align-center" :contenteditable="edit" :style="{
-      backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor}">
+  <section
+    class="vidAndTxt-container flex row justify-center align-center"
+    :contenteditable="edit"
+    :style="{
+      backgroundImage: `url(${value.style.bcgImg})`,backgroundColor: value.style.bcgColor}"
+  >
     <component
-      v-for="(widget,idx) in value.data.widgets"
+      v-for="(widget,idx) in value.data"
       :key="idx"
       :is="widget.type"
       :value="widget"
       :contenteditable="true"
       @remove="removeWidget"
     ></component>
-  <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget" @edit="editWidget"></widget-editor>
+    <widget-editor
+      :widget="value"
+      class="widget-editor-container"
+      @remove="removeWidget"
+      @edit="editWidget"
+    ></widget-editor>
   </section>
 </template>
 
 <script>
 import Video from "../video.cmp";
 import Txt from "../txt.cmp";
-import WidgetEditor from '../../wixer_cmps/WidgetEditor'
+import WidgetEditor from "../../wixer_cmps/WidgetEditor";
 
 export default {
   components: {
@@ -28,20 +37,20 @@ export default {
     edit: Boolean,
     value: Object
   },
-  created(){
-    console.log(this.value.style.bcgColor)
+  created() {
+    console.log(this.value.style.bcgColor);
   },
   methods: {
     updateValue(value) {
       this.$emit("input", value);
     },
-    removeWidget(id){
-      console.log(id)
-          this.$emit("remove", id);
+    removeWidget(id) {
+      console.log(id);
+      this.$emit("remove", id);
     },
-    editWidget(widget){
+    editWidget(widget) {
       this.$emit("edit", widget);
-    },
+    }
   }
 };
 </script>
@@ -51,7 +60,7 @@ export default {
 .vidAndTxt-container {
   /* border-style: dotted; */
   margin-bottom: 10px;
-  position: relative
+  position: relative;
 }
 .text-header,
 .text-center {
@@ -63,7 +72,6 @@ export default {
   width: 50%;
   padding: 10px;
   min-height: 300px;
-  font-style: 
 }
 
 .row:after {
