@@ -6,17 +6,12 @@
         <h3 :style="{color:color}"> ADD </h3>
       </li>
       <div v-if="section" class="list-option">
-
-
-        <!-- <li v-for="widget in widgets" :key="widget.id"> -->
-         
           <EditOption v-for="widget in widgets" :key="widget.id" :widget="widget" @select="add"  />
-        <!-- </li> -->
       </div>
       
-      <li class="cmp-add">
-        +
-        <span class="text">ADD CMP</span>
+    <li @click="edit=!edit" class="section-edit">
+        <unicon name="edit" :fill="colorEdit" />
+        <h3 :style="{color:colorEdit}"> EDIT </h3>
       </li>
 
       <li class="element-add">
@@ -38,6 +33,7 @@ export default {
     return {
       select: "",
       section: false,
+      edit:false,
       gray:'red'
     }
   },
@@ -51,6 +47,10 @@ export default {
   computed:{
 color(){
   if(this.section)return 'gold'
+  else return 'gray'
+},
+colorEdit(){
+  if(this.edit)return 'mediumvioletred'
   else return 'gray'
 }
   },

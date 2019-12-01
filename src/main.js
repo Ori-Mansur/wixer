@@ -12,12 +12,12 @@ import 'element-ui/lib/theme-chalk/index.css';
 // import  "@css/brands.css" 
 // import  "@css/solid.css" 
 import Unicon from 'vue-unicons'
-import { uniWindowSection,uniBookMedical,uniPlus   } from 'vue-unicons/src/icons'
+import { uniWindowSection,uniBookMedical,uniPlus,uniEdit   } from 'vue-unicons/src/icons'
 import VueDragDrop from 'vue-drag-drop';
 
 Vue.use(VueDragDrop);
 
-Unicon.add([uniWindowSection,uniBookMedical ,uniPlus ])
+Unicon.add([uniWindowSection,uniBookMedical ,uniPlus,uniEdit ])
 
 Vue.use(Unicon)
 Vue.use(ElementUI);
