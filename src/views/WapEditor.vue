@@ -1,6 +1,8 @@
 <template>
   <div class="wap-editor">
-    <ToolBar @add="add" @addElement="addElement" :widgets="widgets" :elements="elements" />
+    <ToolBar @setName="setName" @save="save" @addElement="addElement" 
+    :widgets="widgets" :elements="elements"
+    :nav="nav" />
     <drop class="drop" @drop="handleDrop" :class="classNames">
       <unicon v-if="!wap.widgets[0]" name="plus" fill="gray" class="icon" />
       <WidgetPreview :widgets="wap.widgets" @remove="remove" @edit="edit" />
@@ -46,6 +48,10 @@ export default {
     },
     elements() {
       return this.$store.getters.loadElements;
+    },
+    nav(){
+      const nav = this.wap.widgets.find(widget=>widget.type==='NavBar')
+      return nav
     }
   },
   methods: {
@@ -53,19 +59,16 @@ export default {
       this.$store.dispatch({ type: "loadElements" });
     },
     handleDrop(data) {
-      console.log(event);
-      this.wap.widgets.push(data.widget);
+      const widget=JSON.parse(JSON.stringify(data.widget))
+      this.wap.widgets.push(widget);
       this.save();
-
-      // window.console.log('SSSSSS', data);
-      // alert(`You dropped with data: ${JSON.stringify(data)}`);
     },
     addElement(element) {
       console.log(element);
     },
-    add(widget) {
-      this.wap.widgets.push(widget);
-      this.save();
+    setName(name) {
+      this.wap.name=name
+      this.save()
     },
     updateWidget(widget) {
       console.log(widget);

@@ -19,6 +19,8 @@ export default {
       else this.$router.push(`/editor/${wapId}`);
     },
     preview(wapId) {
+      console.log(wapId);
+      
       if(typeof wapId !=='string') return
       else this.$router.push(`/publish/${wapId}`);
     }

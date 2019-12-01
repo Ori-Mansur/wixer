@@ -1,0 +1,58 @@
+.about-as-container {
+  text-align: center;
+  padding: 10px;
+  .srcImg{
+      display: none;
+  }
+  .about-title-d {
+    color: #a95e39;
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 25.46px;
+    text-transform: uppercase;
+    /* Text style for "O, UR TEAM" */
+    letter-spacing: 1.8px;
+  }
+  .about-text-d {
+    font-family: Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25.46px;
+    /* Text style for "Lorem ipsu" */
+    letter-spacing: 0.9px;
+  }
+  .about-as-cards-d {
+      padding: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 40px;
+    // .about-card-d:not(:first-child) {
+    //   margin-left: 40px;
+    // }
+    .about-card-d {
+      max-height: 500px;
+      img {
+        height: 200px;
+      }
+      h3 {
+        font-family: Helvetica;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 25.46px;
+        /* Text style for "J, avier B" */
+        letter-spacing: 0.9px;
+        padding: 10px;
+      }
+      p {
+        font-family: Helvetica;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 25.46px;
+        /* Text style for "Lorem ipsu" */
+        letter-spacing: 0.6px;
+        padding: 10px;
+      }
+    }
+
+  }
+}

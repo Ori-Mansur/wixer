@@ -1,8 +1,6 @@
 <template>
-  <section class="txt-container flex column align-center" :style="{borderStyle: isEdit,
-      backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor
-    }" @click="isFocus=!isFocus" @mouseover="isFocus=true" @mouseout="isFocus=false" @keyup="saveText">
-    <h3 v-if="value.data.title" @click="isFocus=!isFocus" :contenteditable="true"></h3>
+  <section class="txt-container flex column align-center" @click="isFocus=!isFocus" 
+  @mouseover="isFocus=true" @mouseout="isFocus=false" @keyup="saveText">
     <p class="text" :contenteditable="true" @click="isFocus=!isFocus" v-html="content.text">
     </p>
     <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>

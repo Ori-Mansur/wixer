@@ -4,7 +4,7 @@
       v-for="(widget, idx) in wap.widgets"
       :key="idx"
       :is="widget.type"
-      :data="widget.data"
+      :value="widget"
       :contenteditable="false"
     ></component>
   </div>
@@ -19,9 +19,8 @@ import Header from "../components/dynamics_widgets/header.cmp";
 import Img from "../components/dynamics_widgets/img.cmp";
 import Txt from "../components/dynamics_widgets/txt.cmp";
 import Video from "../components/dynamics_widgets/video.cmp";
-import VideoAndTxt from "../components/dynamics_widgets/premade_container/vidAndTxt.cmp"
-import Form from "../components/dynamics_widgets/form.cmp"
-
+import VideoAndTxt from "../components/dynamics_widgets/premade_container/vidAndTxt.cmp";
+import Form from "../components/dynamics_widgets/form.cmp";
 
 export default {
   data() {

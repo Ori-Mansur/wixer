@@ -23,6 +23,7 @@ import Img from "../dynamics_widgets/img.cmp";
 import Txt from "../dynamics_widgets/txt.cmp";
 import Video from "../dynamics_widgets/video.cmp";
 import Form from "../dynamics_widgets/form.cmp";
+import AboutLp from "../dynamics_widgets/about.lp.cmp";
 
 export default {
   props: {
@@ -62,7 +63,8 @@ export default {
     Img,
     Txt,
     Video,
-    Form
+    Form,
+    AboutLp
   }
 };
 </script>
