@@ -7,12 +7,37 @@ export default {
   getById,
   add,
   update,
-  remove
+  remove,
+  queryElements
 };
 const BASE_URL =
   process.env.NODE_ENV !== 'development'
     ? '/api/widget'
     : '//localhost:3150/api/widget';
+
+const elements = [
+  {
+    "id": "1111",
+    "type": "text",
+    "data": {
+      "style":{
+        "fontFamily": "Arial",
+        "fontSize": 16,
+        "fontStyle": "normal",
+        "fontWeight": "normal",
+        "color": "black"
+      },
+      "txt": "This is the first text element"
+    }
+  },
+  {
+    "id": "1112",
+    "type": "image",
+    "data": {
+      "url": "This is the first text element"
+    }
+  },
+]
 
 const widgets = [
   {
@@ -21,8 +46,8 @@ const widgets = [
     "data": {
       "title": "Lorem Impsum",
       "subtitle": "Lorem Shmiptsum",
-      "img": "https://d279m997dpfwgl.cloudfront.net/wp/2016/08/0826_yellowstone-stars-2-1000x667.jpg",
       "style": {
+        "bcgImg": "https://d279m997dpfwgl.cloudfront.net/wp/2016/08/0826_yellowstone-stars-2-1000x667.jpg",
         "txtTitleColor": "White",
         "txtSubtitleColor": "red",
         "bcgColor": "white",
@@ -69,7 +94,11 @@ const widgets = [
         type: 'Txt',
         data: {
           "title": "a little more",
-          "txt": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!"
+          "txt": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!",
+          "style": {
+            "bcgImg": "",
+            "bcgColor": "white",
+          }
         }
       }
     ]
@@ -88,38 +117,54 @@ const widgets = [
     type: 'Txt',
     "data": {
       "title": "a little more",
-      "txt": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!"
+      "txt": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!",
+      "style": {
+        "bcgImg": "",
+        "bcgColor": "white",
+      }
     }
   },
   {
-    "id": "s1453",
+    "id": "s1333",
     "type": "VideoAndTxt",
-    "data": [
-      {
-        "id": "s1343",
-        "type": "Txt",
-        "data": {
-          "title": "a little more",
-          "txt": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!"
+    "data": {
+      "style": {"bcgImg": "","bcgColor": "green"},
+      "widgets": [
+        {
+          "id": "s1343",
+          "type": "Txt",
+          "data": {
+            "style": {"bcgImg": "", "bcgColor": "white"},
+            "id": "s6666",
+            "title": "a little more",
+            "txt": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!"
+          }
+        },
+        {
+          "id": "s1412",
+          "type": "Video",
+          "data": {"url": "https://www.youtube.com/embed/mO3Q4bRQZ3k"}
         }
-      },
-      {
-        "id": "s1412",
-        "type": "Video",
-        "data": {
-          "url": "https://www.youtube.com/embed/mO3Q4bRQZ3k"
-        }
-      }
-    ]
+      ]
+    },
   },
   {
     id: 's1007',
     type: 'Form',
-    data: {}
+    data: {
+      "style": {
+        "bcgImg": "",
+        "bcgColor": "white",
+      }
+    },
   }
 ];
 function query() {
   return widgets;
+}
+
+async function queryElements(){
+  return await elements
 }
 // async function query1() {
 //     const res = await httpService.get(BASE_URL)

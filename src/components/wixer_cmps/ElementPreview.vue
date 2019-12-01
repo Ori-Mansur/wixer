@@ -1,15 +1,14 @@
 <template>
-  <div>
+  <section class="element-preview-container">
     <component
-      :edit="isEdit"
-      v-for="(widget,idx) in widgets"
+      v-for="(element,idx) in elements"
       :key="idx"
-      :is="widget.type"
-      :value="widget" class="widget-container"
-      @remove="removeWidget"
-      @edit="editWidget"
+      :is="element.type"
+      :value="element" class="element-container"
+      @remove="removeElement"
+      @edit="editElement"
     ></component>
-  </div>
+  </section>
 </template>
 <script>
 import NavBar from "../dynamics_widgets/NavBarEdit";
@@ -26,7 +25,7 @@ import Form from "../dynamics_widgets/form.cmp";
 
 export default {
   props: {
-    widgets: Array
+    elements: Array
   },
   data() {
     return {
@@ -34,15 +33,12 @@ export default {
     };
   },
   methods: {
-    // update(value) {
-    //   console.log("value");
-    // },
-    removeWidget(id){
+    removeElement(id){
       this.$emit("remove", id);
     },
-    editWidget(widget){
-      console.log(widget)
-      this.$emit("edit", widget);
+    editElement(element){
+      console.log(element)
+      this.$emit("edit", element);
     }
   },
 

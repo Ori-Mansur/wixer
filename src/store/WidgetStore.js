@@ -3,9 +3,14 @@ var moment = require('moment');
 import WidgetService from '../services/WidgetService.js';
 export default {
   state: {
-    widgets: WidgetService.query()
+    widgets: WidgetService.query(),
+    elements: []
   },
   mutations: {
+
+    setElements(state, {elements}){
+      state.elements = elements
+    },
     
     setWidgets(state, { widgets }) {
       state.widgets = widgets;
@@ -26,6 +31,13 @@ export default {
     }
   },
   actions: {
+    loadElements(context){
+      return WidgetService.queryElements()
+      .then(elements =>{
+        context.commit({type: 'setElements', elements});
+        return elements
+      })
+    },
     loadWidgets(context) {
       return WidgetService.query().then(widgets => {
         context.commit({ type: 'setWidgets', widgets });
@@ -54,6 +66,9 @@ export default {
     }
   },
   getters: {
+    loadElements(state){
+      return state.elements
+    },
     widgets(state) {
       return state.widgets;
     },

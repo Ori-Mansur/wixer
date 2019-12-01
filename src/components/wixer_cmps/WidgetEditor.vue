@@ -1,27 +1,45 @@
 <template>
     <section class="widget-editor-container">
-        <img src="../../assets/icons/palette.svg" class="inactive">
-        <!-- <img src="img/palette.svg" @mouseover="chooseColor=true" @mouseleave.native="chooseColor=false" @click="openPalette" class="inactive"> -->
-        <img src="../../assets/icons/bin.svg" @click="removeWidget">
-        <!-- <img src="../../assets/icons/bin.svg" @click="removeNote" title="remove this note"> -->
-        <!-- <color-picker @mouseleave.native="chooseColor=false" @changeColor="changeBackgroundColor" v-if="chooseColor"></color-picker> -->
+        <img src="../../assets/icons/palette.svg" class="inactive" @click="chooseColor=!chooseColor">
+        <img src="../../assets/icons/bin.svg" @click="removeWidget" title="remove this widget">
+        <label for="file-upload" class="custom-file-upload"><input id="file-upload" type="file"><img src="../../assets/icons/imgup.svg"></label>
+        <color-picker @changeColor="updateBackground" v-if="chooseColor"></color-picker>
     </section>
 </template>
 
 <script>
+import ColorPicker from '../wixer_cmps/ColorPicker'
+
 export default {
   props: {
     widget: Object
   },
   created(){
+    
+  },
+  data(){
+    return{
+      chooseColor:false,
+      imageChange: false
+    }
   },
   methods: {
-    edit(wapId) {
-      this.$emit("select", wapId);
+    editWidget() {
+      this.$emit("edit", this.widget);
     },
     removeWidget() {
       this.$emit("remove", this.widget.id);
+    },
+    updateBackground(color){
+      this.widget.data.style.bcgColor = color
+      console.log(this.widget.data.style)
+    },
+    open(){
+      console.log('hi')
     }
+  },
+  components:{
+    ColorPicker
   }
 };
 </script>
@@ -43,5 +61,8 @@ export default {
     margin-top: 5px;
     margin-right: 5px;
     }
+}
+input[type="file"] {
+    display: none;
 }
 </style>

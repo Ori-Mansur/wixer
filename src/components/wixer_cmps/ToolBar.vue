@@ -18,15 +18,16 @@
       <!-- <select @change="add" v-model="select" v-if="section">
         <option :value="widget" v-for="widget in widgets" :key="widget.id">{{widget.type}}</option>
       </select> -->
-      <li class="cmp-add">
-        +
-        <span class="text">ADD CMP</span>
+      <li v-for="element in elements" :key="element.id">
+        <drag class="drag" :transfer-data="{ element }">
+           <EditOption  :option="element" @select="addElement"  />
+        </drag>
       </li>
 
-      <li class="element-add">
+      <!-- <li class="element-add">
         +
         <span class="text">ADD ELEMENT</span>
-      </li>
+      </li> -->
     </ul>
 
   </div>
@@ -36,7 +37,8 @@ import { Drag } from 'vue-drag-drop';
 import EditOption from './EditOption.vue'
 export default {
   props: {
-    widgets: Array
+    widgets: Array,
+    elements: Array
   },
   data() {
     return {
@@ -48,13 +50,16 @@ export default {
   methods: {
     add(widget) {
       this.$emit("add", widget);
+    },
+    addElement(element){
+      this.$emit('addElement', element)
     }
   },
   computed:{
-color(){
-  if(this.section)return 'gold'
-  else return 'gray'
-}
+// color(){
+//   if(this.section)return 'gold'
+//   else return 'gray'
+// }
   },
   components:{
     EditOption,

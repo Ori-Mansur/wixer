@@ -1,8 +1,9 @@
 <template>
-  <section class="txt-container flex column align-center" :style="{borderStyle: isEdit}" @click="isFocus=!isFocus" @mouseover="isFocus=true" @mouseout="isFocus=false">
-    <h3 v-if="value.data.title" @click="isFocus=!isFocus" :contenteditable="true">{{value.data.title}}</h3>
-    <p class="text" :contenteditable="true" @click="isFocus=!isFocus">
-      {{value.data.txt}}
+  <section class="txt-container flex column align-center" :style="{borderStyle: isEdit,
+      backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor
+    }" @click="isFocus=!isFocus" @mouseover="isFocus=true" @mouseout="isFocus=false" @keyup="saveText">
+    <h3 v-if="value.data.title" @click="isFocus=!isFocus" :contenteditable="true"></h3>
+    <p class="text" :contenteditable="true" @click="isFocus=!isFocus" v-html="content.text">
     </p>
     <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
   </section>
@@ -17,16 +18,20 @@ export default {
     value: Object
   },
   created(){
-    console.log(this.value)
   },
   data(){
     return{
-      isFocus: false
+      isFocus: false,
+      content: {text:this.value.data.txt}
     }
   },
   methods:{
     removeWidget(id){
       this.$emit("remove", id);
+    },
+    saveText(ev){
+      this.value.data.txt = ev.target.innerText;
+      console.log('saved text', this.value.data.txt)
     }
   },
   computed:{

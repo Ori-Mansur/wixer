@@ -3,7 +3,7 @@
     v-if="value"
     class="header-container flex align-center justify-center"
     :style="{
-      backgroundImage: `url(${value.data.img})`,
+      backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor,
       height: value.data.style.height + 'px'
     }"
   >
@@ -11,6 +11,7 @@
       :widget="value"
       class="widget-editor-container"
       @remove="removeWidget"
+      @edit="editWidget"
     ></widget-editor>
 
     <div class="flex column">
@@ -46,7 +47,10 @@ export default {
   methods: {
     removeWidget(id) {
       this.$emit("remove", id);
-    }
+    },
+    editWidget(widget){
+      this.$emit("edit", widget);
+    },
   },
   components: {
     WidgetEditor

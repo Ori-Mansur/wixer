@@ -1,17 +1,23 @@
 <template>
   <div class="wap-editor">
-    <ToolBar @add="add" :widgets="widgets" />
+    <ToolBar @add="add" @addElement="addElement" :widgets="widgets" :elements="elements"/>
     <drop class="drop" @drop="handleDrop" :class="classNames">
       <unicon v-if="!wap.widgets[0]" name="plus" fill="gray" class="icon" />
-      <WidgetPreview v-else :widgets="wap.widgets" @remove="remove"/>
+      <WidgetPreview v-else :widgets="wap.widgets" @remove="remove" @edit="edit"/>
     </drop>
+      <ElementPreview :elements="wap.elements"/>
   </div>
 </template>
 <script>
 import ToolBar from "../components/wixer_cmps/ToolBar.vue";
 import WidgetPreview from "../components/wixer_cmps/WidgetPreview.vue";
+import ElementPreview from "../components/wixer_cmps/ElementPreview"
 import { Drop } from "vue-drag-drop";
 export default {
+  created() {
+    this.setWap();
+    this.loadElements()
+  },
   data() {
     return {
       wap: {
@@ -37,15 +43,25 @@ export default {
     },
     widgets() {
       return this.$store.getters.widgets;
+    },
+    elements(){
+      return this.$store.getters.loadElements;
     }
   },
   methods: {
+    loadElements(){
+       this.$store.dispatch({type: "loadElements"});
+    },
     handleDrop(data, event) {
+      console.log(event)
       this.wap.widgets.push(data.widget);
       this.save();
 
       // window.console.log('SSSSSS', data);
       // alert(`You dropped with data: ${JSON.stringify(data)}`);
+    },
+    addElement(element){
+      console.log(element)
     },
     add(widget) {
       this.wap.widgets.push(widget);
@@ -76,6 +92,10 @@ export default {
       //     widgetId: id
       //   });
     },
+    edit(widget){
+      var idx = this.wap.widgets.findIndex(widget=>widget.id=id)
+      this.wap.widgets.splice(idx, 1, widget)
+    },
     async setWap() {
       const id = this.$route.params.id;
       if (id) {
@@ -84,13 +104,11 @@ export default {
       }
     }
   },
-  created() {
-    this.setWap();
-  },
   components: {
     Drop,
     ToolBar,
-    WidgetPreview
+    WidgetPreview,
+    ElementPreview
   }
 };
 </script>
