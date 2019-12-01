@@ -2,8 +2,8 @@
     <section class="widget-editor-container">
         <img src="../../assets/icons/palette.svg" class="inactive" @click="chooseColor=!chooseColor">
         <img src="../../assets/icons/bin.svg" @click="removeWidget" title="remove this widget">
-        <button>UP</button>
-        <button>DOWN</button>
+        <button @click="savePos(-1)">UP</button>
+        <button @click="savePos(+1)">DOWN</button>
         <label for="file-upload" class="custom-file-upload"><input id="file-upload" type="file"><img src="../../assets/icons/imgup.svg"></label>
         <color-picker @changeColor="updateBackground" v-if="chooseColor"></color-picker>
     </section>
@@ -33,11 +33,14 @@ export default {
       this.$emit("remove", this.widget.id);
     },
     updateBackground(color){
-      this.widget.data.style.bcgColor = color
-      console.log(this.widget.data.style)
+      this.widget.style.bcgColor = color
+      // console.log(this.widget.data.style)
     },
     open(){
       console.log('hi')
+    },
+    savePos(val){
+      console.log(val)
     }
   },
   components:{

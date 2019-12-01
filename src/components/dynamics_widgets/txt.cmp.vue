@@ -1,62 +1,83 @@
 <template>
-  <section class="txt-container flex column align-center" :style="{borderStyle: isEdit,
-      backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor
-    }" @click="isFocus=!isFocus" @mouseover="isFocus=true" @mouseout="isFocus=false" @keyup="saveText">
-    <h3 v-if="value.data.title" @click="isFocus=!isFocus" :contenteditable="true"></h3>
-    <p class="text" :contenteditable="true" @click="isFocus=!isFocus" v-html="content.text">
+  <section
+    class="txt-container flex column align-center"
+    @click="isFocus = !isFocus"
+    @mouseover="isFocus = true"
+    @mouseout="isFocus = false"
+    @keyup="saveText"
+  >
+    <p class="text" :contenteditable="true" @click="isFocus = !isFocus" v-html="content" :style="{fontSize: 16 + 'px',fontWeight: value.data.style.fontWeight}">
     </p>
-    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
+    <text-editor :widget="value"></text-editor>
+    <!-- <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor> -->
   </section>
 </template>
 
 <script>
-import WidgetEditor from '../wixer_cmps/WidgetEditor'
+import TextEditor from "../wixer_cmps/TextEditor";
 
 export default {
   props: {
-    edit: Boolean,
-    value: Object
+    edit: Boolean
+    // value: Object
   },
-  created(){
+  created() {
+    console.log(this.value);
   },
-  data(){
-    return{
+  data() {
+    return {
       isFocus: false,
-      content: {text:this.value.data.txt}
-    }
+      value: {
+        id: "1111",
+        type: "text",
+        data: {
+          style: {
+            fontFamily: "Arial",
+            fontSize: 16,
+            fontStyle: "normal",
+            fontWeight: "normal",
+            color: "black"
+          },
+          txt: "This is the first text element"
+        }
+      },
+      // content: { text: this.text }
+    };
   },
-  methods:{
-    removeWidget(id){
+  methods: {
+    removeWidget(id) {
       this.$emit("remove", id);
     },
-    saveText(ev){
-      console.log('saved text', ev.target.innerText)
+    saveText(ev) {
+      console.log("saved text", ev.target.innerText);
 
       this.value.data.txt = ev.target.innerText;
-      console.log('saved text', this.value.data.txt)
-
+      console.log("saved text", this.value.data.txt);
     }
   },
-  computed:{
-    isEdit(){
-      if (this.isFocus) return 'dotted'
-      else return 'none'
+  computed: {
+    isEdit() {
+      if (this.isFocus) return "dotted";
+      else return "none";
+    },
+    content(){
+      return this.value.data.txt
     }
   },
-  components:{
-    WidgetEditor
+  components: {
+    TextEditor
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.txt-container{
+.txt-container {
   position: relative;
 }
-h3{
+h3 {
   margin: 5px;
 }
-p{
+p {
   margin: 0;
 }
 .text {

@@ -1,5 +1,6 @@
 <template>
   <section class="twoCol-container flex row justify-content align-center" :contenteditable="edit">
+    <drop class="drop" @drop="handleDrop">
     <component
       v-for="(widget,idx) in value.data"
       :key="idx"
@@ -9,6 +10,7 @@
       @remove="removeWidget"
     ></component>
     <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
+    </drop>
   </section>
 </template>
 
@@ -16,6 +18,8 @@
 import Txt from "../dynamics_widgets/txt.cmp";
 import Map from "../dynamics_widgets/map.cmp";
 import WidgetEditor from '../wixer_cmps/WidgetEditor'
+import { Drop } from "vue-drag-drop";
+
 
 
 export default {
@@ -28,11 +32,17 @@ export default {
   components: {
     Txt,
     Map,
-    WidgetEditor
+    WidgetEditor,
+    Drop
   },
   methods:{
     removeWidget(id){
       this.$emit("remove", id);
+    },
+    handleDrop(data){
+      console.log(event)
+      console.log(event.toElement)
+    // console.log(dragElement)
     }
   }
 };
@@ -42,7 +52,6 @@ export default {
   border-style: dotted;
   position:relative;
 }
-.text-header,
 .text-center {
   display: flex;
   justify-content: center;
