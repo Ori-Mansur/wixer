@@ -13,21 +13,19 @@
       @remove="removeWidget"
       @edit="editWidget"
     ></widget-editor>
+    <text-editor :widget="value"></text-editor>
 
-    <div class="flex column">
-      <h1
+    <div class="flex column" :contenteditable="true">
+      <p
         v-if="value.data.title"
-        :style="{ color: value.data.style.txtTitleColor }"
-      >{{ value.data.title }}</h1>
-      <h3
-        v-if="value.data.subtitle"
-        :style="{ color: value.data.style.txtSubtitleColor }"
-      >{{ value.data.subtitle }}</h3>
+        :style="{ color: value.data.style.color , fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
+      >{{ value.data.title }}</p>
     </div>
   </section>
 </template>
 <script>
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
+import TextEditor from "../wixer_cmps/TextEditor";
 
 export default {
   props: {
@@ -38,7 +36,7 @@ export default {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEditer = true;
     else this.isEditer = false;
-    console.log(this.value);
+    console.log(this.value.data.style, "data style");
   },
   methods: {
     removeWidget(id) {
@@ -49,7 +47,8 @@ export default {
     }
   },
   components: {
-    WidgetEditor
+    WidgetEditor,
+    TextEditor
   }
 };
 </script>

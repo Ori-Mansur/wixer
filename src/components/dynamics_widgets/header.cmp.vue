@@ -13,11 +13,12 @@
       @remove="removeWidget"
       @edit="editWidget"
     ></widget-editor>
+    <text-editor :widget="value"></text-editor>
 
-    <div class="flex column">
+    <div class="flex column" :contenteditable="true">
       <h1
         v-if="value.data.title"
-        :style="{ color: value.data.style.txtTitleColor }"
+        :style="{fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
       >{{ value.data.title }}</h1>
       <h3
         v-if="value.data.subtitle"
@@ -28,6 +29,7 @@
 </template>
 <script>
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
+import TextEditor from "../wixer_cmps/TextEditor";
 
 export default {
   props: {
@@ -49,14 +51,14 @@ export default {
     }
   },
   components: {
-    WidgetEditor
+    WidgetEditor,
+    TextEditor
   }
 };
 </script>
 <style lang="scss">
 .header-container {
   margin-bottom: 10px;
-  position: relative;
 }
 
 img {

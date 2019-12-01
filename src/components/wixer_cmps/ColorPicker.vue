@@ -35,14 +35,15 @@ export default {
         "#35495E",
         "#000000",
         "#FFFFFF",
-        "#41B883"
+        "#41B883",
+        "#F0F4F7"
       ]
     };
   },
   methods: {
     setColor(color) {
-        console.log(color)
-        this.$emit("changeColor", color);
+      console.log(color);
+      this.$emit("changeColor", color);
     }
   }
 };

@@ -6,8 +6,8 @@
       <option>Arial</option>
     </select>
     <button @click="italicize">I</button>
-    <button @click="changeSize(+2)">FontUp</button>
-    <button @click="changeSize(-2)">FontDown</button>
+    <button @click="changeSize(+2)">+</button>
+    <button @click="changeSize(-2)">-</button>
     <button @click="makeBold">B</button>
     <img src="../../assets/icons/palette.svg" class="inactive" @click="chooseColor=!chooseColor" />
     <color-picker @changeColor="changeFontColor" v-if="chooseColor"></color-picker>
@@ -40,6 +40,7 @@ export default {
     },
     changeSize(diff) {
       this.widget.data.style.fontSize += diff;
+      console.log(this.widget.data.style.fontSize, "size");
     },
     changeFont() {
       this.widget.data.style.fontFamily = this.font;
@@ -61,7 +62,7 @@ export default {
 .text-editor-container {
   position: absolute;
   right: 25px;
-  top: 40px;
+  top: 100px;
   z-index: 100;
   background-color: #fff;
   padding: 5px;

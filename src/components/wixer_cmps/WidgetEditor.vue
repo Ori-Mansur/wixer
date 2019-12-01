@@ -1,5 +1,5 @@
 <template>
-  <section class="widget-editor-container" v-if="isEdit">
+  <section class="widget-editor-container">
     <img src="../../assets/icons/palette.svg" class="inactive" @click="chooseColor=!chooseColor" />
     <img src="../../assets/icons/bin.svg" @click="removeWidget" title="remove this widget" />
     <button @click="savePos(-1)">UP</button>
@@ -20,7 +20,9 @@ export default {
     widget: Object,
     isEdit: Boolean
   },
-  created() {},
+  created() {
+    console.log(this.widget);
+  },
   data() {
     return {
       chooseColor: false,
@@ -32,10 +34,11 @@ export default {
       this.$emit("edit", this.widget);
     },
     removeWidget() {
-      this.$emit("remove", this.widget.id);
+      this.$emit("remove", this.widget._id);
+      console.log(this.widget._id, "remove");
     },
     updateBackground(color) {
-      this.widget.style.bcgColor = color;
+      this.widget.data.style.bcgColor = color;
       // console.log(this.widget.data.style)
     },
     open() {
@@ -54,7 +57,7 @@ export default {
 .widget-editor-container {
   position: absolute;
   right: 25px;
-  top: 40px;
+  top: 160px;
   z-index: 100;
   background-color: #fff;
   padding: 5px;
