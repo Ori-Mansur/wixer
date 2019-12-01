@@ -1,5 +1,5 @@
 <template>
-    <section class="widget-editor-container">
+    <section class="widget-editor-container" v-if="isEdit">
         <img src="../../assets/icons/palette.svg" class="inactive" @click="chooseColor=!chooseColor">
         <img src="../../assets/icons/bin.svg" @click="removeWidget" title="remove this widget">
         <button @click="savePos(-1)">UP</button>
@@ -14,7 +14,8 @@ import ColorPicker from '../wixer_cmps/ColorPicker'
 
 export default {
   props: {
-    widget: Object
+    widget: Object,
+    isEdit: Boolean
   },
   created(){
     

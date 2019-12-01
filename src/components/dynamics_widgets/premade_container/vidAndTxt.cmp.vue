@@ -1,6 +1,6 @@
 <template>
   <section class="vidAndTxt-container flex row justify-center align-center" :contenteditable="edit" :style="{
-      backgroundImage: `url(${value.style.bcgImg})`, backgroundColor: value.style.bcgColor}">
+      backgroundImage: `url(${value.style.bcgImg})`, backgroundColor: value.style.bcgColor}" @click="toggleActive">
     <component
       v-for="(widget,idx) in value.data"
       :key="idx"
@@ -9,7 +9,7 @@
       :contenteditable="true"
       @remove="removeWidget"
     ></component>
-  <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget" @edit="editWidget"></widget-editor>
+  <widget-editor :isEdit="isEdit" :widget="value" class="widget-editor-container" @remove="removeWidget" @edit="editWidget"></widget-editor>
   </section>
 </template>
 
@@ -25,8 +25,13 @@ export default {
     WidgetEditor
   },
   props: {
-    edit: Boolean,
+    isEdit: false,
     value: Object
+  },
+  data(){
+    return{
+      edit: false
+    }
   },
   created(){
     console.log(this.value)
@@ -42,6 +47,9 @@ export default {
     editWidget(widget){
       this.$emit("edit", widget);
     },
+    toggleActive(){
+      this.isEdit = !this.isEdit
+    }
   }
 };
 </script>
@@ -49,9 +57,7 @@ export default {
 
 <style scoped>
 .vidAndTxt-container {
-  /* border-style: dotted; */
   margin-bottom: 10px;
-  position: relative
 }
 
 .text-center {
