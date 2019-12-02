@@ -42,10 +42,10 @@ export default {
             // context.commit({ type: 'setWap', wap })
             return wap
         },
-        async addWap(context, { wap }) {
+        async addWap({commit}, { wap }) {
             const addedWap = await WapService.add(wap)
-            context.commit({ type: 'addWap', addedWap })
-            context.commit({ type: 'open1',msg:'New wap added'})
+            commit({ type: 'addWap', addedWap })
+            commit({ type: 'open1',msg:'New wap added'})
             console.log('addedWap',addedWap);
             
             return addedWap
