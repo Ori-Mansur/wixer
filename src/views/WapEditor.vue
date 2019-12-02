@@ -86,9 +86,11 @@ export default {
         });
         this.$router.push(`/editor/${this.wap._id}`)
       } else {
+      console.log(this.wap)
+
         this.wap = await this.$store.dispatch({
           type: "updateWap",
-          wap: this.wap
+          updatedWap: this.wap
         });
       }
     },
@@ -102,6 +104,7 @@ export default {
       // });
     },
     edit(widget) {
+      console.log('saved widget', widget)
       var idx = this.wap.widgets.findIndex(
         currWidget => currWidget._id === widget._id
       );

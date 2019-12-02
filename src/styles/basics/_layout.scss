@@ -26,16 +26,12 @@
     &:hover {
       background-color: #fff;
       color: $clr1;
-      // img {
-      //     filter: grayscale(0);
-      // }
     }
   }
 
   img {
     transition: filter 0.3s;
     mix-blend-mode: multiply;
-    // filter: grayscale(1);
   }
 
   .cat-tag {

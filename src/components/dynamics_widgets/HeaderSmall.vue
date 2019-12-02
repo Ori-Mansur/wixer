@@ -1,7 +1,8 @@
 <template>
   <section
     v-if="value"
-    class="header-container flex align-center justify-center"
+    @click="getPos"
+    class="header-container flex align-center justify-center background"
     :style="{
       backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor,
       height: value.data.style.height + 'px'
@@ -13,17 +14,13 @@
       @remove="removeWidget"
       @edit="editWidget"
     ></widget-editor>
-    <text-editor :widget="value"></text-editor>
+    <text-editor :widget="value" :pos="pos"></text-editor>
 
     <div class="flex column" :contenteditable="true">
-      <h1
+      <p
         v-if="value.data.title"
-        :style="{fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
-      >{{ value.data.title }}</h1>
-      <h3
-        v-if="value.data.subtitle"
-        :style="{ color: value.data.style.txtSubtitleColor }"
-      >{{ value.data.subtitle }}</h3>
+        :style="{ color: value.data.style.color , fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
+      >{{ value.data.title }}</p>
     </div>
   </section>
 </template>
@@ -36,11 +33,15 @@ export default {
     edit: Boolean,
     value: Object
   },
+  data() {
+    return {
+      pos: { x: 0, y: 0 }
+    };
+  },
   created() {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEditer = true;
     else this.isEditer = false;
-    console.log(this.value);
   },
   methods: {
     removeWidget(id) {
@@ -48,6 +49,11 @@ export default {
     },
     editWidget(widget) {
       this.$emit("edit", widget);
+    },
+    getPos(ev) {
+      this.pos.x = ev.pageX - 20;
+      this.pos.y = ev.pageY + 20;
+      console.log(ev);
     }
   },
   components: {
@@ -64,5 +70,9 @@ export default {
 img {
   width: 100px;
   height: auto;
+}
+.background {
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

@@ -65,7 +65,7 @@ export default {
       this.$emit("addElement", element);
     },
     save(){
-this.$emit('save')
+      this.$emit('save')
     }
   },
   computed: {

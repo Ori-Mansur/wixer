@@ -15,22 +15,22 @@
     ></widget-editor>
 
     <div class="component-container flex row">
-    <component
-      v-for="(widget,idx) in value.data"
-      :key="idx"
-      :is="widget.type"
-      :value="widget"
-      :contenteditable="true"
-      :width="cmpWidth"
-      @remove="removeWidget"
-    ></component>
+      <component
+        v-for="(widget,idx) in value.data"
+        :key="idx"
+        :is="widget.type"
+        :value="widget"
+        :contenteditable="true"
+        :width="cmpWidth"
+        @remove="removeWidget"
+      ></component>
     </div>
   </section>
 </template>
 
 <script>
-import Video from "../video.cmp";
-import Txt from "../txt.cmp";
+import Video from "../Video";
+import Txt from "../Txt";
 import WidgetEditor from "../../wixer_cmps/WidgetEditor";
 
 export default {
@@ -62,8 +62,8 @@ export default {
     editWidget(widget) {
       this.$emit("edit", widget);
     },
-    toggleActive(){
-      this.isEdit = !this.isEdit
+    toggleActive() {
+      this.isEdit = !this.isEdit;
     }
   }
 };
@@ -73,7 +73,7 @@ export default {
 <style scoped>
 .vidAndTxt-container {
   margin-bottom: 10px;
-  padding: 2rem
+  padding: 2rem;
 }
 
 .text-center {

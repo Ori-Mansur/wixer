@@ -5,17 +5,17 @@
     @mouseout="isFocus = false"
     @blur="saveText"
     :style="{
-      backgroundImage: `url(${value.data.style.bcgImg})`, backgroundColor: value.data.style.bcgColor, width: width+'%'}"
+      backgroundImage: `url(${widgetToEdit.data.style.bcgImg})`, backgroundColor: widgetToEdit.data.style.bcgColor, width: width+'%'}"
   >
-    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
+    <widget-editor :widget="widgetToEdit" class="widget-editor-container" @remove="removeWidget" @newImage="newImage"></widget-editor>
     <p
       class="text"
       :contenteditable="true"
       @click="setPos"
       v-html="content"
-      :style="{fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
+      :style="{fontSize: widgetToEdit.data.style.fontSize + 'px',fontWeight: widgetToEdit.data.style.fontWeight, fontFamily: widgetToEdit.data.style.fontFamily, color: widgetToEdit.data.style.color, fontStyle: widgetToEdit.data.style.fontStyle }"
     ></p>
-    <text-editor :widget="value" ></text-editor>
+    <text-editor :widget="widgetToEdit" ></text-editor>
   </section>
 </template>
 
@@ -30,11 +30,14 @@ export default {
     width: Number
   },
   created() {
-    console.log(this.value);
+    this.getWidget()
+
   },
   data() {
     return {
       pos: 0,
+      widgetToEdit: null
+
     };
   },
   methods: {
@@ -49,6 +52,12 @@ export default {
     setPos(ev){
       console.log(ev)
       this.pos={y:ev.screenY, x: ev.screenY}
+    },
+    getWidget(){
+      this.widgetToEdit = JSON.parse(JSON.stringify(this.value))
+    },
+    newImage(imgUrl){
+      this.widgetToEdit.data.style.bcgImg=imgUrl
     }
   },
   computed: {
@@ -57,7 +66,7 @@ export default {
       else return "none";
     },
     content() {
-      return this.value.data.txt;
+      return this.widgetToEdit.data.txt;
     }
   },
   components: {

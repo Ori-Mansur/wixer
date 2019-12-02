@@ -8,18 +8,36 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-// import  "@css/fontawesome.css" 
-// import  "@css/brands.css" 
-// import  "@css/solid.css" 
-import Unicon from 'vue-unicons'
-import { uniWindowSection,uniBookMedical,uniPlus,uniEdit,uniListUl,uniFileMedical,uniTrashAlt ,uniMinus  } from 'vue-unicons/src/icons'
+// import  "@css/fontawesome.css"
+// import  "@css/brands.css"
+// import  "@css/solid.css"
+import Unicon from 'vue-unicons';
+import {
+  uniWindowSection,
+  uniBookMedical,
+  uniPlus,
+  uniEdit,
+  uniListUl,
+  uniFileMedical,
+  uniTrashAlt,
+  uniMinus
+} from 'vue-unicons/src/icons';
 import VueDragDrop from 'vue-drag-drop';
 
 Vue.use(VueDragDrop);
 
-Unicon.add([uniWindowSection,uniBookMedical ,uniPlus,uniEdit ,uniListUl,uniFileMedical,uniTrashAlt,uniMinus    ])
+Unicon.add([
+  uniWindowSection,
+  uniBookMedical,
+  uniPlus,
+  uniEdit,
+  uniListUl,
+  uniFileMedical,
+  uniTrashAlt,
+  uniMinus
+]);
 
-Vue.use(Unicon)
+Vue.use(Unicon);
 Vue.use(ElementUI);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
@@ -39,6 +57,7 @@ Vue.use(VueGoogleMaps, {
     libraries: 'places'
   }
 });
+
 import VueDraggable from 'vue-draggable';
 
 Vue.use(VueDraggable);

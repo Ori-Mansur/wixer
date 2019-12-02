@@ -1,27 +1,38 @@
 <template>
   <section class="widget-editor-container" v-if="isEdit">
-    <img src="../../assets/icons/palette.svg" class="inactive" @click="chooseColor=!chooseColor" />
-    <img src="../../assets/icons/bin.svg" @click="removeWidget" title="remove this widget" />
+    <img
+      src="../../assets/icons/palette.svg"
+      class="inactive"
+      @click="chooseColor = !chooseColor"
+    />
+    <img
+      src="../../assets/icons/bin.svg"
+      @click="removeWidget"
+      title="remove this widget"
+    />
     <button @click="savePos(-1)">UP</button>
     <button @click="savePos(+1)">DOWN</button>
-    <label for="file-upload" class="custom-file-upload">
+    <label for="file-upload" class="custom-file-upload" @change="uploadImg">
       <input id="file-upload" type="file" />
       <img src="../../assets/icons/imgup.svg" />
     </label>
-    <color-picker @changeColor="updateBackground" v-if="chooseColor"></color-picker>
+    <color-picker
+      @changeColor="updateBackground"
+      v-if="chooseColor"
+    ></color-picker>
   </section>
 </template>
 
 <script>
 import ColorPicker from "../wixer_cmps/ColorPicker";
+import CloudinaryService from "../../services/cloudinary.service.js";
 
 export default {
   props: {
-    widget: Object,
-   
+    widget: Object
   },
   created() {
-    // console.log(this.widget);
+    console.log('newWidget', this.widget);
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
@@ -30,8 +41,13 @@ export default {
     return {
       chooseColor: false,
       imageChange: false,
-       isEdit: false
+      isEdit: false
     };
+  },
+  computed:{
+    imageUrlRef(){
+      return this.widget.data.style.bcgImg
+    }
   },
   methods: {
     editWidget() {
@@ -43,22 +59,33 @@ export default {
     },
     updateBackground(color) {
       this.widget.data.style.bcgColor = color;
+      this.editWidget()
       // console.log(this.widget.data.style)
     },
-    open() {
-      console.log("hi");
-    },
-    savePos(val) {
-      console.log(val);
+    uploadImg(event) {
+      console.log(event)
+      CloudinaryService.uploadImg(event)
+        .then(imgUrl => {
+          console.log('widget of Imaage2',this.widget)
+          // this.$emit("newImage", imgUrl);
+
+          this.widget.data.style.bcgImg = imgUrl
+        })
+        .then(()=>this.editWidget())
     }
   },
-  watch:{
-'this.$route.path'(curr){
-console.log(curr);
-
-  if (curr.includes("editor")) this.isEdit = true;
-  else this.isEdit = false;
-}
+  watch: {
+    "this.$route.path"(curr) {
+      if (curr.includes("editor")) this.isEdit = true;
+      else this.isEdit = false;
+    },
+    // widget: {
+    //   handler(){
+    //     console.log('changing data...')
+    //     this.$emit("edit", this.widget);
+    //   },
+    // deep: true
+    // },
   },
   components: {
     ColorPicker
