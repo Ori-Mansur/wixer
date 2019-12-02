@@ -15,12 +15,12 @@
     ></widget-editor>
     <text-editor :widget="value"></text-editor>
 
-    <div class="flex column" :contenteditable="true">
-      <h1
+    <div class="flex column">
+      <h1 :contenteditable="true"
         v-if="value.data.title"
         :style="{fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
       >{{ value.data.title }}</h1>
-      <h3
+      <h3 :contenteditable="true"
         v-if="value.data.subtitle"
         :style="{ color: value.data.style.txtSubtitleColor }"
       >{{ value.data.subtitle }}</h3>

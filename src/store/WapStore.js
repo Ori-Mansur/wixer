@@ -15,6 +15,7 @@ export default {
             state.waps.unshift(wap)
         },
         updateWap(state, { updateWap }) {
+            console.log(updateWap)
             const idx = state.waps.findIndex(currWap => currWap._id === updateWap._id)
             state.waps.splice(idx, 1, updateWap)
         },
@@ -50,8 +51,8 @@ export default {
             
             return addedWap
         },
-        async updateWap(context, { wap }) {
-            const updateWap = await WapService.update(wap)
+        async updateWap(context, { updatedWap }) {
+            const updateWap = await WapService.update(updatedWap)
             context.commit({ type: 'open2',msg:'Wap saved'})
             context.commit({ type: 'updateWap', updateWap })
             return updateWap

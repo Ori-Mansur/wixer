@@ -88,7 +88,7 @@ export default {
       } else {
         this.wap = await this.$store.dispatch({
           type: "updateWap",
-          wap: this.wap
+          updatedWap: this.wap
         });
       }
     },

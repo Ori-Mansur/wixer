@@ -4,7 +4,7 @@
     <img src="../../assets/icons/bin.svg" @click="removeWidget" title="remove this widget" />
     <button @click="savePos(-1)">UP</button>
     <button @click="savePos(+1)">DOWN</button>
-    <label for="file-upload" class="custom-file-upload">
+    <label for="file-upload" class="custom-file-upload" @change="uploadImg">
       <input id="file-upload" type="file" />
       <img src="../../assets/icons/imgup.svg" />
     </label>
@@ -14,6 +14,7 @@
 
 <script>
 import ColorPicker from "../wixer_cmps/ColorPicker";
+import CloudinaryService from "../../services/cloudinary.service.js"
 
 export default {
   props: {
@@ -45,13 +46,11 @@ export default {
       this.widget.data.style.bcgColor = color;
       // console.log(this.widget.data.style)
     },
-    open() {
-      console.log("hi");
+    uploadImg(event){
+      CloudinaryService.uploadImg(event)
+        .then(imgUrl => this.widget.data.style.bcgImg = imgUrl)
+      }
     },
-    savePos(val) {
-      console.log(val);
-    }
-  },
   watch:{
 'this.$route.path'(curr){
 console.log(curr);
