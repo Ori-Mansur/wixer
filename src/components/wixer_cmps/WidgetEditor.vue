@@ -14,12 +14,11 @@
 
 <script>
 import ColorPicker from "../wixer_cmps/ColorPicker";
-import CloudinaryService from "../../services/cloudinary.service.js"
+import CloudinaryService from "../../services/cloudinary.service.js";
 
 export default {
   props: {
-    widget: Object,
-   
+    widget: Object
   },
   created() {
     // console.log(this.widget);
@@ -31,7 +30,7 @@ export default {
     return {
       chooseColor: false,
       imageChange: false,
-       isEdit: false
+      isEdit: false
     };
   },
   methods: {
@@ -46,18 +45,20 @@ export default {
       this.widget.data.style.bcgColor = color;
       // console.log(this.widget.data.style)
     },
-    uploadImg(event){
-      CloudinaryService.uploadImg(event)
-        .then(imgUrl => this.widget.data.style.bcgImg = imgUrl)
-      }
-    },
-  watch:{
-'this.$route.path'(curr){
-console.log(curr);
+    uploadImg(event) {
+      CloudinaryService.uploadImg(event).then(imgUrl => {
+        console.log(imgUrl);
+        this.widget.data.style.bcgImg = imgUrl;
+      });
+    }
+  },
+  watch: {
+    "this.$route.path"(curr) {
+      console.log(curr);
 
-  if (curr.includes("editor")) this.isEdit = true;
-  else this.isEdit = false;
-}
+      if (curr.includes("editor")) this.isEdit = true;
+      else this.isEdit = false;
+    }
   },
   components: {
     ColorPicker

@@ -1,7 +1,7 @@
 <template>
   <section
     v-if="value"
-    class="header-container flex align-center justify-center"
+    class="header-container flex align-center justify-center background"
     :style="{
       backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor,
       height: value.data.style.height + 'px'
@@ -16,11 +16,13 @@
     <text-editor :widget="value"></text-editor>
 
     <div class="flex column">
-      <h1 :contenteditable="true"
+      <h1
+        :contenteditable="true"
         v-if="value.data.title"
         :style="{fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
       >{{ value.data.title }}</h1>
-      <h3 :contenteditable="true"
+      <h3
+        :contenteditable="true"
         v-if="value.data.subtitle"
         :style="{ color: value.data.style.txtSubtitleColor }"
       >{{ value.data.subtitle }}</h3>
@@ -65,4 +67,9 @@ img {
   width: 100px;
   height: auto;
 }
+.background {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 </style>
+
