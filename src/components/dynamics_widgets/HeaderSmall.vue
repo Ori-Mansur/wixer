@@ -42,7 +42,6 @@ return{
     const param = this.$route.path;
     if (param.includes("editor")) this.isEditer = true;
     else this.isEditer = false;
-    console.log(this.value.data.style, "data style");
   },
   methods: {
     removeWidget(id) {

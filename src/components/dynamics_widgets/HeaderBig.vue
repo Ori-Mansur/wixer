@@ -3,27 +3,28 @@
     v-if="value"
     class="header-container flex align-center justify-center"
     :style="{
-      backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor,
-      height: value.data.style.height + 'px'
+      backgroundImage: `url(${widgetToEdit.data.style.bcgImg})`,backgroundColor: widgetToEdit.data.style.bcgColor,
+      height: widgetToEdit.data.style.height + 'px'
     }"
   >
     <widget-editor
-      :widget="value"
+      :widget="widgetToEdit"
       class="widget-editor-container"
       @remove="removeWidget"
       @edit="editWidget"
+      @newImage="newImage"
     ></widget-editor>
-    <text-editor :widget="value"></text-editor>
+    <text-editor :widget="widgetToEdit"></text-editor>
 
     <div class="flex column">
       <h1 :contenteditable="true"
-        v-if="value.data.title"
-        :style="{fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
-      >{{ value.data.title }}</h1>
+        v-if="widgetToEdit.data.title"
+        :style="{fontSize: widgetToEdit.data.style.fontSize + 'px',fontWeight: widgetToEdit.data.style.fontWeight, fontFamily: widgetToEdit.data.style.fontFamily, color: widgetToEdit.data.style.color, fontStyle: widgetToEdit.data.style.fontStyle }"
+      >{{ widgetToEdit.data.title }}</h1>
       <h3 :contenteditable="true"
-        v-if="value.data.subtitle"
-        :style="{ color: value.data.style.txtSubtitleColor }"
-      >{{ value.data.subtitle }}</h3>
+        v-if="widgetToEdit.data.subtitle"
+        :style="{ color: widgetToEdit.data.style.txtSubtitleColor }"
+      >{{ widgetToEdit.data.subtitle }}</h3>
     </div>
   </section>
 </template>
@@ -40,14 +41,26 @@ export default {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEditer = true;
     else this.isEditer = false;
-    console.log(this.value);
+    this.getWidget()
+  },
+  data(){
+    return{
+      widgetToEdit: null
+    }
   },
   methods: {
     removeWidget(id) {
       this.$emit("remove", id);
     },
     editWidget(widget) {
-      this.$emit("edit", widget);
+      this.$emit("edit", this.widgetToEdit);
+    },
+    getWidget(){
+      this.widgetToEdit = JSON.parse(JSON.stringify(this.value))
+      console.log(this.widgetToEdit)
+    },
+    newImage(imgUrl){
+      this.widgetToEdit.data.style.bcgImg=imgUrl
     }
   },
   components: {

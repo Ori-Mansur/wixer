@@ -24,7 +24,7 @@ export default {
     pos: Object
   },
   created() {
-    console.log(this.widget);
+    // console.log(this.widget);
   },
   data() {
     return {
