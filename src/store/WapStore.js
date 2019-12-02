@@ -51,8 +51,10 @@ export default {
             
             return addedWap
         },
-        async updateWap(context, { updatedWap }) {
-            const updateWap = await WapService.update(updatedWap)
+        async updateWap(context, { wap }) {
+            console.log('wap store',wap);
+            
+            const updateWap = await WapService.update(wap)
             context.commit({ type: 'open2',msg:'Wap saved'})
             context.commit({ type: 'updateWap', updateWap })
             return updateWap
