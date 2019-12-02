@@ -1,13 +1,20 @@
 <template>
   <section
+    v-if="value"
+    @click="getPos"
     class="txt-container flex column align-center"
-    @mouseover="isFocus = true"
-    @mouseout="isFocus = false"
+    @mouseover="isIn=true"
+    @mouseleave="isIn=false"
     @blur="saveText"
     :style="{
       backgroundImage: `url(${widgetToEdit.data.style.bcgImg})`, backgroundColor: widgetToEdit.data.style.bcgColor, width: width+'%'}"
   >
-    <widget-editor :widget="widgetToEdit" class="widget-editor-container" @remove="removeWidget" @newImage="newImage"></widget-editor>
+    <widget-editor
+      :widget="widgetToEdit"
+      class="widget-editor-container"
+      @remove="removeWidget"
+      @newImage="newImage"
+    ></widget-editor>
     <p
       class="text"
       :contenteditable="true"
@@ -15,7 +22,7 @@
       v-html="content"
       :style="{fontSize: widgetToEdit.data.style.fontSize + 'px',fontWeight: widgetToEdit.data.style.fontWeight, fontFamily: widgetToEdit.data.style.fontFamily, color: widgetToEdit.data.style.color, fontStyle: widgetToEdit.data.style.fontStyle }"
     ></p>
-    <text-editor :widget="widgetToEdit" ></text-editor>
+    <text-editor :widget="value" :pos="pos"></text-editor>
   </section>
 </template>
 
@@ -30,14 +37,12 @@ export default {
     width: Number
   },
   created() {
-    this.getWidget()
-
+    this.getWidget();
   },
   data() {
     return {
-      pos: 0,
+      pos: { x: 0, y: 0 },
       widgetToEdit: null
-
     };
   },
   methods: {
@@ -45,19 +50,20 @@ export default {
       this.$emit("remove", id);
     },
     saveText(ev) {
-      console.log(ev)
+      console.log(ev);
       // this.value.data.txt = ev.target.innerText;
       // console.log(this.value.data.txt);
     },
-    setPos(ev){
-      console.log(ev)
-      this.pos={y:ev.screenY, x: ev.screenY}
+    getPos(ev) {
+      this.pos.x = ev.pageX - 20;
+      this.pos.y = ev.pageY + 20;
+      console.log(ev);
     },
-    getWidget(){
-      this.widgetToEdit = JSON.parse(JSON.stringify(this.value))
+    getWidget() {
+      this.widgetToEdit = JSON.parse(JSON.stringify(this.value));
     },
-    newImage(imgUrl){
-      this.widgetToEdit.data.style.bcgImg=imgUrl
+    newImage(imgUrl) {
+      this.widgetToEdit.data.style.bcgImg = imgUrl;
     }
   },
   computed: {

@@ -1,16 +1,16 @@
 <template>
   <section
+    @mouseover="isIn=true"
+    @mouseleave="isIn=false"
     v-if="value"
     @click="getPos"
-    @mouseover="editorIn"
-    @mouseleave="out"
-    class="header-container flex align-center justify-center background"
+    class="header-container flex column justify-center align-center background"
     :style="{
       backgroundImage: `url(${widgetToEdit.data.style.bcgImg})`,backgroundColor: widgetToEdit.data.style.bcgColor,
       height: widgetToEdit.data.style.height + 'px'
     }"
   >
-    <widget-editor
+    <widget-editor 
       :widget="widgetToEdit"
       v-if="isOn"
       class="widget-editor-container"
@@ -18,14 +18,16 @@
       @edit="editWidget"
       @newImage="newImage"
     ></widget-editor>
-    <text-editor :widget="widgetToEdit" :pos="pos"></text-editor>
+    <text-editor :widget="value" :pos="pos"></text-editor>
 
     <div class="flex column">
-      <h1 :contenteditable="true"
+      <h1
+        :contenteditable="true"
         v-if="widgetToEdit.data.title"
         :style="{fontSize: widgetToEdit.data.style.fontSize + 'px',fontWeight: widgetToEdit.data.style.fontWeight, fontFamily: widgetToEdit.data.style.fontFamily, color: widgetToEdit.data.style.color, fontStyle: widgetToEdit.data.style.fontStyle }"
       >{{ widgetToEdit.data.title }}</h1>
-      <h3 :contenteditable="true"
+      <h3
+        :contenteditable="true"
         v-if="widgetToEdit.data.subtitle"
         :style="{ color: widgetToEdit.data.style.txtSubtitleColor }"
       >{{ widgetToEdit.data.subtitle }}</h3>
@@ -44,29 +46,29 @@ export default {
   data() {
     return {
       pos: { x: 0, y: 0 },
-      isOn:false,
-      widgetToEdit: null
+      widgetToEdit: null,
+      isIn: false
     };
   },
   created() {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEditer = true;
     else this.isEditer = false;
-    this.getWidget()
+    this.getWidget();
   },
   methods: {
     removeWidget(id) {
       this.$emit("remove", id);
     },
     editWidget() {
-      this.$emit("edit", this.widgetToEdit)
+      this.$emit("edit", this.widgetToEdit);
     },
-    getWidget(){
-      this.widgetToEdit = JSON.parse(JSON.stringify(this.value))
-      console.log(this.widgetToEdit)
+    getWidget() {
+      this.widgetToEdit = JSON.parse(JSON.stringify(this.value));
+      console.log(this.widgetToEdit);
     },
-    newImage(imgUrl){
-      this.widgetToEdit.data.style.bcgImg=imgUrl
+    newImage(imgUrl) {
+      this.widgetToEdit.data.style.bcgImg = imgUrl;
       this.$emit("edit", this.widgetToEdit);
     },
     getPos(ev) {
@@ -88,6 +90,9 @@ export default {
 };
 </script>
 <style lang="scss">
+.widget-editor-container{
+  z-index:5;
+}
 .header-container {
   margin-bottom: 10px;
 }

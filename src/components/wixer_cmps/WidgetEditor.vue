@@ -42,9 +42,12 @@ export default {
       isEdit: false
     };
   },
-  computed: {
-    imageUrlRef() {
-      return this.widget.data.style.bcgImg;
+  computed:{
+    imageUrlRef(){
+      return this.widget.data.style.bcgImg
+    },
+    fileUpload(){
+      return `file-upload-${this.widget._id}`
     }
   },
   methods: {
