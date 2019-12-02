@@ -12,8 +12,8 @@
     />
     <button @click="savePos(-1)">UP</button>
     <button @click="savePos(+1)">DOWN</button>
-    <label for="file-upload" class="custom-file-upload" @change="uploadImg">
-      <input id="file-upload" type="file" />
+    <label :for="fileUpload" class="custom-file-upload" @change="uploadImg">
+      <input :id="fileUpload" type="file" />
       <img src="../../assets/icons/imgup.svg" />
     </label>
     <color-picker
@@ -47,6 +47,9 @@ export default {
   computed:{
     imageUrlRef(){
       return this.widget.data.style.bcgImg
+    },
+    fileUpload(){
+      return `file-upload-${this.widget._id}`
     }
   },
   methods: {

@@ -1,14 +1,16 @@
 <template>
   <section
+    @mouseover="isIn=true"
+    @mouseleave="isIn=false"
     v-if="value"
     @click="getPos"
-    class="header-container flex align-center justify-center background"
+    class="header-container flex column justify-center align-center background"
     :style="{
       backgroundImage: `url(${widgetToEdit.data.style.bcgImg})`,backgroundColor: widgetToEdit.data.style.bcgColor,
       height: widgetToEdit.data.style.height + 'px'
     }"
   >
-    <widget-editor
+    <widget-editor 
       :widget="widgetToEdit"
       class="widget-editor-container"
       @remove="removeWidget"
@@ -41,7 +43,8 @@ export default {
   data() {
     return {
       pos: { x: 0, y: 0 },
-      widgetToEdit: null
+      widgetToEdit: null,
+      isIn: false
     };
   },
   created() {
@@ -78,6 +81,9 @@ export default {
 };
 </script>
 <style lang="scss">
+.widget-editor-container{
+  z-index:5;
+}
 .header-container {
   margin-bottom: 10px;
 }

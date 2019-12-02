@@ -1,8 +1,8 @@
 <template>
   <section
     class="txt-container flex column align-center"
-    @mouseover="isFocus = true"
-    @mouseout="isFocus = false"
+    @mouseover="isIn=true"
+    @mouseleave="isIn=false"
     @blur="saveText"
     :style="{
       backgroundImage: `url(${widgetToEdit.data.style.bcgImg})`, backgroundColor: widgetToEdit.data.style.bcgColor, width: width+'%'}"
@@ -36,7 +36,8 @@ export default {
   data() {
     return {
       pos: 0,
-      widgetToEdit: null
+      widgetToEdit: null,
+      isIn: false
 
     };
   },

@@ -1,6 +1,6 @@
 <template>
-  <section class="twoCol-container" :contenteditable="edit">
-    <widget-editor :widget="value" class="widget-editor-container flex justify-end" @remove="removeWidget"></widget-editor>
+  <section class="twoCol-container" :contenteditable="edit" @mouseover="isIn=true" @mouseleave="isIn=false">
+    <widget-editor v-show="isIn" :widget="value" class="widget-editor-container flex justify-end" @remove="removeWidget"></widget-editor>
     <div class="component-container flex row justify-content">
     <component
       v-for="(widget,idx) in value.data"
@@ -29,7 +29,8 @@ export default {
   created() {},
   data(){
     return{
-      cmpWidth: 50
+      cmpWidth: 50,
+      isIn=false
     }
   },
   components: {

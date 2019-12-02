@@ -1,11 +1,9 @@
 'use strict'
 
-
 export default {
     loadFromStorage,
     saveToStorage,
     makeId
-
 }
 
 function loadFromStorage(key) {
@@ -19,11 +17,11 @@ function saveToStorage(key, value) {
     localStorage.setItem(key, json)
 }
 
-function makeId(length = 3) {
+function makeId(length = 13) {
     var txt = '';
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     for (var i = 0; i < length; i++) {
-        txt += possible.charAt(Math.floor(Math.random() * possible.length));
+        txt += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return txt;
 }
