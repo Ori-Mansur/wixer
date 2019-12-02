@@ -27,6 +27,7 @@ import Txt from "../dynamics_widgets/txt.cmp";
 import Video from "../dynamics_widgets/video.cmp";
 import Form from "../dynamics_widgets/form.cmp";
 import AboutLp from "../dynamics_widgets/about.lp.cmp";
+import FormInline from '../dynamics_widgets/form.inline.cmp'
 
 export default {
   props: {
@@ -68,7 +69,8 @@ export default {
     Txt,
     Video,
     Form,
-    AboutLp
+    AboutLp,
+    FormInline
   }
 };
 </script>

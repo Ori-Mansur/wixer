@@ -15,7 +15,7 @@
       v-html="content"
       :style="{fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
     ></p>
-    <text-editor :widget="value" :pos="pos"></text-editor>
+    <text-editor :widget="value" ></text-editor>
   </section>
 </template>
 

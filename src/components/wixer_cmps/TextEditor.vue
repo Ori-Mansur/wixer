@@ -1,15 +1,16 @@
 <template>
-  <section class="text-editor-container">
+  <section class="text-editor-container" v-if="pos&&pos.x>0"  :style="{top:y,left:x}">
     <select @change="changeFont" v-model="font">
       <option>Montserrat</option>
       <option>Roboto</option>
       <option>Arial</option>
     </select>
-    <button @click="italicize">I</button>
-    <button @click="changeSize(+2)">+</button>
-    <button @click="changeSize(-2)">-</button>
-    <button @click="makeBold">B</button>
-    <img src="../../assets/icons/palette.svg" class="inactive" @click="chooseColor=!chooseColor" />
+    <button @click.stop="italicize">I</button>
+    
+    <button @click.stop="changeSize(+2)"><unicon name="plus" fill="gray" /></button>
+    <button @click.stop="changeSize(-2)"><unicon name="minus" fill="gray" /></button>
+    <button @click.stop="makeBold">B</button>
+    <img src="../../assets/icons/palette.svg" class="inactive" @click.stop="chooseColor=!chooseColor" />
     <color-picker @changeColor="changeFontColor" v-if="chooseColor"></color-picker>
   </section>
 </template>
@@ -28,7 +29,7 @@ export default {
   data() {
     return {
       chooseColor: false,
-      font: "Arial"
+      font: "Arial",
     };
   },
   methods: {
@@ -54,6 +55,14 @@ export default {
         this.widget.data.style.fontStyle === "normal" ? "italic" : "normal";
     }
   },
+  computed:{
+y(){
+  return this.pos.y+'px'
+},
+x(){
+  return this.pos.x+'px'
+}
+  },
   components: {
     ColorPicker
   }
@@ -61,8 +70,8 @@ export default {
 </script>
 <style lang="scss">
 .text-editor-container {
-  position: relative;
-  background-color: #fff;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.568);
   padding: 5px;
   img {
     width: 30px;

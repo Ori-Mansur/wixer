@@ -3,6 +3,7 @@
     <component
       v-for="(widget, idx) in wap.widgets"
       :key="idx"
+      :isEdit="isEdit"
       :is="widget.type"
       :value="widget"
       :contenteditable="false"
@@ -16,17 +17,20 @@ import Container2 from "../components/dynamics_widgets/container2.cmp";
 import Container3 from "../components/dynamics_widgets/container3.cmp";
 import Empty from "../components/dynamics_widgets/empty.cmp";
 import Header from "../components/dynamics_widgets/header.cmp";
+import Header2 from "../components/dynamics_widgets/header2.cmp";
 import Img from "../components/dynamics_widgets/img.cmp";
 import Txt from "../components/dynamics_widgets/txt.cmp";
 import Video from "../components/dynamics_widgets/video.cmp";
 import VideoAndTxt from "../components/dynamics_widgets/premade_container/vidAndTxt.cmp";
 import Form from "../components/dynamics_widgets/form.cmp";
+import FormInline from "../components/dynamics_widgets/form.inline.cmp";
 import AboutLp from "../components/dynamics_widgets/about.lp.cmp";
 
 export default {
   data() {
     return {
-      wap: null
+      wap: null,
+      isEdit:false
     };
   },
   methods: {
@@ -52,11 +56,13 @@ export default {
     Container3,
     Empty,
     Header,
+    Header2,
     Img,
     Txt,
     Video,
     VideoAndTxt,
     Form,
+    FormInline,
     AboutLp
   }
 };

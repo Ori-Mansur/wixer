@@ -84,7 +84,7 @@ export default {
           type: "addWap",
           wap: this.wap
         });
-        this.$route.push(`/editor/${this.wap._id}`)
+        this.$router.push(`/editor/${this.wap._id}`)
       } else {
         this.wap = await this.$store.dispatch({
           type: "updateWap",
