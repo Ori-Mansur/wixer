@@ -15,14 +15,14 @@
 
 <script>
 import NavBar from "../dynamics_widgets/NavBarEdit";
-import Container1 from "../dynamics_widgets/container1.cmp";
-import Container3 from "../dynamics_widgets/container3.cmp";
-import Empty from "../dynamics_widgets/empty.cmp";
-import Header from "../dynamics_widgets/header.cmp";
-import Img from "../dynamics_widgets/img.cmp";
-import Txt from "../dynamics_widgets/txt.cmp";
-import Video from "../dynamics_widgets/video.cmp";
-import Map from "../dynamics_widgets/map.cmp";
+import Container1 from "../dynamics_widgets/Container1";
+import Container3 from "../dynamics_widgets/Container3";
+import Empty from "../dynamics_widgets/Empty";
+import HeaderBig from "../dynamics_widgets/HeaderBig";
+import Img from "../dynamics_widgets/Img";
+import Txt from "../dynamics_widgets/Txt";
+import Video from "../dynamics_widgets/Video";
+import Map from "../dynamics_widgets/Map";
 
 export default {
   props: {
@@ -35,7 +35,7 @@ export default {
     Container1,
     Container3,
     Empty,
-    Header,
+    HeaderBig,
     Img,
     Txt,
     Video,
