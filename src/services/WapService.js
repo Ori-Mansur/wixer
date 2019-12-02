@@ -46,7 +46,7 @@ async function update(wap) {
     //             .then(res => res.data)
     //     })
     // else 
-    const res = await HttpService.put(`${BASE_URL}/${wap.id}`, wap)
+    const res = await HttpService.put(`${BASE_URL}/${wap._id}`, wap)
     // console.log('res', res);
 
     return res

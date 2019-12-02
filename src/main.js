@@ -20,7 +20,11 @@ import {
   uniListUl,
   uniFileMedical,
   uniTrashAlt,
-  uniMinus
+  uniMinus,
+  uniSortAmountUp ,
+  uniSortAmountDown ,
+  uniImagePlus,
+  uniPalette 
 } from 'vue-unicons/src/icons';
 import VueDragDrop from 'vue-drag-drop';
 
@@ -34,7 +38,11 @@ Unicon.add([
   uniListUl,
   uniFileMedical,
   uniTrashAlt,
-  uniMinus
+  uniMinus,
+  uniSortAmountUp ,
+  uniSortAmountDown,
+  uniImagePlus ,
+  uniPalette 
 ]);
 
 Vue.use(Unicon);

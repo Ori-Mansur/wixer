@@ -38,9 +38,11 @@
     }
     .list-option {
       position: fixed;
+      z-index: +1000000;
       left: 138px;
       top: 100px;
-      height: fit-content;
+      max-height: 400px;
+      
       background-color: rgba(238, 238, 238, 0.9);
       box-shadow: 0 2px 5px 0 rgba(22, 45, 61, 0.58);
       border-radius: 12px;
@@ -58,6 +60,7 @@
     }
     .add-option {
       top: 168px;
+      column-count: 2;
     }
     .wap-option {
       text-align: start;

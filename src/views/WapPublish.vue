@@ -25,6 +25,11 @@ import Video from "../components/dynamics_widgets/Video";
 import Form from "../components/dynamics_widgets/Form";
 import FormInline from "../components/dynamics_widgets/FormInline";
 import About from "../components/dynamics_widgets/About";
+import HeaderSurfe from "../components/dynamics_widgets/surfes_web/HeaderSurfe";
+import MainCardSurfe from "../components/dynamics_widgets/surfes_web/MainCardSurfe";
+import AboutUsSurfe from "../components/dynamics_widgets/surfes_web/AboutUsSurfe";
+import OurTeamSurfe from "../components/dynamics_widgets/surfes_web/OurTeamSurfe";
+import FrameSurfe from "../components/dynamics_widgets/surfes_web/FrameSurfe";
 
 export default {
   data() {
@@ -63,7 +68,12 @@ export default {
     Video,
     Form,
     FormInline,
-    About
+    About,
+     HeaderSurfe,
+    MainCardSurfe,
+    AboutUsSurfe,
+    OurTeamSurfe,
+    FrameSurfe
   }
 };
 </script>

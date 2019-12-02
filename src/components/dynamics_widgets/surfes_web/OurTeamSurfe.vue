@@ -56,7 +56,7 @@
   padding-bottom: 60px
 }
 .team-card-surfe {
-  position: relative;
+  height: 250px;
   width: 25%;
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@
   background-color: #ffffff;
 }
 .team-card-surfe:nth-child(even) {
-  top: 30px;
+  margin-top: 30px;
 }
 .profile-picture {
   height: 100px;

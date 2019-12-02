@@ -19,7 +19,7 @@
   <el-form-item label="Phone" prop="phone">
     <el-input type="tel" v-model="ruleForm.phone"></el-input>
   </el-form-item>
-  <el-form-item>
+  <el-form-item class="btn">
     <el-button type="primary" @click="submitForm('ruleForm')">Submit</el-button>
     <el-button @click="resetForm('ruleForm')">Reset</el-button>
   </el-form-item>
@@ -102,8 +102,15 @@
   }
 </script>
 <style lang="scss" scoped>
+.el-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .el-form-item{
-    width: 25%
+    width: 23%;
+    
+    // margin: 0px
 }
 .el-form-item__label{
     width: 0px
@@ -111,6 +118,12 @@
 .el-form-item__label{
     
     text-align: start
+}
+.btn{
+  margin-top: 20px;
+  display: inline-flex;
+  justify-content: space-between;
+  width: fit-content;
 }
 
 </style>

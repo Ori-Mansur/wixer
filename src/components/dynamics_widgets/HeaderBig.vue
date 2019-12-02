@@ -2,6 +2,8 @@
   <section
     v-if="value"
     @click="getPos"
+    @mouseover="editorIn"
+    @mouseleave="out"
     class="header-container flex align-center justify-center background"
     :style="{
       backgroundImage: `url(${widgetToEdit.data.style.bcgImg})`,backgroundColor: widgetToEdit.data.style.bcgColor,
@@ -10,12 +12,13 @@
   >
     <widget-editor
       :widget="widgetToEdit"
+      v-if="isOn"
       class="widget-editor-container"
       @remove="removeWidget"
       @edit="editWidget"
       @newImage="newImage"
     ></widget-editor>
-    <text-editor :widget="widgetToEdit"></text-editor>
+    <text-editor :widget="widgetToEdit" :pos="pos"></text-editor>
 
     <div class="flex column">
       <h1 :contenteditable="true"
@@ -41,6 +44,7 @@ export default {
   data() {
     return {
       pos: { x: 0, y: 0 },
+      isOn:false,
       widgetToEdit: null
     };
   },
@@ -69,6 +73,12 @@ export default {
       this.pos.x = ev.pageX - 20;
       this.pos.y = ev.pageY + 20;
       console.log(ev);
+    },
+    editorIn(){
+     this.isOn=true
+    },
+    out(){
+      this.isOn=false
     }
   },
   components: {

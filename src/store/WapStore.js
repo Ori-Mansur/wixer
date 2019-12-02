@@ -39,7 +39,6 @@ export default {
         async wapById(context, { id }) {
             
             const wap = await WapService.getById(id)
-            console.log('store',wap);
             // context.commit({ type: 'setWap', wap })
             return wap
         },
@@ -53,7 +52,6 @@ export default {
         },
         async updateWap(context, { wap }) {
             console.log('wap store',wap);
-            
             const updateWap = await WapService.update(wap)
             context.commit({ type: 'open2',msg:'Wap saved'})
             context.commit({ type: 'updateWap', updateWap })

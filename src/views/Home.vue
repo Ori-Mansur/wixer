@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home container">
     <h1>Make </h1>
   <NavBarSurfe/>
   <NavCardSurfe/>

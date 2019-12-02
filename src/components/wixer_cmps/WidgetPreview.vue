@@ -27,6 +27,11 @@ import Video from "../dynamics_widgets/Video";
 import Form from "../dynamics_widgets/Form";
 import FormInline from "../dynamics_widgets/FormInline";
 import About from "../dynamics_widgets/About";
+import HeaderSurfe from "../dynamics_widgets/surfes_web/HeaderSurfe";
+import MainCardSurfe from "../dynamics_widgets/surfes_web/MainCardSurfe";
+import AboutUsSurfe from "../dynamics_widgets/surfes_web/AboutUsSurfe";
+import OurTeamSurfe from "../dynamics_widgets/surfes_web/OurTeamSurfe";
+import FrameSurfe from "../dynamics_widgets/surfes_web/FrameSurfe";
 
 export default {
   props: {
@@ -69,7 +74,12 @@ export default {
     Video,
     Form,
     FormInline,
-    About
+    About,
+    HeaderSurfe,
+    MainCardSurfe,
+    AboutUsSurfe,
+    OurTeamSurfe,
+    FrameSurfe
   }
 };
 </script>

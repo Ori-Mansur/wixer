@@ -1,13 +1,10 @@
 'use strict';
 import HttpService from './HttpService.js';
-import cloudinaryService from './cloudinary.service.js';
+// import cloudinaryService from './cloudinary.service.js';
 
 export default {
   query,
   getById,
-  add,
-  update,
-  remove,
   queryElements
 };
 // const BASE_URL =
@@ -209,8 +206,40 @@ const widgets = [
       "type": "FormInline",
       "data": {},
       "createdAt": "2019-12-02T08:21:46.753Z"
+  },
+  {
+      "_id": "5de4c99aca73df026x",
+      "type": "HeaderSurfe",
+      "data": {},
+      "createdAt": "2019-12-02T08:21:46.753Z"
+  },
+  {
+      "_id": "5de4c99df026x",
+      "type": "MainCardSurfe",
+      "data": {},
+      "createdAt": "2019-12-02T08:21:46.753Z"
+  },
+  {
+      "_id": "5de4c99dfxaxcsc026x",
+      "type": "AboutUsSurfe",
+      "data": {},
+      "createdAt": "2019-12-02T08:21:46.753Z"
+  },
+  {
+      "_id": "5de4c99dfxaxcsc026x",
+      "type": "OurTeamSurfe",
+      "data": {},
+      "createdAt": "2019-12-02T08:21:46.753Z"
+  },
+  {
+      "_id": "5de4c99dfxaxccsacsc026x",
+      "type": "FrameSurfe",
+      "data": {},
+      "createdAt": "2019-12-02T08:21:46.753Z"
   }
 ]
+
+    
 
 async function query() {
   return await widgets;
@@ -227,34 +256,4 @@ async function getById(id) {
   const res = await HttpService.get(`${BASE_URL}/${id}`);
   return await res.data;
 }
-function add(widget) {
-  if (typeof widget.imgUrl !== 'string')
-    return cloudinaryService
-      .uploadImg(widget.imgUrl)
-      .then(res => res.url)
-      .then(url => {
-        widget.imgUrl = url;
-        return HttpService.post(BASE_URL, widget).then(res => res.data);
-      });
-  else return HttpService.post(BASE_URL, widget).then(res => res.data);
-}
-function update(widget) {
-  if (typeof widget.imgUrl !== 'string')
-    return cloudinaryService
-      .uploadImg(widget.imgUrl)
-      .then(res => res.url)
-      .then(url => {
-        widget.imgUrl = url;
-        return HttpService
-          .put(`${BASE_URL}/${widget._id}`, widget)
-          .then(res => res.data);
-      });
-  else
-    return HttpService
-      .put(`${BASE_URL}/${widget._id}`, widget)
-      .then(res => res.data);
-}
-async function remove(id) {
-  const res = await HttpService.delete(`${BASE_URL}/${id}`);
-  return await res.data;
-}
+

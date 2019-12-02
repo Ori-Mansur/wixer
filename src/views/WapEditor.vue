@@ -1,5 +1,5 @@
 <template>
-  <div class="wap-editor">
+  <div class="wap-editor container" >
     <ToolBar
       @setName="setName"
       @save="save"
@@ -90,7 +90,7 @@ export default {
 
         this.wap = await this.$store.dispatch({
           type: "updateWap",
-          updatedWap: this.wap
+          wap: this.wap
         });
       }
     },

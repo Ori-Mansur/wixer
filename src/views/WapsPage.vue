@@ -1,5 +1,5 @@
 <template>
-  <div class="waps-page">
+  <div class="waps-page container">
       <h1>WAPS</h1>
     <WapList :waps="waps" />
   </div>
