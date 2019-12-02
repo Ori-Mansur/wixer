@@ -19,7 +19,8 @@ import ColorPicker from "../wixer_cmps/ColorPicker";
 
 export default {
   props: {
-    widget: Object
+    widget: Object,
+    pos: Object
   },
   created() {
     console.log(this.widget);
@@ -60,10 +61,7 @@ export default {
 </script>
 <style lang="scss">
 .text-editor-container {
-  position: absolute;
-  right: 25px;
-  top: 100px;
-  z-index: 100;
+  position: relative;
   background-color: #fff;
   padding: 5px;
   img {

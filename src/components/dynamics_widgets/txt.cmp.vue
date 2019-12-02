@@ -5,17 +5,17 @@
     @mouseout="isFocus = false"
     @blur="saveText"
     :style="{
-      backgroundImage: `url(${value.data.style.bcgImg})`, backgroundColor: value.data.style.bcgColor}"
+      backgroundImage: `url(${value.data.style.bcgImg})`, backgroundColor: value.data.style.bcgColor, width: width+'%'}"
   >
+    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
     <p
       class="text"
       :contenteditable="true"
-      @click="isFocus = !isFocus"
+      @click="setPos"
       v-html="content"
       :style="{fontSize: value.data.style.fontSize + 'px',fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle }"
     ></p>
-    <text-editor :widget="value"></text-editor>
-    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
+    <text-editor :widget="value" :pos="pos"></text-editor>
   </section>
 </template>
 
@@ -26,29 +26,15 @@ import WidgetEditor from "../wixer_cmps/WidgetEditor";
 export default {
   props: {
     edit: Boolean,
-    value: Object
+    value: Object,
+    width: Number
   },
   created() {
     console.log(this.value);
   },
   data() {
     return {
-      // isFocus: false,
-      // value: {
-      //   id: "1111",
-      //   type: "text",
-      //   data: {
-      //     style: {
-      //       fontFamily: "Arial",
-      //       fontSize: 16,
-      //       fontStyle: "normal",
-      //       fontWeight: "normal",
-      //       color: "black"
-      //     },
-      //     txt: "This is the first text element"
-      //   }
-      // }
-      // content: { text: this.text }
+      pos: 0,
     };
   },
   methods: {
@@ -59,6 +45,10 @@ export default {
       console.log(ev)
       // this.value.data.txt = ev.target.innerText;
       // console.log(this.value.data.txt);
+    },
+    setPos(ev){
+      console.log(ev)
+      this.pos={y:ev.screenY, x: ev.screenY}
     }
   },
   computed: {
@@ -89,5 +79,6 @@ p {
 }
 .text {
   padding: 10px;
+  width: 90%;
 }
 </style>
