@@ -53,7 +53,7 @@ export default {
       this.$emit("remove", id);
     },
     editWidget(widget) {
-      this.$emit("edit", this.widgetToEdit);
+      this.$emit("edit", this.widgetToEdit)
     },
     getWidget(){
       this.widgetToEdit = JSON.parse(JSON.stringify(this.value))
