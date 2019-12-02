@@ -21,6 +21,7 @@ import Txt from "../components/dynamics_widgets/txt.cmp";
 import Video from "../components/dynamics_widgets/video.cmp";
 import VideoAndTxt from "../components/dynamics_widgets/premade_container/vidAndTxt.cmp";
 import Form from "../components/dynamics_widgets/form.cmp";
+import AboutLp from "../components/dynamics_widgets/about.lp.cmp";
 
 export default {
   data() {
@@ -55,7 +56,8 @@ export default {
     Txt,
     Video,
     VideoAndTxt,
-    Form
+    Form,
+    AboutLp
   }
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <component
-      :edit="isEdit"
+      :isEdit="isEdit"
       v-for="(widget,idx) in widgets"
       :key="idx"
       :is="widget.type"

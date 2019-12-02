@@ -55,7 +55,6 @@ export default {
 <style lang="scss">
 .header-container {
   margin-bottom: 10px;
-  position: relative;
 }
 
 img {
