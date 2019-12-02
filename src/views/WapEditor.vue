@@ -1,8 +1,13 @@
 <template>
   <div class="wap-editor">
-    <ToolBar @setName="setName" @save="save" @addElement="addElement" 
-    :widgets="widgets" :elements="elements"
-    :nav="nav" />
+    <ToolBar
+      @setName="setName"
+      @save="save"
+      @addElement="addElement"
+      :widgets="widgets"
+      :elements="elements"
+      :nav="nav"
+    />
     <drop class="drop" @drop="handleDrop" :class="classNames">
       <unicon v-if="!wap.widgets[0]" name="plus" fill="gray" class="icon" />
       <WidgetPreview :widgets="wap.widgets" @remove="remove" @edit="edit" />
@@ -49,9 +54,9 @@ export default {
     elements() {
       return this.$store.getters.loadElements;
     },
-    nav(){
-      const nav = this.wap.widgets.find(widget=>widget.type==='NavBar')
-      return nav
+    nav() {
+      const nav = this.wap.widgets.find(widget => widget.type === "NavBar");
+      return nav;
     }
   },
   methods: {
@@ -59,7 +64,7 @@ export default {
       this.$store.dispatch({ type: "loadElements" });
     },
     handleDrop(data) {
-      const widget=JSON.parse(JSON.stringify(data.widget))
+      const widget = JSON.parse(JSON.stringify(data.widget));
       this.wap.widgets.push(widget);
       this.save();
     },
@@ -67,23 +72,25 @@ export default {
       console.log(element);
     },
     setName(name) {
-      this.wap.name=name
-      this.save()
+      this.wap.name = name;
+      this.save();
     },
     updateWidget(widget) {
       console.log(widget);
     },
     async save() {
-      if (!this.wap._id)
+      if (!this.wap._id) {
         this.wap = await this.$store.dispatch({
           type: "addWap",
           wap: this.wap
         });
-      else
+        this.$router.push(`/editor/${this.wap._id}`)
+      } else {
         this.wap = await this.$store.dispatch({
           type: "updateWap",
           wap: this.wap
         });
+      }
     },
     remove(id) {
       console.log("widget to remove", id);

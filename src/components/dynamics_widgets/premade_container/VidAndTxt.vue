@@ -1,26 +1,30 @@
 <template>
   <section
-    class="vidAndTxt-container flex row justify-center align-center"
+    class="vidAndTxt-container flex column"
     :contenteditable="edit"
     :style="{
-      backgroundImage: `url(${value.style.bcgImg})`, backgroundColor: value.style.bcgColor}"
+      backgroundImage: `url(${value.style.bcgImg})`, backgroundColor: value.style.bcgColor, border: 1+'px solid black'}"
     @click="toggleActive"
   >
-    <component
-      v-for="(widget,idx) in value.data"
-      :key="idx"
-      :is="widget.type"
-      :value="widget"
-      :contenteditable="true"
-      @remove="removeWidget"
-    ></component>
     <widget-editor
       :isEdit="isEdit"
       :widget="value"
-      class="widget-editor-container"
+      class="widget-editor-container flex row justify-end"
       @remove="removeWidget"
       @edit="editWidget"
     ></widget-editor>
+
+    <div class="component-container flex row">
+      <component
+        v-for="(widget,idx) in value.data"
+        :key="idx"
+        :is="widget.type"
+        :value="widget"
+        :contenteditable="true"
+        :width="cmpWidth"
+        @remove="removeWidget"
+      ></component>
+    </div>
   </section>
 </template>
 
@@ -41,7 +45,8 @@ export default {
   },
   data() {
     return {
-      edit: false
+      edit: false,
+      cmpWidth: 50
     };
   },
   created() {
@@ -52,14 +57,12 @@ export default {
       this.$emit("input", value);
     },
     removeWidget(id) {
-      console.log(id);
       this.$emit("remove", id);
     },
     editWidget(widget) {
       this.$emit("edit", widget);
     },
     toggleActive() {
-      console.log("trying..");
       this.isEdit = !this.isEdit;
     }
   }
@@ -68,12 +71,9 @@ export default {
 
 
 <style scoped>
-.widget-editor-container {
-  border: 1px solid black;
-  position: relative;
-}
 .vidAndTxt-container {
   margin-bottom: 10px;
+  padding: 2rem;
 }
 
 .text-center {

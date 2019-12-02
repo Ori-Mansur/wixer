@@ -1,5 +1,5 @@
 <template>
-  <section class="video-container">
+  <section class="video-container" :style="{width: width}">
     <iframe width="320" height="245" :src="value.data.url" class="video"></iframe>
   </section>
 </template>
@@ -8,7 +8,10 @@
 <script>
 
 export default {
-  props:{value: Object},
+  props:{
+    value: Object,
+    width: Number
+  },
   created(){
   },
   methods:{
@@ -22,8 +25,5 @@ export default {
 };
 </script>
 <style>
-  .video-container{
-    position: relative;
-  }
 
 </style>

@@ -3,6 +3,7 @@
     <component
       v-for="(widget, idx) in wap.widgets"
       :key="idx"
+      :isEdit="isEdit"
       :is="widget.type"
       :value="widget"
       :contenteditable="false"
@@ -22,12 +23,14 @@ import Img from "../components/dynamics_widgets/Img";
 import Txt from "../components/dynamics_widgets/Txt";
 import Video from "../components/dynamics_widgets/Video";
 import Form from "../components/dynamics_widgets/Form";
+import FormInline from "../components/dynamics_widgets/FormInline";
 import About from "../components/dynamics_widgets/About";
 
 export default {
   data() {
     return {
-      wap: null
+      wap: null,
+      isEdit: false
     };
   },
   methods: {
@@ -59,6 +62,7 @@ export default {
     Txt,
     Video,
     Form,
+    FormInline,
     About
   }
 };

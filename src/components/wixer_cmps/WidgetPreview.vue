@@ -1,7 +1,7 @@
 <template>
   <div>
     <component
-      :edit="isEdit"
+      :isEdit="isEdit"
       v-for="(widget,idx) in widgets"
       :key="idx"
       :is="widget.type"
@@ -25,6 +25,7 @@ import Img from "../dynamics_widgets/Img";
 import Txt from "../dynamics_widgets/Txt";
 import Video from "../dynamics_widgets/Video";
 import Form from "../dynamics_widgets/Form";
+import FormInline from "../dynamics_widgets/FormInline";
 import About from "../dynamics_widgets/About";
 
 export default {
@@ -67,7 +68,13 @@ export default {
     Txt,
     Video,
     Form,
+    FormInline,
     About
   }
 };
 </script>
+<style lang="scss" scope>
+.widget-container {
+  width: 100%;
+}
+</style>
