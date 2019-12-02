@@ -4,7 +4,7 @@
       <button @click="edit">EDIT</button>
       <button >P</button>
     </li>
-    <WapPreview v-for="wap in waps" :key="wap.id" :wap="wap" @select="edit" @preview="preview"/>
+    <WapPreview v-for="wap in waps" :key="wap._id" :wap="wap" @select="edit" @preview="preview"/>
   </ul>
 </template>
 <script>

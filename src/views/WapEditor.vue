@@ -54,9 +54,9 @@ export default {
     elements() {
       return this.$store.getters.loadElements;
     },
-    nav(){
-      const nav = this.wap.widgets.find(widget=>widget.type==='NavBar')
-      return nav
+    nav() {
+      const nav = this.wap.widgets.find(widget => widget.type === "NavBar");
+      return nav;
     }
   },
   methods: {
@@ -64,7 +64,7 @@ export default {
       this.$store.dispatch({ type: "loadElements" });
     },
     handleDrop(data) {
-      const widget=JSON.parse(JSON.stringify(data.widget))
+      const widget = JSON.parse(JSON.stringify(data.widget));
       this.wap.widgets.push(widget);
       this.save();
     },
@@ -72,19 +72,19 @@ export default {
       console.log(element);
     },
     setName(name) {
-      this.wap.name=name
-      this.save()
+      this.wap.name = name;
+      this.save();
     },
     updateWidget(widget) {
       console.log(widget);
     },
     async save() {
-      if (!this.wap._id){
-          this.wap = await this.$store.dispatch({
-            type: "addWap",
-            wap: this.wap
-          });
-
+      if (!this.wap._id) {
+        this.wap = await this.$store.dispatch({
+          type: "addWap",
+          wap: this.wap
+        });
+        this.$router.push(`/editor/${this.wap._id}`)
       } else {
         this.wap = await this.$store.dispatch({
           type: "updateWap",

@@ -14,9 +14,9 @@ export default {
         addWap(state, { wap }) {
             state.waps.unshift(wap)
         },
-        updateWap(state, { wap }) {
-            const idx = state.waps.findIndex(currWap => currWap.id === wap.id)
-            state.waps.splice(idx, 1, wap)
+        updateWap(state, { updateWap }) {
+            const idx = state.waps.findIndex(currWap => currWap._id === updateWap._id)
+            state.waps.splice(idx, 1, updateWap)
         },
         removeWap(state, { wapId }) {
             const idx = state.waps.findIndex(currWap => currWap._id === wapId)
@@ -53,7 +53,7 @@ export default {
         async updateWap(context, { wap }) {
             const updateWap = await WapService.update(wap)
             context.commit({ type: 'open2',msg:'Wap saved'})
-            // context.commit({ type: 'updateWap', updateWap })
+            context.commit({ type: 'updateWap', updateWap })
             return updateWap
         },
         async removeWap(context, { wapId }) {

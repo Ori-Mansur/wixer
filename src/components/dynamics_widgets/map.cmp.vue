@@ -25,7 +25,7 @@
   </section>
 </template>
 <script>
-import WidgetEditor from "../wixer_cmps/WidgetEditor";
+// import WidgetEditor from "../wixer_cmps/WidgetEditor";
 
 export default {
   props: { 
@@ -71,7 +71,7 @@ export default {
     });
   },
   components: {
-    WidgetEditor
+    // WidgetEditor
   }
 };
 </script>
