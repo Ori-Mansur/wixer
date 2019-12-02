@@ -4,24 +4,27 @@
       v-for="(element,idx) in elements"
       :key="idx"
       :is="element.type"
-      :value="element" class="element-container"
+      :value="element"
+      class="element-container"
       @remove="removeElement"
       @edit="editElement"
     ></component>
   </section>
 </template>
 <script>
+import VideoAndTxt from "../dynamics_widgets/premade_container/VidAndTxt";
+import TxtAndMap from "../dynamics_widgets/premade_container/TxtAndMap";
 import NavBar from "../dynamics_widgets/NavBarEdit";
-import Container1 from "../dynamics_widgets/container1.cmp";
-import Container2 from "../dynamics_widgets/container2.cmp";
-import Container3 from "../dynamics_widgets/container3.cmp";
-import VideoAndTxt from "../dynamics_widgets/premade_container/vidAndTxt.cmp";
-import Empty from "../dynamics_widgets/empty.cmp";
-import Header from "../dynamics_widgets/header.cmp";
-import Img from "../dynamics_widgets/img.cmp";
-import Txt from "../dynamics_widgets/txt.cmp";
-import Video from "../dynamics_widgets/video.cmp";
-import Form from "../dynamics_widgets/form.cmp";
+import Container1 from "../dynamics_widgets/Container1";
+import Container3 from "../dynamics_widgets/Container3";
+import Empty from "../dynamics_widgets/Empty";
+import HeaderBig from "../dynamics_widgets/HeaderBig";
+import HeaderSmall from "../dynamics_widgets/HeaderSmall";
+import Img from "../dynamics_widgets/Img";
+import Txt from "../dynamics_widgets/Txt";
+import Video from "../dynamics_widgets/Video";
+import Form from "../dynamics_widgets/Form";
+import About from "../dynamics_widgets/About";
 
 export default {
   props: {
@@ -33,11 +36,11 @@ export default {
     };
   },
   methods: {
-    removeElement(id){
+    removeElement(id) {
       this.$emit("remove", id);
     },
-    editElement(element){
-      console.log(element)
+    editElement(element) {
+      console.log(element);
       this.$emit("edit", element);
     }
   },
@@ -48,17 +51,19 @@ export default {
     else this.isEdit = false;
   },
   components: {
+    VideoAndTxt,
+    TxtAndMap,
     NavBar,
     Container1,
-    Container2,
     Container3,
-    VideoAndTxt,
     Empty,
-    Header,
+    HeaderBig,
+    HeaderSmall,
     Img,
     Txt,
     Video,
-    Form
+    Form,
+    About
   }
 };
 </script>

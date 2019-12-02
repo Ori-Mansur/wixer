@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import Txt from "../dynamics_widgets/txt.cmp";
-import Map from "../dynamics_widgets/map.cmp";
-import WidgetEditor from "../wixer_cmps/WidgetEditor";
+import Txt from "../Txt";
+import Map from "../Map";
+import WidgetEditor from "../../wixer_cmps/WidgetEditor";
 
 export default {
   props: {

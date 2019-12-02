@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import Video from "../video.cmp";
-import Txt from "../txt.cmp";
+import Video from "../Video";
+import Txt from "../Txt";
 import WidgetEditor from "../../wixer_cmps/WidgetEditor";
 
 export default {
@@ -58,9 +58,9 @@ export default {
     editWidget(widget) {
       this.$emit("edit", widget);
     },
-    toggleActive(){
-      console.log('trying..')
-      this.isEdit = !this.isEdit
+    toggleActive() {
+      console.log("trying..");
+      this.isEdit = !this.isEdit;
     }
   }
 };
@@ -68,9 +68,9 @@ export default {
 
 
 <style scoped>
-.widget-editor-container{
+.widget-editor-container {
   border: 1px solid black;
-  position:relative;
+  position: relative;
 }
 .vidAndTxt-container {
   margin-bottom: 10px;

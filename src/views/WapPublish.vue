@@ -10,17 +10,19 @@
   </div>
 </template>
 <script>
+import VideoAndTxt from "../components/dynamics_widgets/premade_container/VidAndTxt";
+import TxtAndMap from "../components/dynamics_widgets/premade_container/TxtAndMap";
 import NavBar from "../components/dynamics_widgets/NavBarEdit";
-import Container1 from "../components/dynamics_widgets/container1.cmp";
-import Container2 from "../components/dynamics_widgets/container2.cmp";
-import Container3 from "../components/dynamics_widgets/container3.cmp";
-import Empty from "../components/dynamics_widgets/empty.cmp";
-import Header from "../components/dynamics_widgets/header.cmp";
-import Img from "../components/dynamics_widgets/img.cmp";
-import Txt from "../components/dynamics_widgets/txt.cmp";
-import Video from "../components/dynamics_widgets/video.cmp";
-import VideoAndTxt from "../components/dynamics_widgets/premade_container/vidAndTxt.cmp";
-import Form from "../components/dynamics_widgets/form.cmp";
+import Container1 from "../components/dynamics_widgets/Container1";
+import Container3 from "../components/dynamics_widgets/Container3";
+import Empty from "../components/dynamics_widgets/Empty";
+import HeaderBig from "../components/dynamics_widgets/HeaderBig";
+import HeaderSmall from "../components/dynamics_widgets/HeaderSmall";
+import Img from "../components/dynamics_widgets/Img";
+import Txt from "../components/dynamics_widgets/Txt";
+import Video from "../components/dynamics_widgets/Video";
+import Form from "../components/dynamics_widgets/Form";
+import About from "../components/dynamics_widgets/About";
 
 export default {
   data() {
@@ -45,17 +47,19 @@ export default {
     }
   },
   components: {
+    VideoAndTxt,
+    TxtAndMap,
     NavBar,
     Container1,
-    Container2,
     Container3,
     Empty,
-    Header,
+    HeaderBig,
+    HeaderSmall,
     Img,
     Txt,
     Video,
-    VideoAndTxt,
-    Form
+    Form,
+    About
   }
 };
 </script>
