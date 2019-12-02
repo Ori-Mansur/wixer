@@ -2,7 +2,7 @@
   <section
     v-if="value"
     @click="getPos"
-    class="header-container flex align-center justify-center"
+    class="header-container flex align-center justify-center background"
     :style="{
       backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor,
       height: value.data.style.height + 'px'
@@ -33,10 +33,10 @@ export default {
     edit: Boolean,
     value: Object
   },
-  data(){
-return{
-  pos:{x:0,y:0}
-}
+  data() {
+    return {
+      pos: { x: 0, y: 0 }
+    };
   },
   created() {
     const param = this.$route.path;
@@ -50,9 +50,9 @@ return{
     editWidget(widget) {
       this.$emit("edit", widget);
     },
-    getPos(ev){
-      this.pos.x=ev.pageX-20
-      this.pos.y=ev.pageY+20
+    getPos(ev) {
+      this.pos.x = ev.pageX - 20;
+      this.pos.y = ev.pageY + 20;
       console.log(ev);
     }
   },
@@ -70,5 +70,9 @@ return{
 img {
   width: 100px;
   height: auto;
+}
+.background {
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

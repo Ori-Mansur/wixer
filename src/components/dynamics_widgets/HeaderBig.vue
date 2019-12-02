@@ -1,7 +1,8 @@
 <template>
   <section
     v-if="value"
-    class="header-container flex align-center justify-center"
+    @click="getPos"
+    class="header-container flex align-center justify-center background"
     :style="{
       backgroundImage: `url(${widgetToEdit.data.style.bcgImg})`,backgroundColor: widgetToEdit.data.style.bcgColor,
       height: widgetToEdit.data.style.height + 'px'
@@ -37,16 +38,17 @@ export default {
     edit: Boolean,
     value: Object
   },
+  data() {
+    return {
+      pos: { x: 0, y: 0 },
+      widgetToEdit: null
+    };
+  },
   created() {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEditer = true;
     else this.isEditer = false;
     this.getWidget()
-  },
-  data(){
-    return{
-      widgetToEdit: null
-    }
   },
   methods: {
     removeWidget(id) {
@@ -61,6 +63,12 @@ export default {
     },
     newImage(imgUrl){
       this.widgetToEdit.data.style.bcgImg=imgUrl
+      this.$emit("edit", this.widgetToEdit);
+    },
+    getPos(ev) {
+      this.pos.x = ev.pageX - 20;
+      this.pos.y = ev.pageY + 20;
+      console.log(ev);
     }
   },
   components: {
@@ -78,4 +86,9 @@ img {
   width: 100px;
   height: auto;
 }
+.background {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 </style>
+
