@@ -4,7 +4,7 @@
       <option>Montserrat</option>
       <option>Roboto</option>
       <option>Arial</option>
-      <option>Italiano</option>
+      <option>Italianno</option>
     </select>
     <button @click.stop="italicize">I</button>
 

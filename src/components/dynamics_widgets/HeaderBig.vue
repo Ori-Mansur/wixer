@@ -1,6 +1,7 @@
 <template>
   <section
     v-if="value"
+    @click="getPos"
     class="header-container flex align-center justify-center background"
     :style="{
       backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor,
@@ -13,7 +14,7 @@
       @remove="removeWidget"
       @edit="editWidget"
     ></widget-editor>
-    <text-editor :widget="value"></text-editor>
+    <text-editor :widget="value" :pos="pos"></text-editor>
 
     <div class="flex column">
       <h1
@@ -38,6 +39,11 @@ export default {
     edit: Boolean,
     value: Object
   },
+  data() {
+    return {
+      pos: { x: 0, y: 0 }
+    };
+  },
   created() {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEditer = true;
@@ -50,6 +56,11 @@ export default {
     },
     editWidget(widget) {
       this.$emit("edit", widget);
+    },
+    getPos(ev) {
+      this.pos.x = ev.pageX - 20;
+      this.pos.y = ev.pageY + 20;
+      console.log(ev);
     }
   },
   components: {
