@@ -1,8 +1,13 @@
 <template>
   <div class="wap-editor">
-    <ToolBar @setName="setName" @save="save" @addElement="addElement" 
-    :widgets="widgets" :elements="elements"
-    :nav="nav" />
+    <ToolBar
+      @setName="setName"
+      @save="save"
+      @addElement="addElement"
+      :widgets="widgets"
+      :elements="elements"
+      :nav="nav"
+    />
     <drop class="drop" @drop="handleDrop" :class="classNames">
       <unicon v-if="!wap.widgets[0]" name="plus" fill="gray" class="icon" />
       <WidgetPreview :widgets="wap.widgets" @remove="remove" @edit="edit" />
@@ -74,16 +79,18 @@ export default {
       console.log(widget);
     },
     async save() {
-      if (!this.wap._id)
-        this.wap = await this.$store.dispatch({
-          type: "addWap",
-          wap: this.wap
-        });
-      else
+      if (!this.wap._id){
+          this.wap = await this.$store.dispatch({
+            type: "addWap",
+            wap: this.wap
+          });
+
+      } else {
         this.wap = await this.$store.dispatch({
           type: "updateWap",
           wap: this.wap
         });
+      }
     },
     remove(id) {
       console.log("widget to remove", id);

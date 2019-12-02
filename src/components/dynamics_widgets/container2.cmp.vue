@@ -1,15 +1,18 @@
 <template>
-  <section class="twoCol-container flex row justify-content align-center" :contenteditable="edit">
+  <section class="twoCol-container" :contenteditable="edit">
+    <widget-editor :widget="value" class="widget-editor-container flex justify-end" @remove="removeWidget"></widget-editor>
+    <div class="component-container flex row justify-content">
     <component
       v-for="(widget,idx) in value.data"
       :key="idx"
       :is="widget.type"
       :value="widget"
+      :width="cmpWidth"
       :contenteditable="true"
       @remove="removeWidget"
     ></component>
+    </div>
 
-    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
   </section>
 </template>
 
@@ -24,6 +27,11 @@ export default {
     value: Object
   },
   created() {},
+  data(){
+    return{
+      cmpWidth: 50
+    }
+  },
   components: {
     Txt,
     Map,
@@ -44,7 +52,8 @@ export default {
 <style scoped>
 .twoCol-container {
   border-style: dotted;
-  position: relative;
+  padding: 2rem
+
 }
 .text-center {
   display: flex;

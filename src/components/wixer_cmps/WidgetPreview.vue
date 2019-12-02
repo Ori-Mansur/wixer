@@ -72,3 +72,8 @@ export default {
   }
 };
 </script>
+<style lang="scss" scope>
+  .widget-container{
+    width: 100%;
+  }
+</style>

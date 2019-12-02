@@ -1,13 +1,11 @@
 <template>
-  <section class="map-container">
-    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
-
+  <section class="map-container" :style="{width: width+'%'}">
     <GmapMap
       ref="mapRef"
       :center="pos"
       :zoom="13"
       map-type-id="terrain"
-      style="width: 400px; height: 200px"
+      :style="{width: 400+'px', height: 200+'px'}"
     >
       <GmapMarker
         :key="index"
@@ -30,7 +28,10 @@
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
 
 export default {
-  props: { value: Object },
+  props: { 
+    value: Object,
+    width: Number
+  },
   data() {
     return {
       pos: { lat: 34, lng: 32.4349958 },
