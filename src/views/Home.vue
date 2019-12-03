@@ -1,20 +1,18 @@
 <template>
   <section class="container-home">
-
     <div class="home-body">
       <div class="home-header-container">
-              <NavBar class="nav-bar"/>
+        <NavBar class="nav-bar" />
         <h1 class="home-header">Wixer</h1>
         <p
           class="home-header-content"
         >Drop elements to your page, add content and style it to look the way you like.</p>
-        <button class="home-btn">Get Started</button>
+        <button class="home-btn" href="#waps-examples">Get Started</button>
       </div>
     </div>
-          <H1 class="wap-header">Get Inspired With Projects Made By Our Freelancers -</h1>
+    <h1 class="wap-header">Get Inspired With Projects Made By Our Freelancers -</h1>
 
-    <div class="waps-examples">
-      
+    <div class="waps-examples" id="waps-examples">
       <div class="wap-picture">
         <img src="@/assets/card2.png" alt />
       </div>
@@ -25,7 +23,7 @@
         <img src="@/assets/card2.png" alt />
       </div>
     </div>
-      <router-link to="/wap" class="show-link">Show more ></router-link>
+    <router-link to="/wap" class="show-link">Show more ></router-link>
     <div class="mainbox-header">
       <h1>All In One</h1>
       <p>The different parts of the platform are deeply integrated to build the most powerful ecosystem for building professional websites.</p>
@@ -58,18 +56,15 @@
 
 
 <script>
-import NavBar from '@/components/wixer_cmps/NavBar.vue'
+import NavBar from "@/components/wixer_cmps/NavBar.vue";
 
 export default {
-components: {
+  components: {
     NavBar
   }
-
 };
-
 </script>
 
 
 <style>
-
 </style>

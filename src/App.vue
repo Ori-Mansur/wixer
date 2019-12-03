@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar v-if="isHome" />
+    <NavBar v-if="path!=='/'" />
     <router-view />
   </div>
 </template>
@@ -12,24 +12,23 @@ export default {
   components: {
     NavBar
   },
-  data() {
-    return {
-      // isHome: false
-    };
-  },
+
   created() {
-    console.log(this.$route.path);
     this.$store.dispatch({ type: "loadWaps" });
     this.$store.dispatch({ type: "loadWidgets" });
-    // this.$route();
   },
   computed: {
-    isHome() {
-      if (this.$route.path.includes("home") || this.$route.path.includes("/")) {
-        return true;
-      } else return false;
+    path() {
+      return this.$route.path;
     }
   }
+  // watch: {
+  //   $route() {
+  //     if (this.$route.path.includes("home") || this.$route.path.includes("/")) {
+  //       this.isHome = true;
+  //     } else this.isHome = false;
+  //   }
+  // }
 };
 </script>
 
