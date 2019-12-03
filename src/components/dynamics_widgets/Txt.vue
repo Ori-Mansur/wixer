@@ -18,7 +18,6 @@
     <p
       class="text"
       :contenteditable="true"
-      @click="setPos"
       v-html="content"
       :style="{fontSize: widgetToEdit.data.style.fontSize + 'px',fontWeight: widgetToEdit.data.style.fontWeight, fontFamily: widgetToEdit.data.style.fontFamily, color: widgetToEdit.data.style.color, fontStyle: widgetToEdit.data.style.fontStyle }"
     ></p>

@@ -6,6 +6,7 @@
       :key="idx"
       :is="widget.type"
       :value="widget"
+     
       class="widget-container"
       @remove="removeWidget"
       @edit="editWidget"
@@ -32,6 +33,7 @@ import MainCardSurfe from "../dynamics_widgets/surfes_web/MainCardSurfe";
 import AboutUsSurfe from "../dynamics_widgets/surfes_web/AboutUsSurfe";
 import OurTeamSurfe from "../dynamics_widgets/surfes_web/OurTeamSurfe";
 import FrameSurfe from "../dynamics_widgets/surfes_web/FrameSurfe";
+import SectionContainer from '../dynamics_widgets/SectionContainer'
 
 export default {
   props: {
@@ -79,7 +81,8 @@ export default {
     MainCardSurfe,
     AboutUsSurfe,
     OurTeamSurfe,
-    FrameSurfe
+    FrameSurfe,
+    SectionContainer
   }
 };
 </script>

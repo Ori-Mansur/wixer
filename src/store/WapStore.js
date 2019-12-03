@@ -14,10 +14,13 @@ export default {
         addWap(state, { wap }) {
             state.waps.unshift(wap)
         },
-        updateWap(state, { updateWap }) {
-            console.log(updateWap)
-            const idx = state.waps.findIndex(currWap => currWap._id === updateWap._id)
-            state.waps.splice(idx, 1, updateWap)
+        updateWap(state, { wap }) {
+            console.log('wap store 18',wap._id)
+            const idx = state.waps.findIndex(curWap =>{
+                console.log(curWap);
+                
+                return curWap._id === wap._id})
+            state.waps.splice(idx, 1, wap)
         },
         removeWap(state, { wapId }) {
             const idx = state.waps.findIndex(currWap => currWap._id === wapId)
@@ -44,7 +47,7 @@ export default {
         },
         async addWap({commit}, { wap }) {
             const addedWap = await WapService.add(wap)
-            commit({ type: 'addWap', addedWap })
+            // commit({ type: 'addWap',wap: addedWap })
             commit({ type: 'open1',msg:'New wap added'})
             console.log('addedWap',addedWap);
             
@@ -53,8 +56,8 @@ export default {
         async updateWap(context, { wap }) {
             console.log('wap store',wap);
             const updateWap = await WapService.update(wap)
+            // context.commit({ type: 'updateWap',wap: updateWap })
             context.commit({ type: 'open2',msg:'Wap saved'})
-            context.commit({ type: 'updateWap', updateWap })
             return updateWap
         },
         async removeWap(context, { wapId }) {
