@@ -1,17 +1,12 @@
 <template>
   <ul class="edit-options">
     <li class="wap-option-list">
-      <el-form
-        :model="dynamicValidateForm"
-        ref="dynamicValidateForm"
-        label-width="120px"
-        class="demo-dynamic"
-      >
+      <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" class="demo-dynamic">
         <el-form-item prop="email" label="Site Name">
           <el-input v-model="dynamicValidateForm.wapName"></el-input>
         </el-form-item>
         <el-form-item
-        v-show="nav"
+          v-show="nav"
           v-for="(link, index) in dynamicValidateForm.links"
           :label="'Domain' + index"
           :key="link.key"
@@ -26,7 +21,11 @@
           </el-button>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('dynamicValidateForm')" class="link-nav-submit">Submit</el-button>
+          <el-button
+            type="primary"
+            @click="submitForm('dynamicValidateForm')"
+            class="link-nav-submit"
+          >Submit</el-button>
           <el-button @click="addDomain" class="link-nav-submit">New link</el-button>
         </el-form-item>
       </el-form>
@@ -91,25 +90,23 @@ export default {
       });
     }
   },
-  computed:{
-   
-  }
+  computed: {}
 };
 </script>
-<style lang="scss" scoped>
-.link-nav-input {
-  width: 100px;
-  display: inline-block;
-  height: 40px;
-}
-.link-nav-btn{
-  display: inline-block;
-  padding: 0px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-left: 5px
-}
-.link-nav-submit{
-  display: inline-block
-}
+ <style lang="scss" scoped>
+// .link-nav-input {
+//   width: 100px;
+//   display: inline-block;
+//   height: 40px;
+// }
+// .link-nav-btn{
+//   display: inline-block;
+//   padding: 0px;
+//   padding-left: 5px;
+//   padding-right: 5px;
+//   margin-left: 5px
+// }
+// .link-nav-submit{
+//   display: inline-block
+// }
 </style>

@@ -2,9 +2,14 @@
   user-select: none;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 100px;
-  left: 30px;
+  width: 200px;
+  background: rgb(179, 175, 175);
+  overflow: scroll;
+  height: 100vh;
+  overflow: scroll;
+  // top: 100px;
+  // left: 30px;
+  border: 1px solid black;
   .tool-bar-list {
     .li-bar {
       cursor: pointer;
@@ -20,57 +25,69 @@
       );
       box-shadow: 0 2px 5px 0 rgba(22, 45, 61, 0.58);
       border-radius: 24px;
-      line-height: 48px;
-      height: 48px;
-      text-align: center;
-      width: fit-content;
+      // line-height: 48px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      // width: fit-content;
       h3 {
         margin-left: 5px;
+        text-align: center;
       }
       .text {
         display: none;
       }
     }
+    .section-menu {
+      margin-top: 15px;
+    }
     .section-add {
+      margin-top: 130px;
+
       .icon {
         fill: gold;
+        // margin-top: 10px;
       }
     }
     .list-option {
-      position: fixed;
-      z-index: +1000000;
-      left: 138px;
-      top: 100px;
-      max-height: 400px;
-      
-      background-color: rgba(238, 238, 238, 0.9);
-      box-shadow: 0 2px 5px 0 rgba(22, 45, 61, 0.58);
-      border-radius: 12px;
-      width: fit-content;
-      padding: 10px;
-      text-transform: capitalize;
-      line-height: 48px;
+      // position: fixed;
+      // z-index: +1000000;
+      // left: 138px;
+      // top: 100px;
+      // max-height: 400px;
+
+      // background-color: rgba(238, 238, 238, 0.9);
+      // box-shadow: 0 2px 5px 0 rgba(22, 45, 61, 0.58);
+      // border-radius: 12px;
+      // width: fit-content;
+      // padding: 10px;
+      // text-transform: capitalize;
+      // line-height: 48px;
     }
     .edit-options {
-      border-radius: 24px;
-      line-height: 48px;
-      height: 48px;
-      text-align: center;
-      width: fit-content;
+      // border-radius: 24px;
+      // line-height: 48px;
+      // height: 48px;
+      // text-align: center;
+      // width: fit-content;
     }
     .add-option {
-      top: 168px;
-      column-count: 2;
+      // top: 168px;
+      // column-count: 2;
+      text-align: center;
     }
     .wap-option {
-      text-align: start;
-      top: 236px;
+      // text-align: start;
+      // top: 236px;
+      text-align: center;
+
       .el-form-item {
-        margin-bottom: 10px;
+        // margin-bottom: 10px;
       }
 
-      padding-bottom: 80px;
+      // padding-bottom: 80px;
     }
+
     .section-save {
       background: linear-gradient(
         to bottom,

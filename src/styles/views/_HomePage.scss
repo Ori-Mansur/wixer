@@ -1,0 +1,160 @@
+.nav-bar {
+  background-color: transparent;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+
+.home-body {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: 'Covered By Your Grace', cursive;
+}
+
+.home-header-container {
+  box-sizing: border-box;
+  height: 70vh;
+  padding: 30vw 0 5vw;
+  position: relative;
+  transform-style: inherit;
+  width: 100vw;
+  //   font-size: 3rem;
+}
+
+.home-header {
+  margin-bottom: 10px;
+  margin-top: 88px;
+  color: #fff;
+  font-size: 5em;
+  font-weight: 700;
+  //   line-height: 1.25;
+  //   margin: 0 0 0.5em;
+  text-align: center;
+  text-shadow: #000 0 0 5px;
+}
+
+.home-header-content {
+  font-size: 1.3rem;
+  width: 30%;
+  margin: 0 auto;
+}
+
+.home-header-container .home-header-container::before {
+  background: 50% 50% / cover;
+}
+
+.home-header-container::before {
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  background-image: linear-gradient(
+      to bottom rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(https://i.imgur.com/WOVKXu6.jpg);
+  background-size: cover;
+  /*x y z */
+  transform-origin: center center 0;
+  transform: translateZ(-1px) scale(2);
+  z-index: -1;
+  min-height: 100vh;
+}
+
+.home-header-container {
+  font-weight: normal;
+  letter-spacing: 0.2em;
+  text-align: center;
+  margin: 0;
+  padding: 1em 0;
+}
+
+.home-btn {
+  background-color: transparent;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1em;
+  padding: 0.5em 0.75em;
+  text-align: center;
+  text-decoration: none;
+  border-color: #fff;
+  color: #fff;
+  font-size: 1.5em;
+  margin: 40px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  //   border: 1px solid gray;
+  min-height: 250px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  img {
+    border-radius: 50%;
+    margin: 10px;
+  }
+
+  p {
+    margin: 10px;
+    line-height: 1.4em;
+    font-size: 1.2em;
+    color: #888;
+  }
+}
+
+.mainbox {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.mainbox-header {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 1.3rem;
+}
+
+.wap-header {
+  font-size: 1.5rem;
+  margin-left: 25px;
+  border-bottom: 1px solid #888;
+  padding: 15px;
+}
+
+.waps-examples {
+  box-sizing: border-box;
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+  margin-top: 40px;
+}
+.show-link {
+  display: flex;
+  justify-content: flex-end;
+  padding: 55px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+}
+.wap-picture {
+  border-radius: 50%;
+  margin: 10px;
+}

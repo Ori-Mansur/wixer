@@ -1,5 +1,5 @@
 <template>
-  <div class="wap-editor container" >
+  <div class="wap-editor container">
     <ToolBar
       @setName="setName"
       @save="save"
@@ -10,6 +10,7 @@
     />
     <drop class="drop" @drop="handleDrop" :class="classNames">
       <unicon v-if="!wap.widgets[0]" name="plus" fill="gray" class="icon" />
+      <h1 v-if="!wap.widgets[0]">Drag elemenets in here!</h1>
       <WidgetPreview :widgets="wap.widgets" @remove="remove" @edit="edit" />
     </drop>
     <ElementPreview :elements="wap.elements" />
@@ -87,7 +88,7 @@ export default {
           type: "addWap",
           wap: this.wap
         });
-        this.$router.push(`/editor/${this.wap._id}`)
+        this.$router.push(`/editor/${this.wap._id}`);
       } else {
       console.log('wap to save', this.wap)
 
@@ -105,7 +106,7 @@ export default {
       this.$store.commit({type: "removeWidget", widgetId: id});
     },
     edit(widget) {
-      console.log('saved widget', widget)
+      console.log("saved widget", widget);
       var idx = this.wap.widgets.findIndex(
         currWidget => currWidget._id === widget._id
       );

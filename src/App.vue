@@ -1,22 +1,34 @@
 <template>
   <div id="app">
-    <NavBar/>
+    <NavBar v-if="path!=='/'" />
     <router-view />
   </div>
 </template>
 <script>
-// @ is an alias to /src
-import NavBar from '@/components/wixer_cmps/NavBar.vue'
+import NavBar from "@/components/wixer_cmps/NavBar.vue";
 
 export default {
-  name: 'APP',
+  name: "APP",
   components: {
     NavBar
   },
-  created(){
-    this.$store.dispatch({type:'loadWaps'})
-    this.$store.dispatch({type:'loadWidgets'})
+
+  created() {
+    this.$store.dispatch({ type: "loadWaps" });
+    this.$store.dispatch({ type: "loadWidgets" });
+  },
+  computed: {
+    path() {
+      return this.$route.path;
+    }
   }
-}
+  // watch: {
+  //   $route() {
+  //     if (this.$route.path.includes("home") || this.$route.path.includes("/")) {
+  //       this.isHome = true;
+  //     } else this.isHome = false;
+  //   }
+  // }
+};
 </script>
 
