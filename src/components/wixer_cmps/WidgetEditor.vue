@@ -6,10 +6,10 @@
     <label @click="removeWidget" title="remove this widget" >
       <unicon name="trash-alt" fill="black" class="icon-edit" />
     </label>
-    <label @click="savePos(+1)" >
+    <label>
       <unicon name="sort-amount-down" fill="black" class="icon-edit" />
     </label>
-    <label @click="savePos(-1)" >
+    <label>
       <unicon name="sort-amount-up" fill="black" class="icon-edit" />
     </label>
 
@@ -30,7 +30,7 @@ export default {
     widget: Object
   },
   created() {
-    // console.log("newWidget", this.widget);
+    console.log("widget:", this.widget._id, 'type', this.widget.type);
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
@@ -56,7 +56,7 @@ export default {
     },
     removeWidget() {
       this.$emit("remove", this.widget._id);
-      console.log(this.widget._id, "remove");
+      console.log("remove", this.widget._id);
     },
     updateBackground(color) {
       this.widget.data.style.bcgColor = color;
@@ -95,14 +95,11 @@ export default {
 </script>
 <style lang="scss">
 .widget-editor-container {
-  // position: fixed;
-  position: sticky;
-  top: 50px;
-  right: 0px;
-  // top: 0px;
-  // z-index: 100;
-  
+  position: absolute;
+  top: 0;
+  right: 0;
   padding: 5px;
+  
   .icon-edit{
     background-color: #fff;
     padding: 3px;

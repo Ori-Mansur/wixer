@@ -1,26 +1,17 @@
 <template>
-  <section
-    class="txt-container"
-    :style="{
-      borderStyle: isEdit
-    }"
-    @click="isFocus = !isFocus"
-    @mouseover="isFocus = true"
-    @mouseout="isFocus = false">
-    
-    <p class="text" :contenteditable="true" @click="isFocus = !isFocus">
-      {{ value.data.txt }}
+  <section class="txt-box">
+    <p class="text" :contenteditable="true">
     </p>
-    <widget-editor
+    <text-editor
       :widget="value"
       class="widget-editor-container"
       @remove="removeWidget"
-    ></widget-editor>
+    ></text-editor>
   </section>
 </template>
 
 <script>
-import WidgetEditor from "../wixer_cmps/WidgetEditor";
+import TextEditor from "../wixer_cmps/TextEditor";
 
 export default {
   props: {
@@ -47,7 +38,7 @@ export default {
     }
   },
   components: {
-    WidgetEditor
+    TextEditor
   }
 };
 </script>

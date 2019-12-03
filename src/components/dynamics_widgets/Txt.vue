@@ -1,26 +1,24 @@
 <template>
   <section
     v-if="value"
-    @click="getPos"
     class="txt-container flex column align-center"
-    @mouseover="isIn=true"
-    @mouseleave="isIn=false"
-    @blur="saveText"
     :style="{
-      backgroundImage: `url(${widgetToEdit.data.style.bcgImg})`, backgroundColor: widgetToEdit.data.style.bcgColor, width: width+'%'}"
+      backgroundImage: `url(${value.data.style.bcgImg})`, backgroundColor: value.data.style.bcgColor, width: width+'%'}"
   >
     <widget-editor
-      :widget="widgetToEdit"
+      :widget="value"
       class="widget-editor-container"
       @remove="removeWidget"
       @newImage="newImage"
     ></widget-editor>
+    <div @keyup="saveText">
     <p
       class="text"
       :contenteditable="true"
       v-html="content"
-      :style="{fontSize: widgetToEdit.data.style.fontSize + 'px',fontWeight: widgetToEdit.data.style.fontWeight, fontFamily: widgetToEdit.data.style.fontFamily, color: widgetToEdit.data.style.color, fontStyle: widgetToEdit.data.style.fontStyle }"
+      :style="style"
     ></p>
+    </div>
     <text-editor :widget="value" :pos="pos"></text-editor>
   </section>
 </template>
@@ -41,21 +39,22 @@ export default {
   data() {
     return {
       pos: { x: 0, y: 0 },
-      widgetToEdit: null
-    };
+      widgetToEdit: null,
+      content: this.value.data.txt
+    }
   },
   methods: {
     removeWidget(id) {
       this.$emit("remove", id);
     },
     saveText(ev) {
-      console.log(ev);
+      console.log(ev.target);
+
       // this.value.data.txt = ev.target.innerText;
-      // console.log(this.value.data.txt);
     },
     getPos(ev) {
-      this.pos.x = ev.pageX - 20;
-      this.pos.y = ev.pageY + 20;
+      // this.pos.x = ev.pageX - 20;
+      // this.pos.y = ev.pageY + 20;
       console.log(ev);
     },
     getWidget() {
@@ -70,8 +69,8 @@ export default {
       if (this.isFocus) return "dotted";
       else return "none";
     },
-    content() {
-      return this.widgetToEdit.data.txt;
+    style(){
+      return 'fontSize: value.data.style.fontSize + "px",fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle'
     }
   },
   components: {

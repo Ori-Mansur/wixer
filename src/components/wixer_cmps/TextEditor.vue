@@ -1,5 +1,5 @@
 <template>
-  <section class="text-editor-container" v-if="pos&&pos.x>0" :style="{top:y,left:x}">
+  <section class="text-editor-container">
     <select @change="changeFont" v-model="font">
       <option>Montserrat</option>
       <option>Roboto</option>
@@ -33,7 +33,7 @@ export default {
     pos: Object
   },
   created() {
-    // console.log(this.widget);
+    console.log(this.widget);
   },
   data() {
     return {
@@ -50,8 +50,9 @@ export default {
         this.widget.data.style.fontWeight === "normal" ? "bold" : "normal";
     },
     changeSize(diff) {
+      console.log(this.widget.data.style)
       this.widget.data.style.fontSize += diff;
-      console.log(this.widget.data.style.fontSize, "size");
+      // console.log(this.widget.data.style.fontSize, "size");
     },
     changeFont() {
       this.widget.data.style.fontFamily = this.font;
@@ -60,17 +61,18 @@ export default {
       this.widget.data.style.color = color;
     },
     italicize() {
+      console.log(this.widget.data.txt)
       this.widget.data.style.fontStyle =
         this.widget.data.style.fontStyle === "normal" ? "italic" : "normal";
     }
   },
   computed: {
-    y() {
-      return this.pos.y + "px";
-    },
-    x() {
-      return this.pos.x + "px";
-    }
+    // y() {
+    //   return this.pos.y + "px";
+    // },
+    // x() {
+    //   return this.pos.x + "px";
+    // }
   },
   components: {
     ColorPicker
@@ -79,7 +81,6 @@ export default {
 </script>
 <style lang="scss">
 .text-editor-container {
-  position: fixed;
   background-color: rgba(255, 255, 255, 0.568);
   padding: 5px;
   img {

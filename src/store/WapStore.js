@@ -15,12 +15,9 @@ export default {
             state.waps.unshift(wap)
         },
         updateWap(state, { wap }) {
-            console.log('wap store 18',wap._id)
             const idx = state.waps.findIndex(curWap =>{
-                console.log(curWap);
-                
                 return curWap._id === wap._id})
-            state.waps.splice(idx, 1, wap)
+                state.waps.splice(idx, 1, wap)
         },
         removeWap(state, { wapId }) {
             const idx = state.waps.findIndex(currWap => currWap._id === wapId)
@@ -29,9 +26,11 @@ export default {
         addWidget(state, { wap }) {
             state.currWap = wap;
         },
-        setFilter(state, filterBy) {
-            state.filterBy = filterBy
-        }
+        removeWidget(state, {widgetId}){
+            console.log(widgetId, ' to remove')
+            const idx = state.currWap.widgets.findIndex(widget => widget._id === widgetId)
+            state.currWap.widgets.splice(idx, 1)
+        },
     },
     actions: {
         async loadWaps(context) {
