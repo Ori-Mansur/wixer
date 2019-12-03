@@ -46,6 +46,10 @@ export default {
         return widgets;
       });
     },
+    addId(context,{widget}){
+      return WidgetService.addId(widget)
+      
+    },
     widgetById(context, { id }) {
       return WidgetService.getById(id).then(widget => widget);
     },

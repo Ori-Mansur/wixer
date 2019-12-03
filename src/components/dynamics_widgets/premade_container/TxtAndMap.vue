@@ -1,5 +1,5 @@
 <template>
-  <section class="twoCol-container" :contenteditable="edit" @mouseover="isIn=true" @mouseleave="isIn=false">
+  <section class="twoCol-container" :contenteditable="edit" >
     <widget-editor :widget="value" class="widget-editor-container flex justify-end" @remove="removeWidget"></widget-editor>
     <div class="component-container flex row justify-content">
     <component

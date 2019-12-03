@@ -63,9 +63,12 @@ export default {
     loadElements() {
       this.$store.dispatch({ type: "loadElements" });
     },
-    handleDrop(data) {
+    async handleDrop(data) {
       const widget = JSON.parse(JSON.stringify(data.widget));
-      this.wap.widgets.push(widget);
+      const modifyWidget= await this.$store.dispatch({type:'addId',widget})
+console.log(modifyWidget);
+
+      this.wap.widgets.push(JSON.parse(JSON.stringify(modifyWidget)));
       this.save();
     },
     addElement(element) {

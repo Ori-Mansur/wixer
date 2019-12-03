@@ -12,6 +12,9 @@ export default {
       return this.$store.getters.wapsToShow;
     }
   },
+  created(){
+this.$store.dispatch({type:'loadWaps'})
+  },
   components: {
     WapList
   }

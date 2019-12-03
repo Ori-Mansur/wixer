@@ -1,7 +1,5 @@
 <template>
   <section
-    @mouseover="isIn=true"
-    @mouseleave="isIn=false"
     v-if="value"
     @click="getPos"
     class="header-container flex column justify-center align-center background"
@@ -12,20 +10,22 @@
   >
     <widget-editor 
       :widget="widgetToEdit"
-      v-if="isOn"
       class="widget-editor-container"
       @remove="removeWidget"
       @edit="editWidget"
       @newImage="newImage"
+      @input="saveTxt"
     ></widget-editor>
     <text-editor :widget="value" :pos="pos"></text-editor>
 
     <div class="flex column">
       <h1
         :contenteditable="true"
+        
+        v-html="content"
         v-if="widgetToEdit.data.title"
         :style="{fontSize: widgetToEdit.data.style.fontSize + 'px',fontWeight: widgetToEdit.data.style.fontWeight, fontFamily: widgetToEdit.data.style.fontFamily, color: widgetToEdit.data.style.color, fontStyle: widgetToEdit.data.style.fontStyle }"
-      >{{ widgetToEdit.data.title }}</h1>
+      >hhh</h1>
       <h3
         :contenteditable="true"
         v-if="widgetToEdit.data.subtitle"
@@ -47,7 +47,7 @@ export default {
     return {
       pos: { x: 0, y: 0 },
       widgetToEdit: null,
-      isIn: false
+      content:this.value.data.title
     };
   },
   created() {
@@ -76,12 +76,17 @@ export default {
       this.pos.y = ev.pageY + 20;
       console.log(ev);
     },
-    editorIn(){
-     this.isOn=true
-    },
-    out(){
-      this.isOn=false
+    saveTxt(ev){
+      // this.$emit('input',{txt:ev.target.value,id})
+      // console.log(ev);
+      
+      // this.widgetToEdit.data.title=ev.target.innerText
+      this.value.data.title=ev.target.innerText
+      console.log(this.widgetToEdit.data.title);
+      
+      
     }
+  
   },
   components: {
     WidgetEditor,

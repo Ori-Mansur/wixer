@@ -13,8 +13,8 @@
       <unicon name="sort-amount-up" fill="black" class="icon-edit" />
     </label>
 
-    <label for="file-upload" @change="uploadImg">
-      <input id="file-upload" type="file" />
+    <label :for="fileUpload" @change="uploadImg">
+      <input :id="fileUpload" type="file" />
       <unicon name="image-plus" fill="black" class="icon-edit" />
     </label>
     <color-picker @changeColor="updateBackground" v-if="chooseColor"></color-picker>
