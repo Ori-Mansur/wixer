@@ -1,23 +1,24 @@
 .wap-editor {
-  // display: flex;
-  // justify-content: center;
-  // overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
   .edit-template {
     width: calc(100% - 200px);
     height: 100vh;
-    // overflow-y: auto;
+    overflow-y: auto;
   }
   .placeholder-widget {
     background-color: gainsboro;
-
     text-align: center;
-    padding-bottom: 130px;
-    padding-top: 130px;
-    margin-top: 30px;
-    height: 300px;
+    // padding-bottom: 130px;
+    // padding-top: 130px;
+    // margin-top: 30px;
     .icon {
       height: 50px;
       width: 50px;
+      //   padding-bottom: 130px;
+      //   padding-top: 130px;
+      margin-top: 180px;
     }
   }
 }

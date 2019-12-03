@@ -1,5 +1,5 @@
 <template>
-  <div class="wap-editor container" >
+  <div class="wap-editor container">
     <ToolBar
       @setName="setName"
       @save="save"
@@ -10,6 +10,7 @@
     />
     <drop class="drop" @drop="handleDrop" :class="classNames">
       <unicon v-if="!wap.widgets[0]" name="plus" fill="gray" class="icon" />
+      <h1 v-if="!wap.widgets[0]">Drag elemenets in here!</h1>
       <WidgetPreview :widgets="wap.widgets" @remove="remove" @edit="edit" />
     </drop>
     <ElementPreview :elements="wap.elements" />
@@ -65,8 +66,11 @@ export default {
     },
     async handleDrop(data) {
       const widget = JSON.parse(JSON.stringify(data.widget));
-      const modifyWidget= await this.$store.dispatch({type:'addId',widget})
-console.log(modifyWidget);
+      const modifyWidget = await this.$store.dispatch({
+        type: "addId",
+        widget
+      });
+      console.log(modifyWidget);
 
       this.wap.widgets.push(JSON.parse(JSON.stringify(modifyWidget)));
       this.save();
@@ -87,9 +91,9 @@ console.log(modifyWidget);
           type: "addWap",
           wap: this.wap
         });
-        this.$router.push(`/editor/${this.wap._id}`)
+        this.$router.push(`/editor/${this.wap._id}`);
       } else {
-      console.log(this.wap)
+        console.log(this.wap);
 
         this.wap = await this.$store.dispatch({
           type: "updateWap",
@@ -107,7 +111,7 @@ console.log(modifyWidget);
       // });
     },
     edit(widget) {
-      console.log('saved widget', widget)
+      console.log("saved widget", widget);
       var idx = this.wap.widgets.findIndex(
         currWidget => currWidget._id === widget._id
       );
