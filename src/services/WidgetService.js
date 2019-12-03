@@ -20,6 +20,8 @@ const widgets = [
   {
     _id: '5de3765078a07666601168f9',
     type: 'HeaderBig',
+    name: 'Big Header',
+
     data: {
       title: 'Lorem Impsum',
       subtitle: 'Lorem Shmiptsum',
@@ -43,6 +45,7 @@ const widgets = [
   {
     _id: '5de3767f78a07666601168fa',
     type: 'NavBar',
+    name: 'NavBar',
     data: {
       title: 'this is the title',
       subtitle: 'this is the subtitle',
@@ -53,6 +56,7 @@ const widgets = [
   {
     _id: '5de377c778a07666601168ff',
     type: 'Form',
+    name: 'Form',
     data: {
       style: {
         bcgImg: '',
@@ -64,6 +68,7 @@ const widgets = [
   {
     _id: '5de3783378a0766660116900',
     type: 'TxtAndMap',
+    name: 'Text And Map',
     data: [
       {
         type: 'Map',
@@ -96,6 +101,7 @@ const widgets = [
       },
       {
         type: 'Txt',
+        name: 'Text',
         data: {
           title: 'a little more',
           txt:
@@ -112,6 +118,7 @@ const widgets = [
   {
     _id: '5de37ad378a0766660116903',
     type: 'VideoAndTxt',
+    name: 'Video And Text',
     style: {
       bcgImg: '',
       bcgColor: 'white'
@@ -119,6 +126,7 @@ const widgets = [
     data: [
       {
         type: 'Txt',
+        name: 'Text',
         style: {
           bcgImg: '',
           bcgColor: 'white'
@@ -136,6 +144,7 @@ const widgets = [
       },
       {
         type: 'Video',
+        name: 'Video',
         data: {
           url: 'https://www.youtube.com/embed/mO3Q4bRQZ3k'
         }
@@ -146,6 +155,7 @@ const widgets = [
   {
     _id: '5de3a33578a076666011691f',
     type: 'About',
+    name: 'About',
     data: {
       title: 'OUR TEAM LEADERS',
       mainTxt:
@@ -179,6 +189,7 @@ const widgets = [
   {
     _id: '5de3c27e0dd08d6cc18095da',
     type: 'HeaderSmall',
+    name: 'Small Header',
     data: {
       title: 'Welcome To My Website',
       style: {
@@ -199,6 +210,7 @@ const widgets = [
   {
     _id: '5de3deff1c9d44000049e80e',
     type: 'Txt',
+    name: 'Text',
     data: {
       txt:
         'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!',
