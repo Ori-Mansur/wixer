@@ -11,7 +11,7 @@ export default {
                 message: msg
             });
         },
-        open2(state, { msg }) {
+        success(state, { msg }) {
             Message({
                 showClose: true,
                 message: msg,

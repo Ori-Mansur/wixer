@@ -15,13 +15,6 @@ export default {
     setWidgets(state, { widgets }) {
       state.widgets = widgets;
     },
-    addWidget(state, { widget }) {
-      state.widgets.unshift(widget);
-    },
-    updateWidget(state, { widget }) {
-      const idx = state.widgets.findIndex(currWidget => currWidget._id === widget._id);
-      state.widgets.splice(idx, 1, widget);
-    },
     removeWidget(state, { widgetId }) {
       const idx = state.widgets.findIndex(currWidget => currWidget._id === widgetId);
       state.widgets.splice(idx, 1);
@@ -40,42 +33,24 @@ export default {
     },
     loadWidgets(context) {
       return WidgetService.query().then(widgets => {
-        // console.log(widgets);
-        
+        console.log(widgets);
         context.commit({ type: 'setWidgets', widgets });
         return widgets;
       });
     },
-    addId(context,{widget}){
-      return WidgetService.addId(widget)
-      
+    addId(context,{section}){
+      return WidgetService.addId(section)
     },
     widgetById(context, { id }) {
       return WidgetService.getById(id).then(widget => widget);
     },
-    addWidget(context, { widget }) {
-      return WidgetService.add(widget).then(widget => {
-        context.commit({ type: 'addWidget', widget });
-        return widget;
-      });
-    },
-    updateWidget(context, { widget }) {
-      return WidgetService.update(widget).then(widget => {
-        context.commit({ type: 'updateWidget', widget });
-        return widget;
-      });
-    },
-    removeWidget(context, { widgetId }) {
-      return WidgetService.remove(widgetId).then(() => {
-        context.commit({ type: 'removeWidget', widgetId });
-      });
-    }
+ 
   },
   getters: {
     loadElements(state){
       return state.elements
     },
-    widgets(state) {
+    widgetsToAdd(state) {
       return state.widgets;
     },
     widgetPerYear(state) {

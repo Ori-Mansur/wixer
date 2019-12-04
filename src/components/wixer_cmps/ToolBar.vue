@@ -5,29 +5,58 @@
         <unicon name="list-ul" :fill="colorMenu" />
         <h3 :style="{color:colorMenu}">MENU</h3>
       </li>
-       <div v-if="menu" class="list-option">
+      <div v-if="menu" class="list-option">
         <Menu />
       </div>
       <li @click="section=!section" class="li-bar section-add">
         <unicon name="book-medical" :fill="color" />
         <h3 :style="{color:color}">ADD</h3>
       </li>
-      <div v-if="section" class="list-option add-option">
-        <EditOption v-for="widget in widgets" :key="widget.id" :widget="widget" @select="add" />
+      <div v-if="section">
+        <draggable
+          class="dragArea list-group"
+          :list="widgets"
+          :sort="false"
+          :group="{ name: 'people', pull: 'clone', put: false }"
+          :clone="cloneDog"
+        >
+          <div
+            class="list-group-item"
+            v-for="element in widgets"
+            :key="element.id"
+          >{{ element.type }}</div>
+        </draggable>
+      </div>
+      <li @click="el=!el" class="li-bar section-add">
+        <unicon name="book-medical" :fill="color" />
+        <h3 :style="{color:color}">ADD EL</h3>
+      </li>
+      <div v-if="el">
+        <draggable
+          class="dragArea list-group"
+          :list="elements"
+          :group="{ name: 'element', pull: 'clone', put: false }"
+          :clone="cloneX"
+        >
+          <div
+            class="list-group-item"
+            v-for="element in elements"
+            :key="element.id"
+          >{{ element.type }}</div>
+        </draggable>
       </div>
 
       <li @click="edit=!edit" class="li-bar section-edit">
         <unicon name="edit" :fill="colorEdit" />
         <h3 :style="{color:colorEdit}">EDIT</h3>
       </li>
-       <div v-if="edit" class="list-option wap-option">
+      <div v-if="edit" class="list-option wap-option">
         <SettingWap @setName="add" :nav="nav" />
       </div>
       <li @click="save" class="li-bar section-save">
         <unicon name="file-medical" fill="white" />
         <h3 :style="{color:'white'}">SAVE</h3>
       </li>
-     
 
       <!-- <li class="element-add">
         +
@@ -38,9 +67,11 @@
 </template>
 <script>
 // import { Drag } from 'vue-drag-drop';
-import EditOption from "./EditOption.vue";
+// import EditOption from "./EditOption.vue";
 import SettingWap from "./SettingWap.vue";
+import draggable from "vuedraggable";
 import Menu from "./Menu.vue";
+
 export default {
   props: {
     widgets: Array,
@@ -51,9 +82,10 @@ export default {
     return {
       select: "",
       section: false,
+      el:false,
       edit: false,
       menu:false,
-      gray: "red"
+      gray: "red",
     };
   },
   methods: {
@@ -66,6 +98,12 @@ export default {
     },
     save(){
       this.$emit('save')
+    },
+   cloneDog(section) {
+      return JSON.parse(JSON.stringify(section)) ;
+    },
+   cloneX(section) {
+      return JSON.parse(JSON.stringify(section)) ;
     }
   },
   computed: {
@@ -82,10 +120,14 @@ export default {
       else return "gray";
     }
   },
+  created(){
+this.$store.dispatch({type:'loadWidgets'})
+  },
   components: {
-    EditOption,
+    // EditOption,
     SettingWap,
-    Menu
+    Menu,
+    draggable
   }
 };
 </script>

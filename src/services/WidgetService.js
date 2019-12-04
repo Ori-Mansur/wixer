@@ -186,23 +186,7 @@ const widgets = [
         },
         "createdAt": "2019-12-01T13:39:10.508Z"
     },
-    {
-        "_id": "5de3deff1c9d44000049e80e",
-        "type": "Txt",
-        "data": {
-            "txt": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!",
-            "style": {
-                "fontFamily": "Arial",
-                "fontSize": 16,
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-                "color": "black",
-                "bcgImg": "",
-                "bcgColor": ""
-            }
-        },
-        "createdAt": "2019-12-01T08:18:35.184Z"
-    },
+    
     {
         "_id": "5de4c99aca73df026cca7457",
         "type": "FormInline",
@@ -228,7 +212,7 @@ const widgets = [
         "createdAt": "2019-12-02T08:21:46.753Z"
     },
     {
-        "_id": "5de4c99dfxaxcsc026x",
+        "_id": "5de4c99dxxfxaxcsc026x",
         "type": "OurTeamSurfe",
         "data": {},
         "createdAt": "2019-12-02T08:21:46.753Z"
@@ -242,22 +226,40 @@ const widgets = [
     {
         "_id": "5de4c99dfxaxcchjvhucasklmcssacsc026x",
         "type": "SectionContainer",
-        "data": {},
+        style:{bcgImg:'',bcgColor:''},
+        "data": [],
         "createdAt": "2019-12-02T08:21:46.753Z"
     }
 ]
 
 function addId(widget) {
+    console.log(widget);
+    
     widget._id = utils.makeId()
     return widget
-
 }
 
 async function query() {
     return await widgets;
 }
 
-const elements = []
+const elements = [{
+    "_id": "5de3deff1c9d44000049e80e",
+    "type": "Txt",
+    "data": {
+        "txt": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!",
+        "style": {
+            "fontFamily": "Arial",
+            "fontSize": 16,
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+            "color": "black",
+            "bcgImg": "",
+            "bcgColor": ""
+        }
+    },
+    "createdAt": "2019-12-01T08:18:35.184Z"
+},]
 async function queryElements() {
     return await elements
 }

@@ -11,6 +11,10 @@
     max-width: $break-normal;
   }
 }
+.drop.over {
+  border-color: #aaa;
+  background: #ccc;
+}
 
 // Grids
 

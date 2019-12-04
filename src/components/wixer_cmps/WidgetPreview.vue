@@ -1,19 +1,31 @@
 <template>
   <div>
-    <component
-      :isEdit="isEdit"
-      v-for="(widget,idx) in widgets"
+    <draggable class="dragArea list-group" v-model='myList' group="people">
+        <div class="list-group-item" v-for="(element,idx) in myList" :key="idx">
+          <!-- <pre>
+
+          {{ element }}
+          </pre> -->
+          <component
       :key="idx"
-      :is="widget.type"
-      :value="widget"
-     
+      :is="element.type"
+      :section="element"
+      @setImg="setImg"
+      @click.native="setSection(element)"
       class="widget-container"
-      @remove="removeWidget"
-      @edit="editWidget"
     ></component>
+         
+        </div>
+        <div  class="placeholder-widget">
+
+    <unicon name="plus" fill="gray" class="icon" />
+        </div>
+      </draggable>
+    
   </div>
 </template>
 <script>
+import draggable from "vuedraggable";
 import VideoAndTxt from "../dynamics_widgets/premade_container/VidAndTxt";
 import TxtAndMap from "../dynamics_widgets/premade_container/TxtAndMap";
 import NavBar from "../dynamics_widgets/NavBarEdit";
@@ -44,25 +56,31 @@ export default {
       isEdit: false
     };
   },
-  methods: {
-    // update(value) {
-    //   console.log("value");
-    // },
-    removeWidget(id) {
-      this.$emit("remove", id);
+  computed: {
+    myList: {
+        get() {
+            return this.$store.getters.currWapSections
+        },
+        set(value) {
+            this.$store.commit('addSection', value)
+        }
     },
-    editWidget(widget) {
-      console.log(widget);
-      this.$emit("edit", widget);
-    }
   },
-
+  methods: {
+    setImg(data){
+      this.$store.dispatch({type:'setBcgImg',data})
+    },
+    setSection(section) {
+      this.$store.commit({type:"setSection", section});
+    },
+  },
   created() {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
   },
   components: {
+    draggable,
     VideoAndTxt,
     TxtAndMap,
     NavBar,

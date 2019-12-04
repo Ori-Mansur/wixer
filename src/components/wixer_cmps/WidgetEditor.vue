@@ -1,19 +1,19 @@
 <template>
   <section class="widget-editor-container" v-if="isEdit">
-    <label @click="chooseColor = !chooseColor" >
+    <label @click="chooseColor = !chooseColor">
       <unicon name="palette" fill="black" class="icon-edit" />
     </label>
-    <label @click="removeWidget" title="remove this widget" >
+    <label @click="removeWidget" title="remove this widget">
       <unicon name="trash-alt" fill="black" class="icon-edit" />
     </label>
-    <label @click="savePos(+1)" >
+    <label @click="savePos(+1)">
       <unicon name="sort-amount-down" fill="black" class="icon-edit" />
     </label>
-    <label @click="savePos(-1)" >
+    <label @click="savePos(-1)">
       <unicon name="sort-amount-up" fill="black" class="icon-edit" />
     </label>
 
-    <label :for="fileUpload" @change="uploadImg">
+    <label :for="fileUpload" @change="setImg">
       <input :id="fileUpload" type="file" />
       <unicon name="image-plus" fill="black" class="icon-edit" />
     </label>
@@ -23,11 +23,10 @@
 
 <script>
 import ColorPicker from "../wixer_cmps/ColorPicker";
-import CloudinaryService from "../../services/cloudinary.service.js";
 
 export default {
   props: {
-    widget: Object
+    data: Object
   },
   created() {
     // console.log("newWidget", this.widget);
@@ -42,38 +41,31 @@ export default {
       isEdit: false
     };
   },
-  computed:{
-    imageUrlRef(){
-      return this.widget.data.style.bcgImg
+  computed: {
+    imageUrlRef() {
+      return this.data.style.bcgImg;
     },
-    fileUpload(){
-      return `file-upload-${this.widget._id}`
+    fileUpload() {
+      return `file-upload-${this.data._id}`;
     }
   },
   methods: {
     editWidget() {
-      this.$emit("edit", this.widget);
+      this.$emit("edit", this.data);
     },
     removeWidget() {
       this.$emit("remove", this.widget._id);
-      console.log(this.widget._id, "remove");
+      console.log(this.data._id, "remove");
     },
     updateBackground(color) {
-      this.widget.data.style.bcgColor = color;
+      this.data.style.bcgColor = color;
       this.editWidget();
       // console.log(this.widget.data.style)
     },
-    uploadImg(event) {
-      console.log(event);
-      CloudinaryService.uploadImg(event)
-        .then(imgUrl => {
-          console.log("widget of Imaage2", this.widget);
-          // this.$emit("newImage", imgUrl);
-
-          this.widget.data.style.bcgImg = imgUrl;
-        })
-        .then(() => this.editWidget());
-    }
+    setImg(event){
+this.$emit('setImg',event)
+    },
+    
   },
   watch: {
     "this.$route.path"(curr) {
@@ -96,14 +88,13 @@ export default {
 <style lang="scss">
 .widget-editor-container {
   // position: fixed;
-  position: sticky;
-  top: 50px;
+  position: absolute;
+  top: 0px;
   right: 0px;
-  // top: 0px;
   // z-index: 100;
-  
+
   padding: 5px;
-  .icon-edit{
+  .icon-edit {
     background-color: #fff;
     padding: 3px;
     cursor: pointer;

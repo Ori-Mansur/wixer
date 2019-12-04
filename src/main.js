@@ -11,6 +11,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 // import  "@css/fontawesome.css"
 // import  "@css/brands.css"
 // import  "@css/solid.css"
+import draggable from 'vuedraggable'
+Vue.use(draggable);
 import Unicon from 'vue-unicons';
 import {
   uniWindowSection,
