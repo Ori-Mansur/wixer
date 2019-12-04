@@ -20,8 +20,7 @@ const widgets = [
   {
     type: 'HeaderBig',
     name: 'Big Header',
-    style:
-    {
+    style: {
       bcgImg: '',
       bcgColor: '',
       height: 400
@@ -29,59 +28,55 @@ const widgets = [
     data: [
       {
         text: 'Insert Title',
-        style:
-        {
+        style: {
           color: 'black',
           fontSize: 30,
           fontWeight: 'normal',
           fontFamily: 'Arial',
           fontStyle: 'normal',
           txtAlign: 'center'
-        },
+        }
       },
       {
         text: 'Insert Subtitle',
-        style: 
-        {
+        style: {
           color: 'black',
           fontSize: 16,
           fontWeight: 'normal',
           fontFamily: 'Arial',
           fontStyle: 'normal',
           txtAlign: 'center'
-        },
-      },
+        }
+      }
     ]
   },
   {
     type: 'Container1',
     name: 'Paragraph',
-    style:
-    {
+    style: {
       bcgImg: '',
       bcgColor: '',
       height: 400
     },
     data: [
       {
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-        style:
-        {
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+        style: {
           color: 'black',
           fontSize: 16,
           fontWeight: 'normal',
           fontFamily: 'Arial',
           fontStyle: 'normal',
           txtAlign: 'center'
-        },
-      },
+        }
+      }
     ]
   },
   {
     type: 'Card1',
     name: 'Card',
-    style:
-    {
+    style: {
       bcgImg: '',
       bcgColor: '',
       height: 90,
@@ -90,43 +85,40 @@ const widgets = [
     data: [
       {
         text: 'Lorem ipsum',
-        style:
-        {
+        style: {
           color: 'black',
           fontSize: 22,
           fontWeight: 'normal',
           fontFamily: 'Arial',
           fontStyle: 'normal',
           txtAlign: 'center'
-        },
-      },{
+        }
+      },
+      {
         text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        style:
-        {
+        style: {
           color: 'black',
           fontSize: 16,
           fontWeight: 'normal',
           fontFamily: 'Arial',
           fontStyle: 'normal',
           txtAlign: 'center'
-        },
-      },
+        }
+      }
     ]
   },
   {
     type: 'CardsContainer',
     name: 'Multi Card',
-    style:
-    {
+    style: {
       bcgImg: '',
-      bcgColor: '',
+      bcgColor: ''
     },
     data: [
       {
         type: 'Card1',
         name: 'Card',
-        style:
-        {
+        style: {
           bcgImg: '',
           bcgColor: '',
           height: 90,
@@ -135,34 +127,32 @@ const widgets = [
         data: [
           {
             text: 'Lorem ipsum',
-            style:
-            {
+            style: {
               color: 'black',
               fontSize: 22,
               fontWeight: 'normal',
               fontFamily: 'Arial',
               fontStyle: 'normal',
               txtAlign: 'center'
-            },
-          },{
+            }
+          },
+          {
             text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-            style:
-            {
+            style: {
               color: 'black',
               fontSize: 16,
               fontWeight: 'normal',
               fontFamily: 'Arial',
               fontStyle: 'normal',
               txtAlign: 'center'
-            },
-          },
+            }
+          }
         ]
       },
       {
         type: 'Card1',
         name: 'Card',
-        style:
-        {
+        style: {
           bcgImg: '',
           bcgColor: '',
           height: 90,
@@ -171,34 +161,32 @@ const widgets = [
         data: [
           {
             text: 'Lorem ipsum',
-            style:
-            {
+            style: {
               color: 'black',
               fontSize: 22,
               fontWeight: 'normal',
               fontFamily: 'Arial',
               fontStyle: 'normal',
               txtAlign: 'center'
-            },
-          },{
+            }
+          },
+          {
             text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-            style:
-            {
+            style: {
               color: 'black',
               fontSize: 16,
               fontWeight: 'normal',
               fontFamily: 'Arial',
               fontStyle: 'normal',
               txtAlign: 'center'
-            },
-          },
+            }
+          }
         ]
       },
       {
         type: 'Card1',
         name: 'Card',
-        style:
-        {
+        style: {
           bcgImg: '',
           bcgColor: '',
           height: 90,
@@ -207,75 +195,73 @@ const widgets = [
         data: [
           {
             text: 'Lorem ipsum',
-            style:
-            {
+            style: {
               color: 'black',
               fontSize: 22,
               fontWeight: 'normal',
               fontFamily: 'Arial',
               fontStyle: 'normal',
               txtAlign: 'center'
-            },
-          },{
+            }
+          },
+          {
             text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-            style:
-            {
+            style: {
               color: 'black',
               fontSize: 16,
               fontWeight: 'normal',
               fontFamily: 'Arial',
               fontStyle: 'normal',
               txtAlign: 'center'
-            },
-          },
+            }
+          }
         ]
-      },
+      }
     ]
   },
   {
     type: 'Container3',
     name: 'Multi Paragraph',
-    style:
-    {
+    style: {
       bcgImg: '',
-      bcgColor: '',
+      bcgColor: ''
     },
     data: [
       {
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-        style:
-        {
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+        style: {
           color: 'black',
           fontSize: 16,
           fontWeight: 'normal',
           fontFamily: 'Arial',
           fontStyle: 'normal',
           txtAlign: 'center'
-        },
+        }
       },
       {
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-        style:
-        {
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+        style: {
           color: 'black',
           fontSize: 16,
           fontWeight: 'normal',
           fontFamily: 'Arial',
           fontStyle: 'normal',
           txtAlign: 'center'
-        },
+        }
       },
       {
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-        style:
-        {
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+        style: {
           color: 'black',
           fontSize: 16,
           fontWeight: 'normal',
           fontFamily: 'Arial',
           fontStyle: 'normal',
           txtAlign: 'center'
-        },
+        }
       }
     ]
   },
@@ -501,6 +487,7 @@ const widgets = [
   {
     _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
     type: 'SectionContainer',
+    name: 'Section',
     data: {},
     createdAt: '2019-12-02T08:21:46.753Z'
   }
