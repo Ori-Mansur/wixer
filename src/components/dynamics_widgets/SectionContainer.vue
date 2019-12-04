@@ -4,7 +4,6 @@
     :style="{backgroundColor: section.style.bcgColor, backgroundImage: `url(${section.style.bcgImg})`}"
   >
     <WidgetEditor @setImg="setImg" :data="section" />
-    {{sectionList}}
     <draggable class="dragArea list-group" v-model='sectionList' group="element">
       <div class="list-group-item" v-for="(element,idx) in sectionList" :key="idx">
         <component :key="idx" :is="element.type" :data="element.data" :contenteditable="true"></component>

@@ -1,11 +1,12 @@
 <template>
   <div class="nav-bar-daynamic">
-    <widget-editor
+    <!-- <widget-editor
       :widget="value"
       class="widget-editor-container"
       @remove="removeWidget"
       @edit="editWidget"
-    ></widget-editor>
+    ></widget-editor> -->
+    <WidgetEditor :data="section" />
     <div class="logo" style="padding: 30px;">LOGO</div>
     <nav class="nav-bar" style="padding: 30px;">
       <router-link to="#" style="margin-left: 10px" :contenteditable="edit">{{links.first}}</router-link>
@@ -15,11 +16,11 @@
   </div>
 </template>
 <script>
-import widgetEditor from "../wixer_cmps/WidgetEditor";
+import WidgetEditor from "../wixer_cmps/WidgetEditor";
 export default {
   props: {
     edit: Boolean,
-    value:Object
+    section:Object
   },
   data() {
     return {
@@ -39,7 +40,7 @@ export default {
     }
   },
   components: {
-    widgetEditor
+    WidgetEditor
   }
 };
 </script>

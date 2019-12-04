@@ -5,7 +5,6 @@
     
       :widgets="widgetsToAdd"
       :elements="elements"
-      :nav="nav"
     />
    
     <div>
