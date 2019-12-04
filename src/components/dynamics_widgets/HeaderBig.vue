@@ -1,14 +1,17 @@
 <template>
-  <section @click="isEdit=!isEdit"
+  <section 
     class="header-container flex column justify-center align-center background"
     :style="{backgroundImage: `url(${section.style.bcgImg})`,backgroundColor: section.style.bcgColor,
     height: section.style.height + 'px', border: isBorder}">
-
     <widget-editor 
-      :widget="section"
+      :data="section"
       class="widget-editor-container" @remove="removeWidget" ></widget-editor>
 
-    <text-element v-for="(data, index) in section.data" :key="index" :data="data" :isEdit="isEdit"></text-element>
+    <text-element v-for="(data, idx) in section.data" 
+    @saveText="saveText"
+    :key="idx" 
+    :data="JSON.parse(JSON.stringify(data))"
+    ></text-element>
   </section>
 </template>
 <script>
@@ -18,13 +21,13 @@ import TextElement from "../elements/TextElement";
 
 export default {
   props: {
-    edit: Boolean,
+    // edit: Boolean,
     section: Object
   },
   data() {
     return {
       pos: { x: 0, y: 0 },
-      isEdit: false,
+      // isEdit: false,
     };
   },
   created() {
@@ -41,6 +44,12 @@ export default {
   methods: {
     removeWidget(id) {
       this.$emit("remove", id);
+    },
+    saveText(value){
+      // console.log('jjhjjj',value);
+      this.$emit('saveText',{txt:value,sectionId:this.section._id})
+      
+
     }
   },
   components: {

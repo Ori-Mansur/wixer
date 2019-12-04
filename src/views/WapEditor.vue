@@ -95,12 +95,12 @@ export default {
     async setWap() {
       const id = this.$route.params.id;
       if (id) {
-        const wap = await this.$store.dispatch({ type: "wapById", id });
-        this.wap =JSON.parse(JSON.stringify(wap));
+         await this.$store.dispatch({ type: "wapById", id });
+        // this.wap =JSON.parse(JSON.stringify(wap));
       } else {
         const newWap = await this.$store.dispatch({ type: "addNewWap" });
         this.$router.push(`/editor/${newWap._id}`);
-        this.wap =JSON.parse(JSON.stringify(newWap)) ;
+        // this.wap =JSON.parse(JSON.stringify(newWap)) ;
       }
     }
   },

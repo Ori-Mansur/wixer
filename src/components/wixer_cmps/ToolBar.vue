@@ -37,6 +37,7 @@
         <draggable
           class="dragArea list-group"
           :list="elements"
+          :sort="false"
           :group="{ name: 'group', pull: 'clone', put: false }"
           :clone="cloneX"
         >

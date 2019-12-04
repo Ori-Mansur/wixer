@@ -17,6 +17,11 @@ export default {
         setWap(state, { wap }) {
             state.currWap = wap
         },
+        updateTxt(state, { data }) {
+            const idx = state.currWap.sections.findIndex(section => section._id === data.sectionId)
+            const dataIdx = state.currWap.sections[idx].data.findIndex(currData => currData._id === data.txt._id)
+            state.currWap.sections[idx].data.splice(dataIdx, 1, data.txt)
+        },
         updateWap(state, { wap }) {
             const idx = state.waps.findIndex(curWap => {
                 return curWap._id === wap._id
@@ -28,20 +33,17 @@ export default {
             state.waps.splice(idx, 1)
         },
         addSection(state, value) {
-            // console.log('commit', state.currWap);
-            value[0]._id=UtilsService.makeId()
-
+            value.forEach(section => section._id = UtilsService.makeId());
             state.currWap.sections = value
-            state.group = value[0]._id
         },
         addElement(state, value) {
+            value.forEach(element => element._id = UtilsService.makeId());
             const idx = state.currWap.sections.findIndex(section => section._id === state.group)
             state.currWap.sections[idx].data = value
         },
         addWidget(state, { data }) {
             const idx = state.currWap.sections.findIndex(currSection => currSection._id === data.sectionId)
             console.log('store idx', state.currWap.sections[idx]);
-
             state.currWap.sections[idx].data.push(data.el)
         },
         setFilter(state, filterBy) {
@@ -73,7 +75,7 @@ export default {
         },
         async saveWap(context) {
             console.log('wap store', context.state.currWap);
-            const wap=context.state.currWap
+            const wap = context.state.currWap
             const updateWap = await WapService.update(wap)
             context.commit({ type: 'setWap', wap: updateWap })
             context.commit({ type: 'success', msg: 'Wap saved' })
@@ -119,7 +121,7 @@ export default {
             if (state.currWap.sections) {
                 const section = state.currWap.sections.find(section => section._id === state.group)
                 console.log(section);
-                
+
                 return section.data
             }
         },

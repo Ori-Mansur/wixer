@@ -1,7 +1,14 @@
 <template>
-  <section class="text-container">
-    <div @keyup="saveText">
-      <p class="text" :contenteditable="true" v-html="content" :style="{fontSize: data.style.fontSize + 'px',fontWeight: data.style.fontWeight, fontFamily: data.style.fontFamily, color: data.style.color, fontStyle: data.style.fontStyle, textAlign: data.style.txtAlign }"></p>
+  <section v-if="data" class="text-container">
+    <div @keyup="saveText"  >
+      <p v-if="data.style" class="text"  v-html="content" 
+      contenteditable="true"
+      :style="{fontSize: data.style.fontSize + 'px',
+      fontWeight: data.style.fontWeight, 
+      fontFamily: data.style.fontFamily, 
+      color: data.style.color, 
+      fontStyle: data.style.fontStyle, 
+      textAlign: data.style.txtAlign }"></p>
     </div>
     <text-editor :widget="data" class="widget-editor-container" @remove="removeWidget" ></text-editor>
   </section>
@@ -17,9 +24,10 @@ export default {
 
   },
   created() {
-    // console.log('selectedEl', this.selectedEl)
+    // console.log('selectedEl', this.data)
 
   },
+
   data() {
     return {
       content: this.data.text,
@@ -33,9 +41,8 @@ export default {
     },
     saveText(ev){
       this.data.text = ev.target.innerText;
+      this.$emit('saveText',this.data)
     }
-  },
-  computed: {
   },
   components: {
     TextEditor

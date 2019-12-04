@@ -1,14 +1,19 @@
 <template>
   <div
     class="section-container"
-    :style="{backgroundColor: section.style.bcgColor, backgroundImage: `url(${section.style.bcgImg})`}"
+    :style="{backgroundColor: section.style.bcgColor,
+     backgroundImage: `url(${section.style.bcgImg})`}"
   >
     <WidgetEditor @setImg="setImg" :data="section" />
-    <draggable class="dragArea list-group" :list="section.data" group="group">
+    <draggable class="dragArea list-group" :list="section.data" group="group" :sort="isEdit" >
       <div class="list-group-item" v-for="(element,idx) in section.data" :key="idx">
-        <component :key="idx" :is="element.type" :data="element" :contenteditable="true"></component>
+        <component :key="idx" 
+        :is="element.type" 
+        :data="element" 
+        :contenteditable="isEdit">
+        </component>
       </div>
-      <div>
+      <div v-if="isEdit" class="placeholder">
         <unicon name="plus" fill="gray" class="icon" />
       </div>
     </draggable>
@@ -24,7 +29,8 @@ import Video from "./Video";
 import Map from "./Map";
 export default {
   props: {
-    section: Object
+    section: Object,
+    isEdit:Boolean
   },
   data() {
     return {
@@ -73,7 +79,18 @@ return this.$store.getters.group
 <style lang="scss" scoped>
 .section-container {
   position: relative;
+  padding: 10px;
   min-height: 300px;
   border: 1px dotted black;
+ 
+  .placeholder{
+    padding: 50px;
+    margin: auto auto;
+    background-color: gainsboro;
+    text-align: center;
+  }
+  .list-group-item{
+    height: 100%;
+  }
 }
 </style>

@@ -2,12 +2,13 @@
   <section
     v-if="data"
     class="txt-container flex column align-center"
+    
   >
   <WidgetEditor/>
     <p
+    @keyup="saveText"
     v-if="data"
       class="text"
-      :contenteditable="true"
       v-html="content"
     ></p>
   </section>

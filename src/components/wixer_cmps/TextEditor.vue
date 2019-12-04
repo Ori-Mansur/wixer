@@ -1,5 +1,5 @@
 <template>
-  <section class="text-editor-container">
+  <section v-if="isEdit" class="text-editor-container">
     <select @change="changeFont" v-model="font" @click.stop>
       <option>Montserrat</option>
       <option>Roboto</option>
@@ -33,11 +33,15 @@ export default {
     pos: Object,
   },
   created() {
+    const param = this.$route.path;
+    if (param.includes("editor")) this.isEdit = true;
+    else this.isEdit = false;
   },
   data() {
     return {
       chooseColor: false,
-      font: "Arial"
+      font: "Arial",
+      isEdit:false
     };
   },
   methods: {

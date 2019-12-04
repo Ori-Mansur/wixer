@@ -50,6 +50,7 @@ const widgets = [
     },
     data: [
       {
+        _id:'big1001',
         text: 'Insert Title',
         style: {
           color: 'black',
@@ -61,6 +62,7 @@ const widgets = [
         }
       },
       {
+        _id:'big1002',
         text: 'Insert Subtitle',
         style: {
           color: 'black',

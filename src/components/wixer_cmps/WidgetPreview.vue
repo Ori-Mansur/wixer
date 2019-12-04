@@ -3,10 +3,13 @@
     <draggable class="dragArea list-group" v-model="myList" group="people">
       <div class="list-group-item" v-for="(element,idx) in myList" :key="idx">
         <component
+        :isEdit="isEdit"
+       
           :key="idx"
           :is="element.type"
           :section="element"
           @setImg="setImg"
+          @saveText="saveText"
           class="widget-container"
         ></component>
       </div>
@@ -64,6 +67,11 @@ export default {
     setImg(data) {
       this.$store.dispatch({ type: "setBcgImg", data });
     },
+    saveText(data){
+      console.log('pre',data);
+      
+      this.$store.commit({type:"updateTxt",data})
+    }
   },
   created() {
     const param = this.$route.path;
