@@ -29,6 +29,13 @@
         <unicon name="file-medical" fill="white" />
         <h3 :style="{color:'white'}">Save</h3>
       </li>
+      <router-link to="/wap">
+      <li  class="li-bar section-save">
+        <unicon name="trash-alt" fill="white" />
+        <h3 :style="{color:'white'}">Change</h3>
+      </li>
+            </router-link>
+
 
       <!-- <li class="element-add">
         +

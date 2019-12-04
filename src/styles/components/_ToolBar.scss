@@ -4,12 +4,9 @@
   flex-direction: column;
   width: 200px;
   background: rgb(179, 175, 175);
-  // overflow: scroll;
   height: 100vh;
-  // overflow: scroll;
-  // top: 100px;
-  // left: 30px;
-  border: 1px solid black;
+  // padding: 5px;
+  border: 1px solid rgb(179, 177, 177);
   .tool-bar-list {
     .li-bar {
       cursor: pointer;
@@ -24,7 +21,7 @@
         rgba(238, 238, 238, 0.96) 100%
       );
       box-shadow: 0 2px 5px 0 rgba(22, 45, 61, 0.58);
-      border-radius: 24px;
+      // border-radius: 24px;
       // line-height: 48px;
       height: 60px;
       display: flex;
@@ -39,10 +36,11 @@
       }
     }
     .section-menu {
-      margin-top: 15px;
+      // margin-top: 15px;
+      padding: 10px;
     }
     .section-add {
-      margin-top: 130px;
+      margin-top: 15px;
 
       .icon {
         fill: gold;
