@@ -1,39 +1,52 @@
 <template>
-  <section class="container-twoCol" :contenteditable="edit">
-    <h1 class="text-header">Hello main title</h1>
-    <div class="row">
-      <div class="column" :style="{}">
-        <h2 class="text-center">Column 1</h2>
-        <div class="article">
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!
-          </p>
-        </div>
-      </div>
-      <div class="column" :style="{}">
-        <h2 class="text-center">Column 2</h2>
-        <div class="article">
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!
-          </p>
-        </div>
-      </div>
-    </div>
+  <section class="container-twoCol" @click="isEdit=!isEdit" :style="{backgroundImage: `url(${value.style.bcgImg})`,    backgroundColor: value.style.bcgColor, height: value.style.height + 'px', border: isBorder}">
+
+    <text-element v-for="(data, index) in value.data" :key="index" :data="data" :isEdit="isEdit"></text-element>
+
+    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
   </section>
 </template>
 
 <script>
+import WidgetEditor from "../wixer_cmps/WidgetEditor";
+import TextEditor from "../wixer_cmps/TextEditor";
+import TextElement from "../elements/TextElement";
+
+
 export default {
   props: {
-    edit: Boolean
+    edit: Boolean,
+    value: Object
+  },
+  created(){
+    console.log(this.value)
+  },
+  data(){
+    return{
+      isEdit: false
+    }
+  },
+  computed:{
+    isBorder(){
+      if (this.isEdit) return '1px solid blue'
+      else return ''
+    }
+  },
+  methods:{
+    removeWidget(id) {
+      this.$emit("remove", id);
+    },
+  },
+  components:{
+    WidgetEditor,
+    TextEditor,
+    TextElement
   }
 };
 </script>a
 <style scoped>
 .container-twoCol {
-  border-style: dotted;
+  position: relative;
 }
 .text-header,
 .text-center {

@@ -1,6 +1,6 @@
 <template>
   <section class="text-editor-container">
-    <select @change="changeFont" v-model="font">
+    <select @change="changeFont" v-model="font" @click.stop>
       <option>Montserrat</option>
       <option>Roboto</option>
       <option>Arial</option>
@@ -33,7 +33,6 @@ export default {
     pos: Object
   },
   created() {
-    console.log(this.widget);
   },
   data() {
     return {
@@ -46,33 +45,24 @@ export default {
       this.$emit("edit", this.widget);
     },
     makeBold() {
-      this.widget.data.style.fontWeight =
-        this.widget.data.style.fontWeight === "normal" ? "bold" : "normal";
+      this.widget.style.fontWeight =
+        this.widget.style.fontWeight === "normal" ? "bold" : "normal";
     },
     changeSize(diff) {
-      console.log(this.widget.data.style)
-      this.widget.data.style.fontSize += diff;
-      // console.log(this.widget.data.style.fontSize, "size");
+      this.widget.style.fontSize += diff;
     },
     changeFont() {
-      this.widget.data.style.fontFamily = this.font;
+      this.widget.style.fontFamily = this.font;
     },
     changeFontColor(color) {
-      this.widget.data.style.color = color;
+      this.widget.style.color = color;
     },
     italicize() {
-      console.log(this.widget.data.txt)
-      this.widget.data.style.fontStyle =
-        this.widget.data.style.fontStyle === "normal" ? "italic" : "normal";
+      this.widget.style.fontStyle =
+        this.widget.style.fontStyle === "normal" ? "italic" : "normal";
     }
   },
   computed: {
-    // y() {
-    //   return this.pos.y + "px";
-    // },
-    // x() {
-    //   return this.pos.x + "px";
-    // }
   },
   components: {
     ColorPicker
@@ -83,6 +73,9 @@ export default {
 .text-editor-container {
   background-color: rgba(255, 255, 255, 0.568);
   padding: 5px;
+  position:absolute;
+  top:-100px;
+  right: 0px;
   img {
     width: 30px;
     height: 30px;

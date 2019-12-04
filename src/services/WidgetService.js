@@ -18,36 +18,268 @@ const BASE_URL = 'widget';
 
 const widgets = [
   {
-    _id: '5de3765078a07666601168f9',
     type: 'HeaderBig',
     name: 'Big Header',
-
-    data: {
-      title: 'Lorem Impsum',
-      subtitle: 'Lorem Shmiptsum',
-      style: {
-        bcgImg:
-          'https://d279m997dpfwgl.cloudfront.net/wp/2016/08/0826_yellowstone-stars-2-1000x667.jpg',
-        txtTitleColor: 'White',
-        txtSubtitleColor: 'red',
-        bcgColor: 'white',
-        height: 400,
-        color: '',
-        fontSize: 16,
-        fontWeight: 'normal',
-        fontFamily: 'Arial',
-        fontStyle: 'normal',
-        txtAlign: 'center'
-      }
+    style:
+    {
+      bcgImg: '',
+      bcgColor: '',
+      height: 400
     },
-    createdAt: '2019-12-01T08:14:08.280Z',
-    fontFamily: '',
-    fontWeight: '',
-    fontSize: 16,
-    color: ''
+    data: [
+      {
+        text: 'Insert Title',
+        style:
+        {
+          color: 'black',
+          fontSize: 30,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        },
+      },
+      {
+        text: 'Insert Subtitle',
+        style: 
+        {
+          color: 'black',
+          fontSize: 16,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        },
+      },
+    ]
   },
   {
-    _id: '5de3767f78a07666601168fa',
+    type: 'Container1',
+    name: 'Paragraph',
+    style:
+    {
+      bcgImg: '',
+      bcgColor: '',
+      height: 400
+    },
+    data: [
+      {
+        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+        style:
+        {
+          color: 'black',
+          fontSize: 16,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        },
+      },
+    ]
+  },
+  {
+    type: 'Card1',
+    name: 'Card',
+    style:
+    {
+      bcgImg: '',
+      bcgColor: '',
+      height: 90,
+      width: 90
+    },
+    data: [
+      {
+        text: 'Lorem ipsum',
+        style:
+        {
+          color: 'black',
+          fontSize: 22,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        },
+      },{
+        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        style:
+        {
+          color: 'black',
+          fontSize: 16,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        },
+      },
+    ]
+  },
+  {
+    type: 'CardsContainer',
+    name: 'Multi Card',
+    style:
+    {
+      bcgImg: '',
+      bcgColor: '',
+    },
+    data: [
+      {
+        type: 'Card1',
+        name: 'Card',
+        style:
+        {
+          bcgImg: '',
+          bcgColor: '',
+          height: 90,
+          width: 90
+        },
+        data: [
+          {
+            text: 'Lorem ipsum',
+            style:
+            {
+              color: 'black',
+              fontSize: 22,
+              fontWeight: 'normal',
+              fontFamily: 'Arial',
+              fontStyle: 'normal',
+              txtAlign: 'center'
+            },
+          },{
+            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+            style:
+            {
+              color: 'black',
+              fontSize: 16,
+              fontWeight: 'normal',
+              fontFamily: 'Arial',
+              fontStyle: 'normal',
+              txtAlign: 'center'
+            },
+          },
+        ]
+      },
+      {
+        type: 'Card1',
+        name: 'Card',
+        style:
+        {
+          bcgImg: '',
+          bcgColor: '',
+          height: 90,
+          width: 90
+        },
+        data: [
+          {
+            text: 'Lorem ipsum',
+            style:
+            {
+              color: 'black',
+              fontSize: 22,
+              fontWeight: 'normal',
+              fontFamily: 'Arial',
+              fontStyle: 'normal',
+              txtAlign: 'center'
+            },
+          },{
+            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+            style:
+            {
+              color: 'black',
+              fontSize: 16,
+              fontWeight: 'normal',
+              fontFamily: 'Arial',
+              fontStyle: 'normal',
+              txtAlign: 'center'
+            },
+          },
+        ]
+      },
+      {
+        type: 'Card1',
+        name: 'Card',
+        style:
+        {
+          bcgImg: '',
+          bcgColor: '',
+          height: 90,
+          width: 90
+        },
+        data: [
+          {
+            text: 'Lorem ipsum',
+            style:
+            {
+              color: 'black',
+              fontSize: 22,
+              fontWeight: 'normal',
+              fontFamily: 'Arial',
+              fontStyle: 'normal',
+              txtAlign: 'center'
+            },
+          },{
+            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+            style:
+            {
+              color: 'black',
+              fontSize: 16,
+              fontWeight: 'normal',
+              fontFamily: 'Arial',
+              fontStyle: 'normal',
+              txtAlign: 'center'
+            },
+          },
+        ]
+      },
+    ]
+  },
+  {
+    type: 'Container3',
+    name: 'Multi Paragraph',
+    style:
+    {
+      bcgImg: '',
+      bcgColor: '',
+    },
+    data: [
+      {
+        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+        style:
+        {
+          color: 'black',
+          fontSize: 16,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        },
+      },
+      {
+        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+        style:
+        {
+          color: 'black',
+          fontSize: 16,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        },
+      },
+      {
+        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+        style:
+        {
+          color: 'black',
+          fontSize: 16,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        },
+      }
+    ]
+  },
+  {
     type: 'NavBar',
     name: 'NavBar',
     data: {

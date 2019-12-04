@@ -1,9 +1,9 @@
 <template>
   <section class="widget-editor-container" v-if="isEdit">
-    <label @click="chooseColor = !chooseColor" >
+    <label @click.stop="chooseColor = !chooseColor" >
       <unicon name="palette" fill="black" class="icon-edit" />
     </label>
-    <label @click="removeWidget" title="remove this widget" >
+    <label @click.stop="removeWidget" title="remove this widget" >
       <unicon name="trash-alt" fill="black" class="icon-edit" />
     </label>
     <label>
@@ -43,9 +43,6 @@ export default {
     };
   },
   computed:{
-    imageUrlRef(){
-      return this.widget.data.style.bcgImg
-    },
     fileUpload(){
       return `file-upload-${this.widget._id}`
     }
@@ -59,7 +56,7 @@ export default {
       console.log("remove", this.widget._id);
     },
     updateBackground(color) {
-      this.widget.data.style.bcgColor = color;
+      this.widget.style.bcgColor = color;
       this.editWidget();
       // console.log(this.widget.data.style)
     },
@@ -70,23 +67,10 @@ export default {
           console.log("widget of Imaage2", this.widget);
           // this.$emit("newImage", imgUrl);
 
-          this.widget.data.style.bcgImg = imgUrl;
+          this.widget.style.bcgImg = imgUrl;
         })
         .then(() => this.editWidget());
     }
-  },
-  watch: {
-    "this.$route.path"(curr) {
-      if (curr.includes("editor")) this.isEdit = true;
-      else this.isEdit = false;
-    }
-    // widget: {
-    //   handler(){
-    //     console.log('changing data...')
-    //     this.$emit("edit", this.widget);
-    //   },
-    // deep: true
-    // },
   },
   components: {
     ColorPicker
