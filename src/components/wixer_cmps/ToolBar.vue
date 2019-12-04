@@ -9,11 +9,17 @@
       <div class="section-menu">
         <Menu />
       </div>
-      <div>
+      <div class="list-group-container">
       <li @click="section=!section" class="li-bar section-add">
         <unicon name="book-medical" :fill="color" />
         <h4 :style="{color:color}">Sections</h4>
       </li>
+            <li @click="el=!el"  class="li-bar section-add">
+        <unicon name="book-medical" :fill="color" />
+        <h4 :style="{color:color}">Elements</h4>
+      </li>
+</div>
+<div list-group-content>
       <div v-if="section">
         <draggable
           class="dragArea list-group"
@@ -26,13 +32,10 @@
             class="list-group-item"
             v-for="element in widgets"
             :key="element.id"
-          >{{ element.type }}</div>
+          >{{ element.name }}</div>
         </draggable>
       </div>
-      <li @click="el=!el" class="li-bar section-add">
-        <unicon name="book-medical" :fill="color" />
-        <h3 :style="{color:color}">ADD EL</h3>
-      </li>
+
       <div v-if="el">
         <draggable
           class="dragArea list-group"
@@ -47,6 +50,7 @@
           >{{ element.type }}</div>
         </draggable>
       </div>
+      </div>
 
       <li @click="edit=!edit" class="li-bar section-edit">
         <unicon name="edit" :fill="colorEdit" />
@@ -56,7 +60,6 @@
         <SettingWap @setName="add" :nav="nav" />
       </div>
             <div class="section-save-container">
-
       <li @click="save" class="li-bar section-save">
         <unicon name="file-medical" fill="black" />
         <h3 :style="{color:'white'}">Save</h3>
@@ -114,7 +117,8 @@ export default {
   },
   computed: {
     color() {
-      if (this.section) return "gold";
+      if (this.section) return "black";
+      if (this.el) return "black";
       else return "gray";
     },
     colorEdit() {
@@ -137,3 +141,5 @@ this.$store.dispatch({type:'loadWidgets'})
   }
 };
 </script>
+
+

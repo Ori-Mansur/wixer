@@ -5,6 +5,7 @@
         <unicon name="home"  size="22px" fill="black" title="Home"></unicon>
       </router-link>
     </li>
+    
     <div class="logo"> <img src="@/assets/wixer.png" alt=""></div>
 
         <i class="fab fa-accusoft"></i>
