@@ -1,11 +1,11 @@
 <template>
   <li class="wap-preview">
-    <button @click="edit(wap._id)">EDIT</button>
-    <button @click="preview(wap._id)">P</button>
     <h3>{{wap.name}}</h3>
     <div>
       <img src="@/assets/card2.png" />
     </div>
+    <button @click="edit(wap._id)">EDIT</button>
+    <button @click="preview(wap._id)">P</button>
     <!-- <pre>{{wap.name}}</pre> -->
   </li>
 </template>
@@ -23,4 +23,8 @@ export default {
     }
   }
 };
+
+// https://res.cloudinary.com/dw9jjocrg/image/upload/v1575441412/kljyhuxlsodfhvbw00m1.png
+//   https://res.cloudinary.com/dw9jjocrg/image/upload/v1575441474/mh4clwrfz5h5eplxbaot.png
 </script>
+
