@@ -6,6 +6,7 @@
         <!-- <h4>Home</h4> -->
       </router-link>
     </li>
+        <i class="fab fa-accusoft"></i>
     <!-- <li class="menu-list">
       <router-link to="/about">
         <h4>About</h4>

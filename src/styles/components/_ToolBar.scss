@@ -87,11 +87,10 @@
     }
 
     .section-save {
-      background: linear-gradient(
-        to bottom,
-        rgba(176, 231, 255, 0.96) 0%,
-        rgba(90, 202, 250, 0.96) 100%
-      );
+      background: #5acafa;
+    }
+    .section-save-container {
+      display: flex;
     }
   }
 }

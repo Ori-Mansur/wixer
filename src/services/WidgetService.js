@@ -20,6 +20,7 @@ const widgets = [
   {
     type: 'HeaderBig',
     name: 'Big Header',
+    unicon: 'trash-alt',
     style: {
       bcgImg: '',
       bcgColor: '',
@@ -53,6 +54,7 @@ const widgets = [
   {
     type: 'Container1',
     name: 'Paragraph',
+    unicon: 'align-left-justify',
     style: {
       bcgImg: '',
       bcgColor: '',
@@ -76,6 +78,7 @@ const widgets = [
   {
     type: 'Card1',
     name: 'Card',
+    unicon: 'clip-board-alt',
     style: {
       bcgImg: '',
       bcgColor: '',
@@ -110,6 +113,7 @@ const widgets = [
   {
     type: 'CardsContainer',
     name: 'Multi Card',
+    unicon: '',
     style: {
       bcgImg: '',
       bcgColor: ''
@@ -222,6 +226,7 @@ const widgets = [
   {
     type: 'Container3',
     name: 'Multi Paragraph',
+    unicon: '',
     style: {
       bcgImg: '',
       bcgColor: ''
