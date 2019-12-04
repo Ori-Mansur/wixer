@@ -5,7 +5,9 @@
       <img src="@/assets/card2.png" />
     </div>
     <button @click="edit(wap._id)">EDIT</button>
+
     <button @click="preview(wap._id)">P</button>
+
     <!-- <pre>{{wap.name}}</pre> -->
   </li>
 </template>
