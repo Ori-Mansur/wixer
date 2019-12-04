@@ -9,11 +9,16 @@
       <div class="section-menu">
         <Menu />
       </div>
-      <!-- </div> -->
+      <div>
       <li @click="section=!section" class="li-bar section-add">
         <unicon name="book-medical" :fill="color" />
-        <h3 :style="{color:color}">Add</h3>
+        <h4 :style="{color:color}">Sections</h4>
       </li>
+      <li @click="section=!section" class="li-bar section-add">
+        <unicon name="book-medical" :fill="color" />
+        <h4 :style="{color:color}">Elements</h4>
+      </li>
+      </div>
       <div v-if="section" class="list-option add-option">
         <EditOption v-for="widget in widgets" :key="widget.id" :widget="widget" @select="add" />
       </div>
