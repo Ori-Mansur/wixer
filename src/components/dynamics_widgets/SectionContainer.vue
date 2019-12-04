@@ -4,8 +4,8 @@
     :style="{backgroundColor: section.style.bcgColor, backgroundImage: `url(${section.style.bcgImg})`}"
   >
     <WidgetEditor @setImg="setImg" :data="section" />
-    <draggable class="dragArea list-group" v-model='sectionList' group="element">
-      <div class="list-group-item" v-for="(element,idx) in sectionList" :key="idx">
+    <draggable class="dragArea list-group" :list="section.data" group="group">
+      <div class="list-group-item" v-for="(element,idx) in section.data" :key="idx">
         <component :key="idx" :is="element.type" :data="element" :contenteditable="true"></component>
       </div>
       <div>
@@ -39,14 +39,14 @@ export default {
       set(value) {
         this.$store.commit('addElement', value)
       }
+    },
+    group(){
+return this.$store.getters.group
     }
   },
   methods: {
     setImg(event) {
       this.$emit("setImg", { event, sectionId: this.section._id });
-    },
-    setSection() {
-      this.$emit("setSection", this.section);
     },
     async addEl(data) {
       console.log("bbbbbbb", data);

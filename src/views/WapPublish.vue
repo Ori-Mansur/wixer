@@ -1,11 +1,11 @@
 <template>
   <div v-if="wap" :style="{backgroundColor: wap.style.bcgColor, fontColor: wap.style.txtColor}">
     <component
-      v-for="(widget, idx) in wap.widgets"
+      v-for="(widget, idx) in wap.sections"
       :key="idx"
       :isEdit="isEdit"
       :is="widget.type"
-      :value="widget"
+      :section="widget"
       :contenteditable="false"
     ></component>
   </div>
@@ -30,6 +30,7 @@ import MainCardSurfe from "../components/dynamics_widgets/surfes_web/MainCardSur
 import AboutUsSurfe from "../components/dynamics_widgets/surfes_web/AboutUsSurfe";
 import OurTeamSurfe from "../components/dynamics_widgets/surfes_web/OurTeamSurfe";
 import FrameSurfe from "../components/dynamics_widgets/surfes_web/FrameSurfe";
+import SectionContainer from "../components/dynamics_widgets/SectionContainer";
 
 export default {
   data() {
@@ -52,9 +53,12 @@ export default {
     if (id) {
       const wap = await this.$store.dispatch({ type: "wapById", id });
       this.wap = wap;
+      console.log( this.wap);
+      
     }
   },
   components: {
+    SectionContainer,
     VideoAndTxt,
     TxtAndMap,
     NavBar,

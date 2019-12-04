@@ -2,7 +2,7 @@
   <div class="wap-editor">
     <ToolBar
       @setName="setName"
-    
+    @save="saveWap"
       :widgets="widgetsToAdd"
       :elements="elements"
     />
@@ -41,16 +41,6 @@ export default {
     };
   },
   computed: {
-     myList: {
-        get() {
-            return this.$store.getters.currWapSections
-        },
-        set(value) {
-          console.log('editor',value);
-          
-            this.$store.commit('addSection', value)
-        }
-    },
     currWap() {
       return this.$store.getters.currWap;
     },
@@ -97,7 +87,9 @@ export default {
       this.wap.widgets.splice(idx, 1, widget);
     },
     async saveWap() {
-      const wap= await this.$store.dispatch({ type: "saveWap", wap: this.wap });
+      console.log('kkkk');
+      
+      const wap= await this.$store.dispatch({ type: "saveWap"});
       this.wap=JSON.parse(JSON.stringify(wap)) 
     },
     async setWap() {

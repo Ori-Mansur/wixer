@@ -472,6 +472,7 @@ const widgets = [
   {
     _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
     type: 'SectionContainer',
+    sectionList: 'sectionList',
     style: { bcgImg: '', bcgColor: '' },
     data: [],
     createdAt: '2019-12-02T08:21:46.753Z'
