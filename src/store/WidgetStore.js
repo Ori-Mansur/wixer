@@ -4,14 +4,13 @@ import WidgetService from '../services/WidgetService.js';
 export default {
   state: {
     widgets: [],
-    elements: []
+    elements: [],
+    
   },
   mutations: {
-
-    setElements(state, {elements}){
+    setElements(state, { elements }) {
       state.elements = elements
     },
-    
     setWidgets(state, { widgets }) {
       state.widgets = widgets;
     },
@@ -24,12 +23,12 @@ export default {
     }
   },
   actions: {
-    loadElements(context){
+    loadElements(context) {
       return WidgetService.queryElements()
-      .then(elements =>{
-        context.commit({type: 'setElements', elements});
-        return elements
-      })
+        .then(elements => {
+          context.commit({ type: 'setElements', elements });
+          return elements
+        })
     },
     loadWidgets(context) {
       return WidgetService.query().then(widgets => {
@@ -37,19 +36,20 @@ export default {
         return widgets;
       });
     },
-    addId(context,{section}){
-      return WidgetService.addId(section)
-    },
     widgetById(context, { id }) {
       return WidgetService.getById(id).then(widget => widget);
     },
+    addId(context, { section }) {
+      return WidgetService.addId(section)
+    }
   },
   getters: {
-    loadElements(state){
+    loadElements(state) {
       return state.elements
     },
     widgetsToAdd(state) {
       return state.widgets;
     },
+   
   }
 };

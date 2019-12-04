@@ -1,14 +1,14 @@
 'use strict'
 // var moment = require('moment');
 import WapService from '../services/WapService.js'
-// import UtilsService from '../services/UtilsService.js'
+import UtilsService from '../services/UtilsService.js'
 import CloudinaryService from '../services/CloudinaryService.js'
 
 export default {
     state: {
         waps: [],
         currWap: null,
-        currSection: null
+        currSection: null,
     },
     mutations: {
         setWaps(state, { waps }) {
@@ -16,11 +16,6 @@ export default {
         },
         setWap(state, { wap }) {
             state.currWap = wap
-        },
-        setSection(state, { section }) {
-            console.log(section);
-            
-            state.currSection = state.currWap.sections[section.idx]
         },
         updateWap(state, { wap }) {
             const idx = state.waps.findIndex(curWap => {
@@ -33,14 +28,14 @@ export default {
             state.waps.splice(idx, 1)
         },
         addSection(state, value) {
-            console.log('commit', state.currWap);
-            // value._id=UtilsService.makeId()
-            console.log('commit', value);
+            // console.log('commit', state.currWap);
+            value[0]._id=UtilsService.makeId()
+
             state.currWap.sections = value
-            state.currSection = value[0]
+            state.group = value[0]._id
         },
         addElement(state, value) {
-            const idx = state.currWap.sections.findIndex(section => section._id === state.currSection._id)
+            const idx = state.currWap.sections.findIndex(section => section._id === state.group)
             state.currWap.sections[idx].data = value
         },
         addWidget(state, { data }) {
@@ -74,13 +69,11 @@ export default {
             context.commit({ type: 'success', msg: 'Wap saved' })
         },
         async addWidget(context, { data }) {
-            console.log('store datddddddddddda', data);
-
             await context.commit({ type: 'addWidget', data })
-
         },
-        async saveWap(context, { wap }) {
+        async saveWap(context) {
             console.log('wap store', context.state.currWap);
+            const wap=context.state.currWap
             const updateWap = await WapService.update(wap)
             context.commit({ type: 'setWap', wap: updateWap })
             context.commit({ type: 'success', msg: 'Wap saved' })
@@ -124,7 +117,9 @@ export default {
         },
         currSectionData(state) {
             if (state.currWap.sections) {
-                const section = state.currWap.sections.find(section => section._id === state.currSection._id)
+                const section = state.currWap.sections.find(section => section._id === state.group)
+                console.log(section);
+                
                 return section.data
             }
         },

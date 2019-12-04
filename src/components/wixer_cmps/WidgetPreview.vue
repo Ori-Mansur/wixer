@@ -7,7 +7,6 @@
           :is="element.type"
           :section="element"
           @setImg="setImg"
-          @click.native="setSection(element,idx)"
           class="widget-container"
         ></component>
       </div>
@@ -65,15 +64,11 @@ export default {
     setImg(data) {
       this.$store.dispatch({ type: "setBcgImg", data });
     },
-    setSection(section,idx) {
-      this.$store.commit({ type: "setSection", section:{section,idx} });
-    }
   },
   created() {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
-    // console.log(this.widgets)
   },
   components: {
     draggable,

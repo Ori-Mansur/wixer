@@ -37,7 +37,7 @@
         <draggable
           class="dragArea list-group"
           :list="elements"
-          :group="{ name: 'element', pull: 'clone', put: false }"
+          :group="{ name: 'group', pull: 'clone', put: false }"
           :clone="cloneX"
         >
           <div
@@ -124,6 +124,9 @@ export default {
     colorMenu() {
       if (this.menu) return "blue";
       else return "gray";
+    },
+    group(){
+return this.$store.getters.group
     }
   },
   created(){
