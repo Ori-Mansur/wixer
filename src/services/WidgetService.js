@@ -498,6 +498,10 @@ const widgets = [
 
 function addId(widget) {
   widget._id = utils.makeId();
+  widget.data.map(widget=>{
+    widget._id = utils.makeId();
+  })
+  console.log(widget.data)
   return widget;
 }
 

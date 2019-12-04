@@ -33,6 +33,7 @@ export default {
       });
     },
     addId(context,{widget}){
+      console.log('widget to add id', widget)
       return WidgetService.addId(widget)
       
     },

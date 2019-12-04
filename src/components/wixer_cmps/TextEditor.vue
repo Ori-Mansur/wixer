@@ -30,7 +30,7 @@ import ColorPicker from "../wixer_cmps/ColorPicker";
 export default {
   props: {
     widget: Object,
-    pos: Object
+    pos: Object,
   },
   created() {
   },

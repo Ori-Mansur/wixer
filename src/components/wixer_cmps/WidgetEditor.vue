@@ -27,10 +27,10 @@ import CloudinaryService from "../../services/cloudinary.service.js";
 
 export default {
   props: {
-    widget: Object
+    widget: Object,
+    index: Number
   },
   created() {
-    console.log("widget:", this.widget._id, 'type', this.widget.type);
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;

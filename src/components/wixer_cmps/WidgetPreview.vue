@@ -32,9 +32,9 @@ import MainCardSurfe from "../dynamics_widgets/surfes_web/MainCardSurfe";
 import AboutUsSurfe from "../dynamics_widgets/surfes_web/AboutUsSurfe";
 import OurTeamSurfe from "../dynamics_widgets/surfes_web/OurTeamSurfe";
 import FrameSurfe from "../dynamics_widgets/surfes_web/FrameSurfe";
-import SectionContainer from "../dynamics_widgets/SectionContainer";
-import Card1 from "../dynamics_widgets/Card1";
-import CardsContainer from "../dynamics_widgets/Cards-Container";
+import SectionContainer from '../dynamics_widgets/SectionContainer';
+import CardContainer from '../dynamics_widgets/CardContainer';
+import CardsContainer from '../dynamics_widgets/CardsContainer';
 
 export default {
   props: {
@@ -62,6 +62,7 @@ export default {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
+    console.log(this.widgets)
   },
   components: {
     VideoAndTxt,
@@ -84,7 +85,7 @@ export default {
     OurTeamSurfe,
     FrameSurfe,
     SectionContainer,
-    Card1,
+    CardContainer,
     CardsContainer
   }
 };
