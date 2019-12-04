@@ -16,7 +16,7 @@
       </li>
             <li @click="el=!el"  class="li-bar section-add">
         <unicon name="book-medical" :fill="color" />
-        <h4 :style="{color:color}">Elements</h4>
+        <h4 :style="{color:elColor}">Elements</h4>
       </li>
 </div>
 <div list-group-content>
@@ -31,8 +31,11 @@
           <div
             class="list-group-item"
             v-for="element in widgets"
-            :key="element.id"
-          >{{ element.name }}</div>
+            :key="element.id">
+            {{ element.name }}
+            <!-- <i :class="widget.icon"/>{{widget.name}} -->
+
+          </div>
         </draggable>
       </div>
 
@@ -47,7 +50,8 @@
             class="list-group-item"
             v-for="element in elements"
             :key="element.id"
-          >{{ element.type }}</div>
+          >{{ element.type }}
+          </div>
         </draggable>
       </div>
       </div>
@@ -61,12 +65,14 @@
       </div>
             <div class="section-save-container">
       <li @click="save" class="li-bar section-save">
-<i class="fa fa-save"></i>
+        <i class="fa fa-save"></i>
+
         <h3 :style="{color:'white'}">Save</h3>
       </li>
       <router-link to="/wap">
       <li  class="li-bar section-save">
-<i class="fa fa-sign-out-alt"></i> 
+                <i class="fa fa-sign-out"></i>
+
        <h3 :style="{color:'white'}">Change</h3>
       </li>
             </router-link>
@@ -118,15 +124,18 @@ export default {
   computed: {
     color() {
       if (this.section) return "black";
+      else return "gray";
+    },
+    elColor() {
       if (this.el) return "black";
       else return "gray";
     },
     colorEdit() {
-      if (this.edit) return "mediumvioletred";
+      if (this.edit) return "black";
       else return "gray";
     },
     colorMenu() {
-      if (this.menu) return "blue";
+      if (this.menu) return "black";
       else return "gray";
     },
     group(){

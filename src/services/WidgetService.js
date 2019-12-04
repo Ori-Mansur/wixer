@@ -42,7 +42,7 @@ const widgets = [
   {
     type: 'HeaderBig',
     name: 'Big Header',
-    unicon: 'trash-alt',
+    icon: 'fa-save',
     style: {
       bcgImg: '',
       bcgColor: '',

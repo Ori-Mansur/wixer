@@ -99,13 +99,13 @@ export default {
 //   display: inline-block;
 //   height: 40px;
 // }
-// .link-nav-btn{
-//   display: inline-block;
-//   padding: 0px;
-//   padding-left: 5px;
-//   padding-right: 5px;
-//   margin-left: 5px
-// }
+.link-nav-btn{
+  display: inline-block;
+  padding: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 5px;
+}
 // .link-nav-submit{
 //   display: inline-block
 // }
