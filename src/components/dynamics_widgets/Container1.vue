@@ -1,5 +1,5 @@
 <template>
-  <section class="container-twoCol" @click="isEdit=!isEdit" :style="{backgroundImage: `url(${value.style.bcgImg})`,    backgroundColor: value.style.bcgColor, height: value.style.height + 'px', border: isBorder}">
+  <section class="container-twoCol" @click="isEdit=!isEdit" :style="{backgroundImage: `url(${value.style.bcgImg})`,    backgroundColor: value.style.bcgColor, border: isBorder}">
 
     <text-element v-for="(data, index) in value.data" :key="index" :data="data" :isEdit="isEdit"></text-element>
 

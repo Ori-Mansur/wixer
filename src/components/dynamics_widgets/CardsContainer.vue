@@ -1,10 +1,7 @@
 <template>
-  <section class="container-threeCol flex row" @click="isEdit=!isEdit" :style="{backgroundColor: value.style.bcgColor, border: isBorder}">
+  <section class="container-threeCol flex row" :style="{backgroundColor: value.style.bcgColor, border: isBorder}">
 
-    <Card1 v-for="(data, index) in value.data" :key="index" :data="data" :isEdit="isEdit" :style="{maxWidth: 'width'}"></Card1>
-    
-    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
-
+    <card-container v-for="(data, index) in value.data" :key="index" :index="index" :data="data" :isEdit="isEdit" :style="{maxWidth: 'width'}"></card-container>
   </section>
 </template>
 
@@ -21,14 +18,16 @@ import Img from "../dynamics_widgets/Img";
 import Txt from "../dynamics_widgets/Txt";
 import Video from "../dynamics_widgets/Video";
 import Map from "../dynamics_widgets/Map";
-import Card1 from '../dynamics_widgets/Card1';
+import CardContainer from '../dynamics_widgets/CardContainer';
 
 export default {
   props: {
     edit: Boolean,
     value: Object
   },
-  created() {},
+  created() {
+    console.log(this.value)
+  },
   components: {
     NavBar,
     Container1,
@@ -40,7 +39,8 @@ export default {
     Map,
     WidgetEditor,
     TextEditor,
-    TextElement
+    TextElement,
+    CardContainer
   },
   data(){
     return{

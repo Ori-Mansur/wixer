@@ -1,23 +1,31 @@
 <template>
   <section
+    @mouseup="getSelectedText"
+
     class="card-container flex column"
     @click="isEdit = !isEdit"
+    @mouseout="isEdit=false"
     :style="{
-      backgroundColor: value.style.bcgColor,
+      backgroundColor: data.style.bcgColor,
       border: isBorder
     }"
   >
-    <image-element :styleData="value.style"></image-element>
-    <text-element
-      v-for="(data, index) in value.data"
+    <image-element @click.prevent :styleData="data.style"></image-element>
+    <div v-for="(data, index) in data.data"
       :key="index"
+      :isEdit="isEdit">
+    <text-element
       :data="data"
-      :isEdit="isEdit"
+      @mouseup="getSelectedText"
       :style="{ maxWidth: 'width' }"
     ></text-element>
+    <text-editor :widget="data" class="widget-editor-container" @remove="removeWidget"></text-editor>
+    </div>
 
     <widget-editor
-      :widget="value"
+      v-if="isEdit"
+      :widget="data"
+      :index="index"
       class="widget-editor-container"
       @remove="removeWidget"
     ></widget-editor>
@@ -33,25 +41,34 @@ import ImageElement from "../elements/ImageElement";
 export default {
   props: {
     edit: Boolean,
-    value: Object
+    data: Object,
+    index: Number
   },
   created() {
-    console.log(this.value);
   },
   data() {
     return {
-      isEdit: false
+      isEdit: false,
+      selectedEl:null
     };
   },
   computed: {
     isBorder() {
       if (this.isEdit) return "1px solid blue";
       else return "";
+    },
+    selectedText(){
+      if(this.selectedEl===this.value._id) return true
+      else return false
     }
   },
   methods: {
     removeWidget(id) {
       this.$emit("remove", id);
+    },
+    getSelectedText(ev){
+      // console.log(ev.target)
+      const text = window.getSelection().toString()
     }
   },
   components: {
