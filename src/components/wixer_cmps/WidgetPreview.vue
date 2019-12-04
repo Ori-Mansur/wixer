@@ -7,7 +7,7 @@
           :is="element.type"
           :section="element"
           @setImg="setImg"
-          @click.native="setSection(element)"
+          @click.native="setSection(element,idx)"
           class="widget-container"
         ></component>
       </div>
@@ -65,8 +65,8 @@ export default {
     setImg(data) {
       this.$store.dispatch({ type: "setBcgImg", data });
     },
-    setSection(section) {
-      this.$store.commit({ type: "setSection", section });
+    setSection(section,idx) {
+      this.$store.commit({ type: "setSection", section:{section,idx} });
     }
   },
   created() {

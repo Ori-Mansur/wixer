@@ -1,6 +1,6 @@
 <template>
-  <section class="video-container" :style="{width: width}">
-    <iframe width="320" height="245" :src="value.data.url" class="video"></iframe>
+  <section class="video-container" >
+    <iframe width="320" height="245" :src="data.data.url" class="video"></iframe>
   </section>
 </template>
 
@@ -9,14 +9,16 @@
 
 export default {
   props:{
-    value: Object,
-    width: Number
+    data: Object,
+    // width: Number
   },
   created(){
+    console.log(this.data);
+    
   },
   methods:{
     removeWidget(){
-      this.$emit("remove", this.value.id);
+      this.$emit("remove", this.data._id);
     }
   },
   components:{

@@ -33,7 +33,6 @@ export default {
     },
     loadWidgets(context) {
       return WidgetService.query().then(widgets => {
-        console.log(widgets);
         context.commit({ type: 'setWidgets', widgets });
         return widgets;
       });

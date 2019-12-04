@@ -18,7 +18,9 @@ export default {
             state.currWap = wap
         },
         setSection(state, { section }) {
-            state.currSection = section
+            console.log(section);
+            
+            state.currSection = state.currWap.sections[section.idx]
         },
         updateWap(state, { wap }) {
             const idx = state.waps.findIndex(curWap => {
@@ -35,7 +37,7 @@ export default {
             // value._id=UtilsService.makeId()
             console.log('commit', value);
             state.currWap.sections = value
-            state.currSection = state.currWap.sections[state.currWap.sections.length - 1]
+            state.currSection = value[0]
         },
         addElement(state, value) {
             const idx = state.currWap.sections.findIndex(section => section._id === state.currSection._id)

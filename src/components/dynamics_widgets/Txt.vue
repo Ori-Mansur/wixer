@@ -27,7 +27,7 @@ export default {
     return {
       pos: { x: 0, y: 0 },
       widgetToEdit: null,
-      content:this.data.txt
+      content:this.data.data.txt
     };
   },
   methods: {

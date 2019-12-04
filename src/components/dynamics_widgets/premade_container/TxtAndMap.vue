@@ -1,12 +1,13 @@
 <template>
   <section class="twoCol-container" :contenteditable="edit" >
-    <widget-editor :widget="value" class="widget-editor-container flex justify-end" @remove="removeWidget"></widget-editor>
+    <widget-editor :widget="section" class="widget-editor-container flex justify-end" @remove="removeWidget"></widget-editor>
     <div class="component-container flex row justify-content">
+      {{data}}
     <component
-      v-for="(widget,idx) in value.data"
+      v-for="(widget,idx) in section.data"
       :key="idx"
       :is="widget.type"
-      :value="widget"
+      :data="widget"
       :width="cmpWidth"
       :contenteditable="true"
       @remove="removeWidget"
@@ -24,9 +25,12 @@ import WidgetEditor from "../../wixer_cmps/WidgetEditor";
 export default {
   props: {
     edit: Boolean,
-    value: Object
+    section: Object
   },
-  created() {},
+  created() {
+    console.log(this.section);
+    
+  },
   data(){
     return{
       cmpWidth: 50,

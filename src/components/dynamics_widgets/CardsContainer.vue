@@ -1,7 +1,7 @@
 <template>
-  <section class="container-threeCol flex row" :style="{backgroundColor: value.style.bcgColor, border: isBorder}">
+  <section class="container-threeCol flex row" :style="{backgroundColor: section.style.bcgColor, border: isBorder}">
 
-    <card-container v-for="(data, index) in value.data" :key="index" :index="index" :data="data" :isEdit="isEdit" :style="{maxWidth: 'width'}"></card-container>
+    <card-container v-for="(data, index) in section.data" :key="index" :index="index" :data="data" :isEdit="isEdit" :style="{maxWidth: 'width'}"></card-container>
   </section>
 </template>
 
@@ -14,8 +14,8 @@
 // import Container1 from "../dynamics_widgets/Container1";
 // import Empty from "../dynamics_widgets/Empty";
 // import HeaderBig from "../dynamics_widgets/HeaderBig";
-// import Img from "../dynamics_widgets/Img";
 // import Txt from "../dynamics_widgets/Txt";
+// import Img from "../dynamics_widgets/Img";
 // import Video from "../dynamics_widgets/Video";
 // import Map from "../dynamics_widgets/Map";
 import CardContainer from '../dynamics_widgets/CardContainer';
@@ -23,10 +23,10 @@ import CardContainer from '../dynamics_widgets/CardContainer';
 export default {
   props: {
     edit: Boolean,
-    value: Object
+    section: Object
   },
   created() {
-    console.log(this.value)
+    console.log(this.section)
   },
   components: {
     // NavBar,
@@ -53,7 +53,7 @@ export default {
       else return ''
     },
     width(){
-      var width = 100/this.value.data.length+'%'
+      var width = 100/this.section.data.length+'%'
       return width
     }
   },

@@ -6,7 +6,7 @@
     <WidgetEditor @setImg="setImg" :data="section" />
     <draggable class="dragArea list-group" v-model='sectionList' group="element">
       <div class="list-group-item" v-for="(element,idx) in sectionList" :key="idx">
-        <component :key="idx" :is="element.type" :data="element.data" :contenteditable="true"></component>
+        <component :key="idx" :is="element.type" :data="element" :contenteditable="true"></component>
       </div>
       <div>
         <unicon name="plus" fill="gray" class="icon" />
@@ -15,9 +15,13 @@
   </div>
 </template>
 <script>
-import Txt from "./Txt.vue";
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
 import draggable from "vuedraggable";
+import Txt from "./Txt.vue";
+import TextEl from "../elements/TextElement";
+import Img from "./Img";
+import Video from "./Video";
+import Map from "./Map";
 export default {
   props: {
     section: Object
@@ -56,7 +60,13 @@ export default {
   components: {
     draggable,
     WidgetEditor,
-    Txt
+    TextEl,
+    Txt,
+    Img,
+    Video,
+    Map
+
+
   }
 };
 </script>
