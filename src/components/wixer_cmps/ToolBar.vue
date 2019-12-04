@@ -61,13 +61,13 @@
       </div>
             <div class="section-save-container">
       <li @click="save" class="li-bar section-save">
-        <unicon name="file-medical" fill="black" />
+<i class="fa fa-save"></i>
         <h3 :style="{color:'white'}">Save</h3>
       </li>
       <router-link to="/wap">
       <li  class="li-bar section-save">
-        <unicon name="trash-alt" fill="black" />
-        <h3 :style="{color:'white'}">Change</h3>
+<i class="fa fa-sign-out-alt"></i> 
+       <h3 :style="{color:'white'}">Change</h3>
       </li>
             </router-link>
 </div>
