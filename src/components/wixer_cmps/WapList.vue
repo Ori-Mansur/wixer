@@ -1,8 +1,8 @@
 <template>
   <ul class="card-grid">
     <li>
-      <button @click="edit">EDIT</button>
-      <button>P</button>
+      <button @click="edit">+</button>
+      <!-- <button>P</button> -->
     </li>
     <WapPreview v-for="wap in waps" :key="wap._id" :wap="wap" @select="edit" @preview="preview" />
   </ul>

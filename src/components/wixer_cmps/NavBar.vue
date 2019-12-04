@@ -4,7 +4,7 @@
     <nav class="nav-bar">
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
-      <router-link to="/wap">Waps</router-link>
+      <router-link to="/wap">Templates</router-link>
     </nav>
   </div>
 </template>

@@ -1,11 +1,17 @@
 <template>
   <ul class="menu-options">
     <li class="menu-list uil uil-home">
+      
       <router-link to="/">
-        <unicon name="home" fill="black"></unicon>
-        <!-- <h4>Home</h4> -->
+        <unicon name="home"  fill="black" title="Home"></unicon>
       </router-link>
     </li>
+
+
+        <!-- <font-awesome-icon icon="user-secret" /> -->
+
+    <div class="logo"> <img src="@/assets/wixer.png" alt=""></div>
+
         <i class="fab fa-accusoft"></i>
     <!-- <li class="menu-list">
       <router-link to="/about">
@@ -14,7 +20,7 @@
     </li> -->
     <li class="menu-list">
       <router-link to="/wap">
-      <unicon name="table" fill="black"></unicon>
+      <unicon name="table" fill="black" title="Templates"></unicon>
         <!-- <h4>Templates</h4> -->
       </router-link>
     </li>

@@ -19,8 +19,8 @@ function addId(widget) {
   widget._id = utils.makeId();
   widget.data.map(widget => {
     widget._id = utils.makeId();
-  })
-  console.log(widget.data)
+  });
+  console.log(widget.data);
   return widget;
 }
 
@@ -42,7 +42,7 @@ const widgets = [
   {
     type: 'HeaderBig',
     name: 'Big Header',
-    unicon: 'trash-alt',
+    icon: 'fa-save',
     style: {
       bcgImg: '',
       bcgColor: '',
@@ -416,30 +416,28 @@ const widgets = [
           title: 'Javier Bardem',
           txt:
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
-        },
+        }
       ]
     }
   },
   {
-    "_id": "5de4c99aca73df026cca7457",
-    "type": "FormInline",
-    "data": {},
-    "createdAt": "2019-12-02T08:21:46.753Z"
+    _id: '5de4c99aca73df026cca7457',
+    type: 'FormInline',
+    data: {},
+    createdAt: '2019-12-02T08:21:46.753Z'
   },
   {
-    "_id": "5de4c99aca73df026x",
-    "type": "HeaderSurfe",
-    "data": {},
-    "createdAt": "2019-12-02T08:21:46.753Z"
+    _id: '5de4c99aca73df026x',
+    type: 'HeaderSurfe',
+    data: {},
+    createdAt: '2019-12-02T08:21:46.753Z'
   },
   {
-    "_id": "5de4c99df026x",
-    "type": "MainCardSurfe",
-    "data": {},
-    "createdAt": "2019-12-02T08:21:46.753Z"
-
+    _id: '5de4c99df026x',
+    type: 'MainCardSurfe',
+    data: {},
+    createdAt: '2019-12-02T08:21:46.753Z'
   },
-
 
   {
     _id: '5de3c27e0dd08d6cc18095da',
@@ -462,49 +460,45 @@ const widgets = [
     }
   },
   {
-    "_id": "5de4c99dxxfxaxcsc026x",
-    "type": "OurTeamSurfe",
-    "data": {},
-    "createdAt": "2019-12-02T08:21:46.753Z"
+    _id: '5de4c99dxxfxaxcsc026x',
+    type: 'OurTeamSurfe',
+    data: {},
+    createdAt: '2019-12-02T08:21:46.753Z'
   },
   {
-    "_id": "5de4c99dfxaxccsacsc026x",
-    "type": "FrameSurfe",
-    "data": {},
-    "createdAt": "2019-12-02T08:21:46.753Z"
+    _id: '5de4c99dfxaxccsacsc026x',
+    type: 'FrameSurfe',
+    data: {},
+    createdAt: '2019-12-02T08:21:46.753Z'
   },
   {
-    "_id": "5de4c99dfxaxcchjvhucasklmcssacsc026x",
-    "type": "SectionContainer",
+    _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
+    type: 'SectionContainer',
     sectionList: 'sectionList',
     style: { bcgImg: '', bcgColor: '' },
-    "data": [],
-    "createdAt": "2019-12-02T08:21:46.753Z"
+    data: [],
+    createdAt: '2019-12-02T08:21:46.753Z'
   }
-]
-
-
-
-
-
+];
 
 const elements = [
   {
-    "_id": "5de3deff1c9d44000049e80e",
-    "type": "Txt",
-    "data": {
-      "txt": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!",
-      "style": {
-        "fontFamily": "Arial",
-        "fontSize": 16,
-        "fontStyle": "normal",
-        "fontWeight": "normal",
-        "color": "black",
-        "bcgImg": "",
-        "bcgColor": ""
+    _id: '5de3deff1c9d44000049e80e',
+    type: 'Txt',
+    data: {
+      txt:
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!',
+      style: {
+        fontFamily: 'Arial',
+        fontSize: 16,
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        color: 'black',
+        bcgImg: '',
+        bcgColor: ''
       }
     },
-    "createdAt": "2019-12-01T08:18:35.184Z"
+    createdAt: '2019-12-01T08:18:35.184Z'
   },
   {
     _id: 'el1001',
@@ -527,5 +521,4 @@ const elements = [
       txtAlign: 'center'
     }
   }
-]
-
+];

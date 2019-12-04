@@ -9,11 +9,17 @@
       <div class="section-menu">
         <Menu />
       </div>
-      <!-- </div> -->
+      <div class="list-group-container">
       <li @click="section=!section" class="li-bar section-add">
         <unicon name="book-medical" :fill="color" />
-        <h3 :style="{color:color}">Add</h3>
+        <h4 :style="{color:color}">Sections</h4>
       </li>
+            <li @click="el=!el"  class="li-bar section-add">
+        <unicon name="book-medical" :fill="color" />
+        <h4 :style="{color:elColor}">Elements</h4>
+      </li>
+</div>
+<div list-group-content>
       <div v-if="section">
         <draggable
           class="dragArea list-group"
@@ -25,14 +31,14 @@
           <div
             class="list-group-item"
             v-for="element in widgets"
-            :key="element.id"
-          >{{ element.type }}</div>
+            :key="element.id">
+            {{ element.name }}
+            <!-- <i :class="widget.icon"/>{{widget.name}} -->
+
+          </div>
         </draggable>
       </div>
-      <li @click="el=!el" class="li-bar section-add">
-        <unicon name="book-medical" :fill="color" />
-        <h3 :style="{color:color}">ADD EL</h3>
-      </li>
+
       <div v-if="el">
         <draggable
           class="dragArea list-group"
@@ -45,8 +51,10 @@
             class="list-group-item"
             v-for="element in elements"
             :key="element.id"
-          >{{ element.type }}</div>
+          >{{ element.type }}
+          </div>
         </draggable>
+      </div>
       </div>
 
       <li @click="edit=!edit" class="li-bar section-edit">
@@ -57,15 +65,16 @@
         <SettingWap @setName="add" :nav="nav" />
       </div>
             <div class="section-save-container">
-
       <li @click="save" class="li-bar section-save">
-        <unicon name="file-medical" fill="black" />
+        <i class="fa fa-save"></i>
+
         <h3 :style="{color:'white'}">Save</h3>
       </li>
       <router-link to="/wap">
       <li  class="li-bar section-save">
-        <unicon name="trash-alt" fill="black" />
-        <h3 :style="{color:'white'}">Change</h3>
+                <i class="fa fa-sign-out"></i>
+
+       <h3 :style="{color:'white'}">Change</h3>
       </li>
             </router-link>
 </div>
@@ -115,15 +124,19 @@ export default {
   },
   computed: {
     color() {
-      if (this.section) return "gold";
+      if (this.section) return "black";
+      else return "gray";
+    },
+    elColor() {
+      if (this.el) return "black";
       else return "gray";
     },
     colorEdit() {
-      if (this.edit) return "mediumvioletred";
+      if (this.edit) return "black";
       else return "gray";
     },
     colorMenu() {
-      if (this.menu) return "blue";
+      if (this.menu) return "black";
       else return "gray";
     },
     group(){
@@ -141,3 +154,5 @@ this.$store.dispatch({type:'loadWidgets'})
   }
 };
 </script>
+
+

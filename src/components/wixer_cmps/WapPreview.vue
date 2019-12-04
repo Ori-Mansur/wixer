@@ -13,8 +13,14 @@
         <div class="content-overlay"></div>
         <img class="content-image" src="@/assets/card2.png"/>
         <div class="content-details fadeIn-top">
-          <p @click="edit(wap._id)">Edit</p>
-          <p @click="preview(wap._id)">View</p>
+           <label @click="edit(wap._id)">
+      <unicon name="eye" fill="white" class="icon-edit" />
+    </label>
+           <label @click="preview(wap._id)">
+      <unicon name="edit-alt" fill="white" class="icon-edit" />
+    </label>
+          <!-- <p @click="edit(wap._id)">Edit</p>
+          <p @click="preview(wap._id)">View</p> -->
         </div>
     </div>
   </div>
