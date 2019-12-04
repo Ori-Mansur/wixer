@@ -35,13 +35,13 @@ export default {
       this.$emit("remove", id);
     },
     saveText(ev) {
-      console.log(ev);
+      console.log(ev.target);
+
       // this.value.data.txt = ev.target.innerText;
-      // console.log(this.value.data.txt);
     },
     getPos(ev) {
-      this.pos.x = ev.pageX - 20;
-      this.pos.y = ev.pageY + 20;
+      // this.pos.x = ev.pageX - 20;
+      // this.pos.y = ev.pageY + 20;
       console.log(ev);
     },
    

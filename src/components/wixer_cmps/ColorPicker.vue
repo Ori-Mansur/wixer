@@ -5,7 +5,7 @@
         v-for="(color, index) in colorChoices"
         :key="index"
         :color="color[index]"
-        @click.native="setColor(colorChoices[index])"
+        @click.stop="setColor(colorChoices[index])"
         class="color-tab"
         :ref="colorChoices[index]"
         :style="{ 'background-color': colorChoices[index] }"

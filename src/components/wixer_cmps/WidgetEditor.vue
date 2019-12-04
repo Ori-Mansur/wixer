@@ -29,7 +29,6 @@ export default {
     data: Object
   },
   created() {
-    // console.log("newWidget", this.widget);
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
@@ -67,19 +66,6 @@ this.$emit('setImg',event)
     },
     
   },
-  watch: {
-    "this.$route.path"(curr) {
-      if (curr.includes("editor")) this.isEdit = true;
-      else this.isEdit = false;
-    }
-    // widget: {
-    //   handler(){
-    //     console.log('changing data...')
-    //     this.$emit("edit", this.widget);
-    //   },
-    // deep: true
-    // },
-  },
   components: {
     ColorPicker
   }
@@ -87,14 +73,12 @@ this.$emit('setImg',event)
 </script>
 <style lang="scss">
 .widget-editor-container {
-  // position: fixed;
   position: absolute;
-  top: 0px;
-  right: 0px;
-  // z-index: 100;
-
+  top: 0;
+  right: 0;
   padding: 5px;
-  .icon-edit {
+  
+  .icon-edit{
     background-color: #fff;
     padding: 3px;
     cursor: pointer;

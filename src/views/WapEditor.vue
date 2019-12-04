@@ -1,5 +1,5 @@
 <template>
-  <div class="wap-editor container">
+  <div class="wap-editor">
     <ToolBar
       @setName="setName"
     
@@ -7,9 +7,8 @@
       :elements="elements"
     />
    
-    <div>
-    <WidgetPreview    />
-    </div>
+    <WidgetPreview class="edit-template"   />
+    
   
     <ElementPreview :elements="wap.elements" />
   </div>

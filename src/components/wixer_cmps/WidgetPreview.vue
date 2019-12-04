@@ -1,28 +1,21 @@
 <template>
-  <div>
-    <draggable class="dragArea list-group" v-model='myList' group="people">
-        <div class="list-group-item" v-for="(element,idx) in myList" :key="idx">
-          <!-- <pre>
-
-          {{ element }}
-          </pre> -->
-          <component
-      :key="idx"
-      :is="element.type"
-      :section="element"
-      @setImg="setImg"
-      @click.native="setSection(element)"
-      class="widget-container"
-    ></component>
-         
-        </div>
-        <div  class="placeholder-widget">
-
-    <unicon name="plus" fill="gray" class="icon" />
-        </div>
-      </draggable>
-    
-  </div>
+  <section>
+    <draggable class="dragArea list-group" v-model="myList" group="people">
+      <div class="list-group-item" v-for="(element,idx) in myList" :key="idx">
+        <component
+          :key="idx"
+          :is="element.type"
+          :section="element"
+          @setImg="setImg"
+          @click.native="setSection(element)"
+          class="widget-container"
+        ></component>
+      </div>
+      <div class="placeholder-widget">
+        <unicon name="plus" fill="gray" class="icon" />
+      </div>
+    </draggable>
+  </section>
 </template>
 <script>
 import draggable from "vuedraggable";
@@ -45,7 +38,9 @@ import MainCardSurfe from "../dynamics_widgets/surfes_web/MainCardSurfe";
 import AboutUsSurfe from "../dynamics_widgets/surfes_web/AboutUsSurfe";
 import OurTeamSurfe from "../dynamics_widgets/surfes_web/OurTeamSurfe";
 import FrameSurfe from "../dynamics_widgets/surfes_web/FrameSurfe";
-import SectionContainer from '../dynamics_widgets/SectionContainer'
+import SectionContainer from "../dynamics_widgets/SectionContainer";
+import CardContainer from "../dynamics_widgets/CardContainer";
+import CardsContainer from "../dynamics_widgets/CardsContainer";
 
 export default {
   props: {
@@ -58,26 +53,27 @@ export default {
   },
   computed: {
     myList: {
-        get() {
-            return this.$store.getters.currWapSections
-        },
-        set(value) {
-            this.$store.commit('addSection', value)
-        }
-    },
+      get() {
+        return this.$store.getters.currWapSections;
+      },
+      set(value) {
+        this.$store.commit("addSection", value);
+      }
+    }
   },
   methods: {
-    setImg(data){
-      this.$store.dispatch({type:'setBcgImg',data})
+    setImg(data) {
+      this.$store.dispatch({ type: "setBcgImg", data });
     },
     setSection(section) {
-      this.$store.commit({type:"setSection", section});
-    },
+      this.$store.commit({ type: "setSection", section });
+    }
   },
   created() {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
+    // console.log(this.widgets)
   },
   components: {
     draggable,
@@ -100,7 +96,9 @@ export default {
     AboutUsSurfe,
     OurTeamSurfe,
     FrameSurfe,
-    SectionContainer
+    SectionContainer,
+    CardContainer,
+    CardsContainer
   }
 };
 </script>

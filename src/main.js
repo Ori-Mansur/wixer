@@ -23,10 +23,20 @@ import {
   uniFileMedical,
   uniTrashAlt,
   uniMinus,
-  uniSortAmountUp ,
-  uniSortAmountDown ,
+  uniSortAmountUp,
+  uniSortAmountDown,
   uniImagePlus,
-  uniPalette 
+  uniPalette,
+  uniHome,
+  uniTable,
+  uniVideo,
+  uniMap,
+  uniText,
+  uniAlignLeftJustify,
+  uniClipboardAlt,
+  uniEditAlt,
+  uniEye,
+  uniImage
 } from 'vue-unicons/src/icons';
 import VueDragDrop from 'vue-drag-drop';
 
@@ -41,10 +51,20 @@ Unicon.add([
   uniFileMedical,
   uniTrashAlt,
   uniMinus,
-  uniSortAmountUp ,
+  uniSortAmountUp,
   uniSortAmountDown,
-  uniImagePlus ,
-  uniPalette 
+  uniImagePlus,
+  uniPalette,
+  uniHome,
+  uniTable,
+  uniVideo,
+  uniMap,
+  uniText,
+  uniAlignLeftJustify,
+  uniClipboardAlt,
+  uniEditAlt,
+  uniEye,
+  uniImage
 ]);
 
 Vue.use(Unicon);
@@ -55,9 +75,9 @@ library.add(faUserSecret);
 import './styles/global.scss';
 Vue.config.productionTip = false;
 import VueFacebook from 'vue-facebook';
-import VueFacebookPage from 'vue-facebook-page'
-Vue.use(VueFacebookPage)
-Vue.use(VueFacebook)
+import VueFacebookPage from 'vue-facebook-page';
+Vue.use(VueFacebookPage);
+Vue.use(VueFacebook);
 
 import * as VueGoogleMaps from 'vue2-google-maps';
 

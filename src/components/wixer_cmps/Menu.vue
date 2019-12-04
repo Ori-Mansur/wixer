@@ -1,18 +1,21 @@
 <template>
   <ul class="menu-options">
-    <li class="menu-list">
+    <li class="menu-list uil uil-home">
       <router-link to="/">
-        <h4>Home</h4>
+        <unicon name="home" fill="black"></unicon>
+        <!-- <h4>Home</h4> -->
       </router-link>
     </li>
-    <li class="menu-list">
+        <i class="fab fa-accusoft"></i>
+    <!-- <li class="menu-list">
       <router-link to="/about">
         <h4>About</h4>
       </router-link>
-    </li>
+    </li> -->
     <li class="menu-list">
       <router-link to="/wap">
-        <h4>Waps</h4>
+      <unicon name="table" fill="black"></unicon>
+        <!-- <h4>Templates</h4> -->
       </router-link>
     </li>
   </ul>

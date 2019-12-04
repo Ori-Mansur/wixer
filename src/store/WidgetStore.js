@@ -1,5 +1,5 @@
 'use strict';
-var moment = require('moment');
+// var moment = require('moment');
 import WidgetService from '../services/WidgetService.js';
 export default {
   state: {
@@ -44,7 +44,6 @@ export default {
     widgetById(context, { id }) {
       return WidgetService.getById(id).then(widget => widget);
     },
- 
   },
   getters: {
     loadElements(state){
@@ -53,27 +52,5 @@ export default {
     widgetsToAdd(state) {
       return state.widgets;
     },
-    widgetPerYear(state) {
-      var widgetYearMap = {};
-      state.widgets.forEach(widget => {
-        var year = moment(widget.createdAt).format('YYYY');
-        var count = widgetYearMap[year];
-        widgetYearMap[year] = count ? count + 1 : 1;
-      });
-      return widgetYearMap;
-    },
-    widgetsType(state) {
-      var types = state.widgets.map(widget => widget.type);
-      types.unshift('All');
-      return types;
-    },
-    widgetsTypeAvgPrice(state) {
-      var typeAvg = {};
-      state.widgets.forEach(widget => {
-        const price = typeAvg[widget.type];
-        typeAvg[widget.type] = price ? price + +widget.price : +widget.price;
-      });
-      return typeAvg;
-    }
   }
 };

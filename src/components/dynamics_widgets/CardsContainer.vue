@@ -1,19 +1,16 @@
 <template>
-  <section class="container-threeCol flex row" @click="isEdit=!isEdit" :style="{backgroundImage: `url(${value.style.bcgImg})`,    backgroundColor: value.style.bcgColor, height: value.style.height + 'px', border: isBorder}">
+  <section class="container-threeCol flex row" :style="{backgroundColor: value.style.bcgColor, border: isBorder}">
 
-    <text-element v-for="(data, index) in value.data" :key="index" :data="data" :isEdit="isEdit" :style="{maxWidth: 'width'}"></text-element>
-
-    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
-
+    <card-container v-for="(data, index) in value.data" :key="index" :index="index" :data="data" :isEdit="isEdit" :style="{maxWidth: 'width'}"></card-container>
   </section>
 </template>
 
 <script>
-import WidgetEditor from "../wixer_cmps/WidgetEditor";
+// import WidgetEditor from "../wixer_cmps/WidgetEditor";
 // import TextEditor from "../wixer_cmps/TextEditor";
-import TextElement from "../elements/TextElement";
+// import TextElement from "../elements/TextElement";
 
-
+// import NavBar from "../dynamics_widgets/NavBarEdit";
 // import Container1 from "../dynamics_widgets/Container1";
 // import Empty from "../dynamics_widgets/Empty";
 // import HeaderBig from "../dynamics_widgets/HeaderBig";
@@ -21,13 +18,16 @@ import TextElement from "../elements/TextElement";
 // import Txt from "../dynamics_widgets/Txt";
 // import Video from "../dynamics_widgets/Video";
 // import Map from "../dynamics_widgets/Map";
+import CardContainer from '../dynamics_widgets/CardContainer';
 
 export default {
   props: {
     edit: Boolean,
     value: Object
   },
-  created() {},
+  created() {
+    console.log(this.value)
+  },
   components: {
     // NavBar,
     // Container1,
@@ -37,9 +37,10 @@ export default {
     // Txt,
     // Video,
     // Map,
-    WidgetEditor,
+    // WidgetEditor,
     // TextEditor,
-    TextElement
+    // TextElement,
+    CardContainer
   },
   data(){
     return{
