@@ -1,47 +1,34 @@
 <template>
   <section
-    v-if="value"
+    v-if="data"
     class="txt-container flex column align-center"
-    :style="{
-      backgroundImage: `url(${value.data.style.bcgImg})`, backgroundColor: value.data.style.bcgColor, width: width+'%'}"
   >
-    <widget-editor
-      :widget="value"
-      class="widget-editor-container"
-      @remove="removeWidget"
-      @newImage="newImage"
-    ></widget-editor>
-    <div @keyup="saveText">
+  <WidgetEditor/>
     <p
+    v-if="data"
       class="text"
       :contenteditable="true"
       v-html="content"
-      :style="style"
     ></p>
-    </div>
-    <text-editor :widget="value" :pos="pos"></text-editor>
   </section>
 </template>
 
 <script>
-import TextEditor from "../wixer_cmps/TextEditor";
+// import TextEditor from "../wixer_cmps/TextEditor";
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
 
 export default {
   props: {
     edit: Boolean,
-    value: Object,
+    data: Object,
     width: Number
-  },
-  created() {
-    this.getWidget();
   },
   data() {
     return {
       pos: { x: 0, y: 0 },
       widgetToEdit: null,
-      content: this.value.data.txt
-    }
+      content:this.data.data.txt
+    };
   },
   methods: {
     removeWidget(id) {
@@ -57,24 +44,16 @@ export default {
       // this.pos.y = ev.pageY + 20;
       console.log(ev);
     },
-    getWidget() {
-      this.widgetToEdit = JSON.parse(JSON.stringify(this.value));
-    },
-    newImage(imgUrl) {
-      this.widgetToEdit.data.style.bcgImg = imgUrl;
-    }
+   
   },
   computed: {
     isEdit() {
       if (this.isFocus) return "dotted";
       else return "none";
-    },
-    style(){
-      return 'fontSize: value.data.style.fontSize + "px",fontWeight: value.data.style.fontWeight, fontFamily: value.data.style.fontFamily, color: value.data.style.color, fontStyle: value.data.style.fontStyle'
     }
   },
   components: {
-    TextEditor,
+    // TextEditor,
     WidgetEditor
   }
 };

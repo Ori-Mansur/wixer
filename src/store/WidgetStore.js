@@ -1,5 +1,5 @@
 'use strict';
-var moment = require('moment');
+// var moment = require('moment');
 import WidgetService from '../services/WidgetService.js';
 export default {
   state: {
@@ -15,6 +15,13 @@ export default {
     setWidgets(state, { widgets }) {
       state.widgets = widgets;
     },
+    removeWidget(state, { widgetId }) {
+      const idx = state.widgets.findIndex(currWidget => currWidget._id === widgetId);
+      state.widgets.splice(idx, 1);
+    },
+    setFilter(state, filterBy) {
+      state.filterBy = filterBy;
+    }
   },
   actions: {
     loadElements(context){
@@ -26,16 +33,12 @@ export default {
     },
     loadWidgets(context) {
       return WidgetService.query().then(widgets => {
-        // console.log(widgets);
-        
         context.commit({ type: 'setWidgets', widgets });
         return widgets;
       });
     },
-    addId(context,{widget}){
-      console.log('widget to add id', widget)
-      return WidgetService.addId(widget)
-      
+    addId(context,{section}){
+      return WidgetService.addId(section)
     },
     widgetById(context, { id }) {
       return WidgetService.getById(id).then(widget => widget);
@@ -45,7 +48,7 @@ export default {
     loadElements(state){
       return state.elements
     },
-    widgets(state) {
+    widgetsToAdd(state) {
       return state.widgets;
     },
   }

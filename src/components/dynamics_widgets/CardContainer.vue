@@ -67,8 +67,10 @@ export default {
       this.$emit("remove", id);
     },
     getSelectedText(ev){
-      // console.log(ev.target)
+      console.log(ev.target)
       const text = window.getSelection().toString()
+      console.log(text);
+      
     }
   },
   components: {

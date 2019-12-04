@@ -1,36 +1,61 @@
 'use strict'
 // var moment = require('moment');
 import WapService from '../services/WapService.js'
+// import UtilsService from '../services/UtilsService.js'
+import CloudinaryService from '../services/CloudinaryService.js'
 
 export default {
     state: {
         waps: [],
-        currWap: {}
+        currWap: null,
+        currSection: null
     },
     mutations: {
         setWaps(state, { waps }) {
             state.waps = waps
         },
-        addWap(state, { wap }) {
-            state.waps.unshift(wap)
+        setWap(state, { wap }) {
+            state.currWap = wap
+        },
+        setSection(state, { section }) {
+            console.log(section);
+            
+            state.currSection = state.currWap.sections[section.idx]
         },
         updateWap(state, { wap }) {
-            const idx = state.waps.findIndex(curWap =>{
-                return curWap._id === wap._id})
-                state.waps.splice(idx, 1, wap)
+            const idx = state.waps.findIndex(curWap => {
+                return curWap._id === wap._id
+            })
+            state.waps.splice(idx, 1, wap)
         },
         removeWap(state, { wapId }) {
             const idx = state.waps.findIndex(currWap => currWap._id === wapId)
             state.waps.splice(idx, 1)
         },
-        addWidget(state, { wap }) {
-            state.currWap = wap;
+        addSection(state, value) {
+            console.log('commit', state.currWap);
+            // value._id=UtilsService.makeId()
+            console.log('commit', value);
+            state.currWap.sections = value
+            state.currSection = value[0]
         },
-        removeWidget(state, {widgetId}){
-            console.log(widgetId, ' to remove')
-            const idx = state.currWap.widgets.findIndex(widget => widget._id === widgetId)
-            state.currWap.widgets.splice(idx, 1)
+        addElement(state, value) {
+            const idx = state.currWap.sections.findIndex(section => section._id === state.currSection._id)
+            state.currWap.sections[idx].data = value
         },
+        addWidget(state, { data }) {
+            const idx = state.currWap.sections.findIndex(currSection => currSection._id === data.sectionId)
+            console.log('store idx', state.currWap.sections[idx]);
+
+            state.currWap.sections[idx].data.push(data.el)
+        },
+        setFilter(state, filterBy) {
+            state.filterBy = filterBy
+        },
+        setBcgImg(state, { sectionData }) {
+            const idx = state.currWap.sections.findIndex(section => section._id === sectionData.id)
+            state.currWap.sections[idx].style.bcgImg = sectionData.imgUrl
+        }
     },
     actions: {
         async loadWaps(context) {
@@ -39,33 +64,70 @@ export default {
             return waps;
         },
         async wapById(context, { id }) {
-            
             const wap = await WapService.getById(id)
-            // context.commit({ type: 'setWap', wap })
+            context.commit({ type: 'setWap', wap })
             return wap
         },
-        async addWap({commit}, { wap }) {
-            const addedWap = await WapService.add(wap)
-            // commit({ type: 'addWap',wap: addedWap })
-            commit({ type: 'open1',msg:'New wap added'})
-            console.log('addedWap',addedWap);
-            
-            return addedWap
+        async addSection(context, { section }) {
+            context.commit({ type: 'addSection', section })
+            await WapService.update(context.state.currWap)
+            context.commit({ type: 'success', msg: 'Wap saved' })
         },
-        async updateWap(context, { wap }) {
-            console.log('wap store',wap);
+        async addWidget(context, { data }) {
+            console.log('store datddddddddddda', data);
+
+            await context.commit({ type: 'addWidget', data })
+
+        },
+        async saveWap(context, { wap }) {
+            console.log('wap store', context.state.currWap);
             const updateWap = await WapService.update(wap)
-            // context.commit({ type: 'updateWap',wap: updateWap })
-            context.commit({ type: 'open2',msg:'Wap saved'})
+            context.commit({ type: 'setWap', wap: updateWap })
+            context.commit({ type: 'success', msg: 'Wap saved' })
             return updateWap
+        },
+        async addNewWap(context) {
+            const newWap = {
+                name: "",
+                style: {
+                    font: "Arial",
+                    txtColor: "black",
+                    bcgColor: "white",
+                    fontSize: 16,
+                    bcgImage: "none"
+                },
+                sections: []
+            }
+            const addedWap = await WapService.add(newWap)
+            context.commit({ type: 'setWap', wap: addedWap })
+            context.commit({ type: 'open1', msg: 'New Website created' })
+            // console.log('addedWap',addedWap);
+            return addedWap
         },
         async removeWap(context, { wapId }) {
             await WapService.remove(wapId)
             context.commit({ type: 'removeWap', wapId })
             return wapId
+        },
+        async setBcgImg(context, { data }) {
+            const imgUrl = await CloudinaryService.uploadImg(data.event)
+            context.commit({ type: 'setBcgImg', sectionData: { id: data.sectionId, imgUrl } })
+            context.commit({ type: 'success', msg: 'Image upload' })
         }
     },
     getters: {
+        currWap(state) {
+            return state.currWap
+        },
+        currWapSections(state) {
+            if (state.currWap) return state.currWap.sections
+        },
+        currSectionData(state) {
+            if (state.currWap.sections) {
+                const section = state.currWap.sections.find(section => section._id === state.currSection._id)
+                return section.data
+            }
+        },
         wapsToShow(state) {
             var waps = state.waps
             if (!state.filterBy) return waps
@@ -80,9 +142,6 @@ export default {
                 waps = waps.filter(wap => regex.test(wap.name))
             }
             return waps
-        },
-        currWap(state) {
-            return state.currWap
         }
 
     }

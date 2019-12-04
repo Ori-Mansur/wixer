@@ -1,18 +1,24 @@
 <template>
-  <div>
-    <component
-      :isEdit="isEdit"
-      v-for="(widget,idx) in widgets"
-      :key="idx"
-      :is="widget.type"
-      :value="widget"
-      class="widget-container"
-      @remove="removeWidget"
-      @edit="editWidget"
-    ></component>
-  </div>
+  <section>
+    <draggable class="dragArea list-group" v-model="myList" group="people">
+      <div class="list-group-item" v-for="(element,idx) in myList" :key="idx">
+        <component
+          :key="idx"
+          :is="element.type"
+          :section="element"
+          @setImg="setImg"
+          @click.native="setSection(element,idx)"
+          class="widget-container"
+        ></component>
+      </div>
+      <div class="placeholder-widget">
+        <unicon name="plus" fill="gray" class="icon" />
+      </div>
+    </draggable>
+  </section>
 </template>
 <script>
+import draggable from "vuedraggable";
 import VideoAndTxt from "../dynamics_widgets/premade_container/VidAndTxt";
 import TxtAndMap from "../dynamics_widgets/premade_container/TxtAndMap";
 import NavBar from "../dynamics_widgets/NavBarEdit";
@@ -32,9 +38,9 @@ import MainCardSurfe from "../dynamics_widgets/surfes_web/MainCardSurfe";
 import AboutUsSurfe from "../dynamics_widgets/surfes_web/AboutUsSurfe";
 import OurTeamSurfe from "../dynamics_widgets/surfes_web/OurTeamSurfe";
 import FrameSurfe from "../dynamics_widgets/surfes_web/FrameSurfe";
-import SectionContainer from '../dynamics_widgets/SectionContainer';
-import CardContainer from '../dynamics_widgets/CardContainer';
-import CardsContainer from '../dynamics_widgets/CardsContainer';
+import SectionContainer from "../dynamics_widgets/SectionContainer";
+import CardContainer from "../dynamics_widgets/CardContainer";
+import CardsContainer from "../dynamics_widgets/CardsContainer";
 
 export default {
   props: {
@@ -45,26 +51,32 @@ export default {
       isEdit: false
     };
   },
-  methods: {
-    // update(value) {
-    //   console.log("value");
-    // },
-    removeWidget(id) {
-      this.$emit("remove", id);
-    },
-    editWidget(widget) {
-      console.log(widget);
-      this.$emit("edit", widget);
+  computed: {
+    myList: {
+      get() {
+        return this.$store.getters.currWapSections;
+      },
+      set(value) {
+        this.$store.commit("addSection", value);
+      }
     }
   },
-
+  methods: {
+    setImg(data) {
+      this.$store.dispatch({ type: "setBcgImg", data });
+    },
+    setSection(section,idx) {
+      this.$store.commit({ type: "setSection", section:{section,idx} });
+    }
+  },
   created() {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
-    console.log(this.widgets)
+    // console.log(this.widgets)
   },
   components: {
+    draggable,
     VideoAndTxt,
     TxtAndMap,
     NavBar,

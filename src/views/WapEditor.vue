@@ -2,17 +2,14 @@
   <div class="wap-editor">
     <ToolBar
       @setName="setName"
-      @save="save"
-      @addElement="addElement"
-      :widgets="widgets"
+    
+      :widgets="widgetsToAdd"
       :elements="elements"
-      :nav="nav"
     />
-    <drop class="drop" @drop="handleDrop" :class="classNames">
-      <unicon v-if="!wap.widgets[0]" name="plus" fill="gray" class="icon" />
-      <h1 v-if="!wap.widgets[0]">Drag elemenets in here!</h1>
-      <WidgetPreview :widgets="wap.widgets" @remove="remove" @edit="edit" />
-    </drop>
+   
+    <WidgetPreview class="edit-template"   />
+    
+  
     <ElementPreview :elements="wap.elements" />
   </div>
 </template>
@@ -20,7 +17,7 @@
 import ToolBar from "../components/wixer_cmps/ToolBar.vue";
 import WidgetPreview from "../components/wixer_cmps/WidgetPreview.vue";
 import ElementPreview from "../components/wixer_cmps/ElementPreview";
-import { Drop } from "vue-drag-drop";
+
 export default {
   created() {
     this.setWap();
@@ -28,6 +25,8 @@ export default {
   },
   data() {
     return {
+      isSection: false,
+      over: false,
       wap: {
         name: "Funky Monks",
         style: {
@@ -37,27 +36,29 @@ export default {
           fontSize: 16,
           bcgImage: "none"
         },
-        widgets: []
+        sections: []
       }
     };
   },
   computed: {
-    classNames() {
-      return {
-        "edit-template": true,
-        "placeholder-widget": this.wap.widgets.length === 0,
-        nimrod: this.wap.widgets.length > 0
-      };
+     myList: {
+        get() {
+            return this.$store.getters.currWapSections
+        },
+        set(value) {
+          console.log('editor',value);
+          
+            this.$store.commit('addSection', value)
+        }
     },
-    widgets() {
-      return this.$store.getters.widgets;
+    currWap() {
+      return this.$store.getters.currWap;
+    },
+    widgetsToAdd() {
+      return this.$store.getters.widgetsToAdd;
     },
     elements() {
-      return this.$store.getters.loadElements;
-    },
-    nav() {
-      const nav = this.wap.widgets.find(widget => widget.type === "NavBar");
-      return nav;
+      return  this.$store.getters.loadElements;
     }
   },
   methods: {
@@ -65,16 +66,19 @@ export default {
       this.$store.dispatch({ type: "loadElements" });
     },
     async handleDrop(data) {
+      this.isSection = true;
       const widget = JSON.parse(JSON.stringify(data.widget));
       const modifyWidget = await this.$store.dispatch({
         type: "addId",
         widget
       });
       console.log(modifyWidget);
+      this.$store.dispatch({ type: "addSection", section: modifyWidget });
+      // this.wap.widgets.push(JSON.parse(JSON.stringify(modifyWidget)));
 
-      this.wap.widgets.push(JSON.parse(JSON.stringify(modifyWidget)));
-      this.save();
+      // this.save(modifyWidget);
     },
+
     addElement(element) {
       console.log(element);
     },
@@ -85,29 +89,6 @@ export default {
     updateWidget(widget) {
       console.log(widget);
     },
-    async save() {
-      if (!this.wap._id) {
-        this.wap = await this.$store.dispatch({
-          type: "addWap",
-          wap: this.wap
-        });
-        this.$router.push(`/editor/${this.wap._id}`);
-      } else {
-        console.log("wap to save", this.wap);
-
-        this.wap = await this.$store.dispatch({
-          type: "updateWap",
-          wap: this.wap
-        });
-      }
-    },
-    remove(id) {
-      console.log("widget to remove", id);
-      // var idx = this.wap.widgets.findIndex(widget=>widget.id===id)
-      // debugger;
-      // this.wap.widgets.splice(idx, 1)
-      this.$store.commit({ type: "removeWidget", widgetId: id });
-    },
     edit(widget) {
       console.log("saved widget", widget);
       var idx = this.wap.widgets.findIndex(
@@ -115,19 +96,33 @@ export default {
       );
       this.wap.widgets.splice(idx, 1, widget);
     },
+    async saveWap() {
+      const wap= await this.$store.dispatch({ type: "saveWap", wap: this.wap });
+      this.wap=JSON.parse(JSON.stringify(wap)) 
+    },
     async setWap() {
       const id = this.$route.params.id;
       if (id) {
         const wap = await this.$store.dispatch({ type: "wapById", id });
-        this.wap = wap;
+        this.wap =JSON.parse(JSON.stringify(wap));
+      } else {
+        const newWap = await this.$store.dispatch({ type: "addNewWap" });
+        this.$router.push(`/editor/${newWap._id}`);
+        this.wap =JSON.parse(JSON.stringify(newWap)) ;
       }
     }
   },
+  watch: {
+    "wap.sections"(to) {
+      console.log(to);
+      // this.saveWap()
+    }
+  },
   components: {
-    Drop,
     ToolBar,
     WidgetPreview,
-    ElementPreview
+    ElementPreview,
+   
   }
 };
 </script>

@@ -1,45 +1,45 @@
 <template>
-  <section class="container-threeCol flex row" :style="{backgroundColor: value.style.bcgColor, border: isBorder}">
+  <section class="container-threeCol flex row" :style="{backgroundColor: section.style.bcgColor, border: isBorder}">
 
-    <card-container v-for="(data, index) in value.data" :key="index" :index="index" :data="data" :isEdit="isEdit" :style="{maxWidth: 'width'}"></card-container>
+    <card-container v-for="(data, index) in section.data" :key="index" :index="index" :data="data" :isEdit="isEdit" :style="{maxWidth: 'width'}"></card-container>
   </section>
 </template>
 
 <script>
-import WidgetEditor from "../wixer_cmps/WidgetEditor";
-import TextEditor from "../wixer_cmps/TextEditor";
-import TextElement from "../elements/TextElement";
+// import WidgetEditor from "../wixer_cmps/WidgetEditor";
+// import TextEditor from "../wixer_cmps/TextEditor";
+// import TextElement from "../elements/TextElement";
 
-import NavBar from "../dynamics_widgets/NavBarEdit";
-import Container1 from "../dynamics_widgets/Container1";
-import Empty from "../dynamics_widgets/Empty";
-import HeaderBig from "../dynamics_widgets/HeaderBig";
-import Img from "../dynamics_widgets/Img";
-import Txt from "../dynamics_widgets/Txt";
-import Video from "../dynamics_widgets/Video";
-import Map from "../dynamics_widgets/Map";
+// import NavBar from "../dynamics_widgets/NavBarEdit";
+// import Container1 from "../dynamics_widgets/Container1";
+// import Empty from "../dynamics_widgets/Empty";
+// import HeaderBig from "../dynamics_widgets/HeaderBig";
+// import Txt from "../dynamics_widgets/Txt";
+// import Img from "../dynamics_widgets/Img";
+// import Video from "../dynamics_widgets/Video";
+// import Map from "../dynamics_widgets/Map";
 import CardContainer from '../dynamics_widgets/CardContainer';
 
 export default {
   props: {
     edit: Boolean,
-    value: Object
+    section: Object
   },
   created() {
-    console.log(this.value)
+    console.log(this.section)
   },
   components: {
-    NavBar,
-    Container1,
-    Empty,
-    HeaderBig,
-    Img,
-    Txt,
-    Video,
-    Map,
-    WidgetEditor,
-    TextEditor,
-    TextElement,
+    // NavBar,
+    // Container1,
+    // Empty,
+    // HeaderBig,
+    // Img,
+    // Txt,
+    // Video,
+    // Map,
+    // WidgetEditor,
+    // TextEditor,
+    // TextElement,
     CardContainer
   },
   data(){
@@ -53,7 +53,7 @@ export default {
       else return ''
     },
     width(){
-      var width = 100/this.value.data.length+'%'
+      var width = 100/this.section.data.length+'%'
       return width
     }
   },

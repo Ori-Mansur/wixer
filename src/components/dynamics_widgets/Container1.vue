@@ -9,7 +9,7 @@
 
 <script>
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
-import TextEditor from "../wixer_cmps/TextEditor";
+// import TextEditor from "../wixer_cmps/TextEditor";
 import TextElement from "../elements/TextElement";
 
 
@@ -39,7 +39,7 @@ export default {
   },
   components:{
     WidgetEditor,
-    TextEditor,
+    // TextEditor,
     TextElement
   }
 };

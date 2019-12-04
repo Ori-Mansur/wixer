@@ -1,25 +1,25 @@
 <template>
   <section @click="isEdit=!isEdit"
     class="header-container flex column justify-center align-center background"
-    :style="{backgroundImage: `url(${value.style.bcgImg})`,backgroundColor: value.style.bcgColor,
-    height: value.style.height + 'px', border: isBorder}">
+    :style="{backgroundImage: `url(${section.style.bcgImg})`,backgroundColor: section.style.bcgColor,
+    height: section.style.height + 'px', border: isBorder}">
 
     <widget-editor 
-      :widget="value"
-      class="widget-editor-container" @remove="removeWidget" @edit="editWidget" @newImage="newImage"></widget-editor>
+      :widget="section"
+      class="widget-editor-container" @remove="removeWidget" ></widget-editor>
 
-    <text-element v-for="(data, index) in value.data" :key="index" :data="data" :isEdit="isEdit"></text-element>
+    <text-element v-for="(data, index) in section.data" :key="index" :data="data" :isEdit="isEdit"></text-element>
   </section>
 </template>
 <script>
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
-import TextEditor from "../wixer_cmps/TextEditor";
+// import TextEditor from "../wixer_cmps/TextEditor";
 import TextElement from "../elements/TextElement";
 
 export default {
   props: {
     edit: Boolean,
-    value: Object
+    section: Object
   },
   data() {
     return {
@@ -41,18 +41,11 @@ export default {
   methods: {
     removeWidget(id) {
       this.$emit("remove", id);
-    },
-    editWidget() {
-      this.$emit("edit", this.widgetToEdit);
-    },
-    newImage(imgUrl) {
-      this.widgetToEdit.data.style.bcgImg = imgUrl;
-      this.$emit("edit", this.widgetToEdit);
-    },  
+    }
   },
   components: {
     WidgetEditor,
-    TextEditor,
+    // TextEditor,
     TextElement
   }
 };

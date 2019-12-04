@@ -15,6 +15,28 @@ export default {
 //     : '//localhost:3150/api/widget';
 
 const BASE_URL = 'widget';
+function addId(widget) {
+  widget._id = utils.makeId();
+  widget.data.map(widget => {
+    widget._id = utils.makeId();
+  })
+  console.log(widget.data)
+  return widget;
+}
+
+async function query() {
+  return await widgets;
+}
+async function queryElements() {
+  return await elements;
+}
+// async function query() {
+//   return await HttpService.get(BASE_URL)
+// }
+async function getById(id) {
+  const res = await HttpService.get(`${BASE_URL}/${id}`);
+  return await res.data;
+}
 
 const widgets = [
   {
@@ -393,24 +415,30 @@ const widgets = [
           txt:
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
         },
-        {
-          img:
-            'https://www.clipartwiki.com/clipimg/detail/149-1490051_computer-icons-user-profile-male-my-profile-icon.png',
-          title: 'Hugo Silva',
-          txt:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
-        },
-        {
-          img:
-            'https://www.clipartwiki.com/clipimg/detail/149-1490051_computer-icons-user-profile-male-my-profile-icon.png',
-          title: 'Imanol Arias',
-          txt:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
-        }
       ]
-    },
-    createdAt: '2019-12-01T11:25:41.355Z'
+    }
   },
+  {
+    "_id": "5de4c99aca73df026cca7457",
+    "type": "FormInline",
+    "data": {},
+    "createdAt": "2019-12-02T08:21:46.753Z"
+  },
+  {
+    "_id": "5de4c99aca73df026x",
+    "type": "HeaderSurfe",
+    "data": {},
+    "createdAt": "2019-12-02T08:21:46.753Z"
+  },
+  {
+    "_id": "5de4c99df026x",
+    "type": "MainCardSurfe",
+    "data": {},
+    "createdAt": "2019-12-02T08:21:46.753Z"
+
+  },
+
+
   {
     _id: '5de3c27e0dd08d6cc18095da',
     type: 'HeaderSmall',
@@ -429,94 +457,72 @@ const widgets = [
         fontStyle: '',
         fontWeight: ''
       }
-    },
-    createdAt: '2019-12-01T13:39:10.508Z'
+    }
   },
   {
-    _id: '5de3deff1c9d44000049e80e',
-    type: 'Txt',
-    name: 'Text',
-    data: {
-      txt:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!',
-      style: {
-        fontFamily: 'Arial',
-        fontSize: 16,
-        fontStyle: 'normal',
-        fontWeight: 'normal',
-        color: 'black',
-        bcgImg: '',
-        bcgColor: ''
+    "_id": "5de4c99dxxfxaxcsc026x",
+    "type": "OurTeamSurfe",
+    "data": {},
+    "createdAt": "2019-12-02T08:21:46.753Z"
+  },
+  {
+    "_id": "5de4c99dfxaxccsacsc026x",
+    "type": "FrameSurfe",
+    "data": {},
+    "createdAt": "2019-12-02T08:21:46.753Z"
+  },
+  {
+    "_id": "5de4c99dfxaxcchjvhucasklmcssacsc026x",
+    "type": "SectionContainer",
+    style: { bcgImg: '', bcgColor: '' },
+    "data": [],
+    "createdAt": "2019-12-02T08:21:46.753Z"
+  }
+]
+
+
+
+
+
+
+const elements = [
+  {
+    "_id": "5de3deff1c9d44000049e80e",
+    "type": "Txt",
+    "data": {
+      "txt": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!",
+      "style": {
+        "fontFamily": "Arial",
+        "fontSize": 16,
+        "fontStyle": "normal",
+        "fontWeight": "normal",
+        "color": "black",
+        "bcgImg": "",
+        "bcgColor": ""
       }
     },
-    createdAt: '2019-12-01T08:18:35.184Z'
+    "createdAt": "2019-12-01T08:18:35.184Z"
   },
-  // {
-  //     "_id": "5de4c99aca73df026cca7457",
-  //     "type": "FormInline",
-  //     "data": {},
-  //     "createdAt": "2019-12-02T08:21:46.753Z"
-  // },
-  // {
-  //     "_id": "5de4c99aca73df026x",
-  //     "type": "HeaderSurfe",
-  //     "data": {},
-  //     "createdAt": "2019-12-02T08:21:46.753Z"
-  // },
-  // {
-  //     "_id": "5de4c99df026x",
-  //     "type": "MainCardSurfe",
-  //     "data": {},
-  //     "createdAt": "2019-12-02T08:21:46.753Z"
-  // },
-  // {
-  //     "_id": "5de4c99dfxaxcsc026x",
-  //     "type": "AboutUsSurfe",
-  //     "data": {},
-  //     "createdAt": "2019-12-02T08:21:46.753Z"
-  // },
-  // {
-  //     "_id": "5de4c99dfxaxcsc026x",
-  //     "type": "OurTeamSurfe",
-  //     "data": {},
-  //     "createdAt": "2019-12-02T08:21:46.753Z"
-  // },
-  // {
-  //     "_id": "5de4c99dfxaxccsacsc026x",
-  //     "type": "FrameSurfe",
-  //     "data": {},
-  //     "createdAt": "2019-12-02T08:21:46.753Z"
-  // },
   {
-    _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
-    type: 'SectionContainer',
-    name: 'Section',
-    data: {},
-    createdAt: '2019-12-02T08:21:46.753Z'
+    _id: 'el1001',
+    type: 'Video',
+    name: 'Video',
+    data: {
+      url: 'https://www.youtube.com/embed/mO3Q4bRQZ3k'
+    }
+  },
+  {
+    _id: 'el1002',
+    type: 'TextEl',
+    text: 'Insert Title',
+    style: {
+      color: 'black',
+      fontSize: 30,
+      fontWeight: 'normal',
+      fontFamily: 'Arial',
+      fontStyle: 'normal',
+      txtAlign: 'center'
+    }
   }
-];
+]
 
-function addId(widget) {
-  widget._id = utils.makeId();
-  widget.data.map(widget=>{
-    widget._id = utils.makeId();
-  })
-  console.log(widget.data)
-  return widget;
-}
-
-async function query() {
-  return await widgets;
-}
-
-const elements = [];
-async function queryElements() {
-  return await elements;
-}
-// async function query() {
-//   return await HttpService.get(BASE_URL)
-// }
-async function getById(id) {
-  const res = await HttpService.get(`${BASE_URL}/${id}`);
-  return await res.data;
-}
