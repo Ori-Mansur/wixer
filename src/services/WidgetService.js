@@ -113,7 +113,6 @@ const widgets = [
   {
     type: 'CardsContainer',
     name: 'Multi Card',
-    unicon: '',
     style: {
       bcgImg: '',
       bcgColor: ''
@@ -226,7 +225,6 @@ const widgets = [
   {
     type: 'Container3',
     name: 'Multi Paragraph',
-    unicon: '',
     style: {
       bcgImg: '',
       bcgColor: ''
