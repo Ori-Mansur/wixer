@@ -1,15 +1,15 @@
 <template>
   <section class="widget-editor-container" v-if="isEdit">
-    <label @click="chooseColor = !chooseColor" >
+    <label @click.stop="chooseColor = !chooseColor" >
       <unicon name="palette" fill="black" class="icon-edit" />
     </label>
-    <label @click="removeWidget" title="remove this widget" >
+    <label @click.stop="removeWidget" title="remove this widget" >
       <unicon name="trash-alt" fill="black" class="icon-edit" />
     </label>
-    <label @click="savePos(+1)" >
+    <label>
       <unicon name="sort-amount-down" fill="black" class="icon-edit" />
     </label>
-    <label @click="savePos(-1)" >
+    <label>
       <unicon name="sort-amount-up" fill="black" class="icon-edit" />
     </label>
 
@@ -30,7 +30,7 @@ export default {
     widget: Object
   },
   created() {
-    // console.log("newWidget", this.widget);
+    console.log("widget:", this.widget._id, 'type', this.widget.type);
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
@@ -43,9 +43,6 @@ export default {
     };
   },
   computed:{
-    imageUrlRef(){
-      return this.widget.data.style.bcgImg
-    },
     fileUpload(){
       return `file-upload-${this.widget._id}`
     }
@@ -56,10 +53,10 @@ export default {
     },
     removeWidget() {
       this.$emit("remove", this.widget._id);
-      console.log(this.widget._id, "remove");
+      console.log("remove", this.widget._id);
     },
     updateBackground(color) {
-      this.widget.data.style.bcgColor = color;
+      this.widget.style.bcgColor = color;
       this.editWidget();
       // console.log(this.widget.data.style)
     },
@@ -70,23 +67,10 @@ export default {
           console.log("widget of Imaage2", this.widget);
           // this.$emit("newImage", imgUrl);
 
-          this.widget.data.style.bcgImg = imgUrl;
+          this.widget.style.bcgImg = imgUrl;
         })
         .then(() => this.editWidget());
     }
-  },
-  watch: {
-    "this.$route.path"(curr) {
-      if (curr.includes("editor")) this.isEdit = true;
-      else this.isEdit = false;
-    }
-    // widget: {
-    //   handler(){
-    //     console.log('changing data...')
-    //     this.$emit("edit", this.widget);
-    //   },
-    // deep: true
-    // },
   },
   components: {
     ColorPicker
@@ -95,14 +79,11 @@ export default {
 </script>
 <style lang="scss">
 .widget-editor-container {
-  // position: fixed;
-  position: sticky;
-  top: 50px;
-  right: 0px;
-  // top: 0px;
-  // z-index: 100;
-  
+  position: absolute;
+  top: 0;
+  right: 0;
   padding: 5px;
+  
   .icon-edit{
     background-color: #fff;
     padding: 3px;
