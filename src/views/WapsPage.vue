@@ -1,6 +1,7 @@
 <template>
   <div class="waps-page container">
-      <h1>WAPS</h1>
+      <h1 class="waps-page-header">Build beautiful websites in minutes
+</h1>
     <WapList :waps="waps" />
   </div>
 </template>
