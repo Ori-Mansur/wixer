@@ -1,13 +1,26 @@
 <template>
-  <li class="wap-preview">
-    <button @click="edit(wap._id)">EDIT</button>
-    <button @click="preview(wap._id)">P</button>
+  <!-- <li class="wap-preview">
     <h3>{{wap.name}}</h3>
     <div>
       <img src="@/assets/card2.png" />
     </div>
-    <!-- <pre>{{wap.name}}</pre> -->
-  </li>
+    <button @click="edit(wap._id)">EDIT</button>
+
+  <button @click="preview(wap._id)">P</button>-->
+  <div class="container-card wap-preview">
+    <h3 class="main-title">{{wap.name}}</h3>
+    <div class="content">
+        <div class="content-overlay"></div>
+        <img class="content-image" src="@/assets/card2.png"/>
+        <div class="content-details fadeIn-top">
+          <p @click="edit(wap._id)">Edit</p>
+          <p @click="preview(wap._id)">View</p>
+        </div>
+    </div>
+  </div>
+
+  <!-- <pre>{{wap.name}}</pre> -->
+  <!-- </li> -->
 </template>
 <script>
 export default {
@@ -23,4 +36,8 @@ export default {
     }
   }
 };
+
+// https://res.cloudinary.com/dw9jjocrg/image/upload/v1575441412/kljyhuxlsodfhvbw00m1.png
+//   https://res.cloudinary.com/dw9jjocrg/image/upload/v1575441474/mh4clwrfz5h5eplxbaot.png
 </script>
+

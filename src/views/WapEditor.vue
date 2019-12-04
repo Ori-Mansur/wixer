@@ -1,5 +1,5 @@
 <template>
-  <div class="wap-editor container">
+  <div class="wap-editor">
     <ToolBar
       @setName="setName"
       @save="save"
@@ -66,7 +66,10 @@ export default {
     },
     async handleDrop(data) {
       const widget = JSON.parse(JSON.stringify(data.widget));
-      const modifyWidget= await this.$store.dispatch({type:'addId',widget})
+      const modifyWidget = await this.$store.dispatch({
+        type: "addId",
+        widget
+      });
       console.log(modifyWidget);
 
       this.wap.widgets.push(JSON.parse(JSON.stringify(modifyWidget)));
@@ -90,7 +93,7 @@ export default {
         });
         this.$router.push(`/editor/${this.wap._id}`);
       } else {
-      console.log('wap to save', this.wap)
+        console.log("wap to save", this.wap);
 
         this.wap = await this.$store.dispatch({
           type: "updateWap",
@@ -103,7 +106,7 @@ export default {
       // var idx = this.wap.widgets.findIndex(widget=>widget.id===id)
       // debugger;
       // this.wap.widgets.splice(idx, 1)
-      this.$store.commit({type: "removeWidget", widgetId: id});
+      this.$store.commit({ type: "removeWidget", widgetId: id });
     },
     edit(widget) {
       console.log("saved widget", widget);

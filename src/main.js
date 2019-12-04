@@ -25,7 +25,16 @@ import {
   uniSortAmountDown,
   uniImagePlus,
   uniPalette,
-  uniHome
+  uniHome,
+  uniTable,
+  uniVideo,
+  uniMap,
+  uniText,
+  uniAlignLeftJustify,
+  uniClipboardAlt,
+  uniEditAlt,
+  uniEye,
+  uniImage
 } from 'vue-unicons/src/icons';
 import VueDragDrop from 'vue-drag-drop';
 
@@ -44,7 +53,16 @@ Unicon.add([
   uniSortAmountDown,
   uniImagePlus,
   uniPalette,
-  uniHome
+  uniHome,
+  uniTable,
+  uniVideo,
+  uniMap,
+  uniText,
+  uniAlignLeftJustify,
+  uniClipboardAlt,
+  uniEditAlt,
+  uniEye,
+  uniImage
 ]);
 
 Vue.use(Unicon);

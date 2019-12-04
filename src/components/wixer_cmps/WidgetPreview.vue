@@ -6,7 +6,6 @@
       :key="idx"
       :is="widget.type"
       :value="widget"
-     
       class="widget-container"
       @remove="removeWidget"
       @edit="editWidget"

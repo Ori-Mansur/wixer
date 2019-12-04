@@ -2,9 +2,9 @@
   <ul class="card-grid">
     <li>
       <button @click="edit">EDIT</button>
-      <button >P</button>
+      <button>P</button>
     </li>
-    <WapPreview v-for="wap in waps" :key="wap._id" :wap="wap" @select="edit" @preview="preview"/>
+    <WapPreview v-for="wap in waps" :key="wap._id" :wap="wap" @select="edit" @preview="preview" />
   </ul>
 </template>
 <script>
@@ -15,13 +15,13 @@ export default {
   },
   methods: {
     edit(wapId) {
-      if(typeof wapId !=='string')this.$router.push(`/editor`)
+      if (typeof wapId !== "string") this.$router.push(`/editor`);
       else this.$router.push(`/editor/${wapId}`);
     },
     preview(wapId) {
       console.log(wapId);
-      
-      if(typeof wapId !=='string') return
+
+      if (typeof wapId !== "string") return;
       else this.$router.push(`/publish/${wapId}`);
     }
   },

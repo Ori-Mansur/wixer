@@ -25,15 +25,19 @@
       <div v-if="edit" class="list-option wap-option">
         <SettingWap @setName="add" :nav="nav" />
       </div>
+            <div class="section-save-container">
+
       <li @click="save" class="li-bar section-save">
-        <unicon name="file-medical" fill="white" />
+        <unicon name="file-medical" fill="black" />
         <h3 :style="{color:'white'}">Save</h3>
       </li>
-
-      <!-- <li class="element-add">
-        +
-        <span class="text">ADD ELEMENT</span>
-      </li>-->
+      <router-link to="/wap">
+      <li  class="li-bar section-save">
+        <unicon name="trash-alt" fill="black" />
+        <h3 :style="{color:'white'}">Change</h3>
+      </li>
+            </router-link>
+</div>
     </ul>
   </div>
 </template>
