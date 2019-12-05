@@ -14,7 +14,7 @@
         <img class="content-image" src="@/assets/card2.png"/>
         <div class="content-details fadeIn-top">
            <label @click="edit(wap._id)">
-      <unicon name="eye" fill="white" class="icon-edit" />
+      <unicon name="eye" fill="white" class="icon-edit-prev" />
     </label>
            <label @click="preview(wap._id)">
       <unicon name="edit-alt" fill="white" class="icon-edit" />

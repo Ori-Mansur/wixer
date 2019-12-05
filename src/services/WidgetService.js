@@ -42,7 +42,7 @@ const widgets = [
   {
     type: 'HeaderBig',
     name: 'Big Header',
-    icon: 'fa-save',
+    icon: 'fa fa-header fa-3x',
     style: {
       bcgImg: '',
       bcgColor: '',
@@ -50,7 +50,7 @@ const widgets = [
     },
     data: [
       {
-        _id:'big1001',
+        _id: 'big1001',
         text: 'Insert Title',
         style: {
           color: 'black',
@@ -62,7 +62,7 @@ const widgets = [
         }
       },
       {
-        _id:'big1002',
+        _id: 'big1002',
         text: 'Insert Subtitle',
         style: {
           color: 'black',
@@ -78,7 +78,7 @@ const widgets = [
   {
     type: 'Container1',
     name: 'Paragraph',
-    unicon: 'align-left-justify',
+    icon: 'fa fa-align-left fa-3x',
     style: {
       bcgImg: '',
       bcgColor: '',
@@ -102,7 +102,7 @@ const widgets = [
   {
     type: 'Card1',
     name: 'Card',
-    unicon: 'clip-board-alt',
+    icon: 'fa fa-address-card fa-3x',
     style: {
       bcgImg: '',
       bcgColor: '',
@@ -137,6 +137,7 @@ const widgets = [
   {
     type: 'CardsContainer',
     name: 'Multi Card',
+    icon: 'fa fa-address-card fa-3x',
     style: {
       bcgImg: '',
       bcgColor: ''
@@ -295,6 +296,7 @@ const widgets = [
   {
     type: 'NavBar',
     name: 'NavBar',
+    icon: 'fa fa-grip-lines fa-3x',
     data: {
       title: 'this is the title',
       subtitle: 'this is the subtitle',
@@ -442,6 +444,7 @@ const widgets = [
   {
     _id: '5de3c27e0dd08d6cc18095da',
     type: 'HeaderSmall',
+    icon: 'fa fa-header fa-2x',
     name: 'Small Header',
     data: {
       title: 'Welcome To My Website',
@@ -474,6 +477,7 @@ const widgets = [
   {
     _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
     type: 'SectionContainer',
+    icon: 'fa fa-align-left fa-2x',
     sectionList: 'sectionList',
     style: { bcgImg: '', bcgColor: '' },
     data: [],
@@ -485,6 +489,7 @@ const elements = [
   {
     _id: '5de3deff1c9d44000049e80e',
     type: 'Txt',
+    icon: 'fa fa-font fa-3x',
     data: {
       txt:
         'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!',
@@ -504,6 +509,7 @@ const elements = [
     _id: 'el1001',
     type: 'Video',
     name: 'Video',
+    icon: 'fa fa-youtube fa-3x',
     data: {
       url: 'https://www.youtube.com/embed/mO3Q4bRQZ3k'
     }
@@ -511,6 +517,7 @@ const elements = [
   {
     _id: 'el1002',
     type: 'TextEl',
+    icon: 'fa fa-font fa-3x',
     text: 'Insert Title',
     style: {
       color: 'black',

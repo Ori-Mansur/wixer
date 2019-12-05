@@ -100,6 +100,11 @@
     transition: all 0.3s ease-in-out 0s;
   }
 
+  .empty-wap {
+    left: 47%;
+    top: 45%;
+    position: relative;
+  }
   .content:hover .content-details {
     top: 50%;
     left: 50%;
@@ -136,10 +141,10 @@
     left: 80%;
   }
 }
-// .icon-edit {
-//   // background-color: #fff;
-//   cursor: pointer;
-//   font-size: 30px;
-//   height: 50px;
-//   width: 50px;
-// }
+.icon-edit-prev {
+  // background-color: #fff;
+  cursor: pointer;
+  font-size: 30px;
+  height: 50px;
+  width: 50px;
+}
