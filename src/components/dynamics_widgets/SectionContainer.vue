@@ -5,7 +5,7 @@
      backgroundImage: `url(${section.style.bcgImg})`}"
   >
     <WidgetEditor @setImg="setImg" :data="section" />
-    <draggable class="dragArea list-group" :list="section.data"  group="group" :sort="isEdit" >
+    <draggable class="dragArea list-group" :list="JSON.parse(JSON.stringify(section.data))"  group="group" :sort="isEdit" >
       <div class="list-group-item" v-for="(element,idx) in section.data" :key="idx">
         <component :key="idx" 
         @saveMapData="saveMapData(section._id)"
@@ -32,20 +32,23 @@ export default {
     section: Object,
     isEdit:Boolean
   },
+  created(){
+    // this.newList = JSON.parse(JSON.stringify(this.se))
+  },
   data() {
     return {
       over: false
     };
   },
   computed: {
-    sectionList: {
-      get() {
-        return this.$store.getters.currSectionData
-      },
-      set(value) {
-        this.$store.commit('addElement', value)
-      }
-    },
+    // sectionList: {
+    //   get() {
+    //     return this.$store.getters.currSectionData
+    //   },
+    // //   // set(value) {
+    //   //   this.$store.commit('addElement', value)
+    //   // }
+    // },
     
   },
   methods: {

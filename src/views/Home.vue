@@ -6,7 +6,7 @@
         <h1 class="home-header">Wixer</h1>
         <p
           class="home-header-content"
-        >Drop elements to your page, add content and style it to look the way you like.</p>
+        >Drop elements to your page, add content and style it the way you like.</p>
         <button class="home-btn" href="#waps-examples">Get Started</button>
       </div>
     </div>
