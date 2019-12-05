@@ -8,9 +8,9 @@
     <draggable class="dragArea list-group" :list="section.data"  group="group" :sort="isEdit" >
       <div class="list-group-item" v-for="(element,idx) in section.data" :key="idx">
         <component :key="idx" 
+        @saveMapData="saveMapData(section._id)"
         :is="element.type" 
-        :data="element" 
-       >
+        :data="element" >
         </component>
       </div>
       <div v-if="isEdit" class="placeholder">
@@ -63,6 +63,10 @@ console.log('pppppp');
         type: "addWidget",
         data: { el: data.widget, sectionId: this.section._id }
       });
+    },
+    saveMapData({newData, sectionId}){
+      this.$store.commit({type: "saveSectionData", newData, sectionId });
+
     }
   },
   components: {

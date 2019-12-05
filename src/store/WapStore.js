@@ -33,13 +33,22 @@ export default {
             state.waps.splice(idx, 1)
         },
         addSection(state, value) {
+            state.currWap.sections
             value.forEach(section => section._id = UtilsService.makeId());
             state.currWap.sections = value
+            console.log(state.currWap)
+        },
+        saveSectionData(state, {newData, sectionId}){
+            const idx = state.currWap.sections.findIndex(section => section._id === sectionId)
+            const elIdx = state.currWap.sections[idx].findIndex(el=> el._id===newData._id)
+                state.currWap.sections[idx].data[elIdx] = newData
         },
         addElement(state, value) {
+            console.log('element',value)
             value.forEach(element => element._id = UtilsService.makeId());
             const idx = state.currWap.sections.findIndex(section => section._id === state.group)
             state.currWap.sections[idx].data = value
+
         },
         addWidget(state, { data }) {
             const idx = state.currWap.sections.findIndex(currSection => currSection._id === data.sectionId)
