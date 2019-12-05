@@ -42,7 +42,7 @@ const widgets = [
   {
     type: 'HeaderBig',
     name: 'Big Header',
-    icon: 'fa-save',
+    icon: 'fa fa-sign-out',
     style: {
       bcgImg: '',
       bcgColor: '',
@@ -50,7 +50,7 @@ const widgets = [
     },
     data: [
       {
-        _id:'big1001',
+        _id: 'big1001',
         text: 'Insert Title',
         style: {
           color: 'black',
@@ -62,7 +62,7 @@ const widgets = [
         }
       },
       {
-        _id:'big1002',
+        _id: 'big1002',
         text: 'Insert Subtitle',
         style: {
           color: 'black',
@@ -485,6 +485,7 @@ const elements = [
   {
     _id: '5de3deff1c9d44000049e80e',
     type: 'Txt',
+    icon: 'fa fa-sign-out',
     data: {
       txt:
         'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!',

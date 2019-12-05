@@ -1,7 +1,10 @@
 <template>
   <ul class="card-grid">
     <li>
-      <button @click="edit">+</button>
+      <!-- <button @click="edit" class="empty-wap">+</button>
+                  <li @click="el=!el"  class="li-bar section-add"> -->
+                    
+<i class="fa fa-plus empty-wap" @click="edit"></i>
       <!-- <button>P</button> -->
     </li>
     <WapPreview v-for="wap in waps" :key="wap._id" :wap="wap" @select="edit" @preview="preview" />

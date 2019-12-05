@@ -19,7 +19,7 @@
         <h4 :style="{color:elColor}">Elements</h4>
       </li>
 </div>
-<div list-group-content>
+<div class="list-group-content">
       <div v-if="section">
         <draggable
           class="dragArea list-group"
@@ -52,6 +52,7 @@
             v-for="element in elements"
             :key="element.id"
           >{{ element.type }}
+          
           </div>
         </draggable>
       </div>
@@ -91,6 +92,7 @@ import Menu from "./Menu.vue";
 export default {
   props: {
     widgets: Array,
+    widget: Array,
     elements: Array,
     nav: Object
   },
@@ -124,19 +126,19 @@ export default {
   },
   computed: {
     color() {
-      if (this.section) return "black";
+      if (this.section) return "#6ACEF9";
       else return "gray";
     },
     elColor() {
-      if (this.el) return "black";
+      if (this.el) return "#6ACEF9";
       else return "gray";
     },
     colorEdit() {
-      if (this.edit) return "black";
+      if (this.edit) return "#6ACEF9";
       else return "gray";
     },
     colorMenu() {
-      if (this.menu) return "black";
+      if (this.menu) return "#6ACEF9";
       else return "gray";
     },
     group(){
