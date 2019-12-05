@@ -33,7 +33,7 @@
             v-for="element in widgets"
             :key="element.id">
             {{ element.type }}
-            <!-- <i :class="widget.icon"/>{{widget.name}} -->
+            <i :class="element.icon"/>
 
           </div>
         </draggable>
@@ -52,6 +52,8 @@
             v-for="element in elements"
             :key="element.id"
           >{{ element.type }}
+          <i :class="element.icon"/>
+
           
           </div>
         </draggable>
