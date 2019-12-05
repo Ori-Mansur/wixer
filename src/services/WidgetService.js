@@ -487,6 +487,20 @@ const widgets = [
 
 const elements = [
   {
+    _id: '0001',
+    type: 'Map',
+    name: 'Map',
+    data: {
+      center: { lat: 32.109333, lng: 34.855499 },
+      markers: [],
+      places: [],
+      placesMarked: [],
+      currentPlace: '',
+      placeName: '',
+      place:''
+    }
+  },
+  {
     _id: '5de3deff1c9d44000049e80e',
     type: 'Txt',
     icon: 'fa fa-font fa-3x',
