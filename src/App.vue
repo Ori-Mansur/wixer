@@ -2,15 +2,18 @@
   <div id="app">
     <NavBar v-if="path!=='/'" />
     <router-view />
+    <FooterApp></FooterApp>
   </div>
 </template>
 <script>
 import NavBar from "@/components/wixer_cmps/NavBar.vue";
+import FooterApp from "@/components/wixer_cmps/FooterApp.vue";
 
 export default {
   name: "APP",
   components: {
-    NavBar
+    NavBar,
+    FooterApp
   },
 
   created() {

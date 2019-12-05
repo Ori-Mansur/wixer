@@ -22,9 +22,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
+  @media (max-width: 450px) {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
   .empty-wap {
-    left: 47%;
-    top: 45%;
+    left: 43%;
+    top: 40%;
     position: relative;
     width: 50px;
     height: 50px;
@@ -57,9 +60,9 @@
   }
 }
 
-footer {
-  background-color: $clr4;
-  padding: 30px 0;
-  text-align: center;
-  margin-top: 60px;
-}
+// footer {
+//   background-color: $clr4;
+//   padding: 30px 0;
+//   text-align: center;
+//   margin-top: 60px;
+// }
