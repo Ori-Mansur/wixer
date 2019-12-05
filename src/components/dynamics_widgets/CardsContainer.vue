@@ -1,7 +1,9 @@
 <template>
   <section class="container-threeCol flex row" :style="{backgroundColor: section.style.bcgColor, border: isBorder}">
 
-    <card-container @setImg="setImg" v-for="(data, index) in section.data" :key="index"
+    <card-container @setImg="setImg" 
+    @changeStyle="changeStyle"
+    v-for="(data, index) in section.data" :key="index"
      :index="index" :data="data" :isEdit="isEdit" :style="{maxWidth: 'width'}"></card-container>
   </section>
 </template>
@@ -42,8 +44,13 @@ export default {
     },
       setImg(data) {
        console.log(data);
-      // this.$emit("setCardImg", {event:data.event, sectionId: this.section._id ,idx:data.idx});
+      this.$emit("setCardImg", {event:data.event, sectionId: this.section._id ,idx:data.idx});
     },
+    changeStyle(data){
+      console.log(data);
+      this.$emit('changeStyle',{cardData:data,sectionId:this.section._id})
+      
+    }
   },
 };
 </script>

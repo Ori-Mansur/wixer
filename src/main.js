@@ -36,7 +36,9 @@ import {
   uniClipboardAlt,
   uniEditAlt,
   uniEye,
-  uniImage
+  uniBold,
+  uniImage,
+  uniItalic
 } from 'vue-unicons/src/icons';
 import VueDragDrop from 'vue-drag-drop';
 
@@ -64,7 +66,9 @@ Unicon.add([
   uniClipboardAlt,
   uniEditAlt,
   uniEye,
-  uniImage
+  uniBold,
+  uniImage,
+  uniItalic
 ]);
 
 Vue.use(Unicon);

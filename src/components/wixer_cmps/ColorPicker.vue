@@ -55,7 +55,8 @@ export default {
     width: 140px;
     flex-wrap: wrap;
     position: absolute;
-    top: -2px;
+    top: -0.3px;
+    left: 25px;
     background-color: white;
     border: 1px solid rgba(2, 2, 2, 0.2);
     padding: 5px;

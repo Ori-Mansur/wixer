@@ -71,7 +71,7 @@ this.$emit('setImg',event)
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" >
 .widget-editor-container {
   position: absolute;
   top: 0;

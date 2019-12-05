@@ -64,9 +64,19 @@ export default {
         },
         setCardImg(state, { sectionData }) {
             console.log('hhjghjgj',sectionData);
-            
             const idx = state.currWap.sections.findIndex(section => section._id === sectionData.id)
             state.currWap.sections[idx].data[sectionData.idx].style.bcgImg = sectionData.imgUrl
+        },
+        updateStyle(state, { data }) {
+            const idx = state.currWap.sections.findIndex(section => section._id === data.sectionId)
+            if(data.cardData.id){
+                const cardIdx =state.currWap.sections[idx].data.findIndex(card=>card._id===data.cardData.id)
+                state.currWap.sections[idx].data[cardIdx]
+                state.currWap.sections[idx].data[cardIdx].data[data.cardData.idx].style=data.cardData.style
+            }
+            else{
+                state.currWap.sections[idx].data[data.cardData.idx].style=data.cardData.style    
+            }
         }
     },
     actions: {

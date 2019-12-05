@@ -1,25 +1,27 @@
 <template>
-  <section v-if="isEdit" class="text-editor-container">
-    <select @change="change('fontFamily')" v-model="font" @click.stop>
+  <section v-if="isEdit" class="text-editor-icons-container">
+    <select @change="change('fontFamily')" v-model="font" class="icon-txt-edit select-txt-edit">
       <option>Montserrat</option>
       <option>Roboto</option>
       <option>Arial</option>
       <option>Italianno</option>
     </select>
-    <button @click.stop="change('italicize')">I</button>
-
-    <button @click.stop="changeSize(+2)">
-      <unicon name="plus" fill="gray" />
-    </button>
-    <button @click.stop="changeSize(-2)">
-      <unicon name="minus" fill="gray" />
-    </button>
-    <button @click.stop="change('bold')">B</button>
-    <img
-      src="../../assets/icons/palette.svg"
-      class="inactive"
-      @click.stop="palateColor=!palateColor"
-    />
+   
+    <label @click.stop="change('italicize')">
+      <unicon name="italic" fill="black" class="icon-txt-edit" />
+    </label>
+    <label @click.stop="change('plus')">
+      <unicon name="plus" fill="black" class="icon-txt-edit" />
+    </label>
+    <label @click.stop="change('minus')">
+      <unicon name="minus" fill="black" class="icon-txt-edit" />
+    </label>
+    <label @click.stop="change('bold')">
+      <unicon name="bold" fill="black" class="icon-txt-edit" />
+    </label>
+    <label @click.stop="palateColor=!palateColor">
+      <unicon name="palette" fill="black" class="icon-txt-edit" />
+    </label>
     <color-picker @changeColor="changeFontColor" v-if="palateColor"></color-picker>
   </section>
 </template>
@@ -70,23 +72,29 @@ else this.$emit('edit',{type})
   }
 };
 </script>
-<style lang="scss">
-.text-editor-container {
+<style lang="scss" >
+.text-editor-icons-container {
   cursor:pointer;
-  background-color: rgba(255, 255, 255, 0.568);
+  background-color: rgba(71, 71, 71, 0.568);
   padding: 5px;
+  width: 10px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column-reverse;
   position:absolute;
-  top:-100px;
-  right: 0px;
-  img {
-    width: 30px;
-    height: 30px;
+ 
+  left: 0;
+  .icon-txt-edit{
+    background-color: #fff;
     padding: 3px;
     cursor: pointer;
-    border: 1px solid black;
-    border-radius: 7px;
-    margin-top: 5px;
-    margin-right: 5px;
+    // border: 1px solid black;
+    margin: 0.5px;
+    // border-radius: 7px;
   }
+  .select-txt-edit{
+    width: 24px
+  }
+ 
 }
 </style>
