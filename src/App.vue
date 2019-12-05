@@ -2,7 +2,7 @@
   <div id="app">
     <NavBar v-if="path!=='/'" />
     <router-view />
-    <FooterApp></FooterApp>
+    <FooterApp v-if="path!=='/editor'"></FooterApp>
   </div>
 </template>
 <script>
@@ -22,6 +22,7 @@ export default {
   },
   computed: {
     path() {
+      console.log('this.$route.path', this.$route.path)
       return this.$route.path;
     }
   }
