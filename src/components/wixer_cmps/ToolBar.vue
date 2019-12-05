@@ -39,7 +39,7 @@
         </draggable>
       </div>
 
-      <div v-if="el">
+      <div v-if="el" >
         <draggable
           class="dragArea list-group"
           :list="elements"
