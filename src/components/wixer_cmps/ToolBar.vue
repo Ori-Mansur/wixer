@@ -32,14 +32,14 @@
             class="list-group-item"
             v-for="element in widgets"
             :key="element.id">
-            {{ element.type }}
             <i :class="element.icon"/>
+            {{ element.type }}
 
           </div>
         </draggable>
       </div>
 
-      <div v-if="el">
+      <div v-if="el" >
         <draggable
           class="dragArea list-group"
           :list="elements"
@@ -51,8 +51,9 @@
             class="list-group-item"
             v-for="element in elements"
             :key="element.id"
-          >{{ element.type }}
+          >
           <i :class="element.icon"/>
+          {{ element.type }}
 
           
           </div>
@@ -77,7 +78,7 @@
       <li  class="li-bar section-save">
                 <i class="fa fa-sign-out"></i>
 
-       <h3 :style="{color:'white'}">Change</h3>
+       <h3 :style="{color:'white'}">Cancel</h3>
       </li>
             </router-link>
 </div>
@@ -111,7 +112,7 @@ export default {
   methods: {
     add(name) {
       this.edit = false;
-      this.$emit("setName", name);
+      this.$store.commit({type:"setName", name});
     },
     addElement(element) {
       this.$emit("addElement", element);

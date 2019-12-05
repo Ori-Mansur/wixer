@@ -6,8 +6,10 @@
         <h1 class="home-header">Wixer</h1>
         <p
           class="home-header-content"
-        >Drop elements to your page, add content and style it the way you like.</p>
-        <button class="home-btn" href="#waps-examples">Get Started</button>
+        >Create your own website, add content and style it to look the way you like.</p>
+          <router-link to="wap">
+        <button class="home-btn">Get Started</button>
+      </router-link>
       </div>
     </div>
     <h1 class="wap-header">Get Inspired With Projects Made By Our Freelancers -</h1>

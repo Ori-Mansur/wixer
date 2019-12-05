@@ -22,6 +22,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
+  margin-bottom: 80px;
   @media (max-width: 450px) {
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   }
@@ -38,10 +39,10 @@
     background-color: $clr1;
     transition: all 0.3s;
     color: $clr5;
-    &:hover {
-      background-color: #fff;
-      color: $clr1;
-    }
+    // &:hover {
+    //   background-color: #fff;
+    //   color: $clr1;
+    // }
   }
 
   img {

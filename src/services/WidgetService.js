@@ -39,70 +39,70 @@ async function getById(id) {
 }
 
 const widgets = [
-  // {
-  //   type: 'HeaderBig',
-  //   name: 'Big Header',
-  //   icon: 'fa fa-header fa-3x',
-  //   style: {
-  //     bcgImg: '',
-  //     bcgColor: '',
-  //     height: 400
-  //   },
-  //   data: [
-  //     {
-  //       _id: 'big1001',
-  //       text: 'Insert Title',
-  //       style: {
-  //         color: 'black',
-  //         fontSize: 30,
-  //         fontWeight: 'normal',
-  //         fontFamily: 'Arial',
-  //         fontStyle: 'normal',
-  //         txtAlign: 'center'
-  //       }
-  //     },
-  //     {
-  //       _id: 'big1002',
-  //       text: 'Insert Subtitle',
-  //       style: {
-  //         color: 'black',
-  //         fontSize: 16,
-  //         fontWeight: 'normal',
-  //         fontFamily: 'Arial',
-  //         fontStyle: 'normal',
-  //         txtAlign: 'center'
-  //       }
-  //     }
-  //   ]
-  // },
-  // {
-  //   type: 'Container1',
-  //   name: 'Paragraph',
-  //   icon: 'fa fa-align-left fa-3x',
-  //   style: {
-  //     bcgImg: '',
-  //     bcgColor: '',
-  //     height: 400
-  //   },
-  //   data: [
-  //     {
-  //       text:
-  //         'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-  //       style: {
-  //         color: 'black',
-  //         fontSize: 16,
-  //         fontWeight: 'normal',
-  //         fontFamily: 'Arial',
-  //         fontStyle: 'normal',
-  //         txtAlign: 'center'
-  //       }
-  //     }
-  //   ]
-  // },
+  {
+    type: 'HeaderBig',
+    name: 'Big Header',
+    icon: 'fa fa-header fa-2x',
+    style: {
+      bcgImg: '',
+      bcgColor: '',
+      height: 400
+    },
+    data: [
+      {
+        _id: 'big1001',
+        text: 'Insert Title',
+        style: {
+          color: 'black',
+          fontSize: 30,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        }
+      },
+      {
+        _id: 'big1002',
+        text: 'Insert Subtitle',
+        style: {
+          color: 'black',
+          fontSize: 16,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        }
+      }
+    ]
+  },
+  {
+    type: 'Container1',
+    name: 'Paragraph',
+    icon: 'fa fa-align-left fa-2x',
+    style: {
+      bcgImg: '',
+      bcgColor: '',
+      height: 400
+    },
+    data: [
+      {
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+        style: {
+          color: 'black',
+          fontSize: 16,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        }
+      }
+    ]
+  },
   {
     type: 'Card1',
     name: 'Card',
-    icon: 'fa fa-address-card fa-3x',
+    icon: 'fa fa-address-card fa-2x',
     style: {
       bcgImg: '',
       bcgColor: '',
@@ -137,7 +137,7 @@ const widgets = [
   {
     type: 'CardsContainer',
     name: 'Multi Card',
-    icon: 'fa fa-address-card fa-3x',
+    icon: 'fa fa-address-card fa-2x',
     style: {
       bcgImg: '',
       bcgColor: ''
@@ -299,7 +299,7 @@ const widgets = [
   {
     type: 'NavBar',
     name: 'NavBar',
-    icon: 'fa fa-grip-lines fa-3x',
+    icon: 'fa fa-grip-lines fa-2x',
     data: {
       title: 'this is the title',
       subtitle: 'this is the subtitle',
@@ -476,15 +476,15 @@ const elements = [
     _id: 'el1001',
     type: 'Video',
     name: 'Video',
-    icon: 'fa fa-youtube fa-3x',
+    icon: 'fa fa-youtube fa-2x',
     data: {
       url: 'https://www.youtube.com/embed/mO3Q4bRQZ3k'
     }
   },
   {
     _id: 'el1002',
-    type: 'Title',
-    icon: 'fa fa-font fa-3x',
+    type: 'TextEl',
+    icon: 'fa fa-font fa-2x',
     text: 'Insert Title',
     style: {
       color: 'black',

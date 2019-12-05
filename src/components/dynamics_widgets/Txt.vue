@@ -6,6 +6,7 @@
   >
   <WidgetEditor/>
     <p
+     :contenteditable="isEdit"
     @keyup="saveText"
     v-if="data"
       class="text"
@@ -33,10 +34,9 @@ export default {
     removeWidget(id) {
       this.$emit("remove", id);
     },
-    saveText(ev) {
-      console.log(ev.target);
-
-      // this.value.data.txt = ev.target.innerText;
+    saveText(ev){
+      this.data.text = ev.target.innerText;
+      this.$emit('saveText',this.data)
     },
     getPos(ev) {
       // this.pos.x = ev.pageX - 20;
@@ -49,12 +49,6 @@ export default {
     else this.isEdit = false;
   },
    
-  },
-  computed: {
-    isEdit() {
-      if (this.isFocus) return "dotted";
-      else return "none";
-    }
   },
   components: {
     // TextEditor,

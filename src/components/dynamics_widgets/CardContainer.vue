@@ -6,7 +6,7 @@
       border: isBorder
     }"
   >
-    <image-element @click.prevent :styleData="data.style"></image-element>
+    <image-element @click.prevent :styleData="data.style" class="ratio-card"></image-element>
     <text-element
       v-for="(data, idx) in data.data"
       :key="idx"

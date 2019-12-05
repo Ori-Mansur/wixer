@@ -89,7 +89,7 @@ console.log('pppppp');
 .section-container {
   position: relative;
   padding: 10px;
-  min-height: 300px;
+  min-height: 200px;
   border: 1px dotted black;
  
   .placeholder{
