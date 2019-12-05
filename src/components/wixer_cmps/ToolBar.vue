@@ -78,7 +78,7 @@
       <li  class="li-bar section-save">
                 <i class="fa fa-sign-out"></i>
 
-       <h3 :style="{color:'white'}">Change</h3>
+       <h3 :style="{color:'white'}">Cancel</h3>
       </li>
             </router-link>
 </div>

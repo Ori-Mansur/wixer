@@ -42,7 +42,7 @@ const widgets = [
   {
     type: 'HeaderBig',
     name: 'Big Header',
-    icon: 'fa fa-header fa-3x',
+    icon: 'fa fa-header fa-2x',
     style: {
       bcgImg: '',
       bcgColor: '',
@@ -78,7 +78,7 @@ const widgets = [
   {
     type: 'Container1',
     name: 'Paragraph',
-    icon: 'fa fa-align-left fa-3x',
+    icon: 'fa fa-align-left fa-2x',
     style: {
       bcgImg: '',
       bcgColor: '',
@@ -102,7 +102,7 @@ const widgets = [
   {
     type: 'Card1',
     name: 'Card',
-    icon: 'fa fa-address-card fa-3x',
+    icon: 'fa fa-address-card fa-2x',
     style: {
       bcgImg: '',
       bcgColor: '',
@@ -137,7 +137,7 @@ const widgets = [
   {
     type: 'CardsContainer',
     name: 'Multi Card',
-    icon: 'fa fa-address-card fa-3x',
+    icon: 'fa fa-address-card fa-2x',
     style: {
       bcgImg: '',
       bcgColor: ''
@@ -299,7 +299,7 @@ const widgets = [
   {
     type: 'NavBar',
     name: 'NavBar',
-    icon: 'fa fa-grip-lines fa-3x',
+    icon: 'fa fa-grip-lines fa-2x',
     data: {
       title: 'this is the title',
       subtitle: 'this is the subtitle',
@@ -526,7 +526,7 @@ const elements = [
     _id: 'el1001',
     type: 'Video',
     name: 'Video',
-    icon: 'fa fa-youtube fa-3x',
+    icon: 'fa fa-youtube fa-2x',
     data: {
       url: 'https://www.youtube.com/embed/mO3Q4bRQZ3k'
     }
@@ -534,7 +534,7 @@ const elements = [
   {
     _id: 'el1002',
     type: 'TextEl',
-    icon: 'fa fa-font fa-3x',
+    icon: 'fa fa-font fa-2x',
     text: 'Insert Title',
     style: {
       color: 'black',
