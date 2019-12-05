@@ -75,6 +75,7 @@ export default {
 </script>
 <style lang="scss">
 .text-editor-container {
+  cursor:pointer;
   background-color: rgba(255, 255, 255, 0.568);
   padding: 5px;
   position:absolute;
