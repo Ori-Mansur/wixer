@@ -8,9 +8,9 @@
     <draggable class="dragArea list-group" :list="section.data" group="group" :sort="isEdit" >
       <div class="list-group-item" v-for="(element,idx) in section.data" :key="idx">
         <component :key="idx" 
+        @saveMapData="saveMapData(section._id)"
         :is="element.type" 
-        :data="element" 
-        :contenteditable="isEdit">
+        :data="element" >
         </component>
       </div>
       <div v-if="isEdit" class="placeholder">
@@ -47,7 +47,7 @@ export default {
       }
     },
     group(){
-return this.$store.getters.group
+      return this.$store.getters.group
     }
   },
   methods: {
@@ -61,6 +61,10 @@ return this.$store.getters.group
         type: "addWidget",
         data: { el: data.widget, sectionId: this.section._id }
       });
+    },
+    saveMapData({newData, sectionId}){
+      this.$store.commit({type: "saveSectionData", newData, sectionId });
+
     }
   },
   components: {

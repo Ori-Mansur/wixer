@@ -1,6 +1,6 @@
 <template>
   <div class="waps-page container">
-      <h1 class="waps-page-header">Build beautiful websites in minutes
+      <h1 class="waps-page-header">Create beautiful websites in minutes
 </h1>
     <WapList :waps="waps" />
   </div>
@@ -14,7 +14,7 @@ export default {
     }
   },
   created(){
-this.$store.dispatch({type:'loadWaps'})
+    this.$store.dispatch({type:'loadWaps'})
   },
   components: {
     WapList
