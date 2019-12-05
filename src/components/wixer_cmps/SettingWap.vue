@@ -42,32 +42,19 @@ export default {
     return {
       wapName: "",
       dynamicValidateForm: {
-        links: [
-          {
-            key: 1,
-            value: ""
-          },
-          {
-            key: 2,
-            value: ""
-          },
-          {
-            key: 3,
-            value: ""
-          }
-        ],
+     
         wapName: ""
       }
     };
   },
   methods: {
     add() {
-      this.$emit("setName", this.wapName);
+      this.$emit("setName", this.dynamicValidateForm.wapName);
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("submit!");
+          this.add()
         } else {
           console.log("error submit!!");
           return false;

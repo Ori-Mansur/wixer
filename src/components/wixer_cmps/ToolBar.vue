@@ -32,8 +32,8 @@
             class="list-group-item"
             v-for="element in widgets"
             :key="element.id">
-            {{ element.type }}
             <i :class="element.icon"/>
+            {{ element.type }}
 
           </div>
         </draggable>
@@ -51,8 +51,9 @@
             class="list-group-item"
             v-for="element in elements"
             :key="element.id"
-          >{{ element.type }}
+          >
           <i :class="element.icon"/>
+          {{ element.type }}
 
           
           </div>
@@ -111,7 +112,7 @@ export default {
   methods: {
     add(name) {
       this.edit = false;
-      this.$emit("setName", name);
+      this.$store.commit({type:"setName", name});
     },
     addElement(element) {
       this.$emit("addElement", element);

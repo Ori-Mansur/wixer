@@ -17,6 +17,9 @@ export default {
         setWap(state, { wap }) {
             state.currWap = wap
         },
+        setName(state, { name }) {
+            state.currWap.name = name
+        },
         updateTxt(state, { data }) {
             const idx = state.currWap.sections.findIndex(section => section._id === data.sectionId)
             const dataIdx = state.currWap.sections[idx].data.findIndex(currData => currData._id === data.txt._id)
@@ -38,13 +41,13 @@ export default {
             state.currWap.sections = value
             console.log(state.currWap)
         },
-        saveSectionData(state, {newData, sectionId}){
+        saveSectionData(state, { newData, sectionId }) {
             const idx = state.currWap.sections.findIndex(section => section._id === sectionId)
-            const elIdx = state.currWap.sections[idx].findIndex(el=> el._id===newData._id)
-                state.currWap.sections[idx].data[elIdx] = newData
+            const elIdx = state.currWap.sections[idx].findIndex(el => el._id === newData._id)
+            state.currWap.sections[idx].data[elIdx] = newData
         },
         addElement(state, value) {
-            console.log('element',value)
+            console.log('element', value)
             value.forEach(element => element._id = UtilsService.makeId());
             const idx = state.currWap.sections.findIndex(section => section._id === state.group)
             state.currWap.sections[idx].data = value
@@ -63,19 +66,19 @@ export default {
             state.currWap.sections[idx].style.bcgImg = sectionData.imgUrl
         },
         setCardImg(state, { sectionData }) {
-            console.log('hhjghjgj',sectionData);
+            console.log('hhjghjgj', sectionData);
             const idx = state.currWap.sections.findIndex(section => section._id === sectionData.id)
             state.currWap.sections[idx].data[sectionData.idx].style.bcgImg = sectionData.imgUrl
         },
         updateStyle(state, { data }) {
             const idx = state.currWap.sections.findIndex(section => section._id === data.sectionId)
-            if(data.cardData.id){
-                const cardIdx =state.currWap.sections[idx].data.findIndex(card=>card._id===data.cardData.id)
+            if (data.cardData.id) {
+                const cardIdx = state.currWap.sections[idx].data.findIndex(card => card._id === data.cardData.id)
                 state.currWap.sections[idx].data[cardIdx]
-                state.currWap.sections[idx].data[cardIdx].data[data.cardData.idx].style=data.cardData.style
+                state.currWap.sections[idx].data[cardIdx].data[data.cardData.idx].style = data.cardData.style
             }
-            else{
-                state.currWap.sections[idx].data[data.cardData.idx].style=data.cardData.style    
+            else {
+                state.currWap.sections[idx].data[data.cardData.idx].style = data.cardData.style
             }
         }
     },
@@ -138,7 +141,7 @@ export default {
         async setCardImg(context, { data }) {
             context.commit({ type: 'open1', msg: 'loading img' })
             const imgUrl = await CloudinaryService.uploadImg(data.event)
-            context.commit({ type: 'setCardImg', sectionData: { id: data.sectionId,idx:data.idx, imgUrl } })
+            context.commit({ type: 'setCardImg', sectionData: { id: data.sectionId, idx: data.idx, imgUrl } })
             context.commit({ type: 'success', msg: 'Image upload' })
         }
     },
