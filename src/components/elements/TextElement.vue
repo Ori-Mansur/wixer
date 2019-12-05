@@ -10,7 +10,7 @@
       fontStyle: data.style.fontStyle, 
       textAlign: data.style.txtAlign }"></p>
     </div>
-    <text-editor :widget="data" class="widget-editor-container" @remove="removeWidget" ></text-editor>
+   
   </section>
 </template>
 
@@ -52,7 +52,7 @@ export default {
 
 <style lang="scss" scoped>
 .text-container {
-  position: relative;
+  // position: relative;
 }
 .text-editor-container{
   z-index:5;

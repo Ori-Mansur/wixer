@@ -1,12 +1,12 @@
 <template>
   <section v-if="isEdit" class="text-editor-container">
-    <select @change="changeFont" v-model="font" @click.stop>
+    <select @change="change('fontFamily')" v-model="font" @click.stop>
       <option>Montserrat</option>
       <option>Roboto</option>
       <option>Arial</option>
       <option>Italianno</option>
     </select>
-    <button @click.stop="italicize">I</button>
+    <button @click.stop="change('italicize')">I</button>
 
     <button @click.stop="changeSize(+2)">
       <unicon name="plus" fill="gray" />
@@ -14,13 +14,13 @@
     <button @click.stop="changeSize(-2)">
       <unicon name="minus" fill="gray" />
     </button>
-    <button @click.stop="makeBold">B</button>
+    <button @click.stop="change('bold')">B</button>
     <img
       src="../../assets/icons/palette.svg"
       class="inactive"
-      @click.stop="chooseColor=!chooseColor"
+      @click.stop="palateColor=!palateColor"
     />
-    <color-picker @changeColor="changeFontColor" v-if="chooseColor"></color-picker>
+    <color-picker @changeColor="changeFontColor" v-if="palateColor"></color-picker>
   </section>
 </template>
 
@@ -39,32 +39,29 @@ export default {
   },
   data() {
     return {
-      chooseColor: false,
+      palateColor: false,
+      fontColor:'',
       font: "Arial",
       isEdit:false
     };
   },
   methods: {
+    change(type){
+      if(type === 'fontFamily')this.$emit('edit',{type,font:this.font})
+      else if(type === 'color')this.$emit('edit',{type,color:this.fontColor})
+else this.$emit('edit',{type})
+    },
     editWidget() {
       this.$emit("edit", this.widget);
-    },
-    makeBold() {
-      this.widget.style.fontWeight =
-        this.widget.style.fontWeight === "normal" ? "bold" : "normal";
     },
     changeSize(diff) {
       this.widget.style.fontSize += diff;
     },
-    changeFont() {
-      this.widget.style.fontFamily = this.font;
-    },
     changeFontColor(color) {
-      this.widget.style.color = color;
+      this.fontColor = color;
+      this.change('color')
     },
-    italicize() {
-      this.widget.style.fontStyle =
-        this.widget.style.fontStyle === "normal" ? "italic" : "normal";
-    }
+  
   },
   computed: {
   },

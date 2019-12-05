@@ -16,20 +16,14 @@ import TxtAndMap from "../components/dynamics_widgets/premade_container/TxtAndMa
 import NavBar from "../components/dynamics_widgets/NavBarEdit";
 import Container1 from "../components/dynamics_widgets/Container1";
 import Container3 from "../components/dynamics_widgets/Container3";
-import Empty from "../components/dynamics_widgets/Empty";
 import HeaderBig from "../components/dynamics_widgets/HeaderBig";
-import HeaderSmall from "../components/dynamics_widgets/HeaderSmall";
 import Img from "../components/dynamics_widgets/Img";
 import Txt from "../components/dynamics_widgets/Txt";
 import Video from "../components/dynamics_widgets/Video";
 import Form from "../components/dynamics_widgets/Form";
 import FormInline from "../components/dynamics_widgets/FormInline";
 import About from "../components/dynamics_widgets/About";
-import HeaderSurfe from "../components/dynamics_widgets/surfes_web/HeaderSurfe";
-import MainCardSurfe from "../components/dynamics_widgets/surfes_web/MainCardSurfe";
-import AboutUsSurfe from "../components/dynamics_widgets/surfes_web/AboutUsSurfe";
-import OurTeamSurfe from "../components/dynamics_widgets/surfes_web/OurTeamSurfe";
-import FrameSurfe from "../components/dynamics_widgets/surfes_web/FrameSurfe";
+import FrameSurfe from "../components/dynamics_widgets/surfes_web/FrameFacebook";
 import SectionContainer from "../components/dynamics_widgets/SectionContainer";
 
 export default {
@@ -64,19 +58,13 @@ export default {
     NavBar,
     Container1,
     Container3,
-    Empty,
     HeaderBig,
-    HeaderSmall,
     Img,
     Txt,
     Video,
     Form,
     FormInline,
     About,
-     HeaderSurfe,
-    MainCardSurfe,
-    AboutUsSurfe,
-    OurTeamSurfe,
     FrameSurfe
   }
 };

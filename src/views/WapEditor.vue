@@ -10,13 +10,13 @@
     <WidgetPreview class="edit-template"   />
     
   
-    <ElementPreview :elements="wap.elements" />
+    <!-- <ElementPreview :elements="wap.elements" /> -->
   </div>
 </template>
 <script>
 import ToolBar from "../components/wixer_cmps/ToolBar.vue";
 import WidgetPreview from "../components/wixer_cmps/WidgetPreview.vue";
-import ElementPreview from "../components/wixer_cmps/ElementPreview";
+// import ElementPreview from "../components/wixer_cmps/ElementPreview";
 
 export default {
   created() {
@@ -113,7 +113,7 @@ export default {
   components: {
     ToolBar,
     WidgetPreview,
-    ElementPreview,
+    // ElementPreview,
    
   }
 };

@@ -52,6 +52,12 @@ export default {
         setBcgImg(state, { sectionData }) {
             const idx = state.currWap.sections.findIndex(section => section._id === sectionData.id)
             state.currWap.sections[idx].style.bcgImg = sectionData.imgUrl
+        },
+        setCardImg(state, { sectionData }) {
+            console.log('hhjghjgj',sectionData);
+            
+            const idx = state.currWap.sections.findIndex(section => section._id === sectionData.id)
+            state.currWap.sections[idx].data[sectionData.idx].style.bcgImg = sectionData.imgUrl
         }
     },
     actions: {
@@ -105,8 +111,15 @@ export default {
             return wapId
         },
         async setBcgImg(context, { data }) {
+            context.commit({ type: 'open1', msg: 'loading img' })
             const imgUrl = await CloudinaryService.uploadImg(data.event)
             context.commit({ type: 'setBcgImg', sectionData: { id: data.sectionId, imgUrl } })
+            context.commit({ type: 'success', msg: 'Image upload' })
+        },
+        async setCardImg(context, { data }) {
+            context.commit({ type: 'open1', msg: 'loading img' })
+            const imgUrl = await CloudinaryService.uploadImg(data.event)
+            context.commit({ type: 'setCardImg', sectionData: { id: data.sectionId,idx:data.idx, imgUrl } })
             context.commit({ type: 'success', msg: 'Image upload' })
         }
     },

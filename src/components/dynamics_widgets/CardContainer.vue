@@ -1,32 +1,28 @@
 <template>
   <section
-    @mouseup="getSelectedText"
-
     class="card-container flex column"
-    @click="isEdit = !isEdit"
-    @mouseout="isEdit=false"
     :style="{
       backgroundColor: data.style.bcgColor,
       border: isBorder
     }"
   >
     <image-element @click.prevent :styleData="data.style"></image-element>
-    <div v-for="(data, index) in data.data"
-      :key="index"
-      :isEdit="isEdit">
     <text-element
+      v-for="(data, idx) in data.data"
+      :key="idx"
+      :isEdit="isEdit"
       :data="data"
-      @mouseup="getSelectedText"
+      @click.native="selectedText(idx)"
       :style="{ maxWidth: 'width' }"
     ></text-element>
-    <text-editor :widget="data" class="widget-editor-container" @remove="removeWidget"></text-editor>
-    </div>
-
+    <text-editor class="widget-editor-container" 
+    :widget="data.data[selectedTxt]"
+    @edit="editStyle" @remove="removeWidget"></text-editor>
+{{index}}
     <widget-editor
-      v-if="isEdit"
-      :widget="data"
-      :index="index"
+      :data="data"
       class="widget-editor-container"
+      @setImg="setImg"
       @remove="removeWidget"
     ></widget-editor>
   </section>
@@ -44,33 +40,44 @@ export default {
     data: Object,
     index: Number
   },
-  created() {
-  },
+  created() {},
   data() {
     return {
       isEdit: false,
-      selectedEl:null
+      selectedTxt: 0
     };
   },
   computed: {
     isBorder() {
       if (this.isEdit) return "1px solid blue";
       else return "";
-    },
-    selectedText(){
-      if(this.selectedEl===this.value._id) return true
-      else return false
     }
   },
   methods: {
+    editStyle(newStyle) {
+      var style = JSON.parse(
+        JSON.stringify(this.data.data[this.selectedTxt].style)
+      );
+      if (newStyle.type === "bold") {
+        style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";
+      } else if (newStyle.type === "italicize") {
+        style.fontStyle = style.fontStyle === "normal" ? "italic" : "normal";
+      } else if (newStyle.type === "fontFamily") style.fontFamily = newStyle.font;
+      else if(newStyle.type === 'color')style.color=newStyle.color
+      console.log(style);
+      this.$emit("");
+    },
+     setImg(event) {
+       console.log('singel card',this.index);
+       
+      this.$emit("setImg", { event,idx:this.index});
+    },
     removeWidget(id) {
       this.$emit("remove", id);
     },
-    getSelectedText(ev){
-      console.log(ev.target)
-      const text = window.getSelection().toString()
-      console.log(text);
-      
+    selectedText(idx) {
+      this.selectedTxt = idx;
+      console.log(this.selectedTxt);
     }
   },
   components: {
@@ -82,7 +89,7 @@ export default {
 };
 </script>
 <style lang="scss">
-    .card-container{
-        position: relative;
-    }
+.card-container {
+  position: relative;
+}
 </style>

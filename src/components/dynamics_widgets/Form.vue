@@ -54,13 +54,13 @@ export default {
   }
 
   input{
-    width: 230px;
+    width: 50%;
     padding: 3px;
     margin-bottom: 20px;
   }
 
   textarea{
-    width: 500px;
+    width: 50%;
     height: 100px;
     margin-bottom: 20px;
 

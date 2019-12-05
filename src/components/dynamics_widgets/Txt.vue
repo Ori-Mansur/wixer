@@ -20,14 +20,12 @@ import WidgetEditor from "../wixer_cmps/WidgetEditor";
 
 export default {
   props: {
-    edit: Boolean,
     data: Object,
-    width: Number
   },
   data() {
     return {
       pos: { x: 0, y: 0 },
-      widgetToEdit: null,
+      isEdit: false,
       content:this.data.data.txt
     };
   },
@@ -45,6 +43,11 @@ export default {
       // this.pos.y = ev.pageY + 20;
       console.log(ev);
     },
+    created() {
+    const param = this.$route.path;
+    if (param.includes("editor")) this.isEdit = true;
+    else this.isEdit = false;
+  },
    
   },
   computed: {

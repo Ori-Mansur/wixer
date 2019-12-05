@@ -5,7 +5,8 @@
     height: section.style.height + 'px', border: isBorder}">
     <widget-editor 
       :data="section"
-      class="widget-editor-container" @remove="removeWidget" ></widget-editor>
+      @setImg="setImg"
+       @remove="removeWidget" ></widget-editor>
 
     <text-element v-for="(data, idx) in section.data" 
     @saveText="saveText"
@@ -16,25 +17,18 @@
 </template>
 <script>
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
-// import TextEditor from "../wixer_cmps/TextEditor";
 import TextElement from "../elements/TextElement";
 
 export default {
   props: {
-    // edit: Boolean,
     section: Object
   },
   data() {
     return {
       pos: { x: 0, y: 0 },
-      // isEdit: false,
     };
   },
-  created() {
-    const param = this.$route.path;
-    if (param.includes("editor")) this.isEditer = true;
-    else this.isEditer = false;
-  },
+  
   computed:{
     isBorder(){
       if (this.isEdit) return '1px solid blue'
@@ -42,6 +36,9 @@ export default {
     }
   },
   methods: {
+    setImg(event) {
+      this.$emit("setImg", { event, sectionId: this.section._id });
+    },
     removeWidget(id) {
       this.$emit("remove", id);
     },

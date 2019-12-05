@@ -14,13 +14,6 @@ import WidgetEditor from "../wixer_cmps/WidgetEditor";
 import TextElement from "../elements/TextElement";
 
 
-// import Container1 from "../dynamics_widgets/Container1";
-// import Empty from "../dynamics_widgets/Empty";
-// import HeaderBig from "../dynamics_widgets/HeaderBig";
-// import Img from "../dynamics_widgets/Img";
-// import Txt from "../dynamics_widgets/Txt";
-// import Video from "../dynamics_widgets/Video";
-// import Map from "../dynamics_widgets/Map";
 
 export default {
   props: {
@@ -29,14 +22,6 @@ export default {
   },
   created() {},
   components: {
-    // NavBar,
-    // Container1,
-    // Empty,
-    // HeaderBig,
-    // Img,
-    // Txt,
-    // Video,
-    // Map,
     WidgetEditor,
     // TextEditor,
     TextElement

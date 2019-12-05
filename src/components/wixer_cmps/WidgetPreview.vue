@@ -9,6 +9,7 @@
           :is="element.type"
           :section="element"
           @setImg="setImg"
+          @setCardImg="setCardImg"
           @saveText="saveText"
           class="widget-container"
         ></component>
@@ -26,20 +27,14 @@ import TxtAndMap from "../dynamics_widgets/premade_container/TxtAndMap";
 import NavBar from "../dynamics_widgets/NavBarEdit";
 import Container1 from "../dynamics_widgets/Container1";
 import Container3 from "../dynamics_widgets/Container3";
-import Empty from "../dynamics_widgets/Empty";
 import HeaderBig from "../dynamics_widgets/HeaderBig";
-import HeaderSmall from "../dynamics_widgets/HeaderSmall";
 import Img from "../dynamics_widgets/Img";
 import Txt from "../dynamics_widgets/Txt";
 import Video from "../dynamics_widgets/Video";
 import Form from "../dynamics_widgets/Form";
 import FormInline from "../dynamics_widgets/FormInline";
 import About from "../dynamics_widgets/About";
-import HeaderSurfe from "../dynamics_widgets/surfes_web/HeaderSurfe";
-import MainCardSurfe from "../dynamics_widgets/surfes_web/MainCardSurfe";
-import AboutUsSurfe from "../dynamics_widgets/surfes_web/AboutUsSurfe";
-import OurTeamSurfe from "../dynamics_widgets/surfes_web/OurTeamSurfe";
-import FrameSurfe from "../dynamics_widgets/surfes_web/FrameSurfe";
+import FrameSurfe from "../dynamics_widgets/surfes_web/FrameFacebook";
 import SectionContainer from "../dynamics_widgets/SectionContainer";
 import CardContainer from "../dynamics_widgets/CardContainer";
 import CardsContainer from "../dynamics_widgets/CardsContainer";
@@ -67,6 +62,9 @@ export default {
     setImg(data) {
       this.$store.dispatch({ type: "setBcgImg", data });
     },
+    setCardImg(data) {
+      this.$store.dispatch({ type: "setCardImg", data });
+    },
     saveText(data){
       console.log('pre',data);
       
@@ -85,19 +83,13 @@ export default {
     NavBar,
     Container1,
     Container3,
-    Empty,
     HeaderBig,
-    HeaderSmall,
     Img,
     Txt,
     Video,
     Form,
     FormInline,
     About,
-    HeaderSurfe,
-    MainCardSurfe,
-    AboutUsSurfe,
-    OurTeamSurfe,
     FrameSurfe,
     SectionContainer,
     CardContainer,
