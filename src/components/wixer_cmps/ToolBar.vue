@@ -32,7 +32,7 @@
             class="list-group-item"
             v-for="element in widgets"
             :key="element.id">
-            {{ element.name }}
+            {{ element.type }}
             <!-- <i :class="widget.icon"/>{{widget.name}} -->
 
           </div>
@@ -43,6 +43,7 @@
         <draggable
           class="dragArea list-group"
           :list="elements"
+          :sort="false"
           :group="{ name: 'group', pull: 'clone', put: false }"
           :clone="cloneX"
         >
