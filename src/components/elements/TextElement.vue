@@ -2,7 +2,7 @@
   <section v-if="data" class="text-container">
     <div @keyup="saveText"  >
       <p v-if="data.style" class="text"  v-html="content" 
-      contenteditable="true"
+      :contenteditable="isEdit"
       :style="{fontSize: data.style.fontSize + 'px',
       fontWeight: data.style.fontWeight, 
       fontFamily: data.style.fontFamily, 
@@ -15,21 +15,19 @@
 </template>
 
 <script>
-import TextEditor from "../wixer_cmps/TextEditor";
+// import TextEditor from "../wixer_cmps/TextEditor";
 
 export default {
   props: {
-    isEdit: Boolean,
+    // isEdit: Boolean,
     data: Object,
 
   },
-  created() {
-    // console.log('selectedEl', this.data)
-
-  },
+ 
 
   data() {
     return {
+      isEdit:false,
       content: this.data.text,
       isActive:false,
       selectedText:''
@@ -42,18 +40,29 @@ export default {
     saveText(ev){
       this.data.text = ev.target.innerText;
       this.$emit('saveText',this.data)
-    }
+    },
+  },
+   created() {
+    const param = this.$route.path;
+    if (param.includes("editor")) this.isEdit = true;
+    else this.isEdit = false;
+  },
+  watch:{
+$route(to){
+  console.log('$r',to);
+  
+  if (to.includes("editor")) this.isEdit = true;
+    else this.isEdit = false;
+}
   },
   components: {
-    TextEditor
+    // TextEditor
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.text-container {
-  // position: relative;
-}
+
 .text-editor-container{
   z-index:5;
   position: absolute;

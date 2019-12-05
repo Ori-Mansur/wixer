@@ -10,6 +10,7 @@
           :section="element"
           @setImg="setImg"
           @setCardImg="setCardImg"
+          @changeStyle="changeStyle"
           @saveText="saveText"
           class="widget-container"
         ></component>
@@ -67,8 +68,10 @@ export default {
     },
     saveText(data){
       console.log('pre',data);
-      
       this.$store.commit({type:"updateTxt",data})
+    },
+    changeStyle(data){
+      this.$store.commit({type:'updateStyle',data})
     }
   },
   created() {

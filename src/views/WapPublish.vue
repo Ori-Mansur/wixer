@@ -25,6 +25,7 @@ import FormInline from "../components/dynamics_widgets/FormInline";
 import About from "../components/dynamics_widgets/About";
 import FrameSurfe from "../components/dynamics_widgets/surfes_web/FrameFacebook";
 import SectionContainer from "../components/dynamics_widgets/SectionContainer";
+import CardsContainer from "../components/dynamics_widgets/CardsContainer";
 
 export default {
   data() {
@@ -53,6 +54,7 @@ export default {
   },
   components: {
     SectionContainer,
+    CardsContainer,
     VideoAndTxt,
     TxtAndMap,
     NavBar,

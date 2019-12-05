@@ -144,6 +144,7 @@ const widgets = [
     },
     data: [
       {
+        _id:'crd1001',
         type: 'Card1',
         name: 'Card',
         style: {
@@ -178,6 +179,7 @@ const widgets = [
         ]
       },
       {
+        _id:'crd1002',
         type: 'Card1',
         name: 'Card',
         style: {
@@ -212,6 +214,7 @@ const widgets = [
         ]
       },
       {
+        _id:'crd1003',
         type: 'Card1',
         name: 'Card',
         style: {
