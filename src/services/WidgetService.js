@@ -46,7 +46,7 @@ const widgets = [
     style: {
       bcgImg: '',
       bcgColor: '',
-      height: 400
+      height: 90
     },
     data: [
       {
@@ -64,30 +64,6 @@ const widgets = [
       {
         _id: 'big1002',
         text: 'Insert Subtitle',
-        style: {
-          color: 'black',
-          fontSize: 16,
-          fontWeight: 'normal',
-          fontFamily: 'Arial',
-          fontStyle: 'normal',
-          txtAlign: 'center'
-        }
-      }
-    ]
-  },
-  {
-    type: 'Container1',
-    name: 'Paragraph',
-    icon: 'fa fa-align-left fa-2x',
-    style: {
-      bcgImg: '',
-      bcgColor: '',
-      height: 400
-    },
-    data: [
-      {
-        text:
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
         style: {
           color: 'black',
           fontSize: 16,
@@ -370,107 +346,12 @@ const widgets = [
     createdAt: '2019-12-01T08:22:11.262Z'
   },
   {
-    _id: '5de37ad378a0766660116903',
-    type: 'VideoAndTxt',
-    name: 'Video And Text',
-    style: {
-      bcgImg: '',
-      bcgColor: 'white'
-    },
-    data: [
-      {
-        type: 'Txt',
-        name: 'Text',
-        style: {
-          bcgImg: '',
-          bcgColor: 'white'
-        },
-        data: {
-          style: {
-            fontFamily: 'Arial',
-            fontSize: 16,
-            fontStyle: 'normal',
-            fontWeight: 'normal',
-            color: 'black'
-          },
-          txt: 'This is the first text element'
-        }
-      },
-      {
-        type: 'Video',
-        name: 'Video',
-        data: {
-          url: 'https://www.youtube.com/embed/mO3Q4bRQZ3k'
-        }
-      }
-    ],
-    createdAt: '2019-12-01T08:33:23.783Z'
-  },
-  {
-    _id: '5de3a33578a076666011691f',
-    type: 'About',
-    name: 'About',
-    data: {
-      title: 'OUR TEAM LEADERS',
-      mainTxt:
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-      cards: [
-        {
-          img:
-            'https://www.clipartwiki.com/clipimg/detail/149-1490051_computer-icons-user-profile-male-my-profile-icon.png',
-          title: 'Javier Bardem',
-          txt:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
-        }
-      ]
-    }
-  },
-  {
     _id: '5de4c99aca73df026cca7457',
     type: 'FormInline',
     data: {},
     createdAt: '2019-12-02T08:21:46.753Z'
   },
-  {
-    _id: '5de4c99aca73df026x',
-    type: 'HeaderSurfe',
-    data: {},
-    createdAt: '2019-12-02T08:21:46.753Z'
-  },
-  {
-    _id: '5de4c99df026x',
-    type: 'MainCardSurfe',
-    data: {},
-    createdAt: '2019-12-02T08:21:46.753Z'
-  },
-
-  {
-    _id: '5de3c27e0dd08d6cc18095da',
-    type: 'HeaderSmall',
-    icon: 'fa fa-header fa-2x',
-    name: 'Small Header',
-    data: {
-      title: 'Welcome To My Website',
-      style: {
-        bcgImg:
-          'https://png.pngtree.com/thumb_back/fw800/background/20190223/ourmid/pngtree-early-morning-office-background-design-backgroundillustration-backgroundoffice-backgroundadvertising-image_64568.jpg',
-        txtTitleColor: 'White',
-        bcgColor: 'white',
-        height: 200,
-        color: '',
-        fontFamily: '',
-        fontSize: 16,
-        fontStyle: '',
-        fontWeight: ''
-      }
-    }
-  },
-  {
-    _id: '5de4c99dxxfxaxcsc026x',
-    type: 'OurTeamSurfe',
-    data: {},
-    createdAt: '2019-12-02T08:21:46.753Z'
-  },
+  
   {
     _id: '5de4c99dfxaxccsacsc026x',
     type: 'FrameSurfe',
@@ -480,6 +361,15 @@ const widgets = [
   {
     _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
     type: 'SectionContainer',
+    icon: 'fa fa-align-left fa-2x',
+    sectionList: 'sectionList',
+    style: { bcgImg: '', bcgColor: '' },
+    data: [],
+    createdAt: '2019-12-02T08:21:46.753Z'
+  },
+  {
+    _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
+    type: 'SectionHorizental',
     icon: 'fa fa-align-left fa-2x',
     sectionList: 'sectionList',
     style: { bcgImg: '', bcgColor: '' },
@@ -544,5 +434,11 @@ const elements = [
       fontStyle: 'normal',
       txtAlign: 'center'
     }
-  }
+  },
+  {
+    _id: 'el1004',
+    type: 'FormV',
+    data: {},
+    createdAt: '2019-12-02T08:21:46.753Z'
+  },
 ];

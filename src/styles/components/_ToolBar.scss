@@ -9,6 +9,7 @@
   max-height: 100vh;
   border: 1px solid rgb(179, 177, 177);
   .tool-bar-list {
+    
     .li-bar {
       .menu-options {
         border-bottom-style: black;
@@ -66,6 +67,8 @@
       font-size: 12px;
       grid-gap: 5px;
       cursor: grab;
+      
+      
     }
     .list-group-item {
       color: gray;
@@ -77,6 +80,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      
     }
     .list-group-container {
       display: flex;

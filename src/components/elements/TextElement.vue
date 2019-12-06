@@ -1,5 +1,6 @@
 <template>
-  <section v-if="data" class="text-container">
+  <section v-if="data" class="text-container" >
+    {{pos}}
     <div @keyup="saveText"  >
       <p v-if="data.style" class="text"  v-html="content" 
       :contenteditable="isEdit"
@@ -21,6 +22,7 @@ export default {
   props: {
     // isEdit: Boolean,
     data: Object,
+    pos:Object
 
   },
  
@@ -28,7 +30,7 @@ export default {
   data() {
     return {
       isEdit:false,
-      content: this.data.text,
+      content:JSON.parse(JSON.stringify( this.data.text)),
       isActive:false,
       selectedText:''
     };
@@ -38,8 +40,8 @@ export default {
       this.$emit("remove", id);
     },
     saveText(ev){
-      this.data.text = ev.target.innerText;
-      this.$emit('saveText',this.data)
+      const txt = ev.target.innerText;
+      this.$emit('saveText',txt)
     },
   },
    created() {
@@ -65,9 +67,9 @@ $route(to){
 
 .text-editor-container{
   z-index:5;
-  position: absolute;
-  top:0px;
-  right:-260px;
+  position: relative;
+  // top:0px;
+  // right:-260px;
 }
 h3 {
   margin: 5px;

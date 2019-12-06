@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import WidgetStore from './WidgetStore.js'
 import WapStore from './WapStore.js'
+import SectionStore from './SectionStore.js'
 import userStore from './user.store.js'
 import MsgStore from './MsgStore.js'
 Vue.use(Vuex)
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     WidgetStore,
     userStore,
     WapStore,
+    SectionStore,
     MsgStore
   }
 })
