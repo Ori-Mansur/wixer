@@ -1,0 +1,69 @@
+.map-section-container {
+  position: relative;
+  padding: 20px;
+
+  .map-container {
+    padding: 10px;
+    width: 50%;
+  }
+  .map {
+    width: 100%;
+    height: 300px;
+    padding: 10px 0px;
+  }
+
+  label{
+      margin-bottom: 10px;
+      text-decoration: underline;
+  }
+  
+  .addressBar{
+    width: 300px;
+    padding: 5px;
+    border-radius: 10px;
+    border-style: unset;
+    outline: none;
+    background-color: #DDDDDD;
+  }
+
+  .btn-round{
+    width: min-content;
+    min-width: 100px;
+    padding: 5px;
+    border-radius: 10px;
+    border-style: unset;
+    cursor: pointer;
+  }
+
+  .title {
+    font-family: Montserrat;
+  }
+  .addressRef {
+    color: black;
+    background-color: transparent;
+    padding: 6px;
+    margin-bottom: 5px;
+    width: 200px;
+    border: 1px solid rgba(128, 128, 128, 0.39);
+    border-radius: 12px;
+    cursor: pointer;
+
+  }
+  .fullAddress {
+    color: black;
+    background-color: transparent;
+    padding: 20px;
+    width: 300px;
+    border: 1px solid rgba(128, 128, 128, 0.39);
+    border-radius: 12px;
+  }
+}
+
+@media(max-width:580px){
+    .map-section-container{
+        flex-direction: column;
+        .map-container{
+            width: 100%;
+        }
+    }
+}

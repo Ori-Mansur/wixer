@@ -448,6 +448,7 @@ const elements = [
       markers: [],
       places: [],
       placesMarked: [],
+      placesNames:[],
       currentPlace: '',
       placeName: '',
       place:''
