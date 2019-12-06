@@ -1,18 +1,17 @@
 <template>
   <div
-    class="section-container"
+    class="section-container flex column"
     :style="{backgroundColor: section.style.bcgColor,
      backgroundImage: `url(${section.style.bcgImg})`}"
   >
     <WidgetEditor @setImg="setImg" :data="section" />
     <draggable class="dragArea list-group" :list="section.data" group="group" :sort="isEdit">
       <div class="list-group-item" v-for="(element,idx) in section.data" :key="idx">
-        <component
-          :key="idx"
-          @saveMapData="saveMapData(section._id)"
-          :is="element.type"
-          :data="element"
-        ></component>
+        <component :key="idx" 
+        @saveMapData="saveMapData"
+        :is="element.type" 
+        :data="element" >
+        </component>
       </div>
       <div v-if="isEdit && !section.data[0]" class="placeholder">
         <unicon name="plus" fill="gray" class="icon" />
@@ -37,8 +36,9 @@ export default {
     setImg(event) {
       this.$emit("setImg", { event, sectionId: this.section._id });
     },
-    saveMapData({ newData, sectionId }) {
-      this.$store.commit({ type: "saveSectionData", newData, sectionId });
+    saveMapData(newData){
+      this.$store.commit({type: "saveSectionData", newData, sectionId: this.section._id });
+
     }
   },
   components: {

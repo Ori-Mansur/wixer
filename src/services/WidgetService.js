@@ -226,52 +226,52 @@ const widgets = [
       }
     ]
   },
-  {
-    type: 'Container3',
-    name: 'Multi Paragraph',
-    style: {
-      bcgImg: '',
-      bcgColor: ''
-    },
-    data: [
-      {
-        text:
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-        style: {
-          color: 'black',
-          fontSize: 16,
-          fontWeight: 'normal',
-          fontFamily: 'Arial',
-          fontStyle: 'normal',
-          txtAlign: 'center'
-        }
-      },
-      {
-        text:
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-        style: {
-          color: 'black',
-          fontSize: 16,
-          fontWeight: 'normal',
-          fontFamily: 'Arial',
-          fontStyle: 'normal',
-          txtAlign: 'center'
-        }
-      },
-      {
-        text:
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-        style: {
-          color: 'black',
-          fontSize: 16,
-          fontWeight: 'normal',
-          fontFamily: 'Arial',
-          fontStyle: 'normal',
-          txtAlign: 'center'
-        }
-      }
-    ]
-  },
+  // {
+  //   type: 'Container3',
+  //   name: 'Multi Paragraph',
+  //   style: {
+  //     bcgImg: '',
+  //     bcgColor: ''
+  //   },
+  //   data: [
+  //     {
+  //       text:
+  //         'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+  //       style: {
+  //         color: 'black',
+  //         fontSize: 16,
+  //         fontWeight: 'normal',
+  //         fontFamily: 'Arial',
+  //         fontStyle: 'normal',
+  //         txtAlign: 'center'
+  //       }
+  //     },
+  //     {
+  //       text:
+  //         'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+  //       style: {
+  //         color: 'black',
+  //         fontSize: 16,
+  //         fontWeight: 'normal',
+  //         fontFamily: 'Arial',
+  //         fontStyle: 'normal',
+  //         txtAlign: 'center'
+  //       }
+  //     },
+  //     {
+  //       text:
+  //         'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+  //       style: {
+  //         color: 'black',
+  //         fontSize: 16,
+  //         fontWeight: 'normal',
+  //         fontFamily: 'Arial',
+  //         fontStyle: 'normal',
+  //         txtAlign: 'center'
+  //       }
+  //     }
+  //   ]
+  // },
   {
     type: 'NavBar',
     name: 'NavBar',
@@ -388,6 +388,7 @@ const elements = [
       markers: [],
       places: [],
       placesMarked: [],
+      placesNames:[],
       currentPlace: '',
       placeName: '',
       place:''
