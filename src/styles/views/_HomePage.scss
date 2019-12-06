@@ -7,13 +7,12 @@
   color: #fff;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  // height: 100vh;
   font-family: 'Montserrat';
 }
 
 .home-header-container {
   box-sizing: border-box;
-  height: 70vh;
   padding: 30vw 0 5vw;
   position: relative;
   background-image: -webkit-gradient(
@@ -34,9 +33,6 @@
   color: #72d0f9;
   font-size: 5em;
   font-weight: 700;
-  //   line-height: 1.25;
-  //   margin: 0 0 0.5em;
-  // padding: 63px;
   text-align: center;
   text-shadow: #000 0 0 5px;
 }
