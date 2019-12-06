@@ -50,12 +50,6 @@ export default {
   },
    
   },
-  computed: {
-    isEdit() {
-      if (this.isFocus) return "dotted";
-      else return "none";
-    }
-  },
   components: {
     // TextEditor,
     WidgetEditor

@@ -104,5 +104,8 @@ export default {
   height: 300px;
   padding: 10px 0px;
   }
+  .text-section{
+    border:1px solid black;
+  }
 }
 </style>
