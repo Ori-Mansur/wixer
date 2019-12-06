@@ -41,6 +41,9 @@
   font-size: 1.3rem;
   width: 30%;
   margin: 0 auto;
+  @media (max-width: 600px) {
+    width: 50%;
+  }
 }
 
 .home-header-container {
