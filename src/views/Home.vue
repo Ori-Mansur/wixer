@@ -12,7 +12,7 @@
       </router-link>
       </div>
     </div>
-    <h1 class="wap-header">Get Inspired With Projects Made By Our Freelancers -</h1>
+    <h2 class="wap-header">Get a glimpse of our templates -</h2>
 
     <div class="waps-examples" id="waps-examples">
       <div class="wap-picture">

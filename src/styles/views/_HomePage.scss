@@ -70,52 +70,8 @@
   margin: 75px;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 300px;
-  //   border: 1px solid gray;
-  min-height: 250px;
-  padding: 10px;
-  margin: 10px;
-  text-align: center;
-  img {
-    border-radius: 50%;
-    margin: 10px;
-  }
-
-  p {
-    margin: 10px;
-    line-height: 1.4em;
-    font-size: 1.1em;
-    color: #888;
-  }
-}
-
-.mainbox {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  width: 50%;
-}
-
-.mainbox-header {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin: 0 auto;
-  font-size: 1.2rem;
-}
-.logo {
-  margin-left: 30px;
-  height: 96px;
-  width: 96px;
-}
 .wap-header {
+  font-style: normal;
   font-size: 1.5rem;
   margin-left: 25px;
   border-bottom: 1px solid #888;
@@ -137,6 +93,5 @@
   margin-bottom: 25px;
 }
 .wap-picture {
-  border-radius: 50%;
   margin: 10px;
 }
