@@ -275,7 +275,7 @@ const widgets = [
   {
     type: 'NavBar',
     name: 'NavBar',
-    icon: 'fa fa-grip fa-2x',
+    icon: 'fa fa-bars fa-2x',
     data: {
       title: 'this is the title',
       subtitle: 'this is the subtitle',
