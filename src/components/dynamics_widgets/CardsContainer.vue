@@ -1,10 +1,11 @@
 <template>
-  <section class="container-threeCol flex row" :style="{backgroundColor: section.style.bcgColor, border: isBorder}">
+  <section class="container-threeCol flex row container" :style="{backgroundColor: section.style.bcgColor, border: isBorder}">
 
     <card-container @setImg="setImg" 
     @changeStyle="changeStyle"
     v-for="(data, index) in section.data" :key="index"
-     :index="index" :data="data" :isEdit="isEdit" :style="{maxWidth: 'width'}"></card-container>
+     :index="index" :data="data" :isEdit="isEdit" 
+     :style="{maxWidth: 'width'}"></card-container>
   </section>
 </template>
 

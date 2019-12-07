@@ -22,17 +22,9 @@ export default {
   },
   computed: {
     path() {
-      console.log('this.$route.path', this.$route.path)
       return this.$route.path;
     }
   }
-  // watch: {
-  //   $route() {
-  //     if (this.$route.path.includes("home") || this.$route.path.includes("/")) {
-  //       this.isHome = true;
-  //     } else this.isHome = false;
-  //   }
-  // }
 };
 </script>
 

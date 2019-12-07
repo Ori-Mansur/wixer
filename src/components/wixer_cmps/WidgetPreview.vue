@@ -1,10 +1,9 @@
 <template>
   <section>
-    <draggable class="dragArea list-group" v-model="myList" group="people" @change="showChange">
+    <draggable class="dragArea list-group" v-model="myList"  group="people">
       <div class="list-group-item" v-for="(element,idx) in myList" :key="idx">
         <component
-        :isEdit="isEdit"
-       
+          :isEdit="isEdit"
           :key="idx"
           :is="element.type"
           :section="element"
@@ -14,6 +13,7 @@
           @setCardImg="setCardImg"
           @changeStyle="changeStyle"
           @saveText="saveText"
+          @save="saveSection"
           class="widget-container"
         ></component>
       </div>
@@ -40,6 +40,7 @@ import FormInline from "../dynamics_widgets/FormInline";
 import About from "../dynamics_widgets/About";
 import FrameSurfe from "../dynamics_widgets/surfes_web/FrameFacebook";
 import SectionContainer from "../dynamics_widgets/SectionContainer";
+import SectionHorizental from "../dynamics_widgets/SectionHorizental";
 import CardContainer from "../dynamics_widgets/CardContainer";
 import CardsContainer from "../dynamics_widgets/CardsContainer";
 
@@ -82,13 +83,19 @@ export default {
     setCardImg(data) {
       this.$store.dispatch({ type: "setCardImg", data });
     },
-    saveText(data){
-      console.log('pre',data);
-      this.$store.commit({type:"updateTxt",data})
+    saveText(data) {
+      console.log("pre", data);
+      this.$store.commit({ type: "updateTxt", data });
     },
-    changeStyle(data){
-      this.$store.commit({type:'updateStyle',data})
-    }
+    changeStyle(data) {
+      this.$store.commit({ type: "updateStyle", data });
+    },
+    setSection(){
+console.log('rrrr');
+
+this.$store.commit({type:'print',data:'hhhhhh'})
+    },
+   
   },
   created() {
     const param = this.$route.path;
@@ -112,6 +119,7 @@ export default {
     About,
     FrameSurfe,
     SectionContainer,
+    SectionHorizental,
     CardContainer,
     CardsContainer
   }

@@ -7,8 +7,8 @@
       @edit="editWidget"
     ></widget-editor> -->
     <WidgetEditor :data="section" />
-    <div class="logo" style="padding: 30px;">LOGO</div>
-    <nav class="nav-bar" style="padding: 30px;">
+    <div class="logo-edit" style="padding: 30px;">LOGO</div>
+    <nav class="nav-bar-edit" style="padding: 30px;">
       <router-link to="#" style="margin-left: 10px" :contenteditable="edit">{{links.first}}</router-link>
       <router-link to="#" style="margin-left: 10px" :contenteditable="edit">{{links.sec}}</router-link>
       <router-link to="#" style="margin-left: 10px" :contenteditable="edit">{{links.third}}</router-link>

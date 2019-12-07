@@ -15,7 +15,7 @@
         <h4 :style="{color:color}">Sections</h4>
       </li>
             <li @click="el=!el"  class="li-bar section-add">
-        <unicon name="book-medical" :fill="color" />
+        <unicon name="book-medical" :fill="elColor" />
         <h4 :style="{color:elColor}">Elements</h4>
       </li>
 </div>
@@ -30,8 +30,8 @@
         >
           <div
             class="list-group-item"
-            v-for="element in widgets"
-            :key="element.id">
+            v-for="(element,idx) in widgets"
+            :key="idx">
             <i :class="element.icon"/>
             {{ element.type }}
 
@@ -50,7 +50,7 @@
           <div
             class="list-group-item"
             v-for="element in elements"
-            :key="element.id"
+            :key="element._id"
           >
           <i :class="element.icon"/>
           {{ element.type }}
@@ -62,8 +62,8 @@
       </div>
 
       <li @click="edit=!edit" class="li-bar section-edit">
-        <unicon name="edit" :fill="colorEdit" />
-        <h3 :style="{color:colorEdit}">Settings</h3>
+        <unicon name="edit" :fill="colorSections" />
+        <h3 :style="{color:colorSections}">Settings</h3>
       </li>
       <div v-if="edit" class="list-option wap-option">
         <SettingWap @setName="add" :nav="nav" />
@@ -125,7 +125,7 @@ export default {
     },
    cloneX(section) {
       return JSON.parse(JSON.stringify(section)) ;
-    }
+    },
   },
   computed: {
     color() {
@@ -137,6 +137,10 @@ export default {
       else return "gray";
     },
     colorEdit() {
+      if (this.edit) return "#6ACEF9";
+      else return "gray";
+    },
+    colorSections() {
       if (this.edit) return "#6ACEF9";
       else return "gray";
     },

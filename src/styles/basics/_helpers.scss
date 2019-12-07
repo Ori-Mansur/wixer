@@ -11,6 +11,9 @@
 
 
 // Flex Helpers
+.border-edit{
+    border: 1px solid rgb(106, 206, 249);
+}
 .bottom-20{
     margin-bottom: 20px;
 }
@@ -91,4 +94,7 @@
 
 .justify-end{
     justify-content: flex-end;
+}
+.auto-scroll{
+    overflow:auto;
 }
