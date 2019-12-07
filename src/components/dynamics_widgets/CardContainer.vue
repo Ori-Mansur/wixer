@@ -1,19 +1,18 @@
 <template>
   <section
-    class="card-container flex column"
+    class="card-container flex column align-center"
     :style="{
       backgroundColor: data.style.bcgColor,
       border: isBorder
     }"
   >
-    <image-element @click.prevent :styleData="data.style" class="ratio-card"></image-element>
+    <image-element @click.prevent :styleData="data.style" class="ratio-16-9"></image-element>
     <text-element
       v-for="(data, idx) in data.data"
       :key="idx"
       :isEdit="isEdit"
       :data="data"
       @click.native="selectedText(idx)"
-      :style="{ maxWidth: 'width' }"
     ></text-element>
     <text-editor class="widget-editor-container" 
     :widget="data.data[selectedTxt]"
@@ -91,7 +90,4 @@ export default {
 };
 </script>
 <style lang="scss">
-.card-container {
-  position: relative;
-}
 </style>

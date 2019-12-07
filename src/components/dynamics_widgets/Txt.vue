@@ -2,11 +2,12 @@
   <section
     v-if="data"
     class="txt-container flex column align-center"
-    
   >
-  <WidgetEditor/>
+  <TextEditor @edit="editStyle"/>
+
+  <!-- <WidgetEditor/> -->
     <p
-     :contenteditable="isEdit"
+     :contenteditable="true"
     @keyup="saveText"
     v-if="data"
       class="text"
@@ -16,8 +17,8 @@
 </template>
 
 <script>
-// import TextEditor from "../wixer_cmps/TextEditor";
-import WidgetEditor from "../wixer_cmps/WidgetEditor";
+import TextEditor from "../wixer_cmps/TextEditor";
+// import WidgetEditor from "../wixer_cmps/WidgetEditor";
 
 export default {
   props: {
@@ -44,15 +45,18 @@ export default {
       console.log(ev);
     },
     created() {
+          console.log(this.data)
+
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
+    console.log(this.isEdit)
   },
    
   },
   components: {
-    // TextEditor,
-    WidgetEditor
+    TextEditor,
+    // WidgetEditor
   }
 };
 </script>

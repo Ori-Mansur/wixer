@@ -35,14 +35,24 @@ export default {
       modifySection:JSON.parse(JSON.stringify(this.section))
     };
   },
+  
+  computed:{
+    isBorder(){
+      if (this.isEdit) return '1px solid blue'
+      else return ''
+    },
+    inside(){
+      return 'position: relative'
+    }
+  },
   methods: {
     setImg(event) {
       this.$emit("setImg", { event, sectionId: this.section._id });
     },
-    startPos(ev){
-      this.isDown=true
-// console.log(ev);
-    },
+//     startPos(ev){
+//       this.isDown=true
+// // console.log(ev);
+//     },
     setPos(ev){
       if(this.isDown){
 this.pos.x=ev.offsetX
@@ -108,8 +118,11 @@ this.$emit('save',this.modifySection)
 </script>
 <style lang="scss" >
 .header-container {
-  margin-bottom: 10px;
-  position: relative;
+  position:relative;
+}
+
+.header-inside{
+  position: relative
 }
 
 img {

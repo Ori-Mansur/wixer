@@ -1,6 +1,6 @@
 <template>
   <section
-    class="map-section-container flex row space-around">
+    class="map-section-container flex row space-around container">
     <div class="map-container">
       <gmap-map :center="newData.data.center" :zoom="12" class="map">
         <gmap-marker
@@ -30,7 +30,7 @@
 <script>
 export default {
   props: {
-    data: Object,
+    section: Object,
     width: Number
   },
   created() {
@@ -90,7 +90,7 @@ export default {
       });
     },
     cloneData(){
-      this.newData=JSON.parse(JSON.stringify(this.data))
+      this.newData=JSON.parse(JSON.stringify(this.section))
 
     }
   }

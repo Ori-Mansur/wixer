@@ -16,6 +16,11 @@
   background: #ccc;
 }
 
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
 // Grids
 
 .card-grid {

@@ -18,6 +18,7 @@ import Container1 from "../components/dynamics_widgets/Container1";
 import Container3 from "../components/dynamics_widgets/Container3";
 import HeaderBig from "../components/dynamics_widgets/HeaderBig";
 import Img from "../components/dynamics_widgets/Img";
+import Map from "../components/dynamics_widgets/Map";
 import Txt from "../components/dynamics_widgets/Txt";
 import Video from "../components/dynamics_widgets/Video";
 import Form from "../components/dynamics_widgets/Form";
@@ -65,6 +66,7 @@ export default {
     Container3,
     HeaderBig,
     Img,
+    Map,
     Txt,
     Video,
     Form,

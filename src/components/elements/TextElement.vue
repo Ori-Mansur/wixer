@@ -57,6 +57,7 @@ export default {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
+    console.log(this.data)
   },
   watch: {
     $route(to) {

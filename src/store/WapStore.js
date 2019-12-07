@@ -58,12 +58,15 @@ export default {
             const idx = state.currWap.sections.findIndex(currSection => currSection._id === section._id)
             state.currWap.sections.splice(idx, 1, section)
         },
-        saveSectionData(state, { newData, sectionId }) {
-            console.log(state.currWap.sections)
-            const idx = state.currWap.sections.findIndex(section => section._id === sectionId)
-            const elIdx = state.currWap.sections[idx].data.findIndex(el => el._id === newData._id)
-            state.currWap.sections[idx].data[elIdx] = newData
-        },
+        saveSectionData(state, { newData }) {
+            console.log(newData)
+            // debugger
+            const idx = state.currWap.sections.findIndex(section => section._id === newData._id)
+            // const elIdx = state.currWap.sections[idx].data.findIndex(el => el._id === newData._id)
+            // state.currWap.sections[idx].data[elIdx] = newData
+            state.currWap.sections.splice(idx, 1, newData)
+      
+          },
         // addElement(state, data) {
         //     console.log('element', data.value)
         //     data.value.forEach(element => element._id = UtilsService.makeId());

@@ -7,7 +7,7 @@
       :elements="elements"
     />
    
-    <WidgetPreview class="edit-template" :style="{backgroundColor: currWap.style.bcgColor, fontColor: currWap.style.txtColor}"  />
+    <WidgetPreview class="edit-template" v-if="currWap" :style="{backgroundColor: currWap.style.bcgColor, fontColor: currWap.style.txtColor}"  />
     
   
     <!-- <ElementPreview :elements="wap.elements" /> -->
