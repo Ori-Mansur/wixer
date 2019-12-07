@@ -32,7 +32,7 @@
             v-for="(element,idx) in widgets"
             :key="idx">
             <i :class="element.icon"/>
-            {{ element.type }}
+            {{ element.name }}
 
           </div>
         </draggable>
@@ -52,7 +52,7 @@
             :key="element._id"
           >
           <i :class="element.icon"/>
-          {{ element.type }}
+          {{ element.name }}
 
           
           </div>
