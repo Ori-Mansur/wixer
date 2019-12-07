@@ -12,6 +12,7 @@
     <div class="content">
         <div class="content-overlay"></div>
         <img class="content-image" src="@/assets/card2.png"/>
+        
         <div class="content-details fadeIn-top">
            <label @click="preview(wap._id)">
       <unicon name="eye" fill="white" class="icon-edit-prev" />

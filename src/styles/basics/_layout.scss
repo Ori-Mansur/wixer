@@ -35,16 +35,6 @@
     cursor: pointer;
   }
 
-  > * {
-    background-color: $clr1;
-    transition: all 0.3s;
-    color: $clr5;
-    // &:hover {
-    //   background-color: #fff;
-    //   color: $clr1;
-    // }
-  }
-
   img {
     transition: filter 0.3s;
     mix-blend-mode: multiply;

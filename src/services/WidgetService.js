@@ -120,7 +120,7 @@ const widgets = [
     },
     data: [
       {
-        _id:'crd1001',
+        _id: 'crd1001',
         type: 'Card1',
         name: 'Card',
         style: {
@@ -155,7 +155,7 @@ const widgets = [
         ]
       },
       {
-        _id:'crd1002',
+        _id: 'crd1002',
         type: 'Card1',
         name: 'Card',
         style: {
@@ -190,7 +190,7 @@ const widgets = [
         ]
       },
       {
-        _id:'crd1003',
+        _id: 'crd1003',
         type: 'Card1',
         name: 'Card',
         style: {
@@ -383,6 +383,7 @@ const elements = [
     _id: '0001',
     type: 'Map',
     name: 'Map',
+    icon: 'fa fa-map fa-2x',
     data: {
       center: { lat: 32.109333, lng: 34.855499 },
       markers: [],
@@ -391,7 +392,7 @@ const elements = [
       placesNames:[],
       currentPlace: '',
       placeName: '',
-      place:''
+      place: ''
     }
   },
   {
