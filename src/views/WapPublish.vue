@@ -25,6 +25,7 @@ import FormInline from "../components/dynamics_widgets/FormInline";
 import About from "../components/dynamics_widgets/About";
 import FrameSurfe from "../components/dynamics_widgets/surfes_web/FrameFacebook";
 import SectionContainer from "../components/dynamics_widgets/SectionContainer";
+import SectionHorizental from "../components/dynamics_widgets/SectionHorizental";
 import CardsContainer from "../components/dynamics_widgets/CardsContainer";
 
 export default {
@@ -41,7 +42,8 @@ export default {
         const wap = await this.$store.dispatch({ type: "wapById", id });
         this.wap = wap;
       }
-    }
+    },
+    
   },
   async created() {
     const id = this.$route.params.id;
@@ -54,6 +56,7 @@ export default {
   },
   components: {
     SectionContainer,
+    SectionHorizental,
     CardsContainer,
     VideoAndTxt,
     TxtAndMap,

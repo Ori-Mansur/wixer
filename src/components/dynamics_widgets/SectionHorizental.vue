@@ -1,6 +1,6 @@
 <template>
   <div
-    class="section-container"
+    class="section-container container"
     
     :class="{'border-edit': over}"
     :style="{backgroundColor: section.style.bcgColor,

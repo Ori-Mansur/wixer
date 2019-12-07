@@ -3,7 +3,7 @@
     <ToolBar
       @setName="setName"
     @save="saveWap"
-      :widgets="widgetsToAdd"
+      :widgets="loadSections"
       :elements="elements"
     />
    
@@ -44,8 +44,8 @@ export default {
     currWap() {
       return this.$store.getters.currWap;
     },
-    widgetsToAdd() {
-      return this.$store.getters.widgetsToAdd;
+    loadSections() {
+      return this.$store.getters.loadSections;
     },
     elements() {
       return  this.$store.getters.loadElements;
@@ -68,23 +68,9 @@ export default {
 
       // this.save(modifyWidget);
     },
-
-    addElement(element) {
-      console.log(element);
-    },
     setName(name) {
       this.wap.name = name;
       this.save();
-    },
-    updateWidget(widget) {
-      console.log(widget);
-    },
-    edit(widget) {
-      console.log("saved widget", widget);
-      var idx = this.wap.widgets.findIndex(
-        currWidget => currWidget._id === widget._id
-      );
-      this.wap.widgets.splice(idx, 1, widget);
     },
     async saveWap() {
       console.log('kkkk');

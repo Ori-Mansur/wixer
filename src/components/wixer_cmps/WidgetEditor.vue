@@ -1,5 +1,5 @@
 <template>
-  <section class="widget-editor-container" v-if="isEdit">
+  <section class="widget-editor-container" v-if="isEdit && data">
     <label @click="chooseColor = !chooseColor">
       <unicon name="palette" fill="black" class="icon-edit" />
     </label>
@@ -12,7 +12,6 @@
     <label @click="savePos(-1)">
       <unicon name="sort-amount-up" fill="black" class="icon-edit" />
     </label>
-
     <label :for="fileUpload" @change="setImg">
       <input :id="fileUpload" type="file" />
       <unicon name="image-plus" fill="black" class="icon-edit" />

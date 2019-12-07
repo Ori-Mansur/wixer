@@ -7,11 +7,11 @@
     height: section.style.height + 'vh'}"
   >
     <widget-editor :data="section" @setImg="setImg" @remove="removeWidget"></widget-editor>
-    <TextEditor @edit="editStyle" />
     <text-element
       v-for="(data, idx) in modifySection.data"
       @saveText="saveText"
       @click.native="selectedText(idx)"
+      @edit="editStyle"
       :key="idx"
       :data="data"
     ></text-element>
@@ -71,6 +71,8 @@ this.$emit('save',this.modifySection)
       this.selectedTxt = idx;
     },
     editStyle(newStyle) {
+      console.log('kkk');
+      
       var style = this.modifySection.data[this.selectedTxt].style 
       if (newStyle.type === "bold") {
         style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";

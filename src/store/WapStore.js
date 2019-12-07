@@ -8,7 +8,9 @@ export default {
     state: {
         waps: [],
         currWap: null,
+        group:'',
         currSectionId: null,
+        txtId:'',
     },
     mutations: {
         setWaps(state, { waps }) {
@@ -19,6 +21,14 @@ export default {
         },
         setName(state, { name }) {
             state.currWap.name = name
+        },
+        setGroup(state,{group}){
+            state.group=group
+        },
+        setTxtId(state,{id}){
+            console.log('ssss',id);
+            
+            state.txtId=id
         },
         updateTxt(state, { data }) {
             const idx = state.currWap.sections.findIndex(section => section._id === data.sectionId)
@@ -35,11 +45,14 @@ export default {
             const idx = state.waps.findIndex(currWap => currWap._id === wapId)
             state.waps.splice(idx, 1)
         },
-        addSection(state, value) {
-            state.currWap.sections
-            value.forEach(section => section._id = UtilsService.makeId());
-            state.currWap.sections = value
-            console.log(state.currWap)
+        addSection(state, data) {
+            state.currWap.sections.splice(data.newIndex,0 , JSON.parse(JSON.stringify(data.element)))
+            state.currWap.sections[data.newIndex]._id=UtilsService.makeId()
+            state.group= state.currWap.sections[data.newIndex]._id
+        },
+        addElement(state, data) {
+            state.currWap.sections[data.sectionIdx].data.splice(data.data.newIndex,0,data.data.element)
+            state.currWap.sections[data.sectionIdx].data[data.data.newIndex]._id=UtilsService.makeId()
         },
         saveSection(state, { section }) {
             const idx = state.currWap.sections.findIndex(currSection => currSection._id === section._id)
@@ -47,17 +60,16 @@ export default {
         },
         saveSectionData(state, { newData, sectionId }) {
             console.log(state.currWap.sections)
-            // debugger
             const idx = state.currWap.sections.findIndex(section => section._id === sectionId)
             const elIdx = state.currWap.sections[idx].data.findIndex(el => el._id === newData._id)
             state.currWap.sections[idx].data[elIdx] = newData
         },
-        addElement(state, value) {
-            console.log('element', value)
-            value.forEach(element => element._id = UtilsService.makeId());
-            const idx = state.currWap.sections.findIndex(section => section._id === state.group)
-            state.currWap.sections[idx].data = value
-        },
+        // addElement(state, data) {
+        //     console.log('element', data.value)
+        //     data.value.forEach(element => element._id = UtilsService.makeId());
+        //     state.currWap.sections[data.idx].data = data.value
+        //     // const idx = state.currWap.sections.findIndex(section => section._id === state.group)
+        // },
         addWidget(state, { data }) {
             const idx = state.currWap.sections.findIndex(currSection => currSection._id === data.sectionId)
             console.log('store idx', state.currWap.sections[idx]);
@@ -159,7 +171,18 @@ export default {
             return state.currWap
         },
         currWapSections(state) {
-            if (state.currWap) return state.currWap.sections
+            if (state.currWap) return  state.currWap.sections
+        },
+        group(state){
+return state.group
+        },
+        txtId(state){
+return state.txtId
+        },
+        currSection(state,idx) {
+            console.log('jjjj',idx);
+            
+            if (state.currWap) return  state.currWap.sections
         },
         wapsToShow(state) {
             var waps = state.waps

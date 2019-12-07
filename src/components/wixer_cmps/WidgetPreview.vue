@@ -1,12 +1,15 @@
 <template>
   <section>
-    <draggable class="dragArea list-group" v-model="myList"  group="people">
-      <div class="list-group-item" v-for="(element,idx) in myList" :key="idx">
+    <draggable class="dragArea list-group" v-model="myList"  group="people"
+    @change="add($event)">
+      <div class="list-group-item" v-for="(element,idx) in sections" :key="idx">
         <component
           :isEdit="isEdit"
           :key="idx"
+          :idx="idx"
           :is="element.type"
           :section="element"
+          @addEl="addEl"
           @setImg="setImg"
           @setCardImg="setCardImg"
           @changeStyle="changeStyle"
@@ -47,16 +50,20 @@ export default {
   },
   data() {
     return {
-      isEdit: false
+      isEdit: false,
+      newIdx:'',
     };
   },
   computed: {
+    sections(){
+return  this.$store.getters.currWapSections;
+    },
     myList: {
       get() {
-        return this.$store.getters.currWapSections;
+        return  this.$store.getters.currWapSections;
       },
-      set(value) {
-        this.$store.commit("addSection", value);
+      set() {
+        
       }
     }
   },
@@ -78,11 +85,13 @@ export default {
     changeStyle(data) {
       this.$store.commit({ type: "updateStyle", data });
     },
-    setSection(){
-console.log('rrrr');
-
-this.$store.commit({type:'print',data:'hhhhhh'})
+    add(evt){
+      this.$store.commit("addSection",evt.added)
     },
+    addEl(data) {
+      this.$store.commit("addElement",data);
+    }
+  
    
   },
   created() {
