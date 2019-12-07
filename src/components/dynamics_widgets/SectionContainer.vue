@@ -1,6 +1,6 @@
 <template>
   <div
-    class="section-container flex column"
+    class="section-container flex column container"
     :style="{backgroundColor: section.style.bcgColor,
      backgroundImage: `url(${section.style.bcgImg})`}"
   >
@@ -57,7 +57,7 @@ export default {
   position: relative;
   padding: 10px;
   min-height: 200px;
-  border: 1px dotted black;
+  // border: 1px dotted black;
 
   .placeholder {
     padding: 50px;
