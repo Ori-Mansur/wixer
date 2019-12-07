@@ -85,7 +85,7 @@
   </div>
 </template>
 <script>
-import { Drag } from 'vue-drag-drop';
+// import { Drag } from 'vue-drag-drop';
 // import EditOption from "./EditOption.vue";
 import SettingWap from "./SettingWap.vue";
 import draggable from "vuedraggable";
