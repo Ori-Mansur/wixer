@@ -2,13 +2,14 @@
   <section 
     class="header-container flex column justify-center align-center background"
     :style="{backgroundImage: `url(${section.style.bcgImg})`,backgroundColor: section.style.bcgColor,
-    height: section.style.height + 'px', border: isBorder}">
+    height: 550 + 'px', border: isBorder}">
     <widget-editor 
       :data="section"
       @setImg="setImg"
-       @remove="removeWidget" ></widget-editor>
-<TextEditor @edit="editStyle"/>
-    <text-element v-for="(data, idx) in section.data" 
+      @remove="removeWidget" ></widget-editor>
+    <TextEditor @edit="editStyle"/>
+    <text-element v-for="(data, idx) in section.data"
+    class="header-inside"
     @saveText="saveText"
     @click.native="selectedText(idx)"
     :key="idx" 
@@ -36,6 +37,9 @@ export default {
     isBorder(){
       if (this.isEdit) return '1px solid blue'
       else return ''
+    },
+    inside(){
+      return 'position: relative'
     }
   },
   methods: {
@@ -78,8 +82,19 @@ export default {
 </script>
 <style lang="scss" >
 .header-container {
-  margin-bottom: 10px;
   position:relative;
+}
+.header-container::before{
+  // position: absolute;
+  // width: 100%;
+  // height: 100%;
+  // background-image: url(https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80);
+  // background-size: cover;
+  // filter:blur(0.5px)
+}
+
+.header-inside{
+  position: relative
 }
 
 img {

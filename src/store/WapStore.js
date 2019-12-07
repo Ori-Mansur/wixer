@@ -41,12 +41,14 @@ export default {
             state.currWap.sections = value
             console.log(state.currWap)
         },
-        saveSectionData(state, { newData, sectionId }) {
-            console.log(state.currWap.sections)
+        saveSectionData(state, { newData }) {
+            console.log(newData)
             // debugger
-            const idx = state.currWap.sections.findIndex(section => section._id === sectionId)
-            const elIdx = state.currWap.sections[idx].data.findIndex(el => el._id === newData._id)
-            state.currWap.sections[idx].data[elIdx] = newData
+            const idx = state.currWap.sections.findIndex(section => section._id === newData._id)
+            // const elIdx = state.currWap.sections[idx].data.findIndex(el => el._id === newData._id)
+            // state.currWap.sections[idx].data[elIdx] = newData
+            state.currWap.sections.splice(idx, 1, newData)
+
         },
         addElement(state, value) {
             console.log('element', value)

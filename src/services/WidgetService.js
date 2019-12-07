@@ -435,7 +435,22 @@ const widgets = [
     style: { bcgImg: '', bcgColor: '' },
     data: [],
     createdAt: '2019-12-02T08:21:46.753Z'
-  }
+  },
+  {
+    _id: '0001',
+    type: 'Map',
+    name: 'Map',
+    data: {
+      center: { lat: 32.109333, lng: 34.855499 },
+      markers: [],
+      places: [],
+      placesMarked: [],
+      placesNames:[],
+      currentPlace: '',
+      placeName: '',
+      place:''
+    }
+  },
 ];
 
 const elements = [

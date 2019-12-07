@@ -46,6 +46,7 @@ export default {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
+    console.log(this.data)
   },
   watch:{
 $route(to){
@@ -62,20 +63,4 @@ $route(to){
 </script>
 
 <style lang="scss" scoped>
-
-.text-editor-container{
-  z-index:5;
-  position: absolute;
-  top:0px;
-  right:-260px;
-}
-h3 {
-  margin: 5px;
-}
-p {
-  margin: 0;
-}
-.text {
-  padding: 10px;
-}
 </style>

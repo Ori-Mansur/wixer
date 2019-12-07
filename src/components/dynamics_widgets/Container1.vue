@@ -1,25 +1,25 @@
 <template>
-  <section class="container-twoCol" @click="isEdit=!isEdit" :style="{backgroundImage: `url(${value.style.bcgImg})`,    backgroundColor: value.style.bcgColor, border: isBorder}">
+  <section class="container-twoCol container" @click="isEdit=!isEdit" :style="{backgroundImage: `url(${section.style.bcgImg})`,    backgroundColor: section.style.bcgColor, border: isBorder}">
 
-    <text-element v-for="(data, index) in value.data" :key="index" :data="data" :isEdit="isEdit"></text-element>
+    <text-element v-for="(data, index) in section.data" :key="index" :data="data" :isEdit="isEdit"></text-element>
+    <TextEditor @edit="editStyle"/>
 
-    <widget-editor :widget="value" class="widget-editor-container" @remove="removeWidget"></widget-editor>
+    <widget-editor :data="section" class="widget-editor-container" @remove="removeWidget"></widget-editor>
   </section>
 </template>
 
 <script>
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
-// import TextEditor from "../wixer_cmps/TextEditor";
+import TextEditor from "../wixer_cmps/TextEditor";
 import TextElement from "../elements/TextElement";
 
 
 export default {
   props: {
     edit: Boolean,
-    value: Object
+    section: Object
   },
   created(){
-    console.log(this.value)
   },
   data(){
     return{
@@ -36,10 +36,24 @@ export default {
     removeWidget(id) {
       this.$emit("remove", id);
     },
+    editStyle(newStyle) {
+      var style = JSON.parse(
+        JSON.stringify(this.section.data[0].style)
+      );
+      if (newStyle.type === "bold") {
+        style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";
+      } else if (newStyle.type === "italicize") {
+        style.fontStyle = style.fontStyle === "normal" ? "italic" : "normal";
+      } else if (newStyle.type === "fontFamily") style.fontFamily = newStyle.font;
+      else if(newStyle.type === 'color')style.color=newStyle.color
+      else if(newStyle.type=== 'minus')style.fontSize+=-2
+      else if(newStyle.type=== 'plus')style.fontSize+=2
+      this.$emit("changeStyle",{cardData:{style,idx:0},sectionId:this.section._id});
+    },
   },
   components:{
     WidgetEditor,
-    // TextEditor,
+    TextEditor,
     TextElement
   }
 };
@@ -47,6 +61,7 @@ export default {
 <style scoped>
 .container-twoCol {
   position: relative;
+  padding: 20px 10px;
 }
 .text-header,
 .text-center {

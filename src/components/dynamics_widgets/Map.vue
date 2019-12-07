@@ -30,7 +30,7 @@
 <script>
 export default {
   props: {
-    data: Object,
+    section: Object,
     width: Number
   },
   created() {
@@ -90,7 +90,7 @@ export default {
       });
     },
     cloneData(){
-      this.newData=JSON.parse(JSON.stringify(this.data))
+      this.newData=JSON.parse(JSON.stringify(this.section))
 
     }
   }
