@@ -7,6 +7,8 @@
           :key="idx"
           :is="element.type"
           :section="element"
+          @saveMapData="saveMapData"
+          @addEl="addEl"
           @setImg="setImg"
           @setCardImg="setCardImg"
           @changeStyle="changeStyle"
@@ -30,6 +32,7 @@ import Container1 from "../dynamics_widgets/Container1";
 import Container3 from "../dynamics_widgets/Container3";
 import HeaderBig from "../dynamics_widgets/HeaderBig";
 import Img from "../dynamics_widgets/Img";
+import Map from "../dynamics_widgets/Map";
 import Txt from "../dynamics_widgets/Txt";
 import Video from "../dynamics_widgets/Video";
 import Form from "../dynamics_widgets/Form";
@@ -61,9 +64,18 @@ export default {
     }
   },
   methods: {
-    saveSection(section) {
-      console.log('pre',section);
-      this.$store.commit({ type: "saveSection", section });
+    saveMapData(newData){
+      this.$store.commit({type: "saveSectionData", newData });
+
+    },
+    addEl(sectionToEdit){
+      // console.log(el, sectionId)
+      // this.$store.commit({type:"addElement", el, sectionId})
+            this.$store.commit({type:"addElement", sectionToEdit})
+
+    },
+    showChange(added){
+      console.log(added)
     },
     setImg(data) {
       this.$store.dispatch({ type: "setBcgImg", data });
@@ -99,6 +111,7 @@ this.$store.commit({type:'print',data:'hhhhhh'})
     Container3,
     HeaderBig,
     Img,
+    Map,
     Txt,
     Video,
     Form,

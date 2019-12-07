@@ -1,0 +1,18 @@
+.container-threeCol {
+  position: relative;
+  margin: 0px 10px;
+  .text-center {
+    display: flex;
+    justify-content: center;
+  }
+  .column {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

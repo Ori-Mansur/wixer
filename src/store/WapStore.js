@@ -8,7 +8,7 @@ export default {
   state: {
     waps: [],
     currWap: null,
-    currSectionId: null
+    currSection: null
   },
   mutations: {
     setWaps(state, { waps }) {
@@ -45,22 +45,15 @@ export default {
       state.currWap.sections = value;
       console.log(state.currWap);
     },
-    saveSection(state, { section }) {
-      const idx = state.currWap.sections.findIndex(
-        currSection => currSection._id === section._id
-      );
-      state.currWap.sections.splice(idx, 1, section);
-    },
-    saveSectionData(state, { newData, sectionId }) {
-      console.log(state.currWap.sections);
+    saveSectionData(state, { newData }) {
+      console.log(newData);
       // debugger
       const idx = state.currWap.sections.findIndex(
-        section => section._id === sectionId
+        section => section._id === newData._id
       );
-      const elIdx = state.currWap.sections[idx].data.findIndex(
-        el => el._id === newData._id
-      );
-      state.currWap.sections[idx].data[elIdx] = newData;
+      // const elIdx = state.currWap.sections[idx].data.findIndex(el => el._id === newData._id)
+      // state.currWap.sections[idx].data[elIdx] = newData
+      state.currWap.sections.splice(idx, 1, newData);
     },
     addElement(state, value) {
       console.log('element', value);
@@ -93,10 +86,6 @@ export default {
       );
       state.currWap.sections[idx].data[sectionData.idx].style.bcgImg =
         sectionData.imgUrl;
-    },
-    setSection(state, { data }) {
-      console.log(data);
-      state.currSectionId = data;
     },
     updateStyle(state, { data }) {
       const idx = state.currWap.sections.findIndex(
@@ -192,6 +181,16 @@ export default {
     },
     currWapSections(state) {
       if (state.currWap) return state.currWap.sections;
+    },
+    currSectionData(state) {
+      if (state.currWap.sections) {
+        const section = state.currWap.sections.find(
+          section => section._id === state.group
+        );
+        console.log(section);
+
+        return section.data;
+      }
     },
     wapsToShow(state) {
       var waps = state.waps;

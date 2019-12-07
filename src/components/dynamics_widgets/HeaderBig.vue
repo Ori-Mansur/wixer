@@ -1,19 +1,19 @@
 <template>
   <section
     class="header-container flex column justify-center align-center background"
-    :class="{'border-edit': isEdit}"
-    :style="{backgroundImage: `url(${section.style.bcgImg})`,
-    backgroundColor: section.style.bcgColor,
-    height: section.style.height + 'vh'}"
-  >
-    <widget-editor :data="section" @setImg="setImg" @remove="removeWidget"></widget-editor>
-    <TextEditor @edit="editStyle" />
-    <text-element
-      v-for="(data, idx) in modifySection.data"
-      @saveText="saveText"
-      @click.native="selectedText(idx)"
-      :key="idx"
-      :data="data"
+    :style="{backgroundImage: `url(${section.style.bcgImg})`,backgroundColor: section.style.bcgColor,
+    height: 550 + 'px', border: isBorder}">
+    <widget-editor 
+      :data="section"
+      @setImg="setImg"
+      @remove="removeWidget" ></widget-editor>
+    <TextEditor @edit="editStyle"/>
+    <text-element v-for="(data, idx) in section.data"
+    class="header-inside"
+    @saveText="saveText"
+    @click.native="selectedText(idx)"
+    :key="idx" 
+    :data="JSON.parse(JSON.stringify(data))"
     ></text-element>
   </section>
 </template>
@@ -35,14 +35,24 @@ export default {
       modifySection:JSON.parse(JSON.stringify(this.section))
     };
   },
+  
+  computed:{
+    isBorder(){
+      if (this.isEdit) return '1px solid blue'
+      else return ''
+    },
+    inside(){
+      return 'position: relative'
+    }
+  },
   methods: {
     setImg(event) {
       this.$emit("setImg", { event, sectionId: this.section._id });
     },
-    startPos(ev){
-      this.isDown=true
-// console.log(ev);
-    },
+//     startPos(ev){
+//       this.isDown=true
+// // console.log(ev);
+//     },
     setPos(ev){
       if(this.isDown){
 this.pos.x=ev.offsetX
@@ -106,8 +116,11 @@ this.$emit('save',this.modifySection)
 </script>
 <style lang="scss" >
 .header-container {
-  margin-bottom: 10px;
-  position: relative;
+  position:relative;
+}
+
+.header-inside{
+  position: relative
 }
 
 img {

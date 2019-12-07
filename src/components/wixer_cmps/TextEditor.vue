@@ -38,6 +38,8 @@ export default {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
+    console.log(this.isEdit)
+    console.log(this.widget)
   },
   data() {
     return {
@@ -51,7 +53,7 @@ export default {
     change(type){
       if(type === 'fontFamily')this.$emit('edit',{type,font:this.font})
       else if(type === 'color')this.$emit('edit',{type,color:this.fontColor})
-else this.$emit('edit',{type})
+      else this.$emit('edit',{type})
     },
     editWidget() {
       this.$emit("edit", this.widget);

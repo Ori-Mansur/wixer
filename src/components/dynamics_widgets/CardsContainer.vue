@@ -56,11 +56,10 @@ export default {
 };
 </script>
 <style scoped>
-.container-threeCol {
+/* .container-threeCol {
   position: relative;
-
+  margin: 0px 10px;
 }
-.text-header,
 .text-center {
   display: flex;
   justify-content: center;
@@ -76,5 +75,5 @@ export default {
   content: "";
   display: table;
   clear: both;
-}
+} */
 </style>
