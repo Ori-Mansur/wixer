@@ -26,6 +26,9 @@
 <style lang="scss" scoped>
 .nav-bar-container-surfe{
     display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 1;
     justify-content: space-between;
     align-items: center;
     padding: 10px;

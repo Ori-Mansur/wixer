@@ -1,18 +1,19 @@
 <template>
-  <section 
+  <section
     class="header-container flex column justify-center align-center background"
-    :style="{backgroundImage: `url(${section.style.bcgImg})`,backgroundColor: section.style.bcgColor,
-    height: section.style.height + 'px', border: isBorder}">
-    <widget-editor 
-      :data="section"
-      @setImg="setImg"
-       @remove="removeWidget" ></widget-editor>
-<TextEditor @edit="editStyle"/>
-    <text-element v-for="(data, idx) in section.data" 
-    @saveText="saveText"
-    @click.native="selectedText(idx)"
-    :key="idx" 
-    :data="JSON.parse(JSON.stringify(data))"
+    :class="{'border-edit': isEdit}"
+    :style="{backgroundImage: `url(${section.style.bcgImg})`,
+    backgroundColor: section.style.bcgColor,
+    height: section.style.height + 'vh'}"
+  >
+    <widget-editor :data="section" @setImg="setImg" @remove="removeWidget"></widget-editor>
+    <TextEditor @edit="editStyle" />
+    <text-element
+      v-for="(data, idx) in modifySection.data"
+      @saveText="saveText"
+      @click.native="selectedText(idx)"
+      :key="idx"
+      :data="data"
     ></text-element>
   </section>
 </template>
@@ -27,47 +28,74 @@ export default {
   },
   data() {
     return {
-      pos: { x: 0, y: 0 },
-       selectedTxt: 0
+      pos: { x: '', y: '' },
+      selectedTxt: 0,
+      isEdit: false,
+      isDown:false,
+      modifySection:JSON.parse(JSON.stringify(this.section))
     };
-  },
-  
-  computed:{
-    isBorder(){
-      if (this.isEdit) return '1px solid blue'
-      else return ''
-    }
   },
   methods: {
     setImg(event) {
       this.$emit("setImg", { event, sectionId: this.section._id });
     },
+    startPos(ev){
+      this.isDown=true
+// console.log(ev);
+    },
+    setPos(ev){
+      if(this.isDown){
+this.pos.x=ev.offsetX
+this.pos.y=ev.offsetY
+        console.log(ev);
+      }
+
+    },
     removeWidget(id) {
       this.$emit("remove", id);
     },
-    saveText(value){
+    saveText(value) {
       // console.log('jjhjjj',value);
-      this.$emit('saveText',{txt:value,sectionId:this.section._id})
+      
+      this.modifySection.data[this.selectedTxt].text=value
+      console.log(this.modifySection.data[this.selectedTxt].text);
+      this.saveSection()
+      // this.$emit("saveText", { txt: value, sectionId: this.section._id });
+    },
+    saveSection(){
+      console.log('sac',this.modifySection);
+      
+this.$emit('save',this.modifySection)
     },
     selectedText(idx) {
       this.selectedTxt = idx;
-      console.log(this.selectedTxt);
     },
     editStyle(newStyle) {
-      var style = JSON.parse(
-        JSON.stringify(this.section.data[this.selectedTxt].style)
-      );
+      var style = this.modifySection.data[this.selectedTxt].style 
       if (newStyle.type === "bold") {
         style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";
       } else if (newStyle.type === "italicize") {
         style.fontStyle = style.fontStyle === "normal" ? "italic" : "normal";
-      } else if (newStyle.type === "fontFamily") style.fontFamily = newStyle.font;
-      else if(newStyle.type === 'color')style.color=newStyle.color
-      else if(newStyle.type=== 'minus')style.fontSize+=-2
-      else if(newStyle.type=== 'plus')style.fontSize+=2
-      console.log(style);
-      this.$emit("changeStyle",{cardData:{style,idx:this.selectedTxt},sectionId:this.section._id});
-    },
+      } else if (newStyle.type === "fontFamily")
+        style.fontFamily = newStyle.font;
+      else if (newStyle.type === "color") style.color = newStyle.color;
+      else if (newStyle.type === "minus") style.fontSize += -2;
+      else if (newStyle.type === "plus") style.fontSize += 2;
+      this.$emit("changeStyle", {
+        cardData: { style, idx: this.selectedTxt },
+        sectionId: this.section._id
+      });
+    }
+  },
+  created() {
+    if (this.$route.path.includes("editor")) this.isEdit = true;
+    else this.isEdit = false;
+  },
+  watch: {
+    $route() {
+      if (this.$route.path.includes("editor")) this.isEdit = true;
+      else this.isEdit = false;
+    }
   },
   components: {
     WidgetEditor,
@@ -79,7 +107,7 @@ export default {
 <style lang="scss" >
 .header-container {
   margin-bottom: 10px;
-  position:relative;
+  position: relative;
 }
 
 img {

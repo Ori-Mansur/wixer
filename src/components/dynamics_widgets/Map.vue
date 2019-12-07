@@ -1,8 +1,6 @@
 <template>
   <section
-    class="map-section-container flex row space-around"
-    :style="{ width: width + '%' }"
-  >
+    class="map-section-container flex row space-around">
     <div class="map-container">
       <gmap-map :center="newData.data.center" :zoom="12" class="map">
         <gmap-marker
@@ -12,17 +10,19 @@
           @click="center = m.position"
         ></gmap-marker>
       </gmap-map>
-      <label>
-        <gmap-autocomplete @place_changed="setPlace" v-if="isEdit"></gmap-autocomplete>
-        <button @click="addMarker">Add</button>
-      </label>
     </div>
-    <div class="text-section">
-      <input type="text" v-model="newData.data.placeName" placeholder="Enter Title" v-if="isEdit"/>
-      <h3 v-if="!isEdit">{{newData.data.placeName}}</h3>
-      <div v-for="(place, index) in newData.data.placesMarked" :key="index">
-        <p @click="centerMap(index)">{{ place }}</p>
+    <div class="text-section flex column align-center">
+      <div class="flex column" v-if="isEdit">
+      <label>Enter your location/locations:</label>
+        <gmap-autocomplete class="addressBar" @place_changed="setPlace"></gmap-autocomplete>
+        <button class="btn-round" @click="addMarker">Add</button>
       </div>
+      <h3 class="title flex justify-center">Our Locations</h3>
+      <ul>
+        <li class="addressRef flex justify-center" v-for="(place, index) in newData.data.placesNames" :key="index" @click="centerMap(index)">{{ place }}</li>
+      </ul>
+      <span class="fullAddress" v-show="!isSelected">{{newData.data.placesMarked[selectedLocIdx]}}</span>
+
     </div>
   </section>
 </template>
@@ -37,29 +37,33 @@ export default {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
-    console.log(this.data)
     this.cloneData()
   },
   data() {
     return {
-      newData:{}
+      newData:{},
+      selectedLocIdx: null
     };
   },
 
   mounted() {
     this.geolocate();
   },
+  computed:{
+    isSelected(){
+      if (this.selectedLocIdx===Number) return true
+      else return false
+    }
+  },
 
   methods: {
     centerMap(index){
-      this.newData.center = this.newData.data.markers[index].position
-      this.$emit('saveMapData', this.newData)
-
+      this.selectedLocIdx=index
+      this.newData.data.center = this.newData.data.markers[index].position
+  
     },
     setPlace(place) {
       this.newData.data.currentPlace = place;
-      this.$emit('saveMapData', this.newData)
-
     },
     addMarker() {
       if (this.newData.data.currentPlace) {
@@ -69,7 +73,9 @@ export default {
         };
         this.newData.data.markers.push({ position: marker });
         this.newData.data.places.push(this.newData.data.currentPlace);
-        this.newData.data.placesMarked.push(this.newData.data.currentPlace.name);
+
+        this.newData.data.placesNames.push(this.newData.data.currentPlace.address_components[2].long_name);
+        this.newData.data.placesMarked.push(this.newData.data.currentPlace.formatted_address);
         this.newData.data.center = marker;
         this.newData.data.currentPlace = null;
       }
@@ -85,27 +91,11 @@ export default {
     },
     cloneData(){
       this.newData=JSON.parse(JSON.stringify(this.data))
-      console.log('new',this.newData)
 
     }
   }
 };
 </script>
 
-<style lang="scss" scoped>
-.map-section-container {
-  position: relative;
-}
-.map-container {
-  padding: 10px;
-  width: 50%;
-  .map{
-  width:100%;  
-  height: 300px;
-  padding: 10px 0px;
-  }
-  .text-section{
-    border:1px solid black;
-  }
-}
+<style lang="scss" scope>
 </style>

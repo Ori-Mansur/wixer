@@ -8,7 +8,7 @@ export default {
     state: {
         waps: [],
         currWap: null,
-        currSection: null,
+        currSectionId: null,
     },
     mutations: {
         setWaps(state, { waps }) {
@@ -41,9 +41,15 @@ export default {
             state.currWap.sections = value
             console.log(state.currWap)
         },
+        saveSection(state, { section }) {
+            const idx = state.currWap.sections.findIndex(currSection => currSection._id === section._id)
+            state.currWap.sections.splice(idx, 1, section)
+        },
         saveSectionData(state, { newData, sectionId }) {
+            console.log(state.currWap.sections)
+            // debugger
             const idx = state.currWap.sections.findIndex(section => section._id === sectionId)
-            const elIdx = state.currWap.sections[idx].findIndex(el => el._id === newData._id)
+            const elIdx = state.currWap.sections[idx].data.findIndex(el => el._id === newData._id)
             state.currWap.sections[idx].data[elIdx] = newData
         },
         addElement(state, value) {
@@ -51,7 +57,6 @@ export default {
             value.forEach(element => element._id = UtilsService.makeId());
             const idx = state.currWap.sections.findIndex(section => section._id === state.group)
             state.currWap.sections[idx].data = value
-
         },
         addWidget(state, { data }) {
             const idx = state.currWap.sections.findIndex(currSection => currSection._id === data.sectionId)
@@ -69,6 +74,10 @@ export default {
             console.log('hhjghjgj', sectionData);
             const idx = state.currWap.sections.findIndex(section => section._id === sectionData.id)
             state.currWap.sections[idx].data[sectionData.idx].style.bcgImg = sectionData.imgUrl
+        },
+        setSection(state, { data }) {
+            console.log(data);
+            state.currSectionId = data
         },
         updateStyle(state, { data }) {
             const idx = state.currWap.sections.findIndex(section => section._id === data.sectionId)
@@ -151,14 +160,6 @@ export default {
         },
         currWapSections(state) {
             if (state.currWap) return state.currWap.sections
-        },
-        currSectionData(state) {
-            if (state.currWap.sections) {
-                const section = state.currWap.sections.find(section => section._id === state.group)
-                console.log(section);
-
-                return section.data
-            }
         },
         wapsToShow(state) {
             var waps = state.waps
