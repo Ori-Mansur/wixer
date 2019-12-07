@@ -146,7 +146,7 @@ export default {
     async addNewWap(context) {
       const newWap = {
         name: '',
-        bcgImg: '',
+        thumbnail: '',
         style: {
           font: 'Arial',
           txtColor: 'black',
