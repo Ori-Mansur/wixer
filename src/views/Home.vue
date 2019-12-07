@@ -7,14 +7,15 @@
         <p
           class="home-header-content"
         >Create your own website, add content and style it to look the way you like.</p>
-          <router-link to="wap">
+          <a href="#chapter4">
         <button class="home-btn">Get Started</button>
-      </router-link>
+      </a>
       </div>
     </div>
     <h2 class="wap-header">Get a glimpse of our templates -</h2>
 
-    <div class="waps-examples" id="waps-examples">
+    <div class="waps-examples" id="waps-examples" >
+      <a name="chapter4"></a>
       <div class="wap-picture">
         <img src="@/assets/card2.png" alt />
       </div>

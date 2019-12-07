@@ -83,10 +83,10 @@ this.$emit('save',this.modifySection)
       else if (newStyle.type === "color") style.color = newStyle.color;
       else if (newStyle.type === "minus") style.fontSize += -2;
       else if (newStyle.type === "plus") style.fontSize += 2;
-      this.$emit("changeStyle", {
-        cardData: { style, idx: this.selectedTxt },
-        sectionId: this.section._id
-      });
+      // this.$emit("changeStyle", {
+      //   cardData: { style, idx: this.selectedTxt },
+      //   sectionId: this.section._id
+      // });
     }
   },
   created() {

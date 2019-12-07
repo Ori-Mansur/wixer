@@ -7,6 +7,14 @@
       <option>Roboto</option>
       <option>Arial</option>
       <option>Italianno</option>
+      <option>Playfair</option>
+      <option>Cabin</option>
+      <option>DancingScript</option>
+      <option>JosefinSans</option>
+      <option>Lobster</option>
+      <option>Pacifico</option>
+      <option>Solway</option>
+      <option>SulphurPoint</option>
     </select>
     <label @click.stop="change('italicize')" title="Italic">
       <unicon name="italic" fill="white" class="icon-txt-edit" />

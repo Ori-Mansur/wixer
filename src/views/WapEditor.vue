@@ -1,5 +1,5 @@
 <template>
-  <div class="wap-editor">
+  <div class="wap-editor" >
     <ToolBar
       @setName="setName"
     @save="saveWap"
@@ -7,7 +7,7 @@
       :elements="elements"
     />
    
-    <WidgetPreview class="edit-template"   />
+    <WidgetPreview class="edit-template" :style="{backgroundColor: currWap.style.bcgColor, fontColor: currWap.style.txtColor}"  />
     
   
     <!-- <ElementPreview :elements="wap.elements" /> -->

@@ -74,7 +74,7 @@ export default {
 
 <style lang="scss" scoped>
 .text-editor-container {
-  z-index: 5;
+  z-index: 15;
   position: relative;
   // top:0px;
   // right:-260px;
