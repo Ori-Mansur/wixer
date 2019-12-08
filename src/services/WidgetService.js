@@ -357,12 +357,12 @@ const widgets = [
       markers: [],
       places: [],
       placesMarked: [],
-      placesNames:[],
+      placesNames: [],
       currentPlace: '',
       placeName: '',
-      place:''
+      place: ''
     }
-    
+
   },
   {
     _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
@@ -398,20 +398,18 @@ const elements = [
     type: 'Txt',
     name: 'Text',
     icon: 'fa fa-font fa-3x',
-    data: {
-      txt:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!',
-      style: {
-        fontFamily: 'Arial',
-        fontSize: 16,
-        fontStyle: 'normal',
-        fontWeight: 'normal',
-        color: 'black',
-        bcgImg: '',
-        bcgColor: ''
-      }
-    },
-    createdAt: '2019-12-01T08:18:35.184Z'
+    text:
+      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!',
+    style: {
+      color: 'black',
+      fontSize: 30,
+      fontWeight: 'normal',
+      fontFamily: 'Arial',
+      fontStyle: 'normal',
+      txtAlign: 'center'
+    }
+
+
   },
   {
     _id: 'el1001',
