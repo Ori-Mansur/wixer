@@ -1,6 +1,5 @@
 'use strict'
-import HttpService from './http-service.js'
-import hHttpService from './HttpService.js'
+import HttpService from './HttpService.js'
 export default {
     login,
     logout,

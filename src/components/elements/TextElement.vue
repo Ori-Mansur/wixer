@@ -24,11 +24,9 @@ import TextEditor from "../wixer_cmps/TextEditor";
 
 export default {
   props: {
-    // isEdit: Boolean,
     data: Object,
     pos: Object
   },
-
   data() {
     return {
       isEdit: false,
@@ -39,7 +37,7 @@ export default {
   },
   methods: {
     removeWidget(id) {
-      this.$emit("remove", id);
+      this.$emit('remove', id);
     },
     saveText(ev) {
       const txt = ev.target.innerText;
@@ -56,9 +54,9 @@ export default {
   },
   created() {
     const param = this.$route.path;
-    if (param.includes("editor")) this.isEdit = true;
+    if (param.includes('editor')) this.isEdit = true;
     else this.isEdit = false;
-    console.log(this.data)
+    console.log(this.data);
   },
   watch: {
     $route(to) {
@@ -74,20 +72,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.text-editor-container {
-  z-index: 15;
-  position: relative;
-  // top:0px;
-  // right:-260px;
-}
-h3 {
-  margin: 5px;
-}
-p {
-  margin: 0;
-}
-.text {
-  padding: 10px;
-}
-</style>
+

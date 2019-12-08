@@ -4,8 +4,7 @@
     @click="setGroup(section._id)"
     :class="{'border-edit': isEdit}"
     :style="{backgroundColor: section.style.bcgColor,
-     backgroundImage: `url(${section.style.bcgImg})`}"
-  >
+     backgroundImage: `url(${section.style.bcgImg})`}">
     <WidgetEditor @setImg="setImg" :data="section" />
     <draggable class="dragArea list-group" v-model="List" :group="section._id" 
     @change="add($event)"

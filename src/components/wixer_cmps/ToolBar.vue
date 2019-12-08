@@ -1,11 +1,6 @@
 <template>
   <div class="tool-bar">
     <ul class="tool-bar-list">
-      <!-- <li @click="menu=!menu" class="li-bar section-menu">
-        <unicon name="list-ul" :fill="colorMenu" />
-        <h3 :style="{color:colorMenu}">MENU</h3>
-      </li>-->
-      <!-- <div v-if="menu" class="list-option"> -->
       <div class="section-menu">
         <Menu />
       </div>
@@ -53,8 +48,6 @@
           >
           <i :class="element.icon"/>
           {{ element.name }}
-
-          
           </div>
         </draggable>
       </div>
@@ -85,8 +78,6 @@
   </div>
 </template>
 <script>
-// import { Drag } from 'vue-drag-drop';
-// import EditOption from "./EditOption.vue";
 import SettingWap from "./SettingWap.vue";
 import draggable from "vuedraggable";
 import Menu from "./Menu.vue";
@@ -161,7 +152,6 @@ return group
 this.$store.dispatch({type:'loadWidgets'})
   },
   components: {
-    // EditOption,
     SettingWap,
     Menu,
     draggable

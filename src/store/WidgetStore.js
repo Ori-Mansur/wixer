@@ -1,5 +1,4 @@
 'use strict';
-// var moment = require('moment');
 import WidgetService from '../services/WidgetService.js';
 import UtilsService from '../services/UtilsService.js'
 export default {
@@ -10,14 +9,16 @@ export default {
   },
   mutations: {
     setElements(state, { elements }) {
-      state.elements = elements
+      state.elements = elements;
     },
     setWidgets(state, { sections }) {
       sections.forEach(section=>section._id=UtilsService.makeId())
       state.sections = sections;
     },
     removeWidget(state, { widgetId }) {
-      const idx = state.widgets.findIndex(currWidget => currWidget._id === widgetId);
+      const idx = state.widgets.findIndex(
+        currWidget => currWidget._id === widgetId
+      );
       state.widgets.splice(idx, 1);
     },
     setFilter(state, filterBy) {
@@ -26,11 +27,10 @@ export default {
   },
   actions: {
     loadElements(context) {
-      return WidgetService.queryElements()
-        .then(elements => {
-          context.commit({ type: 'setElements', elements });
-          return elements
-        })
+      return WidgetService.queryElements().then(elements => {
+        context.commit({ type: 'setElements', elements });
+        return elements;
+      });
     },
     loadWidgets(context) {
       return WidgetService.query().then(sections => {
@@ -43,12 +43,12 @@ export default {
       return WidgetService.getById(id).then(widget => widget);
     },
     addId(context, { section }) {
-      return WidgetService.addId(section)
+      return WidgetService.addId(section);
     }
   },
   getters: {
     loadElements(state) {
-      return state.elements
+      return state.elements;
     },
     loadSections(state) {
       return state.sections

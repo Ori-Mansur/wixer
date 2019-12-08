@@ -28,38 +28,34 @@ export default {
   },
   data() {
     return {
-      pos: { x: '', y: '' },
+      pos: { x: "", y: "" },
       selectedTxt: 0,
       isEdit: false,
-      isDown:false,
-      modifySection:JSON.parse(JSON.stringify(this.section))
+      isDown: false,
+      modifySection: JSON.parse(JSON.stringify(this.section))
     };
   },
-  
-  computed:{
-    isBorder(){
-      if (this.isEdit) return '1px solid blue'
-      else return ''
+
+  computed: {
+    isBorder() {
+      if (this.isEdit) return "1px solid blue";
+      else return "";
     },
-    inside(){
-      return 'position: relative'
+    inside() {
+      return "position: relative";
     }
   },
   methods: {
     setImg(event) {
       this.$emit("setImg", { event, sectionId: this.section._id });
     },
-//     startPos(ev){
-//       this.isDown=true
-// // console.log(ev);
-//     },
+
     setPos(ev){
       if(this.isDown){
 this.pos.x=ev.offsetX
 this.pos.y=ev.offsetY
         console.log(ev);
       }
-
     },
     removeWidget(id) {
       this.$emit("remove", id);
@@ -67,13 +63,13 @@ this.pos.y=ev.offsetY
     saveText(value) {
       this.modifySection.data[this.selectedTxt].text=value.txt
       console.log(this.modifySection.data[this.selectedTxt].text);
-      this.saveSection()
+      this.saveSection();
       // this.$emit("saveText", { txt: value, sectionId: this.section._id });
     },
-    saveSection(){
-      console.log('sac',this.modifySection);
-      
-this.$emit('save',this.modifySection)
+    saveSection() {
+      console.log("sac", this.modifySection);
+
+      this.$emit("save", this.modifySection);
     },
     selectedText(idx) {
       this.selectedTxt = idx;
@@ -116,22 +112,5 @@ this.$emit('save',this.modifySection)
   }
 };
 </script>
-<style lang="scss" >
-.header-container {
-  position:relative;
-}
-
-.header-inside{
-  position: relative
-}
-
-img {
-  width: 100px;
-  height: auto;
-}
-.background {
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+<style lang="scss">
 </style>
-

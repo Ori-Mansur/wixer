@@ -104,15 +104,12 @@ export default {
     background-color: black;
     padding: 3px;
     cursor: pointer;
-    // border: 1px solid black;
     margin: 0.5px;
-    // border-radius: 7px;
   }
   .select-txt-edit{
     width: 24px;
     height: 24px;
     color: white
   }
- 
 }
 </style>

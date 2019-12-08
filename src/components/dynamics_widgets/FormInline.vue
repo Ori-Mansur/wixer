@@ -109,8 +109,6 @@
 }
 .el-form-item{
     width: 23%;
-    
-    // margin: 0px
 }
 .el-form-item__label{
     width: 0px

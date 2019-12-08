@@ -5,7 +5,6 @@
         </footer> 
 </template>
 
-
 <script>
 export default {
   data(){
@@ -35,15 +34,4 @@ export default {
 </script>
 
 <style lang="scss">
-  .footer {
-  //  position: fixed;
-  padding:10px;
-  margin:0;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: #333333;
-   color: white;
-   text-align: center;
-}
 </style>

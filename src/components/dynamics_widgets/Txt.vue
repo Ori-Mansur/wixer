@@ -4,8 +4,6 @@
     class="txt-container flex column align-center"
   >
   <TextEditor @edit="editStyle"/>
-
-  <!-- <WidgetEditor/> -->
     <p
      :contenteditable="true"
     @keyup="saveText"
@@ -18,8 +16,6 @@
 
 <script>
 import TextEditor from "../wixer_cmps/TextEditor";
-// import WidgetEditor from "../wixer_cmps/WidgetEditor";
-
 export default {
   props: {
     data: Object,
@@ -39,14 +35,8 @@ export default {
       this.data.text = ev.target.innerText;
       this.$emit('saveText',this.data)
     },
-    getPos(ev) {
-      // this.pos.x = ev.pageX - 20;
-      // this.pos.y = ev.pageY + 20;
-      console.log(ev);
-    },
-    created() {
-          console.log(this.data)
 
+    created() {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
@@ -56,7 +46,6 @@ export default {
   },
   components: {
     TextEditor,
-    // WidgetEditor
   }
 };
 </script>

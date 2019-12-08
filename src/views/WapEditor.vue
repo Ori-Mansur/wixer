@@ -13,10 +13,10 @@
     <!-- <ElementPreview :elements="wap.elements" /> -->
   </div>
 </template>
+
 <script>
 import ToolBar from "../components/wixer_cmps/ToolBar.vue";
 import WidgetPreview from "../components/wixer_cmps/WidgetPreview.vue";
-// import ElementPreview from "../components/wixer_cmps/ElementPreview";
 
 export default {
   created() {
@@ -64,9 +64,6 @@ export default {
       });
       console.log(modifyWidget);
       this.$store.dispatch({ type: "addSection", section: modifyWidget });
-      // this.wap.widgets.push(JSON.parse(JSON.stringify(modifyWidget)));
-
-      // this.save(modifyWidget);
     },
     setName(name) {
       this.wap.name = name;
@@ -82,25 +79,20 @@ export default {
       const id = this.$route.params.id;
       if (id) {
          await this.$store.dispatch({ type: "wapById", id });
-        // this.wap =JSON.parse(JSON.stringify(wap));
       } else {
         const newWap = await this.$store.dispatch({ type: "addNewWap" });
         this.$router.push(`/editor/${newWap._id}`);
-        // this.wap =JSON.parse(JSON.stringify(newWap)) ;
       }
     }
   },
   watch: {
     "wap.sections"(to) {
       console.log(to);
-      // this.saveWap()
     }
   },
   components: {
     ToolBar,
-    WidgetPreview,
-    // ElementPreview,
-   
+    WidgetPreview,   
   }
 };
 </script>

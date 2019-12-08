@@ -55,25 +55,5 @@ export default {
   },
 };
 </script>
-<style scoped>
-/* .container-threeCol {
-  position: relative;
-  margin: 0px 10px;
-}
-.text-center {
-  display: flex;
-  justify-content: center;
-}
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 10px;
-  min-height: 300px;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-} */
+<style lang="scss">
 </style>

@@ -58,12 +58,10 @@ export default {
     updateBackground(color) {
       this.data.style.bcgColor = color;
       this.editWidget();
-      // console.log(this.widget.data.style)
     },
     setImg(event){
 this.$emit('setImg',event)
     },
-    
   },
   components: {
     ColorPicker

@@ -3,14 +3,10 @@
     <iframe width="320" height="245" :src="data.data.url" class="video"></iframe>
   </section>
 </template>
-
-
 <script>
-
 export default {
   props:{
     data: Object,
-    // width: Number
   },
   created(){
     console.log(this.data);

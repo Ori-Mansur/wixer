@@ -1,5 +1,4 @@
 'use strict';
-// var moment = require('moment');
 import WapService from '../services/WapService.js';
 import UtilsService from '../services/UtilsService.js';
 import CloudinaryService from '../services/CloudinaryService.js';

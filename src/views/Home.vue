@@ -17,13 +17,16 @@
     <div class="waps-examples" id="waps-examples" >
       <a name="chapter4"></a>
       <div class="wap-picture">
-        <img src="@/assets/card2.png" alt />
+        <img src="https://i.ibb.co/BsXY2Jf/Screen-Shot-2019-12-07-at-20-32-41.png" alt />
       </div>
       <div class="wap-picture">
-        <img src="@/assets/card2.png" alt />
+        <img src="https://i.ibb.co/JsMhs2M/Screen-Shot-2019-12-07-at-20-09-22.png" alt />
       </div>
       <div class="wap-picture">
-        <img src="@/assets/card2.png" alt />
+        <img src="https://i.ibb.co/gVrsxZ5/Screen-Shot-2019-12-07-at-20-07-08.png" alt />
+      </div>
+      <div class="wap-picture">
+        <img src="https://i.ibb.co/NpYQ8VW/Screen-Shot-2019-12-07-at-20-05-16.png" alt />
       </div>
     </div>
     <router-link to="/wap" class="show-link">Show more ></router-link>
