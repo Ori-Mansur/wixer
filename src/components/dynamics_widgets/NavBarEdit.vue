@@ -1,11 +1,5 @@
 <template>
   <div class="nav-bar-daynamic">
-    <!-- <widget-editor
-      :widget="value"
-      class="widget-editor-container"
-      @remove="removeWidget"
-      @edit="editWidget"
-    ></widget-editor> -->
     <WidgetEditor :data="section" />
     <div class="logo-edit" style="padding: 30px;">LOGO</div>
     <nav class="nav-bar-edit" style="padding: 30px;">

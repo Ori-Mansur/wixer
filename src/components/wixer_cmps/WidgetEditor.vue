@@ -12,7 +12,6 @@
     <label @click="savePos(-1)">
       <unicon name="sort-amount-up" fill="black" class="icon-edit" />
     </label>
-
     <label :for="fileUpload" @change="setImg">
       <input :id="fileUpload" type="file" />
       <unicon name="image-plus" fill="black" class="icon-edit" />
@@ -59,12 +58,10 @@ export default {
     updateBackground(color) {
       this.data.style.bcgColor = color;
       this.editWidget();
-      // console.log(this.widget.data.style)
     },
     setImg(event){
 this.$emit('setImg',event)
     },
-    
   },
   components: {
     ColorPicker

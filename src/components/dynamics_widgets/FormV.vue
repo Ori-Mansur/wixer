@@ -102,22 +102,13 @@
   }
 </script>
 <style lang="scss" scoped>
-.el-form{
-  // display: flex;
-  // flex-direction: column;
-  // // justify-content: center;
-  // // align-items: center;
-}
 .el-form-item{
     width: 23%;
-    
-    // margin: 0px
 }
 .el-form-item__label{
     width: 0px
 }
 .el-form-item__label{
-    
     text-align: start
 }
 .btn{
@@ -126,5 +117,4 @@
   justify-content: space-between;
   width: fit-content;
 }
-
 </style>

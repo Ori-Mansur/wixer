@@ -19,6 +19,8 @@
 @import 'components/Menu';
 @import 'components/WapPreview';
 @import 'components/WidgetPreview';
+@import 'components/FooterApp';
+@import 'components/ColorPicker';
 //dynamic-components
 @import 'dynamic-components/NavBarEdit';
 @import 'dynamic-components/About';
@@ -26,6 +28,4 @@
 @import 'dynamic-components/CardsContainer';
 //Elements
 @import 'components/Elements/ImageElement';
-@import 'components/Elements/TextElement'
-
-
+@import 'components/Elements/TextElement';

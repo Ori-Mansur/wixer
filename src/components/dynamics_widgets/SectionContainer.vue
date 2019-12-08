@@ -2,8 +2,7 @@
   <div
     class="section-container flex column container"
     :style="{backgroundColor: section.style.bcgColor,
-     backgroundImage: `url(${section.style.bcgImg})`}"
-  >
+     backgroundImage: `url(${section.style.bcgImg})`}">
     <WidgetEditor @setImg="setImg" :data="section" />
     <draggable class="dragArea list-group" :list="section.data" group="group" :sort="isEdit">
       <div class="list-group-item" v-for="(element,idx) in section.data" :key="idx">
@@ -57,8 +56,6 @@ export default {
   position: relative;
   padding: 10px;
   min-height: 200px;
-  // border: 1px dotted black;
-
   .placeholder {
     padding: 50px;
     margin: auto auto;

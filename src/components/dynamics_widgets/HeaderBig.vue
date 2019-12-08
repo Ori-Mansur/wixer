@@ -49,10 +49,7 @@ export default {
     setImg(event) {
       this.$emit("setImg", { event, sectionId: this.section._id });
     },
-//     startPos(ev){
-//       this.isDown=true
-// // console.log(ev);
-//     },
+
     setPos(ev){
       if(this.isDown){
 this.pos.x=ev.offsetX

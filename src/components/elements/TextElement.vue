@@ -11,22 +11,17 @@
       fontStyle: data.style.fontStyle, 
       textAlign: data.style.txtAlign }"></p>
     </div>
-   
   </section>
 </template>
 
 <script>
-// import TextEditor from "../wixer_cmps/TextEditor";
-
 export default {
   props: {
-    // isEdit: Boolean,
     data: Object,
     pos:Object
 
   },
  
-
   data() {
     return {
       isEdit:false,
@@ -58,9 +53,6 @@ $route(to){
     else this.isEdit = false;
 }
   },
-  components: {
-    // TextEditor
-  }
 };
 </script>
 
