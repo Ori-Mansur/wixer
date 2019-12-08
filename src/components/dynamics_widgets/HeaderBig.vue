@@ -71,7 +71,6 @@ export default {
       this.$emit("remove", id);
     },
     saveText(value) {
-      // console.log('jjhjjj',value);
 
       this.modifySection.data[this.selectedTxt].text = value;
       console.log(this.modifySection.data[this.selectedTxt].text);
@@ -121,20 +120,4 @@ export default {
 };
 </script>
 <style lang="scss">
-.header-container {
-  position: relative;
-}
-
-.header-inside {
-  position: relative;
-}
-
-img {
-  width: 100px;
-  height: auto;
-}
-.background {
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 </style>

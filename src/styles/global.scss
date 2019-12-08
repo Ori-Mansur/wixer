@@ -12,7 +12,7 @@
 @import 'views/WapEditor';
 @import 'views/WapsPage';
 @import 'views/HomePage';
-// COMPONENTS
+// APP COMPONENTS
 @import 'components/main-header';
 @import 'components/NavBar';
 @import 'components/ToolBar';
@@ -22,9 +22,11 @@
 //dynamic-components
 @import 'dynamic-components/NavBarEdit';
 @import 'dynamic-components/About';
-@import 'dynamic-components/map';
+@import 'dynamic-components/Map';
 @import 'dynamic-components/CardContainer';
 @import 'dynamic-components/CardsContainer';
+@import 'dynamic-components/Header';
+
 //Elements
 @import 'components/Elements/ImageElement';
 @import 'components/Elements/TextElement'
