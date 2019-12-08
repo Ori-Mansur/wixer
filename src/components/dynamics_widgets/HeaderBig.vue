@@ -20,7 +20,7 @@
 <script>
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
 import TextElement from "../elements/TextElement";
-import TextEditor from "../wixer_cmps/TextEditor";
+// import TextEditor from "../wixer_cmps/TextEditor";
 
 export default {
   props: {
@@ -107,7 +107,7 @@ this.pos.y=ev.offsetY
   },
   components: {
     WidgetEditor,
-    TextEditor,
+    // TextEditor,
     TextElement
   }
 };

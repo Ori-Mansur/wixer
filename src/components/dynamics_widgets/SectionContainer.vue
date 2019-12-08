@@ -53,9 +53,9 @@ modifySection:JSON.parse(JSON.stringify(this.section))
         // this.$store.commit("addElement", { value, idx: this.idx });
       }
     },
-    group() {
-      const group = this.$store.getters.group;
-    }
+    // group() {
+    //   const group = this.$store.getters.group;
+    // }
   },
   methods: {
     setImg(event) {
