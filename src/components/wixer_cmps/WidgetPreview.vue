@@ -9,6 +9,7 @@
           :idx="idx"
           :is="element.type"
           :section="element"
+          @save="saveSection"
           @saveMapData="saveMapData"
           @addEl="addEl"
           @setImg="setImg"
@@ -79,8 +80,9 @@ return  this.$store.getters.currWapSections;
             this.$store.commit({type:"addElement", sectionToEdit})
 
     },
-    showChange(added){
-      console.log(added)
+    saveSection(section){
+      console.log(section)
+      this.$store.commit({type:'saveSection',section})
     },
     setImg(data) {
       this.$store.dispatch({ type: "setBcgImg", data });

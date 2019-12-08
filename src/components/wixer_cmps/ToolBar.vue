@@ -164,7 +164,6 @@ this.$store.dispatch({type:'loadWidgets'})
     // EditOption,
     SettingWap,
     Menu,
-    Drag,
     draggable
   }
 };

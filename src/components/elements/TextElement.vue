@@ -1,6 +1,6 @@
 <template>
   <section v-if="data" class="text-container" @click="selectedTxt">
-    <TextEditor @edit="edit" :data="data" />
+    
     <div @keyup="saveText">
       <p
         v-if="data.style"
@@ -15,6 +15,7 @@
       textAlign: data.style.txtAlign }"
       ></p>
     </div>
+    <TextEditor @edit="edit" :data="data" />
   </section>
 </template>
 
@@ -42,7 +43,7 @@ export default {
     },
     saveText(ev) {
       const txt = ev.target.innerText;
-      this.$emit("saveText", txt);
+      this.$emit("saveText", {txt,id:this.data._id});
     },
     edit(type) {
       console.log(type);

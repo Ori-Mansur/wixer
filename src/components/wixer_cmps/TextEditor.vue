@@ -48,7 +48,6 @@ export default {
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
     console.log(this.isEdit)
-    console.log(this.widget)
   },
   data() {
     return {
@@ -89,14 +88,15 @@ export default {
 <style lang="scss" >
 .text-editor-icons-container {
   cursor:pointer;
-  background-color: white;
+  // background-color: white;
   // padding: 5px;
   // width: 10px;
   width: fit-content;
   // height: 24px;
   display: flex;
-  flex-direction: column-reverse;
+  // flex-direction: column-reverse;
   position:absolute;
+  
   
  
   // left:0;
@@ -110,7 +110,7 @@ export default {
   }
   .select-txt-edit{
     width: 24px;
-    // height: 24px;
+    height: 24px;
     color: white
   }
  

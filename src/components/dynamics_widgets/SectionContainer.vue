@@ -6,7 +6,6 @@
     :style="{backgroundColor: section.style.bcgColor,
      backgroundImage: `url(${section.style.bcgImg})`}"
   >
-    {{section._id}}
     <WidgetEditor @setImg="setImg" :data="section" />
     <draggable class="dragArea list-group" v-model="List" :group="section._id" 
     @change="add($event)"
@@ -19,6 +18,7 @@
       <component :key="idx"
        @saveMapData="saveMapData" 
        @edit="editStyle"
+       @saveText="saveText"
       :is="element.type" 
       :data="element"></component>
     </div>
@@ -37,6 +37,11 @@ export default {
     section: Object,
     isEdit: Boolean,
     idx: Number
+  },
+  data(){
+    return{
+modifySection:JSON.parse(JSON.stringify(this.section))
+    }
   },
   computed: {
     List: {
@@ -64,6 +69,21 @@ export default {
         sectionId: this.section._id
       });
     },
+    saveText(value) {
+      console.log('jjhjjj',value);
+
+     const idx= this.modifySection.data.findIndex(data=>data._id===value.id)
+     console.log(idx);
+     this.modifySection.data[idx].text=value.txt
+      // console.log(this.modifySection.data[this.selectedTxt].text);
+      this.saveSection()
+      // this.$emit("saveText", { txt: value, sectionId: this.section._id });
+    },
+    saveSection(){
+      console.log('sac',this.modifySection);
+      
+this.$emit('save',this.modifySection)
+    },
     setGroup(sectionId) {
       this.$store.commit({ type: "setGroup", group: sectionId });
     },
@@ -71,28 +91,23 @@ export default {
       this.$emit("addEl",{sectionIdx:this.idx,data: evt.added});
     },
     editStyle(newStyle) {
-      console.log('kkk',newStyle);
-      console.log(this.section);
-      
       const txtStyle = this.section.data.find(el=>el._id===newStyle.dataId).style 
       var style=JSON.parse(JSON.stringify(txtStyle))
-      console.log(style);
       
       if (newStyle.style.type === "bold") {
         style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";
       } else if (newStyle.style.type === "italicize") {
         style.fontStyle = style.fontStyle === "normal" ? "italic" : "normal";
       } else if (newStyle.style.type === "fontFamily")
-        style.fontFamily = newStyle.font;
-      else if (newStyle.style.type === "color") style.color = newStyle.color;
+        style.fontFamily = newStyle.style.font;
+      else if (newStyle.style.type === "color") style.color = newStyle.style.color;
       else if (newStyle.style.type === "minus") style.fontSize += -2;
       else if (newStyle.style.type === "plus") style.fontSize += 2;
-      console.log('after',style);
-      
-      // this.$emit("changeStyle", {
-      //   cardData: { style, idx: this.selectedTxt },
-      //   sectionId: this.section._id
-      // });
+      newStyle.style=style
+      this.$emit("changeStyle", {
+        cardData: newStyle,  
+        sectionId: this.section._id
+      });
     }
   },
   components: {

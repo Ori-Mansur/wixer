@@ -55,6 +55,8 @@ export default {
             state.currWap.sections[data.sectionIdx].data[data.data.newIndex]._id = UtilsService.makeId()
         },
         saveSection(state, { section }) {
+            console.log(section);
+            
             const idx = state.currWap.sections.findIndex(currSection => currSection._id === section._id)
             state.currWap.sections.splice(idx, 1, section)
         },
@@ -91,18 +93,23 @@ export default {
             state.currWap.sections[idx].data[sectionData.idx].style.bcgImg = sectionData.imgUrl
         },
         setSection(state, { data }) {
-            console.log(data);
             state.currSectionId = data
         },
         updateStyle(state, { data }) {
+console.log(data);
+
             const idx = state.currWap.sections.findIndex(section => section._id === data.sectionId)
+            
+            const cardIdx = state.currWap.sections[idx].data.findIndex(card => card._id === data.cardData.dataId)
+            console.log(cardIdx);
             if (data.cardData.id) {
-                const cardIdx = state.currWap.sections[idx].data.findIndex(card => card._id === data.cardData.id)
-                state.currWap.sections[idx].data[cardIdx]
-                state.currWap.sections[idx].data[cardIdx].data[data.cardData.idx].style = data.cardData.style
+                // state.currWap.sections[idx].data[cardIdx]
+                
+                // state.currWap.sections[idx].data[cardIdx].data[data.cardData.idx].style = data.cardData.style
             }
             else {
-                state.currWap.sections[idx].data[data.cardData.idx].style = data.cardData.style
+                console.log(state.currWap.sections[idx].data[cardIdx].style);
+                state.currWap.sections[idx].data[cardIdx].style = data.cardData.style
             }
         }
     },

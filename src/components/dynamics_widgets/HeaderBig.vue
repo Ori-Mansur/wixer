@@ -65,9 +65,7 @@ this.pos.y=ev.offsetY
       this.$emit("remove", id);
     },
     saveText(value) {
-      // console.log('jjhjjj',value);
-      
-      this.modifySection.data[this.selectedTxt].text=value
+      this.modifySection.data[this.selectedTxt].text=value.txt
       console.log(this.modifySection.data[this.selectedTxt].text);
       this.saveSection()
       // this.$emit("saveText", { txt: value, sectionId: this.section._id });
@@ -82,21 +80,23 @@ this.$emit('save',this.modifySection)
     },
     editStyle(newStyle) {
       console.log('kkk');
-      
-      var style = this.modifySection.data[this.selectedTxt].style 
-      if (newStyle.type === "bold") {
+      console.log(newStyle);
+      var txtStyle= this.modifySection.data[this.selectedTxt].style 
+      var style=txtStyle
+       if (newStyle.style.type === "bold") {
         style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";
-      } else if (newStyle.type === "italicize") {
+      } else if (newStyle.style.type === "italicize") {
         style.fontStyle = style.fontStyle === "normal" ? "italic" : "normal";
-      } else if (newStyle.type === "fontFamily")
-        style.fontFamily = newStyle.font;
-      else if (newStyle.type === "color") style.color = newStyle.color;
-      else if (newStyle.type === "minus") style.fontSize += -2;
-      else if (newStyle.type === "plus") style.fontSize += 2;
-      // this.$emit("changeStyle", {
-      //   cardData: { style, idx: this.selectedTxt },
-      //   sectionId: this.section._id
-      // });
+      } else if (newStyle.style.type === "fontFamily")
+        style.fontFamily = newStyle.style.font;
+      else if (newStyle.style.type === "color") style.color = newStyle.style.color;
+      else if (newStyle.style.type === "minus") style.fontSize += -2;
+      else if (newStyle.style.type === "plus") style.fontSize += 2;
+      newStyle.style=style
+      this.$emit("changeStyle", {
+        cardData: newStyle,  
+        sectionId: this.section._id
+      });
     }
   },
   created() {
