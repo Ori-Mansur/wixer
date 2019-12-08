@@ -11,11 +11,8 @@
   </div>
 </template>
 <script>
-import VideoAndTxt from "../components/dynamics_widgets/premade_container/VidAndTxt";
-import TxtAndMap from "../components/dynamics_widgets/premade_container/TxtAndMap";
 import NavBar from "../components/dynamics_widgets/NavBarEdit";
 import Container1 from "../components/dynamics_widgets/Container1";
-import Container3 from "../components/dynamics_widgets/Container3";
 import HeaderBig from "../components/dynamics_widgets/HeaderBig";
 import Img from "../components/dynamics_widgets/Img";
 import Map from "../components/dynamics_widgets/Map";
@@ -23,8 +20,7 @@ import Txt from "../components/dynamics_widgets/Txt";
 import Video from "../components/dynamics_widgets/Video";
 import Form from "../components/dynamics_widgets/Form";
 import FormInline from "../components/dynamics_widgets/FormInline";
-import About from "../components/dynamics_widgets/About";
-import FrameSurfe from "../components/dynamics_widgets/surfes_web/FrameFacebook";
+import FrameFacebook from "../components/elements/FrameFacebook";
 import SectionContainer from "../components/dynamics_widgets/SectionContainer";
 import SectionHorizental from "../components/dynamics_widgets/SectionHorizental";
 import CardsContainer from "../components/dynamics_widgets/CardsContainer";
@@ -40,7 +36,7 @@ export default {
     async setWap() {
       const id = this.$route.params.id;
       if (id) {
-        const wap = await this.$store.dispatch({ type: "wapById", id });
+        const wap = await this.$store.dispatch({ type: "loadWap", id });
         this.wap = wap;
       }
     },
@@ -49,7 +45,7 @@ export default {
   async created() {
     const id = this.$route.params.id;
     if (id) {
-      const wap = await this.$store.dispatch({ type: "wapById", id });
+      const wap = await this.$store.dispatch({ type: "loadWap", id });
       this.wap = wap;
       console.log( this.wap);
       
@@ -59,11 +55,8 @@ export default {
     SectionContainer,
     SectionHorizental,
     CardsContainer,
-    VideoAndTxt,
-    TxtAndMap,
     NavBar,
     Container1,
-    Container3,
     HeaderBig,
     Img,
     Map,
@@ -71,8 +64,7 @@ export default {
     Video,
     Form,
     FormInline,
-    About,
-    FrameSurfe
+    FrameFacebook
   }
 };
 </script>

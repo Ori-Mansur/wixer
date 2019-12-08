@@ -1,7 +1,6 @@
 <template>
   <section>
-    <draggable class="dragArea list-group" v-model="myList"  group="people"
-    @change="add($event)">
+    <draggable class="dragArea list-group" v-model="myList" group="people" @change="add($event)">
       <div class="list-group-item" v-for="(element,idx) in sections" :key="idx">
         <component
           :isEdit="isEdit"
@@ -27,11 +26,8 @@
 </template>
 <script>
 import draggable from "vuedraggable";
-import VideoAndTxt from "../dynamics_widgets/premade_container/VidAndTxt";
-import TxtAndMap from "../dynamics_widgets/premade_container/TxtAndMap";
 import NavBar from "../dynamics_widgets/NavBarEdit";
 import Container1 from "../dynamics_widgets/Container1";
-import Container3 from "../dynamics_widgets/Container3";
 import HeaderBig from "../dynamics_widgets/HeaderBig";
 import Img from "../dynamics_widgets/Img";
 import Map from "../dynamics_widgets/Map";
@@ -39,8 +35,7 @@ import Txt from "../dynamics_widgets/Txt";
 import Video from "../dynamics_widgets/Video";
 import Form from "../dynamics_widgets/Form";
 import FormInline from "../dynamics_widgets/FormInline";
-import About from "../dynamics_widgets/About";
-import FrameSurfe from "../dynamics_widgets/surfes_web/FrameFacebook";
+import FrameFacebook from "../elements/FrameFacebook";
 import SectionContainer from "../dynamics_widgets/SectionContainer";
 import SectionHorizental from "../dynamics_widgets/SectionHorizental";
 import CardContainer from "../dynamics_widgets/CardContainer";
@@ -53,34 +48,26 @@ export default {
   data() {
     return {
       isEdit: false,
-      newIdx:'',
+      newIdx: ""
     };
   },
   computed: {
-    sections(){
-return  this.$store.getters.currWapSections;
+    sections() {
+      return this.$store.getters.currWapSections;
     },
     myList: {
       get() {
-        return  this.$store.getters.currWapSections;
+        return this.$store.getters.currWapSections;
       },
-      set() {
-        
-      }
+      set() {}
     }
   },
   methods: {
-    saveMapData(newData){
-      this.$store.commit({type: "saveSectionData", newData });
-
+    saveMapData(newData) {
+      this.$store.commit({ type: "saveSectionData", newData });
     },
-    addEl(sectionToEdit){
-            this.$store.commit({type:"addElement", sectionToEdit})
-
-    },
-    saveSection(section){
-      console.log(section)
-      this.$store.commit({type:'saveSection',section})
+    saveSection(section) {
+      this.$store.commit({ type: "saveSection", section });
     },
     setImg(data) {
       this.$store.dispatch({ type: "setBcgImg", data });
@@ -89,20 +76,17 @@ return  this.$store.getters.currWapSections;
       this.$store.dispatch({ type: "setCardImg", data });
     },
     saveText(data) {
-      console.log("pre", data);
       this.$store.commit({ type: "updateTxt", data });
     },
     changeStyle(data) {
       this.$store.commit({ type: "updateStyle", data });
     },
-    add(evt){
-      this.$store.commit("addSection",evt.added)
+    add(evt) {
+      this.$store.commit("addSection", evt.added);
     },
     addEl(data) {
-      this.$store.commit("addElement",data);
+      this.$store.commit("addElement", data);
     }
-  
-   
   },
   created() {
     const param = this.$route.path;
@@ -111,11 +95,8 @@ return  this.$store.getters.currWapSections;
   },
   components: {
     draggable,
-    VideoAndTxt,
-    TxtAndMap,
     NavBar,
     Container1,
-    Container3,
     HeaderBig,
     Img,
     Map,
@@ -123,8 +104,7 @@ return  this.$store.getters.currWapSections;
     Video,
     Form,
     FormInline,
-    About,
-    FrameSurfe,
+    FrameFacebook,
     SectionContainer,
     SectionHorizental,
     CardContainer,

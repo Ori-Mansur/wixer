@@ -1,7 +1,6 @@
 'use strict';
 import HttpService from './HttpService.js';
 import utils from './UtilsService.js';
-// import cloudinaryService from './cloudinary.service.js';
 
 export default {
   query,
@@ -9,10 +8,6 @@ export default {
   queryElements,
   addId
 };
-// const BASE_URL =
-//   process.env.NODE_ENV !== 'development'
-//     ? '/api/widget'
-//     : '//localhost:3150/api/widget';
 
 const BASE_URL = 'widget';
 function addId(widget) {
@@ -20,25 +15,22 @@ function addId(widget) {
   widget.data.map(widget => {
     widget._id = utils.makeId();
   });
-  console.log(widget.data);
   return widget;
 }
 
 async function query() {
-  return await widgets;
+  return await sections;
 }
 async function queryElements() {
   return await elements;
 }
-// async function query() {
-//   return await HttpService.get(BASE_URL)
-// }
+
 async function getById(id) {
   const res = await HttpService.get(`${BASE_URL}/${id}`);
   return await res.data;
 }
 
-const widgets = [
+const sections = [
   {
     type: 'HeaderBig',
     name: 'Big Header',
@@ -250,52 +242,6 @@ const widgets = [
       }
     ]
   },
-  // {
-  //   type: 'Container3',
-  //   name: 'Multi Paragraph',
-  //   style: {
-  //     bcgImg: '',
-  //     bcgColor: ''
-  //   },
-  //   data: [
-  //     {
-  //       text:
-  //         'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-  //       style: {
-  //         color: 'black',
-  //         fontSize: 16,
-  //         fontWeight: 'normal',
-  //         fontFamily: 'Arial',
-  //         fontStyle: 'normal',
-  //         txtAlign: 'center'
-  //       }
-  //     },
-  //     {
-  //       text:
-  //         'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-  //       style: {
-  //         color: 'black',
-  //         fontSize: 16,
-  //         fontWeight: 'normal',
-  //         fontFamily: 'Arial',
-  //         fontStyle: 'normal',
-  //         txtAlign: 'center'
-  //       }
-  //     },
-  //     {
-  //       text:
-  //         'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-  //       style: {
-  //         color: 'black',
-  //         fontSize: 16,
-  //         fontWeight: 'normal',
-  //         fontFamily: 'Arial',
-  //         fontStyle: 'normal',
-  //         txtAlign: 'center'
-  //       }
-  //     }
-  //   ]
-  // },
   {
     type: 'NavBar',
     name: 'NavBar',
@@ -305,7 +251,6 @@ const widgets = [
       subtitle: 'this is the subtitle',
       logo: 'img/logo.jpg'
     },
-    createdAt: '2019-12-01T08:14:55.611Z'
   },
   {
     _id: '5de377c778a07666601168ff',
@@ -318,7 +263,6 @@ const widgets = [
         bcgColor: 'white'
       }
     },
-    createdAt: '2019-12-01T08:20:23.556Z'
   },
 
   {
@@ -327,16 +271,14 @@ const widgets = [
     name: 'Form Inline',
     icon: 'fa fa-envelope-open fa-2x',
     data: {},
-    createdAt: '2019-12-02T08:21:46.753Z'
   },
 
   {
     _id: '5de4c99dfxaxccsacsc026x',
-    type: 'FrameSurfe',
+    type: 'FrameFacebook',
     icon: 'fa fa-facebook-square fa-2x',
     name: 'Facebook',
     data: {},
-    createdAt: '2019-12-02T08:21:46.753Z'
   },
   {
     _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
@@ -346,7 +288,6 @@ const widgets = [
     sectionList: 'sectionList',
     style: { bcgImg: '', bcgColor: '' },
     data: [],
-    createdAt: '2019-12-02T08:21:46.753Z'
   },
   {
     _id: '0001',
@@ -372,27 +313,10 @@ const widgets = [
     sectionList: 'sectionList',
     style: { bcgImg: '', bcgColor: '' },
     data: [],
-    createdAt: '2019-12-02T08:21:46.753Z'
   }
 ];
 
 const elements = [
-  {
-    _id: '0001',
-    type: 'Map',
-    name: 'Map',
-    icon: 'fa fa-map fa-2x',
-    data: {
-      center: { lat: 32.109333, lng: 34.855499 },
-      markers: [],
-      places: [],
-      placesMarked: [],
-      placesNames: [],
-      currentPlace: '',
-      placeName: '',
-      place: ''
-    }
-  },
   {
     _id: '5de3deff1c9d44000049e80e',
     type: 'Txt',
@@ -402,14 +326,12 @@ const elements = [
       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!',
     style: {
       color: 'black',
-      fontSize: 30,
+      fontSize: 16,
       fontWeight: 'normal',
       fontFamily: 'Arial',
       fontStyle: 'normal',
       txtAlign: 'center'
     }
-
-
   },
   {
     _id: 'el1001',
@@ -440,8 +362,6 @@ const elements = [
     type: 'FormV',
     icon: 'fa fa-envelope-open fa-2x',
     name: 'Form Horizental',
-
     data: {},
-    createdAt: '2019-12-02T08:21:46.753Z'
   }
 ];

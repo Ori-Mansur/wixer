@@ -68,12 +68,6 @@ export default {
             state.currWap.sections.splice(idx, 1, newData)
       
           },
-        // addElement(state, data) {
-        //     console.log('element', data.value)
-        //     data.value.forEach(element => element._id = UtilsService.makeId());
-        //     state.currWap.sections[data.idx].data = data.value
-        //     // const idx = state.currWap.sections.findIndex(section => section._id === state.group)
-        // },
         addWidget(state, { data }) {
             const idx = state.currWap.sections.findIndex(currSection => currSection._id === data.sectionId)
             console.log('store idx', state.currWap.sections[idx]);
@@ -118,21 +112,15 @@ console.log(data);
             context.commit({ type: 'setWaps', waps })
             return waps;
         },
-        async wapById(context, { id }) {
+        async loadWap(context, { id }) {
             const wap = await WapService.getById(id)
             context.commit({ type: 'setWap', wap })
             return wap
-        },
-        async addSection(context, { section }) {
-            context.commit({ type: 'addSection', section })
-            await WapService.update(context.state.currWap)
-            context.commit({ type: 'success', msg: 'Wap saved' })
         },
         async addWidget(context, { data }) {
             await context.commit({ type: 'addWidget', data })
         },
         async saveWap(context) {
-            console.log('wap store', context.state.currWap);
             const wap = context.state.currWap
             const updateWap = await WapService.update(wap)
             context.commit({ type: 'setWap', wap: updateWap })
@@ -155,7 +143,6 @@ console.log(data);
             const addedWap = await WapService.add(newWap)
             context.commit({ type: 'setWap', wap: addedWap })
             context.commit({ type: 'open1', msg: 'New Website created' })
-            // console.log('addedWap',addedWap);
             return addedWap
         },
         async removeWap(context, { wapId }) {
