@@ -53,6 +53,11 @@ export default {
             state.currWap.sections[data.sectionIdx].data.splice(data.data.newIndex, 0, data.data.element)
             state.currWap.sections[data.sectionIdx].data[data.data.newIndex]._id = UtilsService.makeId()
         },
+        removeSection (state, {sectionId}){
+          console.log(sectionId)
+          const idx = state.currWap.sections.findIndex(section=> section._id===sectionId)
+          state.currWap.sections.splice(idx, 1)
+        },
         saveSection(state, { section }) {
             console.log(section);
             

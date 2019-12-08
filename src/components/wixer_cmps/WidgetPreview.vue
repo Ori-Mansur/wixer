@@ -8,6 +8,7 @@
           :idx="idx"
           :is="element.type"
           :section="element"
+          @removeSection="removeSection"
           @save="saveSection"
           @saveMapData="saveMapData"
           @addEl="addEl"
@@ -27,7 +28,7 @@
 <script>
 import draggable from "vuedraggable";
 import NavBar from "../dynamics_widgets/NavBarEdit";
-import Container1 from "../dynamics_widgets/Container1";
+import Paragraph from "../dynamics_widgets/Paragraph";
 import HeaderBig from "../dynamics_widgets/HeaderBig";
 import Img from "../dynamics_widgets/Img";
 import Map from "../dynamics_widgets/Map";
@@ -63,10 +64,14 @@ export default {
     }
   },
   methods: {
+    removeSection(id){
+      this.$store.commit({ type: "removeSection", sectionId:id });
+    },
     saveMapData(newData) {
       this.$store.commit({ type: "saveSectionData", newData });
     },
     saveSection(section) {
+      console.log(section);
       this.$store.commit({ type: "saveSection", section });
     },
     setImg(data) {
@@ -96,7 +101,7 @@ export default {
   components: {
     draggable,
     NavBar,
-    Container1,
+    Paragraph,
     HeaderBig,
     Img,
     Map,

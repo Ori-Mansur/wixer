@@ -22,7 +22,7 @@
       :data="data"
       class="widget-editor-container"
       @setImg="setImg"
-      @remove="removeWidget"
+      @removeWidget="removeWidget"
     ></widget-editor>
   </section>
 </template>
@@ -74,7 +74,7 @@ export default {
       this.$emit("setImg", { event,idx:this.index})
     },
     removeWidget(id) {
-      this.$emit("remove", id);
+      // this.$emit("removeWidget", this.data._id);
     },
     selectedText(idx) {
       this.selectedTxt = idx;

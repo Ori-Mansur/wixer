@@ -12,7 +12,7 @@
 </template>
 <script>
 import NavBar from "../components/dynamics_widgets/NavBarEdit";
-import Container1 from "../components/dynamics_widgets/Container1";
+import Paragraph from "../components/dynamics_widgets/Paragraph";
 import HeaderBig from "../components/dynamics_widgets/HeaderBig";
 import Img from "../components/dynamics_widgets/Img";
 import Map from "../components/dynamics_widgets/Map";
@@ -39,16 +39,14 @@ export default {
         const wap = await this.$store.dispatch({ type: "loadWap", id });
         this.wap = wap;
       }
-    },
-    
+    }
   },
   async created() {
     const id = this.$route.params.id;
     if (id) {
       const wap = await this.$store.dispatch({ type: "loadWap", id });
       this.wap = wap;
-      console.log( this.wap);
-      
+      console.log(this.wap);
     }
   },
   components: {
@@ -56,7 +54,7 @@ export default {
     SectionHorizental,
     CardsContainer,
     NavBar,
-    Container1,
+    Paragraph,
     HeaderBig,
     Img,
     Map,
