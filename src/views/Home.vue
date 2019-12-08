@@ -6,7 +6,8 @@
         <h1 class="home-header">Wixer</h1>
         <p
           class="home-header-content"
-        >Create your own website, add content and style it to look the way you like.</p>
+        >Create your own website,
+         add content and style it to look the way you like.</p>
           <router-link to="wap">
         <button class="home-btn">Get Started</button>
       </router-link>
