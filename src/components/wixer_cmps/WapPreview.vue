@@ -11,7 +11,8 @@
     <h3 class="main-title">{{wap.name}}</h3>
     <div class="content">
         <div class="content-overlay"></div>
-        <img class="content-image" src="@/assets/card2.png"/>
+        <!-- <img class="content-image" src="@/assets/card2.png"/> -->
+                <img class="content-image" :src="wap.thumbnail">
         
         <div class="content-details fadeIn-top">
            <label @click="preview(wap._id)">

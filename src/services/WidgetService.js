@@ -299,7 +299,7 @@ const widgets = [
   {
     type: 'NavBar',
     name: 'NavBar',
-    icon: 'fa fa-grip-lines fa-2x',
+    icon: 'fa fa-bars fa-2x',
     data: {
       title: 'this is the title',
       subtitle: 'this is the subtitle',
@@ -310,6 +310,7 @@ const widgets = [
   {
     _id: '5de377c778a07666601168ff',
     type: 'Form',
+    icon: 'fa fa-envelope-open fa-2x',
     name: 'Form',
     data: {
       style: {
@@ -319,72 +320,28 @@ const widgets = [
     },
     createdAt: '2019-12-01T08:20:23.556Z'
   },
-  {
-    _id: '5de3783378a0766660116900',
-    type: 'TxtAndMap',
-    name: 'Text And Map',
-    data: [
-      {
-        type: 'Map',
-        data: {
-          pos: {
-            lat: 34,
-            lng: 32.4349958
-          },
-          markers: [
-            {
-              position: {
-                lat: 32.0853,
-                lng: 34.781769
-              }
-            },
-            {
-              position: {
-                lat: 32.434048,
-                lng: 34.919651
-              }
-            },
-            {
-              position: {
-                lat: 31.768318,
-                lng: 35.213711
-              }
-            }
-          ]
-        }
-      },
-      {
-        type: 'Txt',
-        name: 'Text',
-        data: {
-          title: 'a little more',
-          txt:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!',
-          style: {
-            bcgImg: '',
-            bcgColor: 'white'
-          }
-        }
-      }
-    ],
-    createdAt: '2019-12-01T08:22:11.262Z'
-  },
+
   {
     _id: '5de4c99aca73df026cca7457',
     type: 'FormInline',
+    name: 'Form Inline',
+    icon: 'fa fa-envelope-open fa-2x',
     data: {},
     createdAt: '2019-12-02T08:21:46.753Z'
   },
-  
+
   {
     _id: '5de4c99dfxaxccsacsc026x',
     type: 'FrameSurfe',
+    icon: 'fa fa-facebook-square fa-2x',
+    name: 'Facebook',
     data: {},
     createdAt: '2019-12-02T08:21:46.753Z'
   },
   {
     _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
     type: 'SectionContainer',
+    name: 'Section',
     icon: 'fa fa-align-left fa-2x',
     sectionList: 'sectionList',
     style: { bcgImg: '', bcgColor: '' },
@@ -410,6 +367,7 @@ const widgets = [
   {
     _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
     type: 'SectionHorizental',
+    name: 'Section Horizental',
     icon: 'fa fa-align-left fa-2x',
     sectionList: 'sectionList',
     style: { bcgImg: '', bcgColor: '' },
@@ -429,7 +387,7 @@ const elements = [
       markers: [],
       places: [],
       placesMarked: [],
-      placesNames:[],
+      placesNames: [],
       currentPlace: '',
       placeName: '',
       place: ''
@@ -438,6 +396,7 @@ const elements = [
   {
     _id: '5de3deff1c9d44000049e80e',
     type: 'Txt',
+    name: 'Text',
     icon: 'fa fa-font fa-3x',
     data: {
       txt:
@@ -466,6 +425,7 @@ const elements = [
   {
     _id: 'el1002',
     type: 'TextEl',
+    name: 'Title',
     icon: 'fa fa-font fa-2x',
     text: 'Insert Title',
     style: {
@@ -480,7 +440,10 @@ const elements = [
   {
     _id: 'el1004',
     type: 'FormV',
+    icon: 'fa fa-envelope-open fa-2x',
+    name: 'Form Horizental',
+
     data: {},
     createdAt: '2019-12-02T08:21:46.753Z'
-  },
+  }
 ];
