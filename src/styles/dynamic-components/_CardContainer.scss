@@ -1,9 +1,13 @@
 .card-container {
+    max-width: 33%;
+
     position: relative;
     .text-container{
         padding: 10px;
+        max-width: 90%;
     }
     .text{
-        padding: 5px;
+        max-width: 100%;
+
     }
   }

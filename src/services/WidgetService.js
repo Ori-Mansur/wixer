@@ -111,6 +111,30 @@ const widgets = [
     ]
   },
   {
+    type: 'Container1',
+    name: 'Paragraph',
+    icon: 'fa fa-align-left fa-2x',
+    style: {
+      bcgImg: '',
+      bcgColor: '',
+      height: 400
+    },
+    data: [
+      {
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+        style: {
+          color: 'black',
+          fontSize: 16,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        }
+      }
+    ]
+  },
+  {
     type: 'CardsContainer',
     name: 'Multi Card',
     icon: 'fa fa-address-card fa-2x',

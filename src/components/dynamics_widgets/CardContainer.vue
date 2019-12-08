@@ -1,6 +1,6 @@
 <template>
   <section
-    class="card-container flex column"
+    class="card-container flex column align-center"
     :style="{
       backgroundColor: data.style.bcgColor,
       border: isBorder

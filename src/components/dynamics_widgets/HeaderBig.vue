@@ -1,19 +1,26 @@
 <template>
   <section
     class="header-container flex column justify-center align-center background"
-    :style="{backgroundImage: `url(${section.style.bcgImg})`,backgroundColor: section.style.bcgColor,
-    height: 550 + 'px', border: isBorder}">
-    <widget-editor 
+    :style="{
+      backgroundImage: `url(${section.style.bcgImg})`,
+      backgroundColor: section.style.bcgColor,
+      height: 550 + 'px',
+      border: isBorder
+    }"
+  >
+    <widget-editor
       :data="section"
       @setImg="setImg"
-      @remove="removeWidget" ></widget-editor>
-    <TextEditor @edit="editStyle"/>
-    <text-element v-for="(data, idx) in section.data"
-    class="header-inside"
-    @saveText="saveText"
-    @click.native="selectedText(idx)"
-    :key="idx" 
-    :data="JSON.parse(JSON.stringify(data))"
+      @remove="removeWidget"
+    ></widget-editor>
+    <TextEditor @edit="editStyle" />
+    <text-element
+      v-for="(data, idx) in section.data"
+      class="header-inside"
+      @saveText="saveText"
+      @click.native="selectedText(idx)"
+      :key="idx"
+      :data="JSON.parse(JSON.stringify(data))"
     ></text-element>
   </section>
 </template>
@@ -28,60 +35,59 @@ export default {
   },
   data() {
     return {
-      pos: { x: '', y: '' },
+      pos: { x: "", y: "" },
       selectedTxt: 0,
       isEdit: false,
-      isDown:false,
-      modifySection:JSON.parse(JSON.stringify(this.section))
+      isDown: false,
+      modifySection: JSON.parse(JSON.stringify(this.section))
     };
   },
-  
-  computed:{
-    isBorder(){
-      if (this.isEdit) return '1px solid blue'
-      else return ''
+
+  computed: {
+    isBorder() {
+      if (this.isEdit) return "1px solid blue";
+      else return "";
     },
-    inside(){
-      return 'position: relative'
+    inside() {
+      return "position: relative";
     }
   },
   methods: {
     setImg(event) {
       this.$emit("setImg", { event, sectionId: this.section._id });
     },
-//     startPos(ev){
-//       this.isDown=true
-// // console.log(ev);
-//     },
-    setPos(ev){
-      if(this.isDown){
-this.pos.x=ev.offsetX
-this.pos.y=ev.offsetY
+    //     startPos(ev){
+    //       this.isDown=true
+    // // console.log(ev);
+    //     },
+    setPos(ev) {
+      if (this.isDown) {
+        this.pos.x = ev.offsetX;
+        this.pos.y = ev.offsetY;
         console.log(ev);
       }
-
     },
     removeWidget(id) {
       this.$emit("remove", id);
     },
     saveText(value) {
       // console.log('jjhjjj',value);
-      
-      this.modifySection.data[this.selectedTxt].text=value
+
+      this.modifySection.data[this.selectedTxt].text = value;
       console.log(this.modifySection.data[this.selectedTxt].text);
-      this.saveSection()
+      this.saveSection();
       // this.$emit("saveText", { txt: value, sectionId: this.section._id });
     },
-    saveSection(){
-      console.log('sac',this.modifySection);
-      
-this.$emit('save',this.modifySection)
+    saveSection() {
+      console.log("sac", this.modifySection);
+
+      this.$emit("save", this.modifySection);
     },
     selectedText(idx) {
       this.selectedTxt = idx;
     },
     editStyle(newStyle) {
-      var style = this.modifySection.data[this.selectedTxt].style 
+      var style = this.modifySection.data[this.selectedTxt].style;
       if (newStyle.type === "bold") {
         style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";
       } else if (newStyle.type === "italicize") {
@@ -114,13 +120,13 @@ this.$emit('save',this.modifySection)
   }
 };
 </script>
-<style lang="scss" >
+<style lang="scss">
 .header-container {
-  position:relative;
+  position: relative;
 }
 
-.header-inside{
-  position: relative
+.header-inside {
+  position: relative;
 }
 
 img {
@@ -132,4 +138,3 @@ img {
   background-size: cover;
 }
 </style>
-
