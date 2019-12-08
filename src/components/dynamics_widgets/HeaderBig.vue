@@ -12,6 +12,7 @@
       :data="section"
       @setImg="setImg"
       @removeWidget="removeWidget"
+      @changePos="changePos"
     ></widget-editor>
     <text-element
       v-for="(data, idx) in modifySection.data"
@@ -52,6 +53,9 @@ export default {
     }
   },
   methods: {
+    changePos(moveBy){
+      this.$store.commit({type: 'changePos', moveBy, sectionToMove: this.section})
+    },
     setImg(event) {
       this.$emit("setImg", { event, sectionId: this.section._id });
     },

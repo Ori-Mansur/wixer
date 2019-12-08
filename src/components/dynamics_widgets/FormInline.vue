@@ -4,11 +4,12 @@
     :model="ruleForm"
     status-icon
     ref="ruleForm"
-    class="demo-ruleForm"
+    class="demo-ruleForm flex row"
     :label-position="labelPosition"
   >
   <widget-editor
       :data="section"
+      @changePos="changePos"
       @setImg="setImg"
       @removeWidget="removeWidget"
     ></widget-editor>
@@ -113,6 +114,9 @@ export default {
     };
   },
   methods: {
+    changePos(moveBy){
+      this.$store.commit({type: 'changePos', moveBy, sectionToMove: this.section})
+    },
     removeWidget(id) {
       this.$emit("removeSection", id);
     },
