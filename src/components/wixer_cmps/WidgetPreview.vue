@@ -8,6 +8,7 @@
           :idx="idx"
           :is="element.type"
           :section="element"
+          @removeSection="removeSection"
           @save="saveSection"
           @saveMapData="saveMapData"
           @addEl="addEl"
@@ -63,10 +64,14 @@ export default {
     }
   },
   methods: {
+    removeSection(id){
+      this.$store.commit({ type: "removeSection", sectionId:id });
+    },
     saveMapData(newData) {
       this.$store.commit({ type: "saveSectionData", newData });
     },
     saveSection(section) {
+      console.log(section);
       this.$store.commit({ type: "saveSection", section });
     },
     setImg(data) {

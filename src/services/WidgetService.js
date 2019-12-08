@@ -293,6 +293,7 @@ const sections = [
     _id: '0001',
     type: 'Map',
     name: 'Map',
+    style: { bcgImg: '', bcgColor: '' },
     data: {
       center: { lat: 32.109333, lng: 34.855499 },
       markers: [],

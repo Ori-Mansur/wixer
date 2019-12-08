@@ -1,12 +1,18 @@
 <template>
   <section
     class="header-container flex column justify-center align-center background"
-    :class="{'border-edit': isEdit}"
-    :style="{backgroundImage: `url(${section.style.bcgImg})`,
-    backgroundColor: section.style.bcgColor,
-    height: section.style.height + 'vh'}"
+    :class="{ 'border-edit': isEdit }"
+    :style="{
+      backgroundImage: `url(${section.style.bcgImg})`,
+      backgroundColor: section.style.bcgColor,
+      height: section.style.height + 'vh'
+    }"
   >
-    <widget-editor :data="section" @setImg="setImg" @remove="removeWidget"></widget-editor>
+    <widget-editor
+      :data="section"
+      @setImg="setImg"
+      @removeWidget="removeWidget"
+    ></widget-editor>
     <text-element
       v-for="(data, idx) in modifySection.data"
       @saveText="saveText"
@@ -50,18 +56,18 @@ export default {
       this.$emit("setImg", { event, sectionId: this.section._id });
     },
 
-    setPos(ev){
-      if(this.isDown){
-this.pos.x=ev.offsetX
-this.pos.y=ev.offsetY
+    setPos(ev) {
+      if (this.isDown) {
+        this.pos.x = ev.offsetX;
+        this.pos.y = ev.offsetY;
         console.log(ev);
       }
     },
     removeWidget(id) {
-      this.$emit("remove", id);
+      this.$emit("removeSection", id);
     },
     saveText(value) {
-      this.modifySection.data[this.selectedTxt].text=value.txt
+      this.modifySection.data[this.selectedTxt].text = value.txt;
       console.log(this.modifySection.data[this.selectedTxt].text);
       this.saveSection();
       // this.$emit("saveText", { txt: value, sectionId: this.section._id });
@@ -75,22 +81,23 @@ this.pos.y=ev.offsetY
       this.selectedTxt = idx;
     },
     editStyle(newStyle) {
-      console.log('kkk');
+      console.log("kkk");
       console.log(newStyle);
-      var txtStyle= this.modifySection.data[this.selectedTxt].style 
-      var style=txtStyle
-       if (newStyle.style.type === "bold") {
+      var txtStyle = this.modifySection.data[this.selectedTxt].style;
+      var style = txtStyle;
+      if (newStyle.style.type === "bold") {
         style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";
       } else if (newStyle.style.type === "italicize") {
         style.fontStyle = style.fontStyle === "normal" ? "italic" : "normal";
       } else if (newStyle.style.type === "fontFamily")
         style.fontFamily = newStyle.style.font;
-      else if (newStyle.style.type === "color") style.color = newStyle.style.color;
+      else if (newStyle.style.type === "color")
+        style.color = newStyle.style.color;
       else if (newStyle.style.type === "minus") style.fontSize += -2;
       else if (newStyle.style.type === "plus") style.fontSize += 2;
-      newStyle.style=style
+      newStyle.style = style;
       this.$emit("changeStyle", {
-        cardData: newStyle,  
+        cardData: newStyle,
         sectionId: this.section._id
       });
     }
@@ -112,5 +119,4 @@ this.pos.y=ev.offsetY
   }
 };
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>
