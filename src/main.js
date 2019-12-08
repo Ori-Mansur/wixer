@@ -3,14 +3,10 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { faUserSecret } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-// import  "@css/fontawesome.css"
-// import  "@css/brands.css"
-// import  "@css/solid.css"
+
 import draggable from 'vuedraggable';
 Vue.use(draggable);
 import Unicon from 'vue-unicons';
@@ -74,9 +70,6 @@ Unicon.add([
 Vue.use(Unicon);
 Vue.use(ElementUI);
 
-// library.add(faUserSecret);
-
-// Vue.component('font-awesome-icon', FontAwesomeIcon);
 import './styles/global.scss';
 Vue.config.productionTip = false;
 import VueFacebook from 'vue-facebook';

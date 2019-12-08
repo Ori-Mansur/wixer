@@ -69,8 +69,6 @@ export default {
 
     },
     addEl(sectionToEdit){
-      // console.log(el, sectionId)
-      // this.$store.commit({type:"addElement", el, sectionId})
             this.$store.commit({type:"addElement", sectionToEdit})
 
     },

@@ -1,5 +1,4 @@
 'use strict';
-// var moment = require('moment');
 import WapService from '../services/WapService.js';
 import UtilsService from '../services/UtilsService.js';
 import CloudinaryService from '../services/CloudinaryService.js';
@@ -47,12 +46,9 @@ export default {
     },
     saveSectionData(state, { newData }) {
       console.log(newData);
-      // debugger
       const idx = state.currWap.sections.findIndex(
         section => section._id === newData._id
       );
-      // const elIdx = state.currWap.sections[idx].data.findIndex(el => el._id === newData._id)
-      // state.currWap.sections[idx].data[elIdx] = newData
       state.currWap.sections.splice(idx, 1, newData);
     },
     addElement(state, value) {
@@ -148,7 +144,6 @@ export default {
       const addedWap = await WapService.add(newWap);
       context.commit({ type: 'setWap', wap: addedWap });
       context.commit({ type: 'open1', msg: 'New Website created' });
-      // console.log('addedWap',addedWap);
       return addedWap;
     },
     async removeWap(context, { wapId }) {

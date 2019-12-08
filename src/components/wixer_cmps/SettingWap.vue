@@ -81,11 +81,6 @@ export default {
 };
 </script>
  <style lang="scss" scoped>
-// .link-nav-input {
-//   width: 100px;
-//   display: inline-block;
-//   height: 40px;
-// }
 .link-nav-btn{
   display: inline-block;
   padding: 0px;
@@ -93,7 +88,4 @@ export default {
   padding-right: 5px;
   margin-left: 5px;
 }
-// .link-nav-submit{
-//   display: inline-block
-// }
 </style>

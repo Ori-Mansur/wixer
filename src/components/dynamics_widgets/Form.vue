@@ -3,8 +3,6 @@
       backgroundImage: `url(${value.data.style.bcgImg})`,backgroundColor: value.data.style.bcgColor
     }">
     <widget-editor :widget="value" class="flex justify-end" @remove="removeWidget"></widget-editor>
-    <!-- <h3>{{data.title}}</h3> -->
-
     <form @submit.prevent="send" class="flex column">
       <h4>Name:</h4>
       <input type="text" v-model="form.name"/>

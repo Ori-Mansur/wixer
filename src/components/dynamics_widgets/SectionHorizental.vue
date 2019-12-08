@@ -1,7 +1,6 @@
 <template>
   <div
     class="section-container container"
-    
     :class="{'border-edit': over}"
     :style="{backgroundColor: section.style.bcgColor,
      backgroundImage: `url(${section.style.bcgImg})`}"
@@ -90,11 +89,8 @@ export default {
   position: relative;
   padding: 10px;
   min-height: 200px;
-  // border: 1px dotted black;
-  // display: flex;
-
  
-  .placeholder{
+  .placeholder {
     padding: 50px;
     margin: auto auto;
     background-color: gainsboro;
@@ -107,7 +103,6 @@ export default {
   .list-group-h{
     height: 100%;
     display: flex;
-     
   }
 }
 </style>
