@@ -103,7 +103,7 @@ const sections = [
     ]
   },
   {
-    type: 'Container1',
+    type: 'Paragraph',
     name: 'Paragraph',
     icon: 'fa fa-align-left fa-2x',
     style: {
@@ -250,27 +250,27 @@ const sections = [
       title: 'this is the title',
       subtitle: 'this is the subtitle',
       logo: 'img/logo.jpg'
-    },
+    }
   },
-  {
-    _id: '5de377c778a07666601168ff',
-    type: 'Form',
-    icon: 'fa fa-envelope-open fa-2x',
-    name: 'Form',
-    data: {
-      style: {
-        bcgImg: '',
-        bcgColor: 'white'
-      }
-    },
-  },
+  // {
+  //   _id: '5de377c778a07666601168ff',
+  //   type: 'Form',
+  //   icon: 'fa fa-envelope-open fa-2x',
+  //   name: 'Form',
+  //   data: {
+  //     style: {
+  //       bcgImg: '',
+  //       bcgColor: 'white'
+  //     }
+  //   }
+  // },
 
   {
     _id: '5de4c99aca73df026cca7457',
     type: 'FormInline',
     name: 'Form Inline',
     icon: 'fa fa-envelope-open fa-2x',
-    data: {},
+    data: {}
   },
 
   {
@@ -278,7 +278,7 @@ const sections = [
     type: 'FrameFacebook',
     icon: 'fa fa-facebook-square fa-2x',
     name: 'Facebook',
-    data: {},
+    data: {}
   },
   {
     _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
@@ -287,7 +287,7 @@ const sections = [
     icon: 'fa fa-align-left fa-2x',
     sectionList: 'sectionList',
     style: { bcgImg: '', bcgColor: '' },
-    data: [],
+    data: []
   },
   {
     _id: '0001',
@@ -303,7 +303,6 @@ const sections = [
       placeName: '',
       place: ''
     }
-
   },
   {
     _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
@@ -312,7 +311,7 @@ const sections = [
     icon: 'fa fa-align-left fa-2x',
     sectionList: 'sectionList',
     style: { bcgImg: '', bcgColor: '' },
-    data: [],
+    data: []
   }
 ];
 
@@ -356,12 +355,12 @@ const elements = [
       fontStyle: 'normal',
       txtAlign: 'center'
     }
-  },
-  {
-    _id: 'el1004',
-    type: 'FormV',
-    icon: 'fa fa-envelope-open fa-2x',
-    name: 'Form Horizental',
-    data: {},
   }
+  // {
+  //   _id: 'el1004',
+  //   type: 'FormV',
+  //   icon: 'fa fa-envelope-open fa-2x',
+  //   name: 'Form Horizental',
+  //   data: {}
+  // }
 ];

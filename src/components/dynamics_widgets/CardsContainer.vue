@@ -1,16 +1,23 @@
 <template>
-  <section class="container-threeCol flex align-center row container" :style="{backgroundColor: section.style.bcgColor, border: isBorder}">
-
-    <card-container @setImg="setImg" 
-    @changeStyle="changeStyle"
-    v-for="(data, index) in section.data" :key="index"
-     :index="index" :data="data" :isEdit="isEdit" 
-     :style="{maxWidth: 'width'}"></card-container>
+  <section
+    class="container-threeCol flex align-center row container"
+    :style="{backgroundColor: section.style.bcgColor, border: isBorder}"
+  >
+    <card-container
+      @setImg="setImg"
+      @changeStyle="changeStyle"
+      v-for="(data, index) in section.data"
+      :key="index"
+      :index="index"
+      :data="data"
+      :isEdit="isEdit"
+      :style="{maxWidth: 'width'}"
+    ></card-container>
   </section>
 </template>
 
 <script>
-import CardContainer from '../dynamics_widgets/CardContainer';
+import CardContainer from "../dynamics_widgets/CardContainer";
 
 export default {
   props: {
@@ -18,42 +25,45 @@ export default {
     section: Object
   },
   created() {
-    console.log(this.section)
+    console.log(this.section);
   },
   components: {
     CardContainer
   },
-  data(){
-    return{
+  data() {
+    return {
       isEdit: false
+    };
+  },
+  computed: {
+    isBorder() {
+      if (this.isEdit) return "1px solid blue";
+      else return "";
+    },
+    width() {
+      var width = 100 / this.section.data.length + "%";
+      return width;
     }
   },
-  computed:{
-    isBorder(){
-      if (this.isEdit) return '1px solid blue'
-      else return ''
-    },
-    width(){
-      var width = 100/this.section.data.length+'%'
-      return width
-    },
-   
-  },
-  methods:{
+  methods: {
     removeWidget(id) {
       this.$emit("remove", id);
     },
-      setImg(data) {
-       console.log(data);
-      this.$emit("setCardImg", {event:data.event, sectionId: this.section._id ,idx:data.idx});
-    },
-    changeStyle(data){
+    setImg(data) {
       console.log(data);
-      this.$emit('changeStyle',{cardData:data,sectionId:this.section._id})
-      
+      this.$emit("setCardImg", {
+        event: data.event,
+        sectionId: this.section._id,
+        idx: data.idx
+      });
+    },
+    changeStyle(data) {
+      console.log(data);
+      this.$emit("changeStyle", {
+        cardData: data,
+        sectionId: this.section._id
+      });
     }
-  },
+  }
 };
 </script>
-<style lang="scss">
-</style>
