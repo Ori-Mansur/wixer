@@ -1,6 +1,6 @@
 <template>
   <section
-    class="map-section-container flex row space-around">
+    class="map-section-container flex row space-around container">
     <div class="map-container">
       <gmap-map :center="newData.data.center" :zoom="12" class="map">
         <gmap-marker

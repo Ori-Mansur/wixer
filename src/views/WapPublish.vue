@@ -43,7 +43,8 @@ export default {
         const wap = await this.$store.dispatch({ type: "wapById", id });
         this.wap = wap;
       }
-    }
+    },
+    
   },
   async created() {
     const id = this.$route.params.id;

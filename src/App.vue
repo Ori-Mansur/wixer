@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <NavBar v-if="path!=='/'" />
+   
     <router-view />
+
     <FooterApp v-if="path!=='/editor'"></FooterApp>
   </div>
 </template>

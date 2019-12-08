@@ -1,33 +1,26 @@
 <template>
   <section
     class="header-container flex column justify-center align-center background"
-    :style="{
-      backgroundImage: `url(${section.style.bcgImg})`,
-      backgroundColor: section.style.bcgColor,
-      height: 550 + 'px',
-      border: isBorder
-    }"
+    :class="{'border-edit': isEdit}"
+    :style="{backgroundImage: `url(${section.style.bcgImg})`,
+    backgroundColor: section.style.bcgColor,
+    height: section.style.height + 'vh'}"
   >
-    <widget-editor
-      :data="section"
-      @setImg="setImg"
-      @remove="removeWidget"
-    ></widget-editor>
-    <TextEditor @edit="editStyle" />
+    <widget-editor :data="section" @setImg="setImg" @remove="removeWidget"></widget-editor>
     <text-element
-      v-for="(data, idx) in section.data"
-      class="header-inside"
+      v-for="(data, idx) in modifySection.data"
       @saveText="saveText"
       @click.native="selectedText(idx)"
+      @edit="editStyle"
       :key="idx"
-      :data="JSON.parse(JSON.stringify(data))"
+      :data="data"
     ></text-element>
   </section>
 </template>
 <script>
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
 import TextElement from "../elements/TextElement";
-import TextEditor from "../wixer_cmps/TextEditor";
+// import TextEditor from "../wixer_cmps/TextEditor";
 
 export default {
   props: {
@@ -68,8 +61,7 @@ this.pos.y=ev.offsetY
       this.$emit("remove", id);
     },
     saveText(value) {
-
-      this.modifySection.data[this.selectedTxt].text = value;
+      this.modifySection.data[this.selectedTxt].text=value.txt
       console.log(this.modifySection.data[this.selectedTxt].text);
       this.saveSection();
       // this.$emit("saveText", { txt: value, sectionId: this.section._id });
@@ -83,18 +75,22 @@ this.pos.y=ev.offsetY
       this.selectedTxt = idx;
     },
     editStyle(newStyle) {
-      var style = this.modifySection.data[this.selectedTxt].style;
-      if (newStyle.type === "bold") {
+      console.log('kkk');
+      console.log(newStyle);
+      var txtStyle= this.modifySection.data[this.selectedTxt].style 
+      var style=txtStyle
+       if (newStyle.style.type === "bold") {
         style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";
-      } else if (newStyle.type === "italicize") {
+      } else if (newStyle.style.type === "italicize") {
         style.fontStyle = style.fontStyle === "normal" ? "italic" : "normal";
-      } else if (newStyle.type === "fontFamily")
-        style.fontFamily = newStyle.font;
-      else if (newStyle.type === "color") style.color = newStyle.color;
-      else if (newStyle.type === "minus") style.fontSize += -2;
-      else if (newStyle.type === "plus") style.fontSize += 2;
+      } else if (newStyle.style.type === "fontFamily")
+        style.fontFamily = newStyle.style.font;
+      else if (newStyle.style.type === "color") style.color = newStyle.style.color;
+      else if (newStyle.style.type === "minus") style.fontSize += -2;
+      else if (newStyle.style.type === "plus") style.fontSize += 2;
+      newStyle.style=style
       this.$emit("changeStyle", {
-        cardData: { style, idx: this.selectedTxt },
+        cardData: newStyle,  
         sectionId: this.section._id
       });
     }
@@ -111,7 +107,7 @@ this.pos.y=ev.offsetY
   },
   components: {
     WidgetEditor,
-    TextEditor,
+    // TextEditor,
     TextElement
   }
 };

@@ -1,26 +1,35 @@
 <template>
-  <section v-if="isEdit" class="text-editor-icons-container">
-    <select @change="change('fontFamily')" v-model="font" class="icon-txt-edit select-txt-edit">
+  <section v-if="isEdit && data&&data._id===txtId" class="text-editor-icons-container">
+    <select @change="change('fontFamily')" v-model="font" 
+    title="Font Family"
+    class="icon-txt-edit select-txt-edit">
       <option>Montserrat</option>
       <option>Roboto</option>
       <option>Arial</option>
       <option>Italianno</option>
+      <option>Playfair</option>
+      <option>Cabin</option>
+      <option>DancingScript</option>
+      <option>JosefinSans</option>
+      <option>Lobster</option>
+      <option>Pacifico</option>
+      <option>Solway</option>
+      <option>SulphurPoint</option>
     </select>
-   
-    <label @click.stop="change('italicize')">
-      <unicon name="italic" fill="black" class="icon-txt-edit" />
+    <label @click.stop="change('italicize')" title="Italic">
+      <unicon name="italic" fill="white" class="icon-txt-edit" />
     </label>
-    <label @click.stop="change('plus')">
-      <unicon name="plus" fill="black" class="icon-txt-edit" />
+    <label @click.stop="change('plus')" >
+      <unicon name="plus" fill="white" class="icon-txt-edit" />
     </label>
     <label @click.stop="change('minus')">
-      <unicon name="minus" fill="black" class="icon-txt-edit" />
+      <unicon name="minus" fill="white" class="icon-txt-edit" />
     </label>
     <label @click.stop="change('bold')">
-      <unicon name="bold" fill="black" class="icon-txt-edit" />
+      <unicon name="bold" fill="white" class="icon-txt-edit" />
     </label>
     <label @click.stop="palateColor=!palateColor">
-      <unicon name="palette" fill="black" class="icon-txt-edit" />
+      <unicon name="palette" fill="white" class="icon-txt-edit" />
     </label>
     <color-picker @changeColor="changeFontColor" v-if="palateColor"></color-picker>
   </section>
@@ -31,7 +40,7 @@ import ColorPicker from "../wixer_cmps/ColorPicker";
 
 export default {
   props: {
-    widget: Object,
+    data: Object,
     pos: Object,
   },
   created() {
@@ -39,7 +48,6 @@ export default {
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
     console.log(this.isEdit)
-    console.log(this.widget)
   },
   data() {
     return {
@@ -68,6 +76,9 @@ export default {
   
   },
   computed: {
+    txtId(){
+      return this.$store.getters.txtId
+    }
   },
   components: {
     ColorPicker
@@ -77,23 +88,28 @@ export default {
 <style lang="scss" >
 .text-editor-icons-container {
   cursor:pointer;
-  background-color: rgba(71, 71, 71, 0.568);
-  padding: 5px;
-  width: 10px;
+  // background-color: white;
+  // padding: 5px;
+  // width: 10px;
   width: fit-content;
+  // height: 24px;
   display: flex;
-  flex-direction: column-reverse;
+  // flex-direction: column-reverse;
   position:absolute;
+  
+  
  
-  left: 0;
+  // left:0;
   .icon-txt-edit{
-    background-color: #fff;
+    background-color: black;
     padding: 3px;
     cursor: pointer;
     margin: 0.5px;
   }
   .select-txt-edit{
-    width: 24px
+    width: 24px;
+    height: 24px;
+    color: white
   }
 }
 </style>

@@ -21,7 +21,6 @@
           :list="widgets"
           :sort="false"
           :group="{ name: 'people', pull: 'clone', put: false }"
-          :clone="cloneDog"
         >
           <div
             class="list-group-item"
@@ -39,7 +38,7 @@
           class="dragArea list-group"
           :list="elements"
           :sort="false"
-          :group="{ name: 'group', pull: 'clone', put: false }"
+          :group="{ name: group, pull: 'clone', put: false }"
           :clone="cloneX"
         >
           <div
@@ -111,12 +110,15 @@ export default {
     save(){
       this.$emit('save')
     },
-   cloneDog(section) {
-      return JSON.parse(JSON.stringify(section)) ;
-    },
    cloneX(section) {
+     console.log(section);
+     
       return JSON.parse(JSON.stringify(section)) ;
     },
+    onChange: function (evt) {
+	console.log(evt);
+  
+	},
   },
   computed: {
     color() {
@@ -140,7 +142,10 @@ export default {
       else return "gray";
     },
     group(){
-return this.$store.getters.group
+const group= this.$store.getters.group
+console.log('group',group);
+return group
+
     }
   },
   created(){

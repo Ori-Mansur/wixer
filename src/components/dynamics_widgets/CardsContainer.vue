@@ -1,5 +1,5 @@
 <template>
-  <section class="container-threeCol flex row container" :style="{backgroundColor: section.style.bcgColor, border: isBorder}">
+  <section class="container-threeCol flex align-center row container" :style="{backgroundColor: section.style.bcgColor, border: isBorder}">
 
     <card-container @setImg="setImg" 
     @changeStyle="changeStyle"

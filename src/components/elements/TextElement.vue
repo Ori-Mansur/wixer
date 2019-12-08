@@ -1,37 +1,38 @@
 <template>
-  <section v-if="data" class="text-container">
+  <section v-if="data" class="text-container" @click="selectedTxt">
+    
     <div @keyup="saveText">
       <p
         v-if="data.style"
         class="text"
         v-html="content"
         :contenteditable="isEdit"
-        :style="{
-          fontSize: data.style.fontSize + 'px',
-          fontWeight: data.style.fontWeight,
-          fontFamily: data.style.fontFamily,
-          color: data.style.color,
-          fontStyle: data.style.fontStyle,
-          textAlign: data.style.txtAlign
-        }"
+        :style="{fontSize: data.style.fontSize + 'px',
+      fontWeight: data.style.fontWeight, 
+      fontFamily: data.style.fontFamily, 
+      color: data.style.color, 
+      fontStyle: data.style.fontStyle, 
+      textAlign: data.style.txtAlign }"
       ></p>
     </div>
+    <TextEditor @edit="edit" :data="data" />
   </section>
 </template>
 
 <script>
+import TextEditor from "../wixer_cmps/TextEditor";
+
 export default {
   props: {
     data: Object,
     pos: Object
   },
- 
   data() {
     return {
       isEdit: false,
       content: JSON.parse(JSON.stringify(this.data.text)),
       isActive: false,
-      selectedText: ''
+      selectedText: ""
     };
   },
   methods: {
@@ -40,7 +41,15 @@ export default {
     },
     saveText(ev) {
       const txt = ev.target.innerText;
-      this.$emit('saveText', txt);
+      this.$emit("saveText", {txt,id:this.data._id});
+    },
+    edit(type) {
+      console.log(type);
+      
+      this.$emit("edit",{dataId:this.data._id,style: type});
+    },
+    selectedTxt() {
+      this.$store.commit({ type: "setTxtId", id: this.data._id });
     }
   },
   created() {
@@ -51,13 +60,16 @@ export default {
   },
   watch: {
     $route(to) {
-      console.log('$r', to);
+      console.log("$r", to);
 
-      if (to.includes('editor')) this.isEdit = true;
+      if (to.includes("editor")) this.isEdit = true;
       else this.isEdit = false;
     }
   },
+  components: {
+    TextEditor
+  }
 };
 </script>
 
-<style lang="scss" scoped></style>
+

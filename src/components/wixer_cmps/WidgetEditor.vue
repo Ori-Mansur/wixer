@@ -1,5 +1,5 @@
 <template>
-  <section class="widget-editor-container" v-if="isEdit">
+  <section class="widget-editor-container" v-if="isEdit && data">
     <label @click="chooseColor = !chooseColor">
       <unicon name="palette" fill="black" class="icon-edit" />
     </label>

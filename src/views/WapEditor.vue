@@ -1,12 +1,16 @@
 <template>
-  <div class="wap-editor">
+  <div class="wap-editor" >
     <ToolBar
       @setName="setName"
     @save="saveWap"
-      :widgets="widgetsToAdd"
+      :widgets="loadSections"
       :elements="elements"
     />
-    <WidgetPreview class="edit-template"   />  
+   
+    <WidgetPreview class="edit-template" v-if="currWap" :style="{backgroundColor: currWap.style.bcgColor, fontColor: currWap.style.txtColor}"  />
+    
+  
+    <!-- <ElementPreview :elements="wap.elements" /> -->
   </div>
 </template>
 
@@ -40,8 +44,8 @@ export default {
     currWap() {
       return this.$store.getters.currWap;
     },
-    widgetsToAdd() {
-      return this.$store.getters.widgetsToAdd;
+    loadSections() {
+      return this.$store.getters.loadSections;
     },
     elements() {
       return  this.$store.getters.loadElements;
@@ -61,23 +65,9 @@ export default {
       console.log(modifyWidget);
       this.$store.dispatch({ type: "addSection", section: modifyWidget });
     },
-
-    addElement(element) {
-      console.log(element);
-    },
     setName(name) {
       this.wap.name = name;
       this.save();
-    },
-    updateWidget(widget) {
-      console.log(widget);
-    },
-    edit(widget) {
-      console.log("saved widget", widget);
-      var idx = this.wap.widgets.findIndex(
-        currWidget => currWidget._id === widget._id
-      );
-      this.wap.widgets.splice(idx, 1, widget);
     },
     async saveWap() {
       console.log('kkkk');
