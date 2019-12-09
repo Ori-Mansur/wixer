@@ -100,6 +100,7 @@ export default {
             state.filterBy = filterBy
         },
         setBcgImg(state, { sectionData }) {
+          console.log(sectionData)
             const idx = state.currWap.sections.findIndex(section => section._id === sectionData.id)
             state.currWap.sections[idx].style.bcgImg = sectionData.imgUrl
         },

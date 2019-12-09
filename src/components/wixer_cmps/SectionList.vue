@@ -8,7 +8,7 @@
     >
       <div
         class="list-group-item"
-        v-for="(section, idx) in sectionsList"
+        v-for="(section, idx) in sections"
         :key="idx"
       >
         <component
@@ -100,6 +100,7 @@ export default {
     },
     saveText(data) {
       // this.$store.commit({ type: "updateTxt", data });
+      console.log(data)
     },
     changeStyle(data) {
       this.$store.commit({ type: "updateStyle", data });
