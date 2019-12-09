@@ -7,4 +7,19 @@
     height: 100vh;
     overflow-y: auto;
   }
+  .editor-view {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    cursor: pointer;
+    z-index: 888;
+    color: rgb(171, 132, 4);
+  }
+}
+.isPreview {
+  display: none;
+}
+
+.edit-template-prev {
+  width: 100%;
 }

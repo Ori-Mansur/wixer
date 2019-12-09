@@ -9,7 +9,6 @@
   max-height: 100vh;
   border: 1px solid rgb(179, 177, 177);
   .tool-bar-list {
-    
     .li-bar {
       .menu-options {
         border-bottom-style: rgb(179, 177, 177);
@@ -18,7 +17,7 @@
       position: relative;
       cursor: pointer;
       display: flex;
-      padding: 10px;
+      // padding: 10px;
       align-items: center;
       margin-bottom: 20px;
       font-size: 16px;
@@ -28,7 +27,7 @@
         rgba(238, 238, 238, 0.96) 100%
       );
       box-shadow: 0 1px 3px 0 rgba(22, 45, 61, 0.58);
-   
+
       height: 60px;
       justify-content: center;
       h3 {
@@ -57,10 +56,10 @@
         fill: gold;
       }
     }
-    .list-group-content{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    .list-group-content {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
     }
     .list-group {
       display: grid;
@@ -68,8 +67,6 @@
       font-size: 12px;
       grid-gap: 5px;
       cursor: grab;
-      
-      
     }
     .list-group-item {
       color: gray;
@@ -81,7 +78,6 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      
     }
     .list-group-container {
       display: flex;
@@ -100,9 +96,52 @@
         // margin-bottom: 10px;
       }
     }
+    .btn-container {
+      position: fixed;
+      bottom: 10px;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.96) 0%,
+        rgba(238, 238, 238, 0.96) 100%
+      );
+      box-shadow: 0 1px 3px 0 rgba(22, 45, 61, 0.58);
 
+      display: flex;
+      justify-content: space-evenly;
+      height: 45px;
+      align-items: center;
+      cursor: pointer;
+      a {
+        text-decoration: none;
+        color: #2c3e50;
+      }
+      .fa {
+        text-decoration: none;
+        color: #8b8c8c;
+        transition: 0.3s;
+        padding: 10px;
+      }
+      .fa-eye:hover {
+        text-decoration: none;
+        color: #6acef9;
+      }
+      .fa-share-alt-square:hover {
+        text-decoration: none;
+        color: #6acef9;
+      }
+      .fa-save:hover {
+        text-decoration: none;
+        color: #6acef9;
+      }
+      .fa-sign-out:hover {
+        text-decoration: none;
+        color: #6acef9;
+      }
+    }
     .section-save {
       background: #6acef9;
+      width: 121px;
+
       display: flex;
       color: white;
       flex-direction: column;
@@ -113,21 +152,62 @@
         margin: 0;
       }
     }
-    .section-save:last-child{
+    .section-save:last-child {
       margin-left: 5px;
+      color: gray;
+      width: 57px;
+
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.96) 0%,
+        rgba(238, 238, 238, 0.96) 100%
+      );
+      a {
+        text-decoration: none;
+        color: rgb(179, 177, 177);
+      }
     }
     .section-save-container {
       position: fixed;
       display: flex;
-      
-      // padding: 3px;
       justify-content: space-around;
       bottom: 5px;
       left: 8px;
       a {
         text-decoration: none;
         color: rgb(179, 177, 177);
-        
+      }
+    }
+    .section-edit {
+      color: gray;
+    }
+    .section-publish {
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.96) 0%,
+        rgba(238, 238, 238, 0.96) 100%
+      );
+      display: flex;
+      color: gray;
+      flex-direction: column;
+      margin-top: 15px;
+      width: 89px;
+      h3 {
+        margin: 0;
+      }
+    }
+    .section-publish:last-child {
+      margin-left: 5px;
+    }
+    .section-publish-container {
+      position: fixed;
+      display: flex;
+      justify-content: space-around;
+      bottom: 70px;
+      left: 8px;
+      a {
+        text-decoration: none;
+        color: rgb(179, 177, 177);
       }
     }
   }

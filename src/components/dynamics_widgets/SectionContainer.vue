@@ -54,7 +54,7 @@ export default {
       get() {
         if (this.isEdit) {
           return this.$store.state.WapStore.currWap.sections[this.idx].data;
-        }else return this.section.data
+        } else return this.section.data;
       },
       set() {}
     }

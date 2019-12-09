@@ -20,6 +20,7 @@
       </div>
       <div class="placeholder-widget">
         <unicon name="plus" fill="gray" class="icon" />
+        <h1>Drag And Drop In Here!</h1>
       </div>
     </draggable>
   </section>

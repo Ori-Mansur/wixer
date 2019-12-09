@@ -33,7 +33,7 @@ async function getById(id) {
 const sections = [
   {
     type: 'HeaderBig',
-    name: 'Big Header',
+    name: 'Header',
     icon: 'fa fa-header fa-2x',
     style: {
       bcgImg: '',
@@ -360,7 +360,7 @@ const elements = [
   //   _id: 'el1004',
   //   type: 'FormV',
   //   icon: 'fa fa-envelope-open fa-2x',
-  //   name: 'Form Horizental',
+  //   name: 'Form Vertical',
   //   data: {}
   // }
 ];

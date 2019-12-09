@@ -1,0 +1,31 @@
+.about-us-container {
+  text-align: center;
+}
+
+.card-container {
+  text-align: center;
+}
+.team-container {
+  display: flex;
+  justify-content: space-evenly;
+  .team-card-one {
+    height: 300px;
+    width: 300px;
+    background-image: url(https://i.ibb.co/qD78R9q/ori.jpg);
+    background-size: cover;
+  }
+  .team-card-two {
+    height: 300px;
+    width: 300px;
+
+    background-image: url(https://i.ibb.co/yygXPyC/nimrod.jpg);
+    background-size: cover;
+  }
+  .team-card-three {
+    height: 300px;
+    width: 300px;
+
+    background-image: url(https://i.ibb.co/tXnBkQw/meidan.png);
+    background-size: cover;
+  }
+}

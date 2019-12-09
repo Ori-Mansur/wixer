@@ -6,15 +6,19 @@
      backgroundImage: `url(${section.style.bcgImg})`}"
   >
     <WidgetEditor @setImg="setImg" :data="section" />
-    <draggable class="dragArea list-group-h" :list="section.data"  
-    :group="{ name: 'group', pull:false , put: true}"
-    :sort="isEdit" >
-      <div class="list-group-item-h"  v-for="(element,idx) in section.data" :key="idx">
-        <component :key="idx" 
-        @saveMapData="saveMapData(section._id)"
-        :is="element.type" 
-        :data="element" >
-        </component>
+    <draggable
+      class="dragArea list-group-h"
+      :list="section.data"
+      :group="{ name: 'group', pull:false , put: true}"
+      :sort="isEdit"
+    >
+      <div class="list-group-item-h" v-for="(element,idx) in section.data" :key="idx">
+        <component
+          :key="idx"
+          @saveMapData="saveMapData(section._id)"
+          :is="element.type"
+          :data="element"
+        ></component>
       </div>
       <div v-if="isEdit && !section.data[0] " class="placeholder">
         <unicon name="plus" fill="gray" class="icon" />
@@ -34,7 +38,7 @@ import FormV from "./FormV";
 export default {
   props: {
     section: Object,
-    isEdit:Boolean
+    isEdit: Boolean
   },
   data() {
     return {
@@ -44,19 +48,18 @@ export default {
   computed: {
     sectionList: {
       get() {
-        return this.$store.getters.currSectionData
+        return this.$store.getters.currSectionData;
       },
       set(value) {
-        this.$store.commit('addElement', value)
+        this.$store.commit("addElement", value);
       }
-    },
-    
+    }
   },
   methods: {
     setImg(event) {
       this.$emit("setImg", { event, sectionId: this.section._id });
     },
- 
+
     async addEl(data) {
       console.log("bbbbbbb", data);
       this.over = false;
@@ -65,9 +68,8 @@ export default {
         data: { el: data.widget, sectionId: this.section._id }
       });
     },
-    saveMapData({newData, sectionId}){
-      this.$store.commit({type: "saveSectionData", newData, sectionId });
-
+    saveMapData({ newData, sectionId }) {
+      this.$store.commit({ type: "saveSectionData", newData, sectionId });
     }
   },
   components: {
@@ -79,8 +81,6 @@ export default {
     Video,
     Map,
     FormV
-
-
   }
 };
 </script>
@@ -89,18 +89,18 @@ export default {
   position: relative;
   padding: 10px;
   min-height: 200px;
- 
+
   .placeholder {
     padding: 50px;
     margin: auto auto;
     background-color: gainsboro;
     text-align: center;
   }
-  .list-group-item-h{
+  .list-group-item-h {
     height: 100%;
     flex-grow: 1;
   }
-  .list-group-h{
+  .list-group-h {
     height: 100%;
     display: flex;
   }
