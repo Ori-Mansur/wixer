@@ -23,17 +23,6 @@ export default {
     return {
       isSection: false,
       over: false,
-      wap: {
-        name: "Funky Monks",
-        style: {
-          font: "Arial",
-          txtColor: "black",
-          bcgColor: "white",
-          fontSize: 16,
-          bcgImage: "none"
-        },
-        sections: []
-      }
     };
   },
   computed: {

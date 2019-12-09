@@ -30,11 +30,10 @@
 <script>
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
 import draggable from "vuedraggable";
-import Txt from "./Txt.vue";
+import Txt from "../elements/Txt";
 import TextEl from "../elements/TextElement";
-import Img from "./Img";
-import Video from "./Video";
-import Map from "./Map";
+import Img from "../elements/ImageElement";
+import Video from "../elements/Video";
 export default {
   props: {
     section: Object,
@@ -47,8 +46,13 @@ export default {
     };
   },
   methods: {
-    setImg(event) {
-      this.$emit("setImg", { event, sectionId: this.section._id });
+    async setImg(event) {
+     const img= await this.$store.dispatch({ type: "setBcgImg",data: {
+        event,
+        sectionId: this.section._id
+      } });
+     this.modifySection.style.bcgImg = img;
+     this.saveSection();
     },
     saveText(value) {
       const idx = this.modifySection.data.findIndex(
@@ -88,8 +92,7 @@ export default {
     TextEl,
     Txt,
     Img,
-    Video,
-    Map
+    Video
   }
 };
 </script>
