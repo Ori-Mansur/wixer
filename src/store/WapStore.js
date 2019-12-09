@@ -174,8 +174,10 @@ console.log(data);
         async setBcgImg(context, { data }) {
             context.commit({ type: 'open1', msg: 'loading img' })
             const imgUrl = await CloudinaryService.uploadImg(data.event)
+            console.log(imgUrl);
             context.commit({ type: 'setBcgImg', sectionData: { id: data.sectionId, imgUrl } })
             context.commit({ type: 'success', msg: 'Image upload' })
+            return imgUrl
         },
         async setCardImg(context, { data }) {
             context.commit({ type: 'open1', msg: 'loading img' })

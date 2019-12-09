@@ -30,10 +30,7 @@ import draggable from "vuedraggable";
 import NavBar from "../dynamics_widgets/NavBarEdit";
 import Paragraph from "../dynamics_widgets/Paragraph";
 import Header from "../dynamics_widgets/Header";
-import Img from "../dynamics_widgets/Img";
 import Map from "../dynamics_widgets/Map";
-import Txt from "../dynamics_widgets/Txt";
-import Video from "../dynamics_widgets/Video";
 import Form from "../dynamics_widgets/Form";
 import FormInline from "../dynamics_widgets/FormInline";
 import FrameFacebook from "../elements/FrameFacebook";
@@ -73,9 +70,6 @@ export default {
     saveSection(section) {
       this.$store.commit({ type: "saveSection", section });
     },
-    setImg(data) {
-      this.$store.dispatch({ type: "setBcgImg", data });
-    },
     setCardImg(data) {
       this.$store.dispatch({ type: "setCardImg", data });
     },
@@ -102,10 +96,7 @@ export default {
     NavBar,
     Paragraph,
     Header,
-    Img,
     Map,
-    Txt,
-    Video,
     Form,
     FormInline,
     FrameFacebook,

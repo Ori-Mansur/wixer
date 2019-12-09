@@ -14,10 +14,7 @@
 import NavBar from "../components/dynamics_widgets/NavBarEdit";
 import Paragraph from "../components/dynamics_widgets/Paragraph";
 import Header from "../components/dynamics_widgets/Header";
-import Img from "../components/dynamics_widgets/Img";
 import Map from "../components/dynamics_widgets/Map";
-import Txt from "../components/dynamics_widgets/Txt";
-import Video from "../components/dynamics_widgets/Video";
 import Form from "../components/dynamics_widgets/Form";
 import FormInline from "../components/dynamics_widgets/FormInline";
 import FrameFacebook from "../components/elements/FrameFacebook";
@@ -56,10 +53,7 @@ export default {
     NavBar,
     Paragraph,
     Header,
-    Img,
     Map,
-    Txt,
-    Video,
     Form,
     FormInline,
     FrameFacebook
