@@ -28,6 +28,15 @@
     <label @click.stop="change('bold')">
       <unicon name="bold" fill="white" class="icon-txt-edit" />
     </label>
+    <label @click.stop="change('left')">
+      <unicon name="align-left" fill="white" class="icon-txt-edit" />
+    </label>
+    <label @click.stop="change('center')">
+      <unicon name="align-center" fill="white" class="icon-txt-edit" />
+    </label>
+    <label @click.stop="change('right')">
+      <unicon name="align-right" fill="white" class="icon-txt-edit" />
+    </label>
     <label @click.stop="palateColor=!palateColor">
       <unicon name="palette" fill="white" class="icon-txt-edit" />
     </label>

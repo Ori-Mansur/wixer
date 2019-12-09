@@ -32,8 +32,8 @@ async function getById(id) {
 
 const sections = [
   {
-    type: 'HeaderBig',
-    name: 'Big Header',
+    type: 'Header',
+    name: 'Header',
     icon: 'fa fa-header fa-2x',
     style: {
       bcgImg: '',
@@ -42,7 +42,10 @@ const sections = [
     },
     data: [
       {
-        _id: 'big1001',
+        _id: 'he1001',
+        type: 'TextEl',
+        name: 'Title',
+        icon: 'fa fa-font fa-2x',
         text: 'Insert Title',
         style: {
           color: 'black',
@@ -54,11 +57,14 @@ const sections = [
         }
       },
       {
-        _id: 'big1002',
+        _id: 'he1002',
+        type: 'TextEl',
+        name: 'Title',
+        icon: 'fa fa-font fa-2x',
         text: 'Insert Subtitle',
         style: {
           color: 'black',
-          fontSize: 16,
+          fontSize: 20,
           fontWeight: 'normal',
           fontFamily: 'Arial',
           fontStyle: 'normal',

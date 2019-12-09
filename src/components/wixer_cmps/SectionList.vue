@@ -38,7 +38,7 @@
 import draggable from "vuedraggable";
 import NavBar from "../dynamics_widgets/NavBarEdit";
 import Paragraph from "../dynamics_widgets/Paragraph";
-import HeaderBig from "../dynamics_widgets/HeaderBig";
+import Header from "../dynamics_widgets/Header";
 import Img from "../dynamics_widgets/Img";
 import Map from "../dynamics_widgets/Map";
 import Txt from "../dynamics_widgets/Txt";
@@ -115,7 +115,7 @@ export default {
     draggable,
     NavBar,
     Paragraph,
-    HeaderBig,
+    Header,
     Img,
     Map,
     Txt,

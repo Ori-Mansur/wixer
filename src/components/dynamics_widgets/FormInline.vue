@@ -141,23 +141,24 @@ export default {
 </script>
 <style lang="scss" scoped>
 .el-form {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
+  position: relative;
 }
 .el-form-item {
   width: 23%;
 }
 .el-form-item__label {
   width: 0px;
-}
-.el-form-item__label {
+color: red;
   text-align: start;
 }
-.btn {
-  margin-top: 20px;
-  display: inline-flex;
-  justify-content: space-between;
-  width: fit-content;
-}
+// .btn {
+//   // margin-top: 20px;
+//   // z-index: 1;
+//   // display: inline-flex;
+//   // justify-content: space-between;
+//   // width: fit-content;
+// }
 </style>

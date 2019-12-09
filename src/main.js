@@ -34,7 +34,8 @@ import {
   uniEye,
   uniBold,
   uniImage,
-  uniItalic
+  uniItalic,
+  uniAlignCenter, uniAlignRight, uniAlignLeft
 } from 'vue-unicons/src/icons';
 import VueDragDrop from 'vue-drag-drop';
 
@@ -64,7 +65,8 @@ Unicon.add([
   uniEye,
   uniBold,
   uniImage,
-  uniItalic
+  uniItalic,
+  uniAlignCenter, uniAlignRight, uniAlignLeft
 ]);
 
 Vue.use(Unicon);

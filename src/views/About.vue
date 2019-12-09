@@ -7,9 +7,9 @@
       great-looking single-page websites in only a few minutes of their time.
     </p>
     <div>
-    <img class="personalImg" src="../assets/ori.jpg" alt=""/>
-    <img class="personalImg" src="../assets/meidan.jpg" alt=""/>
-    <img class="personalImg" src="../assets/nimrod.png" alt=""/>
+    <img class="personalImg" src="../assets/img/ori.jpg" alt=""/>
+    <img class="personalImg" src="../assets/img/meidan.jpg" alt=""/>
+    <img class="personalImg" src="../assets/img/nimrod.png" alt=""/>
 
 
     </div>
