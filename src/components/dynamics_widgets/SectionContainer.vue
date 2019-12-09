@@ -1,7 +1,6 @@
 <template>
-  <div
+  <section
     class="section-container flex column container"
-    @click="setGroup(section._id)"
     :class="{'border-edit': isEdit}"
     :style="{backgroundColor: section.style.bcgColor,
      backgroundImage: `url(${section.style.bcgImg})`}"
@@ -9,26 +8,24 @@
     <WidgetEditor @setImg="setImg" :data="section" />
     <draggable
       class="dragArea list-group"
-      v-model="List"
-      :group="section._id"
-      @change="add($event)"
+      :list="modifySection.data"
+      group="element"
       :sort="isEdit"
     >
-      <div v-if="isEdit && !section.data[0]" class="placeholder">
+      <div v-if="isEdit && !modifySection.data[0]" class="placeholder">
         <unicon name="plus" fill="gray" class="icon" />
       </div>
-    </draggable>
-    <div class="list-group-item" v-for="(element,idx) in section.data" :key="idx">
+    <div class="list-group-item" v-for="(element,idx) in modifySection.data" :key="idx">
       <component
         :key="idx"
-        @saveMapData="saveMapData"
         @edit="editStyle"
         @saveText="saveText"
         :is="element.type"
         :data="element"
       ></component>
     </div>
-  </div>
+    </draggable>
+  </section>
 </template>
 <script>
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
@@ -49,26 +46,9 @@ export default {
       modifySection: JSON.parse(JSON.stringify(this.section))
     };
   },
-  computed: {
-    List: {
-      get() {
-        if (this.isEdit) {
-          return this.$store.state.WapStore.currWap.sections[this.idx].data;
-        }else return this.section.data
-      },
-      set() {}
-    }
-  },
   methods: {
     setImg(event) {
       this.$emit("setImg", { event, sectionId: this.section._id });
-    },
-    saveMapData(newData) {
-      this.$store.commit({
-        type: "saveSectionData",
-        newData,
-        sectionId: this.section._id
-      });
     },
     saveText(value) {
       const idx = this.modifySection.data.findIndex(
@@ -78,19 +58,12 @@ export default {
       this.saveSection();
     },
     saveSection() {
-      console.log("sac", this.modifySection);
-      this.$emit("save", this.modifySection);
-    },
-    setGroup(sectionId) {
-      this.$store.commit({ type: "setGroup", group: sectionId });
-    },
-    add(evt) {
-      this.$emit("addEl", { sectionIdx: this.idx, data: evt.added });
+      this.$emit("save",JSON.parse(JSON.stringify(this.modifySection)));
     },
     editStyle(newStyle) {
-      const txtStyle = this.section.data.find(el => el._id === newStyle.dataId)
+      const txtStyle = this.modifySection.data.find(el => el._id === newStyle.dataId)
         .style;
-      var style = JSON.parse(JSON.stringify(txtStyle));
+      var style =txtStyle;
 
       if (newStyle.style.type === "bold") {
         style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";
@@ -102,11 +75,11 @@ export default {
         style.color = newStyle.style.color;
       else if (newStyle.style.type === "minus") style.fontSize += -2;
       else if (newStyle.style.type === "plus") style.fontSize += 2;
+      else if (newStyle.style.type === "center") style.txtAlign = 'center';
+      else if (newStyle.style.type === "left") style.txtAlign = 'left';
+      else if (newStyle.style.type === "right") style.txtAlign = 'right';
       newStyle.style = style;
-      this.$emit("changeStyle", {
-        cardData: newStyle,
-        sectionId: this.section._id
-      });
+      this.saveSection();
     }
   },
   components: {

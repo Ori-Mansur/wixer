@@ -1,13 +1,14 @@
 <template>
   <section
-    class="section-container flex row container"
+    class="section-container flex column align-center justify-center"
     :class="{'border-edit': isEdit}"
     :style="{backgroundColor: section.style.bcgColor,
-     backgroundImage: `url(${section.style.bcgImg})`}"
+     backgroundImage: `url(${section.style.bcgImg})`,
+     height: section.style.height + 'vh'}"
   >
     <WidgetEditor @setImg="setImg" :data="section" />
     <draggable
-      class="dragArea list-group flex row"
+      class="dragArea list-group"
       :list="modifySection.data"
       group="element"
       :sort="isEdit"
@@ -75,7 +76,7 @@ export default {
         style.color = newStyle.style.color;
       else if (newStyle.style.type === "minus") style.fontSize += -2;
       else if (newStyle.style.type === "plus") style.fontSize += 2;
-       else if (newStyle.style.type === "center") style.txtAlign = 'center';
+      else if (newStyle.style.type === "center") style.txtAlign = 'center';
       else if (newStyle.style.type === "left") style.txtAlign = 'left';
       else if (newStyle.style.type === "right") style.txtAlign = 'right';
       newStyle.style = style;
@@ -97,7 +98,7 @@ export default {
 .section-container {
   position: relative;
   padding: 10px;
-  min-height: 200px;
+  background-size: cover;
 
   .placeholder {
     padding: 50px;
@@ -105,9 +106,8 @@ export default {
     background-color: gainsboro;
     text-align: center;
   }
-  .list-group-item {
-    flex-grow: 1;
-    height: 100%;
-  }
+  // .list-group-item {
+  //   height: 100%;
+  // }
 }
 </style>

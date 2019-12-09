@@ -5,7 +5,7 @@
         <unicon name="home"  fill="gray" title="Home"></unicon>
       </router-link>
     </li>
-    <div class="logo"> <img src="@/assets/wixer.png" alt=""></div>
+    <div class="logo"> <img src="@/assets/img/wixer.png" alt=""></div>
         <i class="fab fa-accusoft"></i>
     <li class="menu-list">
       <router-link to="/wap">

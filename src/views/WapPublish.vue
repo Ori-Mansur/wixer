@@ -13,7 +13,7 @@
 <script>
 import NavBar from "../components/dynamics_widgets/NavBarEdit";
 import Paragraph from "../components/dynamics_widgets/Paragraph";
-import HeaderBig from "../components/dynamics_widgets/HeaderBig";
+import Header from "../components/dynamics_widgets/Header";
 import Img from "../components/dynamics_widgets/Img";
 import Map from "../components/dynamics_widgets/Map";
 import Txt from "../components/dynamics_widgets/Txt";
@@ -55,7 +55,7 @@ export default {
     CardsContainer,
     NavBar,
     Paragraph,
-    HeaderBig,
+    Header,
     Img,
     Map,
     Txt,
