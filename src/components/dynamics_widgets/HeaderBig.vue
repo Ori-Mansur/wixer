@@ -5,11 +5,11 @@
     :style="{
       backgroundImage: `url(${section.style.bcgImg})`,
       backgroundColor: section.style.bcgColor,
-      height: section.style.height + 'vh'
+      height: section.style.height + 'px'
     }"
   >
     <widget-editor
-      :data="section"
+      :data="modifySection"
       @setImg="setImg"
       @removeWidget="removeWidget"
       @changePos="changePos"
@@ -27,11 +27,17 @@
 <script>
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
 import TextElement from "../elements/TextElement";
+import { log } from 'util';
 // import TextEditor from "../wixer_cmps/TextEditor";
 
 export default {
   props: {
     section: Object
+  },
+  created(){
+    if (this.$route.path.includes("editor")) this.isEdit = true;
+    else this.isEdit = false;
+    this.cloneSection()
   },
   data() {
     return {
@@ -39,7 +45,7 @@ export default {
       selectedTxt: 0,
       isEdit: false,
       isDown: false,
-      modifySection: JSON.parse(JSON.stringify(this.section))
+      modifySection: {}
     };
   },
 
@@ -48,9 +54,6 @@ export default {
       if (this.isEdit) return "1px solid blue";
       else return "";
     },
-    inside() {
-      return "position: relative";
-    }
   },
   methods: {
     changePos(moveBy){
@@ -75,6 +78,10 @@ export default {
       console.log(this.modifySection.data[this.selectedTxt].text);
       this.saveSection();
       // this.$emit("saveText", { txt: value, sectionId: this.section._id });
+    },
+    cloneSection(){
+      this.modifySection = JSON.parse(JSON.stringify(this.section))
+      console.log(this.modifySection)
     },
     saveSection() {
       console.log("sac", this.modifySection);
@@ -105,10 +112,6 @@ export default {
         sectionId: this.section._id
       });
     }
-  },
-  created() {
-    if (this.$route.path.includes("editor")) this.isEdit = true;
-    else this.isEdit = false;
   },
   watch: {
     $route() {

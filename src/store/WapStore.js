@@ -45,9 +45,10 @@ export default {
             state.waps.splice(idx, 1)
         },
         addSection(state, data) {
+          console.log(data)
             state.currWap.sections.splice(data.newIndex, 0, JSON.parse(JSON.stringify(data.element)))
-            state.currWap.sections[data.newIndex]._id = UtilsService.makeId()
-            state.group = state.currWap.sections[data.newIndex]._id
+            // state.currWap.sections[data.newIndex-1]._id = UtilsService.makeId()
+            // state.group = state.currWap.sections[data.newIndex-1]._id
         },
         addElement(state, data) {
             state.currWap.sections[data.sectionIdx].data.splice(data.data.newIndex, 0, data.data.element)
@@ -61,22 +62,23 @@ export default {
         changePos(state, {moveBy, sectionToMove}){
           const sectionIdx = state.currWap.sections.findIndex(section=>section._id===sectionToMove._id)
           const sectionToReplaceIdx = sectionIdx+moveBy
-          debugger
+          // debugger
 
           if(sectionToReplaceIdx>state.currWap.sections.length-1 || sectionToReplaceIdx<0) {
             return 
           } else {
             const sectionToReplace = state.currWap.sections[sectionToReplaceIdx]
-            console.log(sectionToReplace)
-            console.log(sectionToMove)
+            console.log(state.currWap.sections)
             state.currWap.sections.splice(sectionIdx, 1, sectionToReplace)
+            console.log(state.currWap.sections)
             state.currWap.sections.splice(sectionToReplaceIdx, 1, sectionToMove)
 
           }
         },
         saveSection(state, { section }) {
-            console.log(section);
-            
+            console.log(state.currWap);
+
+            // debugger
             const idx = state.currWap.sections.findIndex(currSection => currSection._id === section._id)
             state.currWap.sections.splice(idx, 1, section)
         },

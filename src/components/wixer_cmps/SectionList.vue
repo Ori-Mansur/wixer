@@ -1,13 +1,22 @@
 <template>
   <section>
-    <draggable class="dragArea list-group" v-model="myList" group="people" @change="add($event)">
-      <div class="list-group-item" v-for="(element,idx) in sections" :key="idx">
+    <draggable
+      class="dragArea list-group"
+      v-model="sectionsList"
+      group="people"
+      @change="add($event)"
+    >
+      <div
+        class="list-group-item"
+        v-for="(section, idx) in sectionsList"
+        :key="idx"
+      >
         <component
           :isEdit="isEdit"
           :key="idx"
           :idx="idx"
-          :is="element.type"
-          :section="element"
+          :is="section.type"
+          :section="section"
           @removeSection="removeSection"
           @save="saveSection"
           @saveMapData="saveMapData"
@@ -44,34 +53,43 @@ import CardsContainer from "../dynamics_widgets/CardsContainer";
 
 export default {
   props: {
-    widgets: Array
+    sections: Array
+  },
+  created() {
+    const param = this.$route.path;
+    if (param.includes("editor")) this.isEdit = true;
+    else this.isEdit = false;
+    this.listToEdit();
   },
   data() {
     return {
       isEdit: false,
-      newIdx: ""
+      newIdx: "",
+      sectionsList:null
     };
   },
   computed: {
-    sections() {
-      return this.$store.getters.currWapSections;
-    },
-    myList: {
-      get() {
-        return this.$store.getters.currWapSections;
-      },
-      set() {}
-    }
+    // sections() {
+    //   return this.$store.getters.currWapSections;
+    // },
+    // myList: {
+    //   get() {
+    //     return this.$store.getters.currWapSections;
+    //   },
+    //   set() {}
+    // }
   },
   methods: {
-    removeSection(id){
-      this.$store.commit({ type: "removeSection", sectionId:id });
+    listToEdit(){
+      this.sectionsList = JSON.parse(JSON.stringify(this.sections))
+    },
+    removeSection(id) {
+      this.$store.commit({ type: "removeSection", sectionId: id });
     },
     saveMapData(newData) {
       this.$store.commit({ type: "saveSectionData", newData });
     },
     saveSection(section) {
-      console.log(section);
       this.$store.commit({ type: "saveSection", section });
     },
     setImg(data) {
@@ -81,7 +99,7 @@ export default {
       this.$store.dispatch({ type: "setCardImg", data });
     },
     saveText(data) {
-      this.$store.commit({ type: "updateTxt", data });
+      // this.$store.commit({ type: "updateTxt", data });
     },
     changeStyle(data) {
       this.$store.commit({ type: "updateStyle", data });
@@ -92,11 +110,6 @@ export default {
     addEl(data) {
       this.$store.commit("addElement", data);
     }
-  },
-  created() {
-    const param = this.$route.path;
-    if (param.includes("editor")) this.isEdit = true;
-    else this.isEdit = false;
   },
   components: {
     draggable,

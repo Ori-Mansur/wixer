@@ -1,9 +1,10 @@
 <template>
   <div class="wap-editor">
     <ToolBar @save="saveWap" :widgets="loadSections" :elements="elements" />
-    <WidgetPreview
+    <SectionList
       class="edit-template"
       v-if="currWap"
+      :sections="currWap.sections"
       :style="{backgroundColor: currWap.style.bcgColor, color: currWap.style.txtColor}"
     />
   </div>
@@ -11,7 +12,7 @@
 
 <script>
 import ToolBar from "../components/wixer_cmps/ToolBar.vue";
-import WidgetPreview from "../components/wixer_cmps/WidgetPreview.vue";
+import SectionList from "../components/wixer_cmps/SectionList.vue";
 
 export default {
   created() {
@@ -66,7 +67,7 @@ export default {
   },
   components: {
     ToolBar,
-    WidgetPreview
+    SectionList
   }
 };
 </script>
