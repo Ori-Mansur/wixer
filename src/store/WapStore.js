@@ -58,6 +58,22 @@ export default {
           const idx = state.currWap.sections.findIndex(section=> section._id===sectionId)
           state.currWap.sections.splice(idx, 1)
         },
+        changePos(state, {moveBy, sectionToMove}){
+          const sectionIdx = state.currWap.sections.findIndex(section=>section._id===sectionToMove._id)
+          const sectionToReplaceIdx = sectionIdx+moveBy
+          debugger
+
+          if(sectionToReplaceIdx>state.currWap.sections.length-1 || sectionToReplaceIdx<0) {
+            return 
+          } else {
+            const sectionToReplace = state.currWap.sections[sectionToReplaceIdx]
+            console.log(sectionToReplace)
+            console.log(sectionToMove)
+            state.currWap.sections.splice(sectionIdx, 1, sectionToReplace)
+            state.currWap.sections.splice(sectionToReplaceIdx, 1, sectionToMove)
+
+          }
+        },
         saveSection(state, { section }) {
             console.log(section);
             

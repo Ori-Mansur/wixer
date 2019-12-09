@@ -2,6 +2,7 @@
   <section class="map-section-container flex row space-around container">
     <widget-editor
       :data="newData"
+      @changePos="changePos"
       @setImg="setImg"
       @removeWidget="removeWidget"
     ></widget-editor>
@@ -74,6 +75,9 @@ export default {
   },
 
   methods: {
+    changePos(moveBy){
+      this.$store.commit({type: 'changePos', moveBy, sectionToMove: this.section})
+    },
     removeWidget(id) {
       this.$emit("removeSection", id);
     },
