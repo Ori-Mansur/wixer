@@ -21,7 +21,6 @@
           @save="saveSection"
           @saveMapData="saveMapData"
           @addEl="addEl"
-          @setImg="setImg"
           @setCardImg="setCardImg"
           @changeStyle="changeStyle"
           @saveText="saveText"

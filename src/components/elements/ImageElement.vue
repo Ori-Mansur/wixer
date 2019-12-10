@@ -1,6 +1,6 @@
 <template>
   <section class="image-container flex column">
-    <img :src="styleData.bcgImg" alt="">
+    <img :src="img" alt="">
   </section>
 </template>
 <script>
@@ -10,6 +10,13 @@ props: {
   styleData: Object
   },
   created(){
+  },
+  computed:{
+    img(){
+      if (this.styleData.imgUrl) return this.styleData.imgUrl
+      else return '../../assets/img/placeholder.png'
+  
+    }
   }
 }
 </script>

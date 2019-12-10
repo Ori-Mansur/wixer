@@ -13,13 +13,21 @@
   }
 
   label{
-      margin-bottom: 10px;
       text-decoration: underline;
+  }
+  .input-container{
+    margin-bottom: 10px;
+    label{
+      padding-bottom: 5px;
+    }
+    input{
+      padding: 5px;
+    }
   }
   
   .addressBar{
     width: 300px;
-    padding: 5px;
+    // padding: 5px;
     border-radius: 10px;
     border-style: unset;
     outline: none;
