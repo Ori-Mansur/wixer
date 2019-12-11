@@ -11,7 +11,6 @@
       :list="modifySection.data"
       group="element"
       :sort="isEdit"
-      @change="setId($event)"
     >
       <div v-if="isEdit && !modifySection.data[0]" class="placeholder">
         <unicon name="plus" fill="gray" class="icon" />
@@ -31,7 +30,7 @@
   </section>
 </template>
 <script>
-import utils from "../../services/UtilsService.js";
+// import utils from "../../services/UtilsService.js";
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
 import draggable from "vuedraggable";
 import Txt from "../elements/Txt";
@@ -60,13 +59,6 @@ export default {
         }
       });
       this.modifySection.style.bcgImg = img;
-      this.saveSection();
-    },
-    setId(ev) {
-      ev.added.element._id = utils.makeId();
-      // ev.added.element.data.forEach(element => element._id=utils.makeId());
-      // console.log(ev.added.element.data);
-      this.modifySection.data.splice(ev.added.newIndex, 1, ev.added.element);
       this.saveSection();
     },
     saveText(value) {
