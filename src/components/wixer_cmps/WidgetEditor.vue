@@ -43,9 +43,6 @@ export default {
     };
   },
   computed: {
-    imageUrlRef() {
-      return this.data.style.bcgImg;
-    },
     fileUpload() {
       return `file-upload-${this.data._id}`;
     }
@@ -79,6 +76,7 @@ export default {
   top: 0;
   right: 0;
   padding: 5px;
+  z-index: 1;
 
   .icon-edit {
     background-color: #fff;

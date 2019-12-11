@@ -74,10 +74,7 @@ Vue.use(ElementUI);
 
 import './styles/global.scss';
 Vue.config.productionTip = false;
-import VueFacebook from 'vue-facebook';
-import VueFacebookPage from 'vue-facebook-page';
-Vue.use(VueFacebookPage);
-Vue.use(VueFacebook);
+
 
 import * as VueGoogleMaps from 'vue2-google-maps';
 
