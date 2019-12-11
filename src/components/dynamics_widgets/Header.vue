@@ -39,6 +39,8 @@ export default {
     isEdit: Boolean,
     idx: Number
   },
+  created(){
+  },
   data() {
     return {
       modifySection: JSON.parse(JSON.stringify(this.section))
@@ -54,10 +56,17 @@ export default {
      this.saveSection();
     },
     saveText(value) {
+      console.log('og section', this.section)
+            console.log('og section', this.modifySection)
+
+
       const idx = this.modifySection.data.findIndex(
         data => data._id === value.id
       );
       this.modifySection.data[idx].text = value.txt;
+            console.log(this.modifySection)
+
+
       this.saveSection();
     },
     saveSection() {

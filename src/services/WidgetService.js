@@ -303,14 +303,11 @@ const sections = [
     icon: 'fa fa-map fa-2x',
     style: { bcgImg: '', bcgColor: '' },
     data: {
+      currentPlace: null,
+      locations: [],
       center: { lat: 32.109333, lng: 34.855499 },
-      markers: [],
-      places: [],
-      placesMarked: [],
-      placesNames: [],
-      currentPlace: '',
-      placeName: '',
-      place: ''
+      businessInfo: {openOn:{week:'', sat:'', sun:''}, email:'', phone:''}
+
     }
   },
   {
