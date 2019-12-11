@@ -74,41 +74,6 @@ const sections = [
     ]
   },
   {
-    type: 'Card1',
-    name: 'Card',
-    icon: 'fa fa-address-card fa-2x',
-    style: {
-      bcgImg: '',
-      bcgColor: '',
-      height: 90,
-      width: 90
-    },
-    data: [
-      {
-        text: 'Lorem ipsum',
-        style: {
-          color: 'black',
-          fontSize: 22,
-          fontWeight: 'normal',
-          fontFamily: 'Arial',
-          fontStyle: 'normal',
-          txtAlign: 'center'
-        }
-      },
-      {
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        style: {
-          color: 'black',
-          fontSize: 16,
-          fontWeight: 'normal',
-          fontFamily: 'Arial',
-          fontStyle: 'normal',
-          txtAlign: 'center'
-        }
-      }
-    ]
-  },
-  {
     type: 'Paragraph',
     name: 'Paragraph',
     icon: 'fa fa-align-left fa-2x',
@@ -317,14 +282,6 @@ const sections = [
     icon: 'fa fa-envelope-open fa-2x',
     data: {}
   },
-
-  {
-    _id: '5de4c99dfxaxccsacsc026x',
-    type: 'FrameFacebook',
-    icon: 'fa fa-facebook-square fa-2x',
-    name: 'Facebook',
-    data: {}
-  },
   {
     _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
     type: 'SectionContainer',
@@ -461,12 +418,19 @@ const elements = [
       },
     ]
   },
+  {
+    _id: '5de4c99dfxaxccsacsc026x',
+    type: 'FrameFacebook',
+    icon: 'fa fa-facebook-square fa-2x',
+    name: 'Facebook',
+    data: {}
+  },
 
-  // {
-  //   _id: 'el1004',
-  //   type: 'FormV',
-  //   icon: 'fa fa-envelope-open fa-2x',
-  //   name: 'Form Horizental',
-  //   data: {}
-  // }
+  {
+    _id: 'el1004',
+    type: 'FormV',
+    icon: 'fa fa-envelope-open fa-2x',
+    name: 'Form Horizental',
+    data: {}
+  }
 ];
