@@ -6,17 +6,20 @@
     <label @click="removeWidget" title="remove this widget">
       <unicon name="trash-alt" fill="black" class="icon-edit" />
     </label>
-    <label @click="savePos(+1)">
+    <label @click="changePos(+1)">
       <unicon name="sort-amount-down" fill="black" class="icon-edit" />
     </label>
-    <label @click="savePos(-1)">
+    <label @click="changePos(-1)">
       <unicon name="sort-amount-up" fill="black" class="icon-edit" />
     </label>
     <label :for="fileUpload" @change="setImg">
       <input :id="fileUpload" type="file" />
       <unicon name="image-plus" fill="black" class="icon-edit" />
     </label>
-    <color-picker @changeColor="updateBackground" v-if="chooseColor"></color-picker>
+    <color-picker
+      @changeColor="updateBackground"
+      v-if="chooseColor"
+    ></color-picker>
   </section>
 </template>
 
@@ -40,42 +43,42 @@ export default {
     };
   },
   computed: {
-    imageUrlRef() {
-      return this.data.style.bcgImg;
-    },
     fileUpload() {
       return `file-upload-${this.data._id}`;
     }
   },
   methods: {
+    changePos(diff){
+      this.$emit('changePos', diff)
+    },
     editWidget() {
       this.$emit("edit", this.data);
     },
     removeWidget() {
-      this.$emit("remove", this.widget._id);
-      console.log(this.data._id, "remove");
+      this.$emit("removeWidget", this.data._id);
     },
     updateBackground(color) {
       this.data.style.bcgColor = color;
       this.editWidget();
     },
-    setImg(event){
-this.$emit('setImg',event)
-    },
+    setImg(event) {
+      this.$emit("setImg", event);
+    }
   },
   components: {
     ColorPicker
   }
 };
 </script>
-<style lang="scss" >
+<style lang="scss">
 .widget-editor-container {
   position: absolute;
   top: 0;
   right: 0;
   padding: 5px;
-  
-  .icon-edit{
+  z-index: 1;
+
+  .icon-edit {
     background-color: #fff;
     padding: 3px;
     cursor: pointer;

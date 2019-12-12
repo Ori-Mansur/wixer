@@ -34,7 +34,8 @@ import {
   uniEye,
   uniBold,
   uniImage,
-  uniItalic
+  uniItalic,
+  uniAlignCenter, uniAlignRight, uniAlignLeft
 } from 'vue-unicons/src/icons';
 import VueDragDrop from 'vue-drag-drop';
 
@@ -64,7 +65,8 @@ Unicon.add([
   uniEye,
   uniBold,
   uniImage,
-  uniItalic
+  uniItalic,
+  uniAlignCenter, uniAlignRight, uniAlignLeft
 ]);
 
 Vue.use(Unicon);
@@ -72,10 +74,7 @@ Vue.use(ElementUI);
 
 import './styles/global.scss';
 Vue.config.productionTip = false;
-import VueFacebook from 'vue-facebook';
-import VueFacebookPage from 'vue-facebook-page';
-Vue.use(VueFacebookPage);
-Vue.use(VueFacebook);
+
 
 import * as VueGoogleMaps from 'vue2-google-maps';
 

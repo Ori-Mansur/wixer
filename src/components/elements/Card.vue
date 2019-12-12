@@ -2,10 +2,10 @@
   <section
     class="section-container flex column container"
     :class="{'border-edit': isEdit}"
-    :style="{backgroundColor: section.style.bcgColor,
-     backgroundImage: `url(${section.style.bcgImg})`}"
+    :style="{backgroundColor: modifySection.style.bcgColor,
+     backgroundImage: `url(${modifySection.style.bcgImg})`}"
   >
-    <WidgetEditor @setImg="setImg" :data="section" />
+    <!-- <WidgetEditor @setImg="setImg" :data="data" /> -->
     <draggable
       class="dragArea list-group"
       :list="modifySection.data"
@@ -15,15 +15,17 @@
       <div v-if="isEdit && !modifySection.data[0]" class="placeholder">
         <unicon name="plus" fill="gray" class="icon" />
       </div>
-      <div class="list-group-item" v-for="(element,idx) in modifySection.data" :key="idx">
-        <component
-          :key="idx"
-          @edit="editStyle"
-          @saveText="saveText"
-          :is="element.type"
-          :data="element"
-        ></component>
-      </div>
+    <div class="list-group-item" v-for="(element,idx) in modifySection.data" :key="idx">
+      <component
+        :key="idx"
+        :idx="idx"
+        @setImg="setImg"
+        @edit="editStyle"
+        @saveText="saveText"
+        :is="element.type"
+        :data="element"
+      ></component>
+    </div>
     </draggable>
   </section>
 </template>
@@ -36,26 +38,25 @@ import Img from "../elements/ImageElement";
 import Video from "../elements/Video";
 export default {
   props: {
-    section: Object,
+    data: Object,
     isEdit: Boolean,
     idx: Number
   },
   data() {
     return {
-      modifySection: JSON.parse(JSON.stringify(this.section))
+      modifySection: JSON.parse(JSON.stringify(this.data))
     };
   },
   methods: {
-    async setImg(event) {
-      const img = await this.$store.dispatch({
-        type: "setBcgImg",
-        data: {
-          event,
-          sectionId: this.section._id
-        }
-      });
-      this.modifySection.style.bcgImg = img;
-      this.saveSection();
+    async setImg(data) {
+      console.log(data);
+      
+     const img= await this.$store.dispatch({ type: "setBcgImg",data });
+    //  console.log(img);
+     
+     console.log(this.modifySection.data[data.idx].data);
+     this.modifySection.data[data.idx].data.url=img
+     this.saveSection();
     },
     saveText(value) {
       const idx = this.modifySection.data.findIndex(
@@ -65,13 +66,12 @@ export default {
       this.saveSection();
     },
     saveSection() {
-      this.$emit("save", JSON.parse(JSON.stringify(this.modifySection)));
+      this.$emit("save",{data:JSON.parse(JSON.stringify(this.modifySection)),idx:this.idx});
     },
     editStyle(newStyle) {
-      const txtStyle = this.modifySection.data.find(
-        el => el._id === newStyle.dataId
-      ).style;
-      var style = txtStyle;
+      const txtStyle = this.modifySection.data.find(el => el._id === newStyle.dataId)
+        .style;
+      var style =txtStyle;
 
       if (newStyle.style.type === "bold") {
         style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";
@@ -83,9 +83,9 @@ export default {
         style.color = newStyle.style.color;
       else if (newStyle.style.type === "minus") style.fontSize += -2;
       else if (newStyle.style.type === "plus") style.fontSize += 2;
-      else if (newStyle.style.type === "center") style.txtAlign = "center";
-      else if (newStyle.style.type === "left") style.txtAlign = "left";
-      else if (newStyle.style.type === "right") style.txtAlign = "right";
+      else if (newStyle.style.type === "center") style.txtAlign = 'center';
+      else if (newStyle.style.type === "left") style.txtAlign = 'left';
+      else if (newStyle.style.type === "right") style.txtAlign = 'right';
       newStyle.style = style;
       this.saveSection();
     }

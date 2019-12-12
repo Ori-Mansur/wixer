@@ -8,8 +8,10 @@
       :elements="elements"
       :class="[isPreviewMode ? 'tool-bar' : 'isPreview']"
     />
-    <WidgetPreview
+    <SectionList
+      class="edit-template"
       v-if="currWap"
+      :sections="currWap.sections"
       :style="{backgroundColor: currWap.style.bcgColor, color: currWap.style.txtColor}"
       :class="[isPreviewMode ? 'edit-template' : 'edit-template-prev']"
     />
@@ -18,7 +20,7 @@
 
 <script>
 import ToolBar from "../components/wixer_cmps/ToolBar.vue";
-import WidgetPreview from "../components/wixer_cmps/WidgetPreview.vue";
+import SectionList from "../components/wixer_cmps/SectionList.vue";
 
 export default {
   created() {
@@ -29,18 +31,7 @@ export default {
     return {
       isSection: false,
       over: false,
-      isPreviewMode: true,
-      wap: {
-        name: "Funky Monks",
-        style: {
-          font: "Arial",
-          txtColor: "black",
-          bcgColor: "white",
-          fontSize: 16,
-          bcgImage: "none"
-        },
-        sections: []
-      }
+      isPreviewMode: true
     };
   },
   computed: {
@@ -81,7 +72,7 @@ export default {
   },
   components: {
     ToolBar,
-    WidgetPreview
+    SectionList
   }
 };
 </script>

@@ -4,6 +4,7 @@
     :style="{backgroundColor: section.style.bcgColor, border: isBorder}"
   >
     <card-container
+    
       @setImg="setImg"
       @changeStyle="changeStyle"
       v-for="(data, index) in section.data"
@@ -46,6 +47,9 @@ export default {
     }
   },
   methods: {
+    changePos(moveBy){
+      this.$store.commit({type: 'changePos', moveBy, sectionToMove: this.section})
+    },
     removeWidget(id) {
       this.$emit("remove", id);
     },

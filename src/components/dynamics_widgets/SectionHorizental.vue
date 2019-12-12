@@ -1,75 +1,102 @@
 <template>
-  <div
-    class="section-container container"
-    :class="{'border-edit': over}"
+  <section
+    class="section-container flex row container"
+    :class="{'border-edit': isEdit}"
     :style="{backgroundColor: section.style.bcgColor,
      backgroundImage: `url(${section.style.bcgImg})`}"
   >
     <WidgetEditor @setImg="setImg" :data="section" />
     <draggable
-      class="dragArea list-group-h"
-      :list="section.data"
-      :group="{ name: 'group', pull:false , put: true}"
+      class="dragArea list-group flex row"
+      :list="modifySection.data"
+      group="element"
       :sort="isEdit"
     >
-      <div class="list-group-item-h" v-for="(element,idx) in section.data" :key="idx">
+      <div v-if="isEdit && !modifySection.data[0]" class="placeholder">
+        <unicon name="plus" fill="gray" class="icon" />
+      </div>
+      <div class="list-group-item" v-for="(element,idx) in modifySection.data" :key="idx">
         <component
           :key="idx"
-          @saveMapData="saveMapData(section._id)"
+          :idx="idx"
+          @edit="editStyle"
+          @save="saveCard"
+          @saveText="saveText"
           :is="element.type"
           :data="element"
         ></component>
       </div>
-      <div v-if="isEdit && !section.data[0] " class="placeholder">
-        <unicon name="plus" fill="gray" class="icon" />
-      </div>
     </draggable>
-  </div>
+  </section>
 </template>
 <script>
+// import utils from "../../services/UtilsService.js";
 import WidgetEditor from "../wixer_cmps/WidgetEditor";
 import draggable from "vuedraggable";
-import Txt from "./Txt.vue";
+import Txt from "../elements/Txt";
 import TextEl from "../elements/TextElement";
-import Img from "./Img";
-import Video from "./Video";
-import Map from "./Map";
-import FormV from "./FormV";
+import Img from "../elements/ImageElement";
+import Video from "../elements/Video";
+import Card from "../elements/Card";
 export default {
   props: {
     section: Object,
-    isEdit: Boolean
+    isEdit: Boolean,
+    idx: Number
   },
   data() {
     return {
-      over: false
+      modifySection: JSON.parse(JSON.stringify(this.section))
     };
   },
-  computed: {
-    sectionList: {
-      get() {
-        return this.$store.getters.currSectionData;
-      },
-      set(value) {
-        this.$store.commit("addElement", value);
-      }
-    }
-  },
   methods: {
-    setImg(event) {
-      this.$emit("setImg", { event, sectionId: this.section._id });
-    },
-
-    async addEl(data) {
-      console.log("bbbbbbb", data);
-      this.over = false;
-      await this.$store.dispatch({
-        type: "addWidget",
-        data: { el: data.widget, sectionId: this.section._id }
+    async setImg(event) {
+      const img = await this.$store.dispatch({
+        type: "setBcgImg",
+        data: {
+          event,
+          sectionId: this.section._id
+        }
       });
+      this.modifySection.style.bcgImg = img;
+      this.saveSection();
     },
-    saveMapData({ newData, sectionId }) {
-      this.$store.commit({ type: "saveSectionData", newData, sectionId });
+    saveText(value) {
+      const idx = this.modifySection.data.findIndex(
+        data => data._id === value.id
+      );
+      this.modifySection.data[idx].text = value.txt;
+      this.saveSection();
+    },
+    saveSection() {
+      this.$emit("save", JSON.parse(JSON.stringify(this.modifySection)));
+    },
+    editStyle(newStyle) {
+      const txtStyle = this.modifySection.data.find(
+        el => el._id === newStyle.dataId
+      ).style;
+      var style = txtStyle;
+
+      if (newStyle.style.type === "bold") {
+        style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";
+      } else if (newStyle.style.type === "italicize") {
+        style.fontStyle = style.fontStyle === "normal" ? "italic" : "normal";
+      } else if (newStyle.style.type === "fontFamily")
+        style.fontFamily = newStyle.style.font;
+      else if (newStyle.style.type === "color")
+        style.color = newStyle.style.color;
+      else if (newStyle.style.type === "minus") style.fontSize += -2;
+      else if (newStyle.style.type === "plus") style.fontSize += 2;
+      else if (newStyle.style.type === "center") style.txtAlign = "center";
+      else if (newStyle.style.type === "left") style.txtAlign = "left";
+      else if (newStyle.style.type === "right") style.txtAlign = "right";
+      newStyle.style = style;
+      this.saveSection();
+    },
+    saveCard(card) {
+      console.log(card);
+      this.modifySection.data.splice(card.idx, 1, card.data);
+      this.saveSection();
     }
   },
   components: {
@@ -79,8 +106,7 @@ export default {
     Txt,
     Img,
     Video,
-    Map,
-    FormV
+    Card
   }
 };
 </script>
@@ -96,13 +122,9 @@ export default {
     background-color: gainsboro;
     text-align: center;
   }
-  .list-group-item-h {
-    height: 100%;
+  .list-group-item {
     flex-grow: 1;
-  }
-  .list-group-h {
     height: 100%;
-    display: flex;
   }
 }
 </style>

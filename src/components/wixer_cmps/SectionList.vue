@@ -1,17 +1,26 @@
 <template>
   <section>
-    <draggable class="dragArea list-group" v-model="myList" group="people" @change="add($event)">
-      <div class="list-group-item" v-for="(element,idx) in sections" :key="idx">
+    <draggable
+      class="dragArea list-group"
+      v-model="sectionsList"
+      group="people"
+      @change="add($event)"
+    >
+      <div
+        class="list-group-item"
+        v-for="(section, idx) in sections"
+        :key="idx"
+      >
         <component
           :isEdit="isEdit"
           :key="idx"
           :idx="idx"
-          :is="element.type"
-          :section="element"
+          :is="section.type"
+          :section="section"
+          @removeSection="removeSection"
           @save="saveSection"
           @saveMapData="saveMapData"
           @addEl="addEl"
-          @setImg="setImg"
           @setCardImg="setCardImg"
           @changeStyle="changeStyle"
           @saveText="saveText"
@@ -29,11 +38,8 @@
 import draggable from "vuedraggable";
 import NavBar from "../dynamics_widgets/NavBarEdit";
 import Paragraph from "../dynamics_widgets/Paragraph";
-import HeaderBig from "../dynamics_widgets/HeaderBig";
-import Img from "../dynamics_widgets/Img";
+import Header from "../dynamics_widgets/Header";
 import Map from "../dynamics_widgets/Map";
-import Txt from "../dynamics_widgets/Txt";
-import Video from "../dynamics_widgets/Video";
 import Form from "../dynamics_widgets/Form";
 import FormInline from "../dynamics_widgets/FormInline";
 import FrameFacebook from "../elements/FrameFacebook";
@@ -44,40 +50,51 @@ import CardsContainer from "../dynamics_widgets/CardsContainer";
 
 export default {
   props: {
-    widgets: Array
+    sections: Array
+  },
+  created() {
+    const param = this.$route.path;
+    if (param.includes("editor")) this.isEdit = true;
+    else this.isEdit = false;
+    this.listToEdit();
   },
   data() {
     return {
       isEdit: false,
-      newIdx: ""
+      newIdx: "",
+      sectionsList:null
     };
   },
   computed: {
-    sections() {
-      return this.$store.getters.currWapSections;
-    },
-    myList: {
-      get() {
-        return this.$store.getters.currWapSections;
-      },
-      set() {}
-    }
+    // sections() {
+    //   return this.$store.getters.currWapSections;
+    // },
+    // myList: {
+    //   get() {
+    //     return this.$store.getters.currWapSections;
+    //   },
+    //   set() {}
+    // }
   },
   methods: {
+    listToEdit(){
+      this.sectionsList = JSON.parse(JSON.stringify(this.sections))
+    },
+    removeSection(id) {
+      this.$store.commit({ type: "removeSection", sectionId: id });
+    },
     saveMapData(newData) {
       this.$store.commit({ type: "saveSectionData", newData });
     },
     saveSection(section) {
       this.$store.commit({ type: "saveSection", section });
     },
-    setImg(data) {
-      this.$store.dispatch({ type: "setBcgImg", data });
-    },
     setCardImg(data) {
       this.$store.dispatch({ type: "setCardImg", data });
     },
     saveText(data) {
-      this.$store.commit({ type: "updateTxt", data });
+      // this.$store.commit({ type: "updateTxt", data });
+      console.log(data)
     },
     changeStyle(data) {
       this.$store.commit({ type: "updateStyle", data });
@@ -89,20 +106,12 @@ export default {
       this.$store.commit("addElement", data);
     }
   },
-  created() {
-    const param = this.$route.path;
-    if (param.includes("editor")) this.isEdit = true;
-    else this.isEdit = false;
-  },
   components: {
     draggable,
     NavBar,
     Paragraph,
-    HeaderBig,
-    Img,
+    Header,
     Map,
-    Txt,
-    Video,
     Form,
     FormInline,
     FrameFacebook,

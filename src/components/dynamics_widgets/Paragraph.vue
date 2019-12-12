@@ -2,12 +2,13 @@
   <section
     class="container-twoCol container"
     @click="isEdit=!isEdit"
-    :style="{backgroundImage: `url(${section.style.bcgImg})`,    backgroundColor: section.style.bcgColor, border: isBorder}"
+    :style="{backgroundImage: `url(${section.style.bcgImg})`, backgroundColor: section.style.bcgColor, border: isBorder}"
   >
     <text-element v-for="(data, index) in section.data" :key="index" :data="data" :isEdit="isEdit"></text-element>
     <TextEditor @edit="editStyle" />
 
-    <widget-editor :data="section" class="widget-editor-container" @remove="removeWidget"></widget-editor>
+    <widget-editor :data="section" class="widget-editor-container" @remove="removeWidget" @changePos="changePos"
+></widget-editor>
   </section>
 </template>
 
@@ -34,6 +35,9 @@ export default {
     }
   },
   methods: {
+    changePos(moveBy){
+      this.$store.commit({type: 'changePos', moveBy, sectionToMove: this.section})
+    },
     removeWidget(id) {
       this.$emit("remove", id);
     },

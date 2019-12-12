@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       isEdit: false,
-      content: JSON.parse(JSON.stringify(this.data.text)),
+      content: this.data.text,
       isActive: false,
       selectedText: ""
     };
@@ -56,7 +56,6 @@ export default {
     const param = this.$route.path;
     if (param.includes('editor')) this.isEdit = true;
     else this.isEdit = false;
-    console.log(this.data);
   },
   watch: {
     $route(to) {

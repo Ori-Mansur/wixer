@@ -45,17 +45,40 @@ export default {
             state.waps.splice(idx, 1)
         },
         addSection(state, data) {
+          console.log(data)
             state.currWap.sections.splice(data.newIndex, 0, JSON.parse(JSON.stringify(data.element)))
-            state.currWap.sections[data.newIndex]._id = UtilsService.makeId()
-            state.group = state.currWap.sections[data.newIndex]._id
+            // state.currWap.sections[data.newIndex-1]._id = UtilsService.makeId()
+            // state.group = state.currWap.sections[data.newIndex-1]._id
         },
         addElement(state, data) {
             state.currWap.sections[data.sectionIdx].data.splice(data.data.newIndex, 0, data.data.element)
             state.currWap.sections[data.sectionIdx].data[data.data.newIndex]._id = UtilsService.makeId()
         },
+        removeSection (state, {sectionId}){
+          console.log(sectionId)
+          const idx = state.currWap.sections.findIndex(section=> section._id===sectionId)
+          state.currWap.sections.splice(idx, 1)
+        },
+        changePos(state, {moveBy, sectionToMove}){
+          const sectionIdx = state.currWap.sections.findIndex(section=>section._id===sectionToMove._id)
+          const sectionToReplaceIdx = sectionIdx+moveBy
+          // debugger
+
+          if(sectionToReplaceIdx>state.currWap.sections.length-1 || sectionToReplaceIdx<0) {
+            return 
+          } else {
+            const sectionToReplace = state.currWap.sections[sectionToReplaceIdx]
+            console.log(state.currWap.sections)
+            state.currWap.sections.splice(sectionIdx, 1, sectionToReplace)
+            console.log(state.currWap.sections)
+            state.currWap.sections.splice(sectionToReplaceIdx, 1, sectionToMove)
+
+          }
+        },
         saveSection(state, { section }) {
-            console.log(section);
-            
+            console.log(state.currWap);
+
+            // debugger
             const idx = state.currWap.sections.findIndex(currSection => currSection._id === section._id)
             state.currWap.sections.splice(idx, 1, section)
         },
@@ -77,6 +100,7 @@ export default {
             state.filterBy = filterBy
         },
         setBcgImg(state, { sectionData }) {
+          console.log(sectionData)
             const idx = state.currWap.sections.findIndex(section => section._id === sectionData.id)
             state.currWap.sections[idx].style.bcgImg = sectionData.imgUrl
         },
@@ -153,8 +177,10 @@ console.log(data);
         async setBcgImg(context, { data }) {
             context.commit({ type: 'open1', msg: 'loading img' })
             const imgUrl = await CloudinaryService.uploadImg(data.event)
-            context.commit({ type: 'setBcgImg', sectionData: { id: data.sectionId, imgUrl } })
+            console.log(imgUrl);
+            // context.commit({ type: 'setBcgImg', sectionData: { id: data.sectionId, imgUrl } })
             context.commit({ type: 'success', msg: 'Image upload' })
+            return imgUrl
         },
         async setCardImg(context, { data }) {
             context.commit({ type: 'open1', msg: 'loading img' })

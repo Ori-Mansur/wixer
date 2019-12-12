@@ -1,9 +1,10 @@
 <template>
   <section
-    class="section-container flex column container"
+    class="section-container flex column align-center justify-center"
     :class="{'border-edit': isEdit}"
-    :style="{backgroundColor: section.style.bcgColor,
-     backgroundImage: `url(${section.style.bcgImg})`}"
+    :style="{backgroundColor: modifySection.style.bcgColor,
+     backgroundImage: `url(${modifySection.style.bcgImg})`,
+     height: modifySection.style.height + 'vh'}"
   >
     <WidgetEditor @setImg="setImg" :data="section" />
     <draggable
@@ -32,13 +33,13 @@ import WidgetEditor from "../wixer_cmps/WidgetEditor";
 import draggable from "vuedraggable";
 import Txt from "../elements/Txt";
 import TextEl from "../elements/TextElement";
-import Img from "../elements/ImageElement";
-import Video from "../elements/Video";
 export default {
   props: {
     section: Object,
     isEdit: Boolean,
     idx: Number
+  },
+  created(){
   },
   data() {
     return {
@@ -47,21 +48,25 @@ export default {
   },
   methods: {
     async setImg(event) {
-      const img = await this.$store.dispatch({
-        type: "setBcgImg",
-        data: {
-          event,
-          sectionId: this.section._id
-        }
-      });
-      this.modifySection.style.bcgImg = img;
-      this.saveSection();
+     const img= await this.$store.dispatch({ type: "setBcgImg",data: {
+        event,
+        sectionId: this.section._id
+      } });
+     this.modifySection.style.bcgImg = img;
+     this.saveSection();
     },
     saveText(value) {
+      console.log('og section', this.section)
+            console.log('og section', this.modifySection)
+
+
       const idx = this.modifySection.data.findIndex(
         data => data._id === value.id
       );
       this.modifySection.data[idx].text = value.txt;
+            console.log(this.modifySection)
+
+
       this.saveSection();
     },
     saveSection() {
@@ -90,13 +95,18 @@ export default {
       this.saveSection();
     }
   },
+  watch: {
+    section(to) {
+      console.log('jjjj',to);
+      
+      this.modifySection = JSON.parse(JSON.stringify(to));
+    }
+  },
   components: {
     draggable,
     WidgetEditor,
     TextEl,
-    Txt,
-    Img,
-    Video
+    Txt
   }
 };
 </script>
@@ -104,7 +114,7 @@ export default {
 .section-container {
   position: relative;
   padding: 10px;
-  min-height: 200px;
+  background-size: cover;
 
   .placeholder {
     padding: 50px;
@@ -112,8 +122,8 @@ export default {
     background-color: gainsboro;
     text-align: center;
   }
-  .list-group-item {
-    height: 100%;
-  }
+  // .list-group-item {
+  //   height: 100%;
+  // }
 }
 </style>

@@ -3,7 +3,7 @@
     <div @keyup="saveText">
       <p
         v-if="data.style"
-        class="text"
+        class="text-el"
         v-html="content"
         :contenteditable="isEdit"
         :style="{fontSize: data.style.fontSize + 'px',
@@ -83,8 +83,7 @@ h3 {
 p {
   margin: 0;
 }
-.text {
+.text-el {
   padding: 10px;
-  width: 90%;
 }
 </style>

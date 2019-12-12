@@ -32,7 +32,7 @@ async function getById(id) {
 
 const sections = [
   {
-    type: 'HeaderBig',
+    type: 'Header',
     name: 'Header',
     icon: 'fa fa-header fa-2x',
     style: {
@@ -42,7 +42,10 @@ const sections = [
     },
     data: [
       {
-        _id: 'big1001',
+        _id: 'he1001',
+        type: 'TextEl',
+        name: 'Title',
+        icon: 'fa fa-font fa-2x',
         text: 'Insert Title',
         style: {
           color: 'black',
@@ -54,46 +57,14 @@ const sections = [
         }
       },
       {
-        _id: 'big1002',
+        _id: 'he1002',
+        type: 'TextEl',
+        name: 'Title',
+        icon: 'fa fa-font fa-2x',
         text: 'Insert Subtitle',
         style: {
           color: 'black',
-          fontSize: 16,
-          fontWeight: 'normal',
-          fontFamily: 'Arial',
-          fontStyle: 'normal',
-          txtAlign: 'center'
-        }
-      }
-    ]
-  },
-  {
-    type: 'Card1',
-    name: 'Card',
-    icon: 'fa fa-address-card fa-2x',
-    style: {
-      bcgImg: '',
-      bcgColor: '',
-      height: 90,
-      width: 90
-    },
-    data: [
-      {
-        text: 'Lorem ipsum',
-        style: {
-          color: 'black',
-          fontSize: 22,
-          fontWeight: 'normal',
-          fontFamily: 'Arial',
-          fontStyle: 'normal',
-          txtAlign: 'center'
-        }
-      },
-      {
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        style: {
-          color: 'black',
-          fontSize: 16,
+          fontSize: 20,
           fontWeight: 'normal',
           fontFamily: 'Arial',
           fontStyle: 'normal',
@@ -127,30 +98,39 @@ const sections = [
     ]
   },
   {
-    type: 'CardsContainer',
+    _id: 'crd1002',
+    type: 'SectionHorizental',
     name: 'Multi Card',
     icon: 'fa fa-address-card fa-2x',
-    style: {
-      bcgImg: '',
-      bcgColor: ''
-    },
+    style: { bcgImg: '', bcgColor: '' },
     data: [
       {
-        _id: 'crd1001',
-        type: 'Card1',
+        _id: 'card1001',
+        type: 'card',
         name: 'Card',
-        style: {
-          bcgImg: '',
-          bcgColor: '',
-          height: 90,
-          width: 90
-        },
+        icon: 'fa fa-align-left fa-2x',
+        sectionList: 'sectionList',
+        style: { bcgImg: '', bcgColor: '' },
         data: [
           {
-            text: 'Lorem ipsum',
+            _id: 'ca1001',
+            type: 'Img',
+            name: 'Image',
+            icon: 'fa fa-image fa-2x',
+            data: {
+              url:
+                'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
+            }
+          },
+          {
+            _id: 'ca1002',
+            type: 'TextEl',
+            name: 'Title',
+            icon: 'fa fa-font fa-2x',
+            text: 'Insert Title',
             style: {
               color: 'black',
-              fontSize: 22,
+              fontSize: 30,
               fontWeight: 'normal',
               fontFamily: 'Arial',
               fontStyle: 'normal',
@@ -158,7 +138,12 @@ const sections = [
             }
           },
           {
-            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+            _id: 'ca1003',
+            type: 'Txt',
+            name: 'Text',
+            icon: 'fa fa-font fa-3x',
+            text:
+              'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto.',
             style: {
               color: 'black',
               fontSize: 16,
@@ -171,21 +156,32 @@ const sections = [
         ]
       },
       {
-        _id: 'crd1002',
-        type: 'Card1',
+        _id: 'card1002',
+        type: 'card',
         name: 'Card',
-        style: {
-          bcgImg: '',
-          bcgColor: '',
-          height: 90,
-          width: 90
-        },
+        icon: 'fa fa-align-left fa-2x',
+        sectionList: 'sectionList',
+        style: { bcgImg: '', bcgColor: '' },
         data: [
           {
-            text: 'Lorem ipsum',
+            _id: 'ca1001',
+            type: 'Img',
+            name: 'Image',
+            icon: 'fa fa-image fa-2x',
+            data: {
+              url:
+                'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
+            }
+          },
+          {
+            _id: 'ca1002',
+            type: 'TextEl',
+            name: 'Title',
+            icon: 'fa fa-font fa-2x',
+            text: 'Insert Title',
             style: {
               color: 'black',
-              fontSize: 22,
+              fontSize: 30,
               fontWeight: 'normal',
               fontFamily: 'Arial',
               fontStyle: 'normal',
@@ -193,7 +189,12 @@ const sections = [
             }
           },
           {
-            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+            _id: 'ca1003',
+            type: 'Txt',
+            name: 'Text',
+            icon: 'fa fa-font fa-3x',
+            text:
+              'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto.',
             style: {
               color: 'black',
               fontSize: 16,
@@ -206,21 +207,32 @@ const sections = [
         ]
       },
       {
-        _id: 'crd1003',
-        type: 'Card1',
+        _id: 'card1003',
+        type: 'card',
         name: 'Card',
-        style: {
-          bcgImg: '',
-          bcgColor: '',
-          height: 90,
-          width: 90
-        },
+        icon: 'fa fa-align-left fa-2x',
+        sectionList: 'sectionList',
+        style: { bcgImg: '', bcgColor: '' },
         data: [
           {
-            text: 'Lorem ipsum',
+            _id: 'ca1001',
+            type: 'Img',
+            name: 'Image',
+            icon: 'fa fa-image fa-2x',
+            data: {
+              url:
+                'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
+            }
+          },
+          {
+            _id: 'ca1002',
+            type: 'TextEl',
+            name: 'Title',
+            icon: 'fa fa-font fa-2x',
+            text: 'Insert Title',
             style: {
               color: 'black',
-              fontSize: 22,
+              fontSize: 30,
               fontWeight: 'normal',
               fontFamily: 'Arial',
               fontStyle: 'normal',
@@ -228,7 +240,12 @@ const sections = [
             }
           },
           {
-            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+            _id: 'ca1003',
+            type: 'Txt',
+            name: 'Text',
+            icon: 'fa fa-font fa-3x',
+            text:
+              'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto.',
             style: {
               color: 'black',
               fontSize: 16,
@@ -272,14 +289,6 @@ const sections = [
     icon: 'fa fa-envelope-open fa-2x',
     data: {}
   },
-
-  {
-    _id: '5de4c99dfxaxccsacsc026x',
-    type: 'FrameFacebook',
-    icon: 'fa fa-facebook-square fa-2x',
-    name: 'Facebook',
-    data: {}
-  },
   {
     _id: '5de4c99dfxaxcchjvhucasklmcssacsc026x',
     type: 'SectionContainer',
@@ -289,19 +298,22 @@ const sections = [
     style: { bcgImg: '', bcgColor: '' },
     data: []
   },
+
   {
     _id: '0001',
     type: 'Map',
     name: 'Map',
+    icon: 'fa fa-map fa-2x',
+    style: { bcgImg: '', bcgColor: '' },
     data: {
+      currentPlace: null,
+      locations: [],
       center: { lat: 32.109333, lng: 34.855499 },
-      markers: [],
-      places: [],
-      placesMarked: [],
-      placesNames: [],
-      currentPlace: '',
-      placeName: '',
-      place: ''
+      businessInfo: {
+        openOn: { week: '', sat: '', sun: '' },
+        email: '',
+        phone: ''
+      }
     }
   },
   {
@@ -317,7 +329,7 @@ const sections = [
 
 const elements = [
   {
-    _id: '5de3deff1c9d44000049e80e',
+    _id: 'el1001',
     type: 'Txt',
     name: 'Text',
     icon: 'fa fa-font fa-3x',
@@ -332,8 +344,9 @@ const elements = [
       txtAlign: 'center'
     }
   },
+
   {
-    _id: 'el1001',
+    _id: 'el1002',
     type: 'Video',
     name: 'Video',
     icon: 'fa fa-youtube fa-2x',
@@ -342,7 +355,17 @@ const elements = [
     }
   },
   {
-    _id: 'el1002',
+    _id: 'el1003',
+    type: 'Img',
+    name: 'Image',
+    icon: 'fa fa-image fa-2x',
+    data: {
+      url:
+        'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
+    }
+  },
+  {
+    _id: 'el1004',
     type: 'TextEl',
     name: 'Title',
     icon: 'fa fa-font fa-2x',
@@ -355,12 +378,71 @@ const elements = [
       fontStyle: 'normal',
       txtAlign: 'center'
     }
+  },
+  {
+    _id: 'el1005',
+    type: 'card',
+    name: 'Card',
+    icon: 'fa fa-align-left fa-2x',
+    sectionList: 'sectionList',
+    style: { bcgImg: '', bcgColor: '' },
+    data: [
+      {
+        _id: 'ca1001',
+        type: 'Img',
+        name: 'Image',
+        icon: 'fa fa-image fa-2x',
+        data: {
+          url:
+            'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
+        }
+      },
+      {
+        _id: 'ca1002',
+        type: 'TextEl',
+        name: 'Title',
+        icon: 'fa fa-font fa-2x',
+        text: 'Insert Title',
+        style: {
+          color: 'black',
+          fontSize: 30,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        }
+      },
+      {
+        _id: 'ca1003',
+        type: 'Txt',
+        name: 'Text',
+        icon: 'fa fa-font fa-3x',
+        text:
+          'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto.',
+        style: {
+          color: 'black',
+          fontSize: 16,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        }
+      }
+    ]
+  },
+  {
+    _id: '5de4c99dfxaxccsacsc026x',
+    type: 'FrameFacebook',
+    icon: 'fa fa-facebook-square fa-2x',
+    name: 'Facebook',
+    data: {}
+  },
+
+  {
+    _id: 'el1007',
+    type: 'FormV',
+    icon: 'fa fa-envelope-open fa-2x',
+    name: 'Form Horizental',
+    data: {}
   }
-  // {
-  //   _id: 'el1004',
-  //   type: 'FormV',
-  //   icon: 'fa fa-envelope-open fa-2x',
-  //   name: 'Form Vertical',
-  //   data: {}
-  // }
 ];
