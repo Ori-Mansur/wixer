@@ -54,21 +54,21 @@
       </div>
 
       <div class="btn-container">
-        <li @click="$emit('preview')">
+        <li class="flex" @click="$emit('preview')">
           <i class="fa fa-eye fa-2x"></i>
           <h4 :style="{color:'gray'}"></h4>
         </li>
-        <li @click="save">
+        <li class="flex" @click="save">
           <i class="fa fa-share-alt-square fa-2x"></i>
           <h4 :style="{color:'gray'}"></h4>
         </li>
-        <li @click="save">
+        <li class="flex" @click="save">
           <i class="fa fa-save fa-2x"></i>
 
           <h4 :style="{color:'white'}"></h4>
         </li>
         <router-link to="/wap">
-          <li>
+          <li class="flex">
             <i class="fa fa-sign-out fa-2x"></i>
 
             <h4 :style="{color:'gray'}"></h4>
