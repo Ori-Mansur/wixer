@@ -39,16 +39,16 @@ export default {
   },
   methods: {
     removeWidget(id) {
-      this.$emit('remove', id);
+      this.$emit("remove", id);
     },
     saveText(ev) {
       const txt = ev.target.innerText;
-      this.$emit("saveText", {txt,id:this.data._id});
+      this.$emit("saveText", { txt, id: this.data._id });
     },
     edit(type) {
       console.log(type);
-      
-      this.$emit("edit",{dataId:this.data._id,style: type});
+
+      this.$emit("edit", { dataId: this.data._id, style: type });
     },
     selectedTxt() {
       this.$store.commit({ type: "setTxtId", id: this.data._id });
@@ -59,7 +59,7 @@ export default {
   },
   created() {
     const param = this.$route.path;
-    if (param.includes('editor')) this.isEdit = true;
+    if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
     console.log(this.data);
   },

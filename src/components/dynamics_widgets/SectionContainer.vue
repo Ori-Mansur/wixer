@@ -15,15 +15,15 @@
       <div v-if="isEdit && !modifySection.data[0]" class="placeholder">
         <unicon name="plus" fill="gray" class="icon" />
       </div>
-    <div class="list-group-item" v-for="(element,idx) in modifySection.data" :key="idx">
-      <component
-        :key="idx"
-        @edit="editStyle"
-        @saveText="saveText"
-        :is="element.type"
-        :data="element"
-      ></component>
-    </div>
+      <div class="list-group-item" v-for="(element,idx) in modifySection.data" :key="idx">
+        <component
+          :key="idx"
+          @edit="editStyle"
+          @saveText="saveText"
+          :is="element.type"
+          :data="element"
+        ></component>
+      </div>
     </draggable>
   </section>
 </template>
@@ -47,12 +47,15 @@ export default {
   },
   methods: {
     async setImg(event) {
-     const img= await this.$store.dispatch({ type: "setBcgImg",data: {
-        event,
-        sectionId: this.section._id
-      } });
-     this.modifySection.style.bcgImg = img;
-     this.saveSection();
+      const img = await this.$store.dispatch({
+        type: "setBcgImg",
+        data: {
+          event,
+          sectionId: this.section._id
+        }
+      });
+      this.modifySection.style.bcgImg = img;
+      this.saveSection();
     },
     saveText(value) {
       const idx = this.modifySection.data.findIndex(
@@ -62,12 +65,13 @@ export default {
       this.saveSection();
     },
     saveSection() {
-      this.$emit("save",JSON.parse(JSON.stringify(this.modifySection)));
+      this.$emit("save", JSON.parse(JSON.stringify(this.modifySection)));
     },
     editStyle(newStyle) {
-      const txtStyle = this.modifySection.data.find(el => el._id === newStyle.dataId)
-        .style;
-      var style =txtStyle;
+      const txtStyle = this.modifySection.data.find(
+        el => el._id === newStyle.dataId
+      ).style;
+      var style = txtStyle;
 
       if (newStyle.style.type === "bold") {
         style.fontWeight = style.fontWeight === "normal" ? "bold" : "normal";
@@ -79,9 +83,9 @@ export default {
         style.color = newStyle.style.color;
       else if (newStyle.style.type === "minus") style.fontSize += -2;
       else if (newStyle.style.type === "plus") style.fontSize += 2;
-      else if (newStyle.style.type === "center") style.txtAlign = 'center';
-      else if (newStyle.style.type === "left") style.txtAlign = 'left';
-      else if (newStyle.style.type === "right") style.txtAlign = 'right';
+      else if (newStyle.style.type === "center") style.txtAlign = "center";
+      else if (newStyle.style.type === "left") style.txtAlign = "left";
+      else if (newStyle.style.type === "right") style.txtAlign = "right";
       newStyle.style = style;
       this.saveSection();
     }

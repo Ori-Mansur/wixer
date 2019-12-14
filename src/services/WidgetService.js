@@ -103,154 +103,161 @@ const sections = [
     name: 'Multi Card',
     icon: 'fa fa-address-card fa-2x',
     style: { bcgImg: '', bcgColor: '' },
-    data: [{
-      _id: 'card1001',
-      type: 'card',
-      name: 'Card',
-      icon: 'fa fa-align-left fa-2x',
-      sectionList: 'sectionList',
-      style: { bcgImg: '', bcgColor: '' },
-      data: [
-        {
-          _id: 'ca1001',
-          type: 'Img',
-          name: 'Image',
-          icon: 'fa fa-image fa-2x',
-          data: {
-            url: 'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
+    data: [
+      {
+        _id: 'card1001',
+        type: 'card',
+        name: 'Card',
+        icon: 'fa fa-align-left fa-2x',
+        sectionList: 'sectionList',
+        style: { bcgImg: '', bcgColor: '' },
+        data: [
+          {
+            _id: 'ca1001',
+            type: 'Img',
+            name: 'Image',
+            icon: 'fa fa-image fa-2x',
+            data: {
+              url:
+                'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
+            }
+          },
+          {
+            _id: 'ca1002',
+            type: 'TextEl',
+            name: 'Title',
+            icon: 'fa fa-font fa-2x',
+            text: 'Insert Title',
+            style: {
+              color: 'black',
+              fontSize: 30,
+              fontWeight: 'normal',
+              fontFamily: 'Arial',
+              fontStyle: 'normal',
+              txtAlign: 'center'
+            }
+          },
+          {
+            _id: 'ca1003',
+            type: 'Txt',
+            name: 'Text',
+            icon: 'fa fa-font fa-3x',
+            text:
+              'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto.',
+            style: {
+              color: 'black',
+              fontSize: 16,
+              fontWeight: 'normal',
+              fontFamily: 'Arial',
+              fontStyle: 'normal',
+              txtAlign: 'center'
+            }
           }
-        },
-        {
-          _id: 'ca1002',
-          type: 'TextEl',
-          name: 'Title',
-          icon: 'fa fa-font fa-2x',
-          text: 'Insert Title',
-          style: {
-            color: 'black',
-            fontSize: 30,
-            fontWeight: 'normal',
-            fontFamily: 'Arial',
-            fontStyle: 'normal',
-            txtAlign: 'center'
+        ]
+      },
+      {
+        _id: 'card1002',
+        type: 'card',
+        name: 'Card',
+        icon: 'fa fa-align-left fa-2x',
+        sectionList: 'sectionList',
+        style: { bcgImg: '', bcgColor: '' },
+        data: [
+          {
+            _id: 'ca1001',
+            type: 'Img',
+            name: 'Image',
+            icon: 'fa fa-image fa-2x',
+            data: {
+              url:
+                'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
+            }
+          },
+          {
+            _id: 'ca1002',
+            type: 'TextEl',
+            name: 'Title',
+            icon: 'fa fa-font fa-2x',
+            text: 'Insert Title',
+            style: {
+              color: 'black',
+              fontSize: 30,
+              fontWeight: 'normal',
+              fontFamily: 'Arial',
+              fontStyle: 'normal',
+              txtAlign: 'center'
+            }
+          },
+          {
+            _id: 'ca1003',
+            type: 'Txt',
+            name: 'Text',
+            icon: 'fa fa-font fa-3x',
+            text:
+              'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto.',
+            style: {
+              color: 'black',
+              fontSize: 16,
+              fontWeight: 'normal',
+              fontFamily: 'Arial',
+              fontStyle: 'normal',
+              txtAlign: 'center'
+            }
           }
-        },
-        {
-          _id: 'ca1003',
-          type: 'Txt',
-          name: 'Text',
-          icon: 'fa fa-font fa-3x',
-          text:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto.',
-          style: {
-            color: 'black',
-            fontSize: 16,
-            fontWeight: 'normal',
-            fontFamily: 'Arial',
-            fontStyle: 'normal',
-            txtAlign: 'center'
+        ]
+      },
+      {
+        _id: 'card1003',
+        type: 'card',
+        name: 'Card',
+        icon: 'fa fa-align-left fa-2x',
+        sectionList: 'sectionList',
+        style: { bcgImg: '', bcgColor: '' },
+        data: [
+          {
+            _id: 'ca1001',
+            type: 'Img',
+            name: 'Image',
+            icon: 'fa fa-image fa-2x',
+            data: {
+              url:
+                'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
+            }
+          },
+          {
+            _id: 'ca1002',
+            type: 'TextEl',
+            name: 'Title',
+            icon: 'fa fa-font fa-2x',
+            text: 'Insert Title',
+            style: {
+              color: 'black',
+              fontSize: 30,
+              fontWeight: 'normal',
+              fontFamily: 'Arial',
+              fontStyle: 'normal',
+              txtAlign: 'center'
+            }
+          },
+          {
+            _id: 'ca1003',
+            type: 'Txt',
+            name: 'Text',
+            icon: 'fa fa-font fa-3x',
+            text:
+              'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto.',
+            style: {
+              color: 'black',
+              fontSize: 16,
+              fontWeight: 'normal',
+              fontFamily: 'Arial',
+              fontStyle: 'normal',
+              txtAlign: 'center'
+            }
           }
-        },
-      ]
-    }, {
-      _id: 'card1002',
-      type: 'card',
-      name: 'Card',
-      icon: 'fa fa-align-left fa-2x',
-      sectionList: 'sectionList',
-      style: { bcgImg: '', bcgColor: '' },
-      data: [
-        {
-          _id: 'ca1001',
-          type: 'Img',
-          name: 'Image',
-          icon: 'fa fa-image fa-2x',
-          data: {
-            url: 'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
-          }
-        },
-        {
-          _id: 'ca1002',
-          type: 'TextEl',
-          name: 'Title',
-          icon: 'fa fa-font fa-2x',
-          text: 'Insert Title',
-          style: {
-            color: 'black',
-            fontSize: 30,
-            fontWeight: 'normal',
-            fontFamily: 'Arial',
-            fontStyle: 'normal',
-            txtAlign: 'center'
-          }
-        },
-        {
-          _id: 'ca1003',
-          type: 'Txt',
-          name: 'Text',
-          icon: 'fa fa-font fa-3x',
-          text:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto.',
-          style: {
-            color: 'black',
-            fontSize: 16,
-            fontWeight: 'normal',
-            fontFamily: 'Arial',
-            fontStyle: 'normal',
-            txtAlign: 'center'
-          }
-        },
-      ]
-    }, {
-      _id: 'card1003',
-      type: 'card',
-      name: 'Card',
-      icon: 'fa fa-align-left fa-2x',
-      sectionList: 'sectionList',
-      style: { bcgImg: '', bcgColor: '' },
-      data: [
-        {
-          _id: 'ca1001',
-          type: 'Img',
-          name: 'Image',
-          icon: 'fa fa-image fa-2x',
-          data: {
-            url: 'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
-          }
-        },
-        {
-          _id: 'ca1002',
-          type: 'TextEl',
-          name: 'Title',
-          icon: 'fa fa-font fa-2x',
-          text: 'Insert Title',
-          style: {
-            color: 'black',
-            fontSize: 30,
-            fontWeight: 'normal',
-            fontFamily: 'Arial',
-            fontStyle: 'normal',
-            txtAlign: 'center'
-          }
-        },
-        {
-          _id: 'ca1003',
-          type: 'Txt',
-          name: 'Text',
-          icon: 'fa fa-font fa-3x',
-          text:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto.',
-          style: {
-            color: 'black',
-            fontSize: 16,
-            fontWeight: 'normal',
-            fontFamily: 'Arial',
-            fontStyle: 'normal',
-            txtAlign: 'center'
-          }
-        },
-      ]
-    },]
+        ]
+      }
+    ]
   },
   {
     type: 'NavBar',
@@ -302,8 +309,11 @@ const sections = [
       currentPlace: null,
       locations: [],
       center: { lat: 32.109333, lng: 34.855499 },
-      businessInfo: { openOn: { week: '', sat: '', sun: '' }, email: '', phone: '' }
-
+      businessInfo: {
+        openOn: { week: '', sat: '', sun: '' },
+        email: '',
+        phone: ''
+      }
     }
   },
   {
@@ -322,7 +332,7 @@ const elements = [
     _id: 'el1001',
     type: 'Txt',
     name: 'Text',
-    icon: 'fa fa-font fa-3x',
+    icon: 'fa fa-font fa-2x',
     text:
       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!',
     style: {
@@ -350,7 +360,8 @@ const elements = [
     name: 'Image',
     icon: 'fa fa-image fa-2x',
     data: {
-      url: 'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
+      url:
+        'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
     }
   },
   {
@@ -382,7 +393,8 @@ const elements = [
         name: 'Image',
         icon: 'fa fa-image fa-2x',
         data: {
-          url: 'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
+          url:
+            'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
         }
       },
       {
@@ -415,7 +427,7 @@ const elements = [
           fontStyle: 'normal',
           txtAlign: 'center'
         }
-      },
+      }
     ]
   },
   {

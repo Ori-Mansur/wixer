@@ -1,11 +1,19 @@
 <template>
   <div class="wap-editor">
-    <ToolBar @save="saveWap" :widgets="loadSections" :elements="elements" />
+    <i class="fa fa-edit fa-3x editor-view" v-if="!isPreviewMode" @click.stop="preview"></i>
+    <ToolBar
+      @preview="preview"
+      @save="saveWap"
+      :widgets="loadSections"
+      :elements="elements"
+      :class="[isPreviewMode ? 'tool-bar' : 'isPreview']"
+    />
     <SectionList
       class="edit-template"
       v-if="currWap"
       :sections="currWap.sections"
       :style="{backgroundColor: currWap.style.bcgColor, color: currWap.style.txtColor}"
+      :class="[isPreviewMode ? 'edit-template' : 'edit-template-prev']"
     />
   </div>
 </template>
@@ -23,6 +31,7 @@ export default {
     return {
       isSection: false,
       over: false,
+      isPreviewMode: true
     };
   },
   computed: {
@@ -51,6 +60,13 @@ export default {
       } else {
         const newWap = await this.$store.dispatch({ type: "addNewWap" });
         this.$router.push(`/editor/${newWap._id}`);
+      }
+    },
+    preview() {
+      if (this.isPreviewMode) {
+        this.isPreviewMode = false;
+      } else {
+        this.isPreviewMode = true;
       }
     }
   },

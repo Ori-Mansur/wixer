@@ -1,4 +1,10 @@
 .menu-options {
   display: flex;
   justify-content: space-around;
+  // margin-top: 30px;
+
+  .logo {
+    position: relative;
+    // margin-bottom: 30px;
+  }
 }
