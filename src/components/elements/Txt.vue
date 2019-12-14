@@ -1,6 +1,8 @@
 <template>
   <section v-if="data" class="text-container" @click="selectedTxt">
-    
+    <label @click="removeElement" title="remove this widget">
+        <unicon name="trash-alt" fill="black" class="icon-edit" />
+      </label>
     <div @keyup="saveText">
       <p
         v-if="data.style"
@@ -50,6 +52,9 @@ export default {
     },
     selectedTxt() {
       this.$store.commit({ type: "setTxtId", id: this.data._id });
+    },
+    removeElement() {
+      // this.$emit("removeWidget", this.data._id);
     }
   },
   created() {

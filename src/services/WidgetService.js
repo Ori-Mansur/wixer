@@ -341,7 +341,7 @@ const elements = [
     name: 'Video',
     icon: 'fa fa-youtube fa-2x',
     data: {
-      url: 'https://www.youtube.com/embed/mO3Q4bRQZ3k'
+      url: 'https://www.youtube.com/embed/QVvy63brK_4'
     }
   },
   {
