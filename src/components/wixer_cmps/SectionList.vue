@@ -9,14 +9,15 @@
       <div
         class="list-group-item"
         v-for="(section, idx) in sections"
-        :key="idx"
+        :key="section._id"
       >
         <component
           :isEdit="isEdit"
-          :key="idx"
+          :key="section._id"
           :idx="idx"
           :is="section.type"
           :section="section"
+          @changePos="changePos"
           @removeSection="removeSection"
           @save="saveSection"
           @saveMapData="saveMapData"
@@ -77,6 +78,9 @@ export default {
     // }
   },
   methods: {
+    changePos(diff, sectionToMove){
+      this.$store.commit({type: "changePos" ,moveBy: diff, sectionToMove})
+    },
     listToEdit(){
       this.sectionsList = JSON.parse(JSON.stringify(this.sections))
     },
@@ -100,6 +104,7 @@ export default {
       this.$store.commit({ type: "updateStyle", data });
     },
     add(evt) {
+      console.log(evt)
       this.$store.commit("addSection", evt.added);
     },
     addEl(data) {

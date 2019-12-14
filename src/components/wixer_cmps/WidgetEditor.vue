@@ -3,7 +3,7 @@
     <label @click="chooseColor = !chooseColor">
       <unicon name="palette" fill="black" class="icon-edit" />
     </label>
-    <label @click="removeWidget" title="remove this widget">
+    <label @click="removeSection" title="remove this widget">
       <unicon name="trash-alt" fill="black" class="icon-edit" />
     </label>
     <label @click="changePos(+1)">
@@ -49,13 +49,14 @@ export default {
   },
   methods: {
     changePos(diff){
+      // console.log(diff)
       this.$emit('changePos', diff)
     },
     editWidget() {
       this.$emit("edit", this.data);
     },
-    removeWidget() {
-      this.$emit("removeWidget", this.data._id);
+    removeSection() {
+      this.$emit("removeSection", this.data._id);
     },
     updateBackground(color) {
       this.data.style.bcgColor = color;

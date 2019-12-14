@@ -18,17 +18,11 @@
     :widget="data.data[selectedTxt]"
     @edit="editStyle" @remove="removeWidget"></text-editor>
 
-    <widget-editor
-      :data="data"
-      class="widget-editor-container"
-      @setImg="setImg"
-      @removeWidget="removeWidget"
-    ></widget-editor>
   </section>
 </template>
 
 <script>
-import WidgetEditor from "../wixer_cmps/WidgetEditor";
+// import WidgetEditor from "../wixer_cmps/WidgetEditor";
 import TextEditor from "../wixer_cmps/TextEditor";
 import TextElement from "../elements/TextElement";
 import ImageElement from "../elements/ImageElement";
@@ -73,16 +67,15 @@ export default {
 
       this.$emit("setImg", { event,idx:this.index})
     },
-    removeWidget(id) {
-      // this.$emit("removeWidget", this.data._id);
-    },
+    // removeWidget(id) {
+    //   // this.$emit("removeWidget", this.data._id);
+    // },
     selectedText(idx) {
       this.selectedTxt = idx;
       console.log(this.selectedTxt);
     }
   },
   components: {
-    WidgetEditor,
     TextEditor,
     TextElement,
     ImageElement

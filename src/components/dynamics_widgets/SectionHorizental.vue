@@ -5,7 +5,7 @@
     :style="{backgroundColor: section.style.bcgColor,
      backgroundImage: `url(${section.style.bcgImg})`}"
   >
-    <WidgetEditor @setImg="setImg" :data="section" />
+    <WidgetEditor @setImg="setImg" :data="section" @changePos="changePos" @removeSection="removeSection"/>
     <draggable
       class="dragArea list-group flex row"
       :list="modifySection.data"
@@ -50,6 +50,12 @@ export default {
     };
   },
   methods: {
+    removeSection(id) {
+      this.$emit("removeSection", id);
+    },
+    changePos(diff){
+      this.$emit('changePos', diff, this.modifySection)
+    },
     async setImg(event) {
       const img = await this.$store.dispatch({
         type: "setBcgImg",

@@ -3,10 +3,12 @@
     class="container-threeCol flex align-center row container"
     :style="{backgroundColor: section.style.bcgColor, border: isBorder}"
   >
+  <!-- <WidgetEditor @setImg="setImg" :data="section" @changePos="changePos"/> -->
     <card-container
     
       @setImg="setImg"
       @changeStyle="changeStyle"
+      @changePos="changePos"
       v-for="(data, index) in section.data"
       :key="index"
       :index="index"
@@ -19,6 +21,8 @@
 
 <script>
 import CardContainer from "../dynamics_widgets/CardContainer";
+import WidgetEditor from "../wixer_cmps/WidgetEditor";
+
 
 export default {
   props: {
@@ -29,7 +33,8 @@ export default {
     console.log(this.section);
   },
   components: {
-    CardContainer
+    CardContainer,
+    WidgetEditor
   },
   data() {
     return {
@@ -47,8 +52,9 @@ export default {
     }
   },
   methods: {
-    changePos(moveBy){
-      this.$store.commit({type: 'changePos', moveBy, sectionToMove: this.section})
+    changePos(diff){
+      console.log(diff)
+      this.$emit('changePos', diff, this.section)
     },
     removeWidget(id) {
       this.$emit("remove", id);

@@ -5,8 +5,9 @@
     :style="{backgroundColor: modifySection.style.bcgColor,
      backgroundImage: `url(${modifySection.style.bcgImg})`,
      height: modifySection.style.height + 'vh'}"
+     @changePos="changePos"
   >
-    <WidgetEditor @setImg="setImg" :data="section" />
+    <WidgetEditor @setImg="setImg" :data="section" @changePos="changePos" @removeSection="removeSection"/>
     <draggable
       class="dragArea list-group"
       :list="modifySection.data"
@@ -47,6 +48,12 @@ export default {
     };
   },
   methods: {
+    removeSection(id) {
+      this.$emit("removeSection", id);
+    },
+    changePos(diff){
+      this.$emit('changePos', diff, this.modifySection)
+    },
     async setImg(event) {
      const img= await this.$store.dispatch({ type: "setBcgImg",data: {
         event,
@@ -96,9 +103,7 @@ export default {
     }
   },
   watch: {
-    section(to) {
-      console.log('jjjj',to);
-      
+    section(to) {      
       this.modifySection = JSON.parse(JSON.stringify(to));
     }
   },

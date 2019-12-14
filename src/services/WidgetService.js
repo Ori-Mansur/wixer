@@ -431,6 +431,42 @@ const elements = [
     ]
   },
   {
+    _id: 'el1005',
+    type: 'cardHorizontal',
+    name: 'CardHorizontal',
+    icon: 'fa fa-align-left fa-2x',
+    sectionList: 'sectionList',
+    style: { bcgImg: '', bcgColor: '' },
+    data: [
+      {
+        _id: 'ca1001',
+        type: 'Img',
+        name: 'Image',
+        icon: 'fa fa-image fa-2x',
+        data: {
+          url:
+            'https://res.cloudinary.com/dw9jjocrg/image/upload/v1575890067/placeholder-img-4_wty056.jpg'
+        }
+      },
+      {
+        _id: 'ca1003',
+        type: 'Txt',
+        name: 'Text',
+        icon: 'fa fa-font fa-3x',
+        text:
+          'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto.',
+        style: {
+          color: 'black',
+          fontSize: 16,
+          fontWeight: 'normal',
+          fontFamily: 'Arial',
+          fontStyle: 'normal',
+          txtAlign: 'center'
+        }
+      }
+    ]
+  },
+  {
     _id: '5de4c99dfxaxccsacsc026x',
     type: 'FrameFacebook',
     icon: 'fa fa-facebook-square fa-2x',
