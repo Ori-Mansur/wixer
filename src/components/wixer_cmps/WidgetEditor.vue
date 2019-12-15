@@ -49,7 +49,6 @@ export default {
   },
   methods: {
     changePos(diff){
-      // console.log(diff)
       this.$emit('changePos', diff)
     },
     editWidget() {

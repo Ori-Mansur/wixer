@@ -43,7 +43,6 @@ export default {
     if (id) {
       const wap = await this.$store.dispatch({ type: "loadWap", id });
       this.wap = wap;
-      console.log(this.wap);
     }
   },
   components: {

@@ -129,7 +129,6 @@ export default {
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
     this.cloneData();
-    console.log(this.newData);
   },
   data() {
     return {
@@ -171,7 +170,6 @@ export default {
     centerMap(index) {
       this.selectedLocIdx = index;
       this.newData.data.center = this.newData.data.locations[index].position;
-      console.log(this.section.data.locations[index].address);
     },
     setPlace(place) {
       this.newData.data.currentPlace = place;
@@ -192,7 +190,6 @@ export default {
         this.newData.data.center = position;
         this.newData.data.currentPlace = null;
         this.addressSearch = null;
-        console.log(this.newData);
       }
     },
     saveSection() {

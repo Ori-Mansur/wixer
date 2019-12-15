@@ -42,7 +42,6 @@ export default {
   },
   methods: {
     setColor(color) {
-      console.log(color);
       this.$emit("changeColor", color);
     }
   }

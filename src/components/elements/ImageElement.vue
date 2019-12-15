@@ -26,7 +26,6 @@ export default {
   },
   methods: {
     setImg(event) {
-      console.log(event)
       this.$emit("setImg", { event, idx: this.idx });
     },
     removeElement() {

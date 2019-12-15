@@ -49,12 +49,7 @@ export default {
   },
   methods: {
     async setImg(data) {
-      console.log(data);
-      
      const img= await this.$store.dispatch({ type: "setBcgImg",data });
-    //  console.log(img);
-     
-     console.log(this.modifySection.data[data.idx].data);
      this.modifySection.data[data.idx].data.url=img
      this.saveSection();
     },
