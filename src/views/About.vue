@@ -12,19 +12,19 @@
       <div class="card-container">
         <h3>Ori Mansur</h3>
         <div class="team-card-one"></div>
-        <h4>bla bla</h4>
+        <a href="https://www.linkedin.com/in/ori-mansur/">Linkdin</a>
         <img />
       </div>
       <div class="card-container">
         <h3>Nimrod Gaver</h3>
         <div class="team-card-two"></div>
-        <h4>bla bla</h4>
+        <a href="https://www.linkedin.com/in/nimrod-gaver-167b76199/">Linkdin</a>
         <img />
       </div>
       <div class="card-container">
         <h3>Meidan Leiderman</h3>
         <div class="team-card-three"></div>
-        <h4>bla bla</h4>
+        <a href="https://www.linkedin.com/in/meidan-leiderman-68812942/">Linkdin</a>
       </div>
     </div>
     <h2 class="about-us-container">Thank you for using our app!</h2>
