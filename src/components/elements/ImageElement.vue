@@ -1,6 +1,6 @@
 <template>
   <section class="image-container flex column">
-    <div class="img-tool">
+    <div class="img-tool" v-if="isEdit">
       <label :for="fileUpload" @change="setImg">
         <input :id="fileUpload" type="file" />
         <unicon name="image-plus" fill="black" class="icon-edit" />
@@ -18,6 +18,11 @@ export default {
     data: Object,
     idx: Number
   },
+  data(){
+    return{
+isEdit:false
+    }
+  },
   computed: {
     fileUpload() {
       const x = Math.random();
@@ -32,7 +37,17 @@ export default {
       this.$emit("remove", this.data._id);
     }
   },
-  created() {}
+  created() {
+    const param = this.$route.path;
+    if (param.includes("editor")) this.isEdit = true;
+    else this.isEdit = false;
+  },
+  watch: {
+    $route(to) {
+      if (to.includes("editor")) this.isEdit = true;
+      else this.isEdit = false;
+    }
+  },
 };
 </script>
 <style lang="scss" scoped>
