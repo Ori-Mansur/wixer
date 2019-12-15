@@ -25,6 +25,7 @@
           :key="idx"
           :idx="idx"
           @edit="editStyle"
+          @updateElement="updateElement"
           @save="saveCard"
           @saveText="saveText"
           @remove="remove(idx)"
@@ -56,6 +57,9 @@ export default {
     };
   },
   methods: {
+    updateElement() {
+      this.saveSection();
+    },
     removeSection(id) {
       this.$emit("removeSection", id);
     },

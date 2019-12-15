@@ -57,11 +57,7 @@ export default {
     };
   },
   methods: {
-    updateElement(editedElement) {
-      const idx = this.modifySection.data.findIndex(
-        element => element._id === editedElement._id
-      );
-      this.modifySection.data.splice(idx, 1, editedElement);
+    updateElement() {
       this.saveSection();
     },
     add(evt) {
