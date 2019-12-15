@@ -146,12 +146,7 @@ export default {
       this.isShare = true;
     },
     cloneX(section) {
-      console.log(section);
-
       return JSON.parse(JSON.stringify(section));
-    },
-    onChange: function(evt) {
-      console.log(evt);
     }
   },
   computed: {
@@ -181,7 +176,6 @@ export default {
     },
     group() {
       const group = this.$store.getters.group;
-      console.log("group", group);
       return group;
     }
   },

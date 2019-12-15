@@ -25,9 +25,6 @@ export default {
         form:{}
       }
     },
-    created(){
-      console.log('form data', this.value)
-    },
     methods:{
         send(){
             console.log('sending...')

@@ -59,12 +59,9 @@ export default {
       else if(newStyle.type === 'color')style.color=newStyle.color
       else if(newStyle.type=== 'minus')style.fontSize+=-2
       else if(newStyle.type=== 'plus')style.fontSize+=2
-      console.log(style);
       this.$emit("changeStyle",{style,idx:this.selectedTxt,id:this.data._id});
     },
      setImg(event) {
-       console.log('singel card',this.index);
-
       this.$emit("setImg", { event,idx:this.index})
     },
     // removeWidget(id) {
@@ -72,7 +69,6 @@ export default {
     // },
     selectedText(idx) {
       this.selectedTxt = idx;
-      console.log(this.selectedTxt);
     }
   },
   components: {

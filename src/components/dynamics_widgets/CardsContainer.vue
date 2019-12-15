@@ -50,14 +50,12 @@ export default {
   },
   methods: {
     changePos(diff){
-      console.log(diff)
       this.$emit('changePos', diff, this.section)
     },
     removeWidget(id) {
       this.$emit("remove", id);
     },
     setImg(data) {
-      console.log(data);
       this.$emit("setCardImg", {
         event: data.event,
         sectionId: this.section._id,
@@ -65,7 +63,6 @@ export default {
       });
     },
     changeStyle(data) {
-      console.log(data);
       this.$emit("changeStyle", {
         cardData: data,
         sectionId: this.section._id

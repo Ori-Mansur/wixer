@@ -60,9 +60,6 @@ export default {
   props:{
     section: Object
   },
-  created(){
-    console.log(this.section)
-  },
   data() {
     var checkAge = (rule, value, callback) => {
       if (!value) {

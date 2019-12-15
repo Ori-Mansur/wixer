@@ -22,6 +22,7 @@
           :key="idx"
           @edit="editStyle"
           @saveText="saveText"
+          @remove="remove(idx)"
           :is="element.type"
           :data="element"
         ></component>
@@ -51,6 +52,10 @@ export default {
     removeSection(id) {
       this.$emit("removeSection", id);
     },
+     remove(idx) {
+      this.modifySection.data.splice(idx, 1);
+      this.saveSection();
+    },
     changePos(diff){
       this.$emit('changePos', diff, this.modifySection)
     },
@@ -63,17 +68,10 @@ export default {
      this.saveSection();
     },
     saveText(value) {
-      console.log('og section', this.section)
-            console.log('og section', this.modifySection)
-
-
       const idx = this.modifySection.data.findIndex(
         data => data._id === value.id
       );
       this.modifySection.data[idx].text = value.txt;
-            console.log(this.modifySection)
-
-
       this.saveSection();
     },
     saveSection() {
