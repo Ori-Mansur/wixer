@@ -332,7 +332,7 @@ const elements = [
     _id: 'el1001',
     type: 'Txt',
     name: 'Text',
-    icon: 'fa fa-font fa-3x',
+    icon: 'fa fa-font fa-2x',
     text:
       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laboriosam aliquam, porro harum libero assumenda modi illum placeat iusto, sed quidem ut dolore iure corrupti expedita. Enim, velit necessitatibus! Mollitia!',
     style: {
@@ -351,7 +351,7 @@ const elements = [
     name: 'Video',
     icon: 'fa fa-youtube fa-2x',
     data: {
-      url: 'https://www.youtube.com/embed/mO3Q4bRQZ3k'
+      url: 'https://www.youtube.com/embed/QVvy63brK_4'
     }
   },
   {

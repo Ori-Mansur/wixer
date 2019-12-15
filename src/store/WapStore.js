@@ -48,12 +48,16 @@ export default {
             // state.currWap.sections[data.newIndex-1]._id = UtilsService.makeId()
             // state.group = state.currWap.sections[data.newIndex-1]._id
         },
-        addElement(state, data) {
-            state.currWap.sections[data.sectionIdx].data.splice(data.data.newIndex, 0, data.data.element)
-            state.currWap.sections[data.sectionIdx].data[data.data.newIndex]._id = UtilsService.makeId()
+        addElement(state, {newElement, sectionId}) {
+            newElement._id = UtilsService.makeId()
+            const idx = state.currWap.sections.findIndex(section=> section._id===sectionId)
+            console.log(idx)
+            console.log(state.currWap.sections)
+            state.currWap.sections[idx].data.push(newElement)
+            console.log(state.currWap.sections[idx])
+
         },
         removeSection (state, {sectionId}){
-          console.log(sectionId)
           const idx = state.currWap.sections.findIndex(section=> section._id===sectionId)
           state.currWap.sections.splice(idx, 1)
         },

@@ -4,6 +4,16 @@
         line-height: 1.5rem;
       
       }
+      .icon-edit {
+        position: absolute;
+        z-index: 1;
+        background-color: #fff;
+        padding: 3px;
+        cursor: pointer;
+        border: 1px solid black;
+        margin: 0.5px;
+        border-radius: 7px;
+      }
   }
   
   

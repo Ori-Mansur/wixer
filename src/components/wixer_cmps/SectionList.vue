@@ -21,7 +21,7 @@
           @removeSection="removeSection"
           @save="saveSection"
           @saveMapData="saveMapData"
-          @addEl="addEl"
+          @addElement="addEl"
           @setCardImg="setCardImg"
           @changeStyle="changeStyle"
           @saveText="saveText"
@@ -107,8 +107,9 @@ export default {
       console.log(evt)
       this.$store.commit("addSection", evt.added);
     },
-    addEl(data) {
-      this.$store.commit("addElement", data);
+    addEl(newElement, sectionId) {
+      console.log(newElement,sectionId)
+      this.$store.commit({type:"addElement", newElement, sectionId});
     }
   },
   components: {

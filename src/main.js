@@ -35,7 +35,8 @@ import {
   uniBold,
   uniImage,
   uniItalic,
-  uniAlignCenter, uniAlignRight, uniAlignLeft
+  uniAlignCenter, uniAlignRight, uniAlignLeft,uniLinkAlt ,uniEnvelopeAlt ,
+  uniLinkedin, uniFacebook, uniSkype, uniTelegram, uniTwitter, uniWhatsapp 
 } from 'vue-unicons/src/icons';
 import VueDragDrop from 'vue-drag-drop';
 
@@ -66,7 +67,8 @@ Unicon.add([
   uniBold,
   uniImage,
   uniItalic,
-  uniAlignCenter, uniAlignRight, uniAlignLeft
+  uniAlignCenter, uniAlignRight, uniAlignLeft,uniLinkAlt ,uniEnvelopeAlt ,
+  uniLinkedin, uniFacebook, uniSkype, uniTelegram, uniTwitter, uniWhatsapp 
 ]);
 
 Vue.use(Unicon);
@@ -74,6 +76,8 @@ Vue.use(ElementUI);
 
 import './styles/global.scss';
 Vue.config.productionTip = false;
+var SocialSharing = require('vue-social-sharing');
+Vue.use(SocialSharing);
 
 
 import * as VueGoogleMaps from 'vue2-google-maps';

@@ -30,7 +30,7 @@ export default {
       this.$emit("setImg", { event, idx: this.idx });
     },
     removeElement() {
-      this.$emit("removeWidget", this.data._id);
+      this.$emit("remove", this.data._id);
     }
   },
   created() {}

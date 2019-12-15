@@ -22,6 +22,7 @@
         @setImg="setImg"
         @edit="editStyle"
         @saveText="saveText"
+        @remove="remove(idx)"
         :is="element.type"
         :data="element"
       ></component>
@@ -49,12 +50,7 @@ export default {
   },
   methods: {
     async setImg(data) {
-      console.log(data);
-      
      const img= await this.$store.dispatch({ type: "setBcgImg",data });
-    //  console.log(img);
-     
-     console.log(this.modifySection.data[data.idx].data);
      this.modifySection.data[data.idx].data.url=img
      this.saveSection();
     },
@@ -64,6 +60,10 @@ export default {
       );
       this.modifySection.data[idx].text = value.txt;
       this.saveSection();
+    },
+    remove(idx){
+this.modifySection.data.splice(idx,1)
+this.saveSection()
     },
     saveSection() {
       this.$emit("save",{data:JSON.parse(JSON.stringify(this.modifySection)),idx:this.idx});

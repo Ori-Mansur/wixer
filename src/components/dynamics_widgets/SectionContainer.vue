@@ -11,6 +11,7 @@
       :list="modifySection.data"
       group="element"
       :sort="isEdit"
+      @add="add"
     >
       <div v-if="isEdit && !modifySection.data[0]" class="placeholder">
         <unicon name="plus" fill="gray" class="icon" />
@@ -18,6 +19,7 @@
       <div class="list-group-item" v-for="(element,idx) in modifySection.data" :key="idx">
         <component
           :key="idx"
+          @updateElement="updateElement"
           @edit="editStyle"
           @saveText="saveText"
           :is="element.type"
@@ -49,6 +51,15 @@ export default {
     };
   },
   methods: {
+    updateElement(editedElement){
+      const idx = this.modifySection.data.findIndex(element=>element._id===editedElement._id)
+      this.modifySection.data.splice(idx, 1, editedElement)
+      this.saveSection()
+    },
+    add(evt){
+      const newElement = evt.item._underlying_vm_
+      this.$emit('addElement', newElement, this.section._id)
+    },
     removeSection(id) {
       this.$emit("removeSection", id);
     },

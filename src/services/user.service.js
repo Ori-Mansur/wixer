@@ -17,7 +17,7 @@ export default {
 
 
 async function register(userCred) {
-    const user = await hHttpService.post(`form/register`, userCred)
+    const user = await HttpService.post(`form/register`, userCred)
     return _handleLogin(user)
 }
 function getUser() {

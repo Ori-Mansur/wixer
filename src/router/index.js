@@ -5,6 +5,7 @@ import About from '../views/About.vue';
 import WapsPage from '../views/WapsPage.vue';
 import WapPublish from '../views/WapPublish.vue';
 import UserDetails from '../views/UserDetails.vue';
+import LoginRegister from '../components/wixer_cmps/LoginRegister.vue';
 import WapEditor from '../views/WapEditor.vue';
 
 Vue.use(VueRouter);
@@ -13,7 +14,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: Home,
   },
   {
     path: '/about',
@@ -35,6 +36,7 @@ const routes = [
     name: 'UserDetails',
     component: UserDetails
   },
+
   {
     path: '/editor/:id?',
     name: 'WapEditor',

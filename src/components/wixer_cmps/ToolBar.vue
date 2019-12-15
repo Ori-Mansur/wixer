@@ -58,7 +58,7 @@
           <i class="fa fa-eye fa-2x"></i>
           <h4 :style="{color:'gray'}"></h4>
         </li>
-        <li class="flex" @click="save">
+        <li class="flex" @click="share">
           <i class="fa fa-share-alt-square fa-2x"></i>
           <h4 :style="{color:'gray'}"></h4>
         </li>
@@ -75,7 +75,7 @@
           </li>
         </router-link>
       </div>
-
+<ShareModal :isShare="isShare" @close="isShare=false"/>
       <!-- <div class="section-publish-container">
         <li @click="$emit('preview')" class="li-bar section-publish">
           <i class="fa fa-eye"></i>
@@ -107,6 +107,7 @@
 import SettingWap from "./SettingWap.vue";
 import draggable from "vuedraggable";
 import Menu from "./Menu.vue";
+import ShareModal from './ShareModal.vue'
 
 export default {
   props: {
@@ -123,7 +124,8 @@ export default {
       edit: false,
       menu: false,
       gray: "red",
-      isPreview: true
+      isPreview: true,
+      isShare:false
     };
   },
   methods: {
@@ -136,6 +138,10 @@ export default {
     },
     save() {
       this.$emit("save");
+    },
+    share(){
+// this.save()
+this.isShare=true
     },
     cloneX(section) {
       console.log(section);
@@ -179,7 +185,8 @@ export default {
   components: {
     SettingWap,
     Menu,
-    draggable
+    draggable,
+    ShareModal
   }
 };
 </script>
