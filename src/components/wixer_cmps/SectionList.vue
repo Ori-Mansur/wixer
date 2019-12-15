@@ -4,7 +4,7 @@
       class="dragArea list-group"
       v-model="sectionsList"
       group="people"
-      @change="add($event)"
+      @change="addSection($event)"
     >
       <div
         class="list-group-item"
@@ -24,7 +24,6 @@
           @addElement="addEl"
           @setCardImg="setCardImg"
           @changeStyle="changeStyle"
-          @saveText="saveText"
           class="widget-container"
         ></component>
       </div>
@@ -66,17 +65,6 @@ export default {
       sectionsList:null
     };
   },
-  computed: {
-    // sections() {
-    //   return this.$store.getters.currWapSections;
-    // },
-    // myList: {
-    //   get() {
-    //     return this.$store.getters.currWapSections;
-    //   },
-    //   set() {}
-    // }
-  },
   methods: {
     changePos(diff, sectionToMove){
       this.$store.commit({type: "changePos" ,moveBy: diff, sectionToMove})
@@ -96,19 +84,13 @@ export default {
     setCardImg(data) {
       this.$store.dispatch({ type: "setCardImg", data });
     },
-    saveText(data) {
-      // this.$store.commit({ type: "updateTxt", data });
-      console.log(data)
-    },
     changeStyle(data) {
       this.$store.commit({ type: "updateStyle", data });
     },
-    add(evt) {
-      console.log(evt)
+    addSection(evt) {
       this.$store.commit("addSection", evt.added);
     },
     addEl(newElement, sectionId) {
-      console.log(newElement,sectionId)
       this.$store.commit({type:"addElement", newElement, sectionId});
     }
   },

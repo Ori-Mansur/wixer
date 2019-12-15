@@ -36,7 +36,7 @@ import {
   uniImage,
   uniItalic,
   uniAlignCenter, uniAlignRight, uniAlignLeft,uniLinkAlt ,uniEnvelopeAlt ,
-  uniLinkedin, uniFacebook, uniSkype, uniTelegram, uniTwitter, uniWhatsapp 
+  uniLinkedin, uniFacebook, uniSkype, uniTelegram, uniTwitter, uniWhatsapp ,uniLine,uniCommentDots
 } from 'vue-unicons/src/icons';
 import VueDragDrop from 'vue-drag-drop';
 
@@ -68,7 +68,7 @@ Unicon.add([
   uniImage,
   uniItalic,
   uniAlignCenter, uniAlignRight, uniAlignLeft,uniLinkAlt ,uniEnvelopeAlt ,
-  uniLinkedin, uniFacebook, uniSkype, uniTelegram, uniTwitter, uniWhatsapp 
+  uniLinkedin, uniFacebook, uniSkype, uniTelegram, uniTwitter, uniWhatsapp,uniLine ,uniCommentDots
 ]);
 
 Vue.use(Unicon);

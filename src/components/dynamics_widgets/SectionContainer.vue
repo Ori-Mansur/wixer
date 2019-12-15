@@ -5,7 +5,12 @@
     :style="{backgroundColor: section.style.bcgColor,
      backgroundImage: `url(${section.style.bcgImg})`}"
   >
-    <WidgetEditor @setImg="setImg" :data="section" @changePos="changePos" @removeSection="removeSection"/>
+    <WidgetEditor
+      @setImg="setImg"
+      :data="section"
+      @changePos="changePos"
+      @removeSection="removeSection"
+    />
     <draggable
       class="dragArea list-group"
       :list="modifySection.data"
@@ -22,6 +27,7 @@
           @updateElement="updateElement"
           @edit="editStyle"
           @saveText="saveText"
+          @remove="remove(idx)"
           :is="element.type"
           :data="element"
         ></component>
@@ -37,7 +43,7 @@ import TextEl from "../elements/TextElement";
 import Img from "../elements/ImageElement";
 import Video from "../elements/Video";
 import Card from "../elements/Card";
-import CardHorizontal from "../elements/CardHorizontal"
+import CardHorizontal from "../elements/CardHorizontal";
 
 export default {
   props: {
@@ -51,20 +57,26 @@ export default {
     };
   },
   methods: {
-    updateElement(editedElement){
-      const idx = this.modifySection.data.findIndex(element=>element._id===editedElement._id)
-      this.modifySection.data.splice(idx, 1, editedElement)
-      this.saveSection()
+    updateElement(editedElement) {
+      const idx = this.modifySection.data.findIndex(
+        element => element._id === editedElement._id
+      );
+      this.modifySection.data.splice(idx, 1, editedElement);
+      this.saveSection();
     },
-    add(evt){
-      const newElement = evt.item._underlying_vm_
-      this.$emit('addElement', newElement, this.section._id)
+    add(evt) {
+      const newElement = evt.item._underlying_vm_;
+      this.$emit("addElement", newElement, this.section._id);
     },
     removeSection(id) {
       this.$emit("removeSection", id);
     },
-    changePos(diff){
-      this.$emit('changePos', diff, this.modifySection)
+    remove(idx) {
+      this.modifySection.data.splice(idx, 1);
+      this.saveSection();
+    },
+    changePos(diff) {
+      this.$emit("changePos", diff, this.modifySection);
     },
     async setImg(event) {
       const img = await this.$store.dispatch({

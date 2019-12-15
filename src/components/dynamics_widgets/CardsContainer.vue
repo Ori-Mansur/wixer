@@ -3,7 +3,7 @@
     class="container-threeCol flex align-center row container"
     :style="{backgroundColor: section.style.bcgColor, border: isBorder}"
   >
-  <!-- <WidgetEditor @setImg="setImg" :data="section" @changePos="changePos"/> -->
+  <WidgetEditor @setImg="setImg" :data="section" @changePos="changePos"/>
     <card-container
     
       @setImg="setImg"
@@ -28,9 +28,6 @@ export default {
   props: {
     edit: Boolean,
     section: Object
-  },
-  created() {
-    console.log(this.section);
   },
   components: {
     CardContainer,

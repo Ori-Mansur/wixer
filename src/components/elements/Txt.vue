@@ -1,6 +1,6 @@
 <template>
   <section v-if="data" class="text-container" @click="selectedTxt">
-    <label @click="removeElement" title="remove this widget">
+    <label v-if="isEdit" @click="removeElement" title="remove this widget">
         <unicon name="trash-alt" fill="black" class="icon-edit" />
       </label>
     <div @keyup="saveText">
@@ -38,7 +38,7 @@ export default {
     };
   },
   methods: {
-    removeWidget(id) {
+    removeElement(id) {
       this.$emit("remove", id);
     },
     saveText(ev) {
@@ -46,27 +46,19 @@ export default {
       this.$emit("saveText", { txt, id: this.data._id });
     },
     edit(type) {
-      console.log(type);
-
       this.$emit("edit", { dataId: this.data._id, style: type });
     },
     selectedTxt() {
       this.$store.commit({ type: "setTxtId", id: this.data._id });
     },
-    removeElement() {
-      // this.$emit("removeWidget", this.data._id);
-    }
   },
   created() {
     const param = this.$route.path;
     if (param.includes("editor")) this.isEdit = true;
     else this.isEdit = false;
-    console.log(this.data);
   },
   watch: {
     $route(to) {
-      console.log("$r", to);
-
       if (to.includes("editor")) this.isEdit = true;
       else this.isEdit = false;
     }

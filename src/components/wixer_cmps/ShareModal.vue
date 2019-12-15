@@ -1,8 +1,12 @@
 <template>
-  <el-dialog title="Shipping address" :visible="isShare" :show-close="false" :destroy-on-close="true">
+  <el-dialog title="Share Your Website" 
+  :visible="isShare" 
+  :show-close="false" 
+   width=400px
+  :destroy-on-close="true">
     <SocialSharing />
     <span slot="footer" class="dialog-footer">
-      <el-button @click="close">Cancel</el-button>
+      <el-button @click="close">Close</el-button>
     </span>
   </el-dialog>
 </template>
@@ -28,16 +32,14 @@ export default {
       else return this.isShare;
     }
   },
-  created() {
-  console.log(this.$route.params);
-  },
-  watch: {
-    $route() {
-      console.log(this.$route.params);
-    }
-  },
   components: {
     SocialSharing
   }
 };
 </script>
+<style lang="scss" scoped>
+.el-dialog{
+  width: 200px;
+}
+
+</style>

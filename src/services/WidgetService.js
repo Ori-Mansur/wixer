@@ -431,7 +431,7 @@ const elements = [
     ]
   },
   {
-    _id: 'el1005',
+    _id: 'el1009',
     type: 'cardHorizontal',
     name: 'CardHorizontal',
     icon: 'fa fa-align-left fa-2x',

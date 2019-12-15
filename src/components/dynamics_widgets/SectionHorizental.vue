@@ -5,7 +5,12 @@
     :style="{backgroundColor: section.style.bcgColor,
      backgroundImage: `url(${section.style.bcgImg})`}"
   >
-    <WidgetEditor @setImg="setImg" :data="section" @changePos="changePos" @removeSection="removeSection"/>
+    <WidgetEditor
+      @setImg="setImg"
+      :data="section"
+      @changePos="changePos"
+      @removeSection="removeSection"
+    />
     <draggable
       class="dragArea list-group flex row"
       :list="modifySection.data"
@@ -22,6 +27,7 @@
           @edit="editStyle"
           @save="saveCard"
           @saveText="saveText"
+          @remove="remove(idx)"
           :is="element.type"
           :data="element"
         ></component>
@@ -53,8 +59,12 @@ export default {
     removeSection(id) {
       this.$emit("removeSection", id);
     },
-    changePos(diff){
-      this.$emit('changePos', diff, this.modifySection)
+    remove(idx) {
+      this.modifySection.data.splice(idx, 1);
+      this.saveSection();
+    },
+    changePos(diff) {
+      this.$emit("changePos", diff, this.modifySection);
     },
     async setImg(event) {
       const img = await this.$store.dispatch({
@@ -100,7 +110,6 @@ export default {
       this.saveSection();
     },
     saveCard(card) {
-      console.log(card);
       this.modifySection.data.splice(card.idx, 1, card.data);
       this.saveSection();
     }
@@ -127,6 +136,9 @@ export default {
     margin: auto auto;
     background-color: gainsboro;
     text-align: center;
+  }
+  .list-group {
+    width: 100%;
   }
   .list-group-item {
     flex-grow: 1;

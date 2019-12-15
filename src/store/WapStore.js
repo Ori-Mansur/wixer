@@ -48,62 +48,52 @@ export default {
             // state.currWap.sections[data.newIndex-1]._id = UtilsService.makeId()
             // state.group = state.currWap.sections[data.newIndex-1]._id
         },
-        addElement(state, {newElement, sectionId}) {
+        addElement(state, { newElement, sectionId }) {
             newElement._id = UtilsService.makeId()
-            const idx = state.currWap.sections.findIndex(section=> section._id===sectionId)
-            console.log(idx)
-            console.log(state.currWap.sections)
+            const idx = state.currWap.sections.findIndex(section => section._id === sectionId)
             state.currWap.sections[idx].data.push(newElement)
-            console.log(state.currWap.sections[idx])
-
         },
-        removeSection (state, {sectionId}){
-          const idx = state.currWap.sections.findIndex(section=> section._id===sectionId)
-          state.currWap.sections.splice(idx, 1)
+        removeSection(state, { sectionId }) {
+            const idx = state.currWap.sections.findIndex(section => section._id === sectionId)
+            state.currWap.sections.splice(idx, 1)
         },
-        changePos(state, {moveBy, sectionToMove}){
-          const sectionIdx = state.currWap.sections.findIndex(section=>section._id===sectionToMove._id)
-          const sectionToReplaceIdx = sectionIdx+moveBy
+        changePos(state, { moveBy, sectionToMove }) {
+            const sectionIdx = state.currWap.sections.findIndex(section => section._id === sectionToMove._id)
+            const sectionToReplaceIdx = sectionIdx + moveBy
 
-          if(sectionToReplaceIdx>state.currWap.sections.length-1 || sectionToReplaceIdx<0) {
-            return 
-          } else {
-            const sectionToReplace = state.currWap.sections[sectionToReplaceIdx]
-            state.currWap.sections.splice(sectionIdx, 1, sectionToReplace)
-            state.currWap.sections.splice(sectionToReplaceIdx, 1, sectionToMove)
+            if (sectionToReplaceIdx > state.currWap.sections.length - 1 || sectionToReplaceIdx < 0) {
+                return
+            } else {
+                const sectionToReplace = state.currWap.sections[sectionToReplaceIdx]
+                state.currWap.sections.splice(sectionIdx, 1, sectionToReplace)
+                state.currWap.sections.splice(sectionToReplaceIdx, 1, sectionToMove)
 
-          }
+            }
         },
         saveSection(state, { section }) {
-            console.log(state.currWap);
-
             const idx = state.currWap.sections.findIndex(currSection => currSection._id === section._id)
             state.currWap.sections.splice(idx, 1, section)
         },
         saveSectionData(state, { newData }) {
-            console.log(newData)
-            // debugger
             const idx = state.currWap.sections.findIndex(section => section._id === newData._id)
             // const elIdx = state.currWap.sections[idx].data.findIndex(el => el._id === newData._id)
             // state.currWap.sections[idx].data[elIdx] = newData
             state.currWap.sections.splice(idx, 1, newData)
-      
-          },
+
+        },
         addWidget(state, { data }) {
             const idx = state.currWap.sections.findIndex(currSection => currSection._id === data.sectionId)
-            console.log('store idx', state.currWap.sections[idx]);
             state.currWap.sections[idx].data.push(data.el)
         },
         setFilter(state, filterBy) {
             state.filterBy = filterBy
         },
         setBcgImg(state, { sectionData }) {
-          console.log(sectionData)
             const idx = state.currWap.sections.findIndex(section => section._id === sectionData.id)
             state.currWap.sections[idx].style.bcgImg = sectionData.imgUrl
         },
         setCardImg(state, { sectionData }) {
-            console.log('hhjghjgj', sectionData);
+
             const idx = state.currWap.sections.findIndex(section => section._id === sectionData.id)
             state.currWap.sections[idx].data[sectionData.idx].style.bcgImg = sectionData.imgUrl
         },
@@ -111,19 +101,16 @@ export default {
             state.currSectionId = data
         },
         updateStyle(state, { data }) {
-console.log(data);
 
             const idx = state.currWap.sections.findIndex(section => section._id === data.sectionId)
-            
+
             const cardIdx = state.currWap.sections[idx].data.findIndex(card => card._id === data.cardData.dataId)
-            console.log(cardIdx);
             if (data.cardData.id) {
                 // state.currWap.sections[idx].data[cardIdx]
-                
+
                 // state.currWap.sections[idx].data[cardIdx].data[data.cardData.idx].style = data.cardData.style
             }
             else {
-                console.log(state.currWap.sections[idx].data[cardIdx].style);
                 state.currWap.sections[idx].data[cardIdx].style = data.cardData.style
             }
         }
@@ -175,7 +162,6 @@ console.log(data);
         async setBcgImg(context, { data }) {
             context.commit({ type: 'open1', msg: 'loading img' })
             const imgUrl = await CloudinaryService.uploadImg(data.event)
-            console.log(imgUrl);
             // context.commit({ type: 'setBcgImg', sectionData: { id: data.sectionId, imgUrl } })
             context.commit({ type: 'success', msg: 'Image upload' })
             return imgUrl
@@ -200,9 +186,7 @@ console.log(data);
         txtId(state) {
             return state.txtId
         },
-        currSection(state, idx) {
-            console.log('jjjj', idx);
-
+        currSection(state) {
             if (state.currWap) return state.currWap.sections
         },
         wapsToShow(state) {

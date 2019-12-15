@@ -34,14 +34,23 @@
           <unicon name="twitter" fill="#1DA1F2" height="50" width="50" class="share-icon" />
           <p>Twitter</p> 
         </network>
-        <network network="whatsapp">
+        <network network="whatsapp" >
           <unicon name="whatsapp" fill="#00E676" height="50" width="50" class="share-icon" />
           <p>Whatsapp</p> 
         </network>
+        <network network="sms" >
+          <unicon name="comment-dots" fill="#00C2F5" height="50" width="50" class="share-icon" />
+          <p>SMS</p> 
+        </network>
+        <network network="line" >
+          <unicon name="line" fill="#00B900" height="50" width="50" class="share-icon" />
+          <p>Line</p> 
+        </network>
       </div>
     </social-sharing>
-    <router-link :to="'/publish/'+id" target="_blank">
-  Visit Your Website
+    <router-link class="link" :to="'/publish/'+id" target="_blank">
+  <h3> Visit Your Website</h3>
+
 </router-link>
   </div>
 </template>
@@ -74,18 +83,22 @@ if(id)this.id=id
   display: flex;
   flex-direction: column;
   align-items: center
+  
 }
+.link{
+    color: black;
+    // text-decoration: none;
+    h3{
+      margin-bottom: 0px
+    }
+  }
 .social-icons{
   display: grid;
   grid-template-columns: 70px 70px 70px;
   gap:10px;
   text-align: center;
  margin-bottom: 20px;
-  
- 
+ cursor: pointer;
 }
-
-
-
 
 </style>

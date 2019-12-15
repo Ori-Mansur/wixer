@@ -1,6 +1,6 @@
 <template>
   <section class="video-container">
-    <div class="vid-tool">
+    <div class="vid-tool" v-if="isEdit">
       <label :for="fileUpload" @click="toggleInput">
         <unicon name="link-alt" fill="black" class="icon-edit" />
       </label>
@@ -34,6 +34,7 @@ export default {
   },
   data() {
     return {
+      isEdit:false,
       isInput: false,
       url: JSON.parse(JSON.stringify(this.data.data.url))
     };
@@ -56,12 +57,26 @@ export default {
       return `file-upload-${this.data._id}` + x;
     }
   },
+  created() {
+    const param = this.$route.path;
+    if (param.includes('editor')) this.isEdit = true;
+    else this.isEdit = false;
+  },
+  watch: {
+    $route(to) {
+
+      if (to.includes("editor")) this.isEdit = true;
+      else this.isEdit = false;
+    }
+  },
   components: {}
 };
 </script>
 <style lang="scss">
+
 .video {
   border: none;
+  min-width: 300px;
 }
 .vid-tool {
   position: absolute;
